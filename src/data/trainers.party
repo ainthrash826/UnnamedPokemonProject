@@ -97,99 +97,115 @@ Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Brayden
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
-Music: Aqua
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Spheal
+Level: 15
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Marcus
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
-Music: Aqua
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sneasel
+Level: 15
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+Name: Chelsea
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Vanillite
+Level: 16
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Troy
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
-Music: Aqua
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cubchoo
+Level: 16
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Name: Elijah
+Class: Team Magma
+Pic: Magma Grunt M
 Gender: Male
-Music: Aqua
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Snorunt
+Level: 16
+
+Bergmite
+Level: 17
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_2 ===
 Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Class: Magma Admin
+Pic: Magma Grunt M
 Gender: Male
-Music: Aqua
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Trainer Plus
 
-Carvanha
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Snover (M) @ Icy Rock
+Level: 17
+Relaxed Nature
+- Ice Shard
+- Leafage
+- Powder Snow
+- Leech Seed
+
+Sandshrew-Alola (M) @ Occa Berry
+Level: 18
+Adamant Nature
+- Metal Claw
+- Rollout
+- Fury Cutter
+- Rapid Spin
+
+Frigibax (M) @ Sitrus Berry
+Level: 18
+Adamant Nature
+- Leer
+- Dragon Tail
+- Icicle Spear
+- Dig
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+Name: Makayla
+Class: Team Magma
+Pic: Magma Grunt F
+Gender: Female
+Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Smoochum
+Level: 15
+
+Snorunt (F)
+Level: 17
 
 === TRAINER_GABRIELLE_1 ===
 Name: GABRIELLE
@@ -626,7 +642,7 @@ Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAISY ===
-Name: Daisy
+Name: Harmony
 Class: Aroma Lady
 Pic: Aroma Lady
 Gender: Female
@@ -638,6 +654,9 @@ Oddish
 Level: 12
 
 Petilil
+Level: 13
+
+Oddish
 Level: 13
 
 === TRAINER_ROSE_1 ===
@@ -3172,17 +3191,14 @@ Double Battle: No
 AI: Basic Trainer
 
 Krabby
-Level: 15
-
-Corphish
-Level: 15
-
-Krabby
 Level: 16
 -Protect
 -Mud Shot
 -Harden
 -Water Gun
+
+Crabrawler
+Level: 17
 
 === TRAINER_HITOSHI ===
 Name: HITOSHI
@@ -4807,25 +4823,23 @@ Double Battle: No
 AI: Gym Leader
 Mugshot: Pink
 
-Wattrel (F)
+Murkrow (F)
 Level: 11
+Ability: Super Luck
+-Taunt
+-Snarl
+-Aerial Ace
+-Tailwind
+
+Wattrel (F) @ Sitrus Berry
+Level: 12
+Naughty Nature
 Ability: Wind Power
+Ball: Premier
 -Thunder Shock
 -Aerial Ace
 -Quick Attack
-
-Luel (F)
-Level: 12
--Supersonic
--Wing Attack
--Aerial Ace
--Leer
-
-Bellanco (F)
-Level: 14
--Echoed Voice
--Gust
--Metal Sound
+-Pluck
 
 === TRAINER_BRAWLY_1 ===
 Name: Redbeard
@@ -4837,53 +4851,55 @@ Double Battle: No
 AI: Gym Leader
 Mugshot: Blue
 
-Skullian (M)
-Level: 17
--Pursuit
--Bonemerang
--Thief
--Aqua Cutter
+Honedge (M) @ Damp Rock
+Level: 19
+Adamant Nature
+Shiny: Yes
+Ball: Luxury
+- Aqua Cutter
+- Shadow Sneak
+- Reversal
+- Rain Dance
 
-Dhelmise (M) @ Coba Berry
-Level: 17
+Charcadet (M) @ Eviolite
+Level: 19
+Modest Nature
+Ball: Luxury
+- Will O Wisp
+- Fire Spin
+- Ominous Wind
+- Clear Smog
+
+Dhelmise @ Coba Berry
+Level: 20
+Adamant Nature
+Shiny: Yes
+Ball: Dive
 -Growth
 -Mega Drain
 -Astonish
 -Aerial Ace
 
-Finizen (M)
-Level: 19
--Double Hit
+Veluza (F) @ Sitrus Berry
+Level: 21
+Ability: Sharpness
+Adamant Nature
+EVs: 1 HP / 84 Atk / 84 Spe
+Ball: Dive
+-Slash
 -Aqua Jet
--Aqua Cutter
--Acrobatics
+-Ice Fang
+-Psychic Fangs
 
 === TRAINER_WATTSON_1 ===
-Name: Wattson
+Name: Hash
 Class: Leader
 Pic: Leader Wattson
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
 Double Battle: No
 AI: Gym Leader
-Mugshot: Pink
-
-Voltorb
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rollout
-- Spark
-- Self Destruct
-- Shock Wave
-
-Electrike
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Shock Wave
-- Leer
-- Quick Attack
-- Howl
+Mugshot: Blue
 
 Magneton
 Level: 22
@@ -5142,10 +5158,10 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Skwovet
+Sentret
 Level: 5
 
-Raccat
+Skwovet
 Level: 6
 
 === TRAINER_TED ===
@@ -5516,15 +5532,25 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_MIGUEL_1 ===
 Name: Dylan
-Class: Youngster
-Pic: Youngster
+Class: Bug Catcher
+Pic: Bug Catcher
 Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Grimer-Alola
-Level: 12
+Dewpider
+Level: 14
+- Sticky Web
+- Bug Bite
+- Bubble Beam
+- Bite
+
+Spinarak
+Level: 14
+
+Joltik
+Level: 15
 
 === TRAINER_COLTON ===
 Name: COLTON
@@ -5959,7 +5985,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Raccat
+Zigzagoon-Galar
 Level: 5
 
 === TRAINER_BILLY ===
@@ -6001,10 +6027,10 @@ Music: Girl
 Double Battle: No
 AI: Basic Trainer
 
-Luel
+Hoothoot
 Level: 9
 
-Luel
+Swablu
 Level: 10
 
 === TRAINER_JOEY ===
@@ -6221,10 +6247,14 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Banditook @ Oran Berry
+Rattata-Alola @ Oran Berry
 Level: 5
+- Thief
+- Quick Attack
+- Tackle
+- Tail Whip
 
-Luel
+Rookidee
 Level: 7
 
 === TRAINER_TIMMY ===
@@ -6305,36 +6335,36 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_ANDREW ===
 Name: Andrew
-Class: Fisherman
-Pic: Fisherman
+Class: Hiker
+Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
 AI: Basic Trainer
 
-Arrokuda
+Rockruff
 Level: 13
 
+Toedscool
+Level: 13
+
+Rolycoly
+Level: 14
+
+Numel
+Level: 14
+
 === TRAINER_IVAN ===
-Name: IVAN
-Class: Fisherman
-Pic: Fisherman
-Gender: Male
-Music: Hiker
+Name: Lina
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Magikarp
+Sentret
 Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magikarp
-Level: 6
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Magikarp
-Level: 7
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLAUDE ===
 Name: CLAUDE
@@ -7088,17 +7118,19 @@ Level: 34
 IVs: 19 HP / 19 Atk / 19 Def / 19 SpA / 19 SpD / 19 Spe
 
 === TRAINER_TALIA ===
-Name: TALIA
+Name: Jene
 Class: Triathlete
-Pic: Swimming Triathlete F
+Pic: Running Triathlete F
 Gender: Female
-Music: Swimmer
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Staryu
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bramblin
+Level: 12
+
+Riolu
+Level: 12
 
 === TRAINER_KATELYN_1 ===
 Name: KATELYN
@@ -7836,10 +7868,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Inkay
-Level: 14
+Level: 17
 
 Inkay
-Level: 15
+Level: 16
 
 === TRAINER_LAURA ===
 Name: Laura
@@ -7850,11 +7882,11 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Krabby
-Level: 15
-
-Bruxish
+Horsea
 Level: 16
+
+Sandygast
+Level: 18
 
 === TRAINER_CYNDY_1 ===
 Name: CYNDY
@@ -9357,7 +9389,7 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TABITHA_MOSSDEEP ===
-Name: Grunt
+Name: Grant
 Class: Team Magma
 Pic: Magma Grunt M
 Gender: Male
@@ -9489,32 +9521,35 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
-Name: Orion
+Name: Harley
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: Steven
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
+Mugshot: Pink
 
-Junglide (M)
-Level: 6
-- Pound
-- Growl
+Mime Jr (F)
+Level: 2
+Ability: Soundproof
+
+Fuecoco (F)
+Level: 5
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
-Name: Orion
+Name: UNUSED
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: May
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Junglide (M)
+Fuecoco (F)
 Level: 5
-- Pound
-- Growl
+- Tackle
+- Leer
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
 Name: BRENDAN
@@ -9538,32 +9573,35 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TREECKO ===
-Name: Orion
+Name: Harley
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: Steven
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
+Mugshot: Pink
 
-Parmi (M)
-Level: 6
-- Scratch
-- Tail Whip
+Mime Jr (F)
+Level: 2
+Ability: Soundproof
+
+Froakie (F)
+Level: 5
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: Orion
+Name: UNUSED
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: May
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Parmi (M)
+Froakie (F)
 Level: 5
-- Scratch
-- Tail Whip
+- Pound
+- Growl
 
 === TRAINER_BRENDAN_ROUTE_119_TREECKO ===
 Name: BRENDAN
@@ -9587,32 +9625,33 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
-Name: Orion
+Name: Harley
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: Steven
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
+Mugshot: Pink
 
-Radpole (M)
-Level: 6
--Tackle
--Growl
+Mime Jr (F)
+Level: 2
+Ability: Soundproof
+
+Snivy (F)
+Level: 5
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: Orion
+Name: UNUSED
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: May
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Radpole (M)
+Snivy (F)
 Level: 5
--Tackle
--Growl
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
 Name: BRENDAN
@@ -9637,21 +9676,47 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_MUDKIP ===
 Name: Harley
-Class: PkMn Trainer 2
-Pic: May
+Class: Rival
+Pic: Steven
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Trainer Plus
+Mugshot: Pink
 
-Ralts (F)
-Level: 6
+Sentret (F)
+Level: 13
+Ability: Frisk
+-Thief
+-Fury Swipes
+-Quick Attack
+-Defense Curl
 
-Parmi (F)
-Level: 8
+Bellsprout (M)
+Level: 13
+Ability: Chlorophyll
+-Sleep Powder
+-Vine Whip
+-Wrap
+-Leer
+
+Mime Jr (F)
+Level: 14
+Ability: Soundproof
+-Icy Wind
+-Confusion
+-Encore
+-Baton Pass
+
+Fuecoco (F) @ Oran Berry
+Level: 15
+-Incinerate
+-Bite
+-Round
+-Leer
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: Harley
+Name: UNUSED
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9659,10 +9724,10 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Ralts (F)
+Sentret (F)
 Level: 6
 
-Parmi (F)
+Fuecoco (F) @ Oran Berry
 Level: 7
 
 === TRAINER_MAY_ROUTE_119_MUDKIP ===
@@ -9688,21 +9753,47 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TREECKO ===
 Name: Harley
-Class: PkMn Trainer 2
-Pic: May
+Class: Rival
+Pic: Steven
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Trainer Plus
+Mugshot: Pink
 
-Ralts (F)
-Level: 6
+Sentret (F)
+Level: 13
+Ability: Frisk
+-Thief
+-Fury Swipes
+-Quick Attack
+-Defense Curl
 
-Radpole (F)
-Level: 8
+Rookidee (M)
+Level: 13
+Ability: Unnerve
+-Aerial Ace
+-Fury Attack
+-Hone Claws
+-Power Trip
+
+Mime Jr (F)
+Level: 14
+Ability: Soundproof
+-Icy Wind
+-Confusion
+-Encore
+-Baton Pass
+
+Froakie (F) @ Oran Berry
+Level: 15
+-Water Pulse
+-Lick
+-Quick Attack
+-Water Gun
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: Harley
+Name: UNUSED
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9710,10 +9801,10 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Ralts (F)
+Sentret (F)
 Level: 6
 
-Radpole (F)
+Froakie (F) @ Oran Berry
 Level: 7
 
 === TRAINER_MAY_ROUTE_119_TREECKO ===
@@ -9739,21 +9830,47 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_103_TORCHIC ===
 Name: Harley
-Class: PkMn Trainer 2
-Pic: May
+Class: Rival
+Pic: Steven
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Trainer Plus
+Mugshot: Pink
 
-Ralts (F)
-Level: 6
+Sentret (F)
+Level: 13
+Ability: Frisk
+-Thief
+-Fury Swipes
+-Quick Attack
+-Defense Curl
 
-Junglide (F)
-Level: 8
+Azurill (M)
+Level: 13
+Ability: Thick Fat
+-Slam
+-Charm
+-Bubblebeam
+-Tail Whip
+
+Mime Jr (F)
+Level: 14
+Ability: Soundproof
+-Icy Wind
+-Confusion
+-Encore
+-Baton Pass
+
+Snivy (F) @ Oran Berry
+Level: 15
+-Vine Whip
+-Growth
+-Wrap
+-Leer
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: Harley
+Name: UNUSED
 Class: PkMn Trainer 2
 Pic: May
 Gender: Female
@@ -9761,10 +9878,11 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Ralts (F)
+Sentret (F)
+Ability: Frisk
 Level: 6
 
-Junglide (F)
+Snivy (F) @ Oran Berry
 Level: 7
 
 === TRAINER_MAY_ROUTE_119_TORCHIC ===
@@ -10532,11 +10650,17 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Wingull
+Shellos-East
+Level: 17
+
+Pincurchin
 Level: 16
 
+Carvanha
+Level: 17
+
 === TRAINER_LILITH ===
-Name: LILITH
+Name: Lillith
 Class: Gym Trainer
 Pic: Aqua Grunt F
 Gender: Female
@@ -10544,9 +10668,11 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Pyukumuku
+Level: 17
+
+Carvanha
+Level: 17
 
 === TRAINER_CRISTIAN ===
 Name: Lance
@@ -10557,11 +10683,11 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Shellder
-Level: 16
-
 Clauncher
-Level: 16
+Level: 17
+
+Carvanha
+Level: 18
 
 === TRAINER_SYLVIA ===
 Name: SYLVIA
@@ -10656,7 +10782,7 @@ Level: 11
 Combee @ Honey
 Level: 12
 
-Combee @ Honey
+Beedrill
 Level: 12
 
 === TRAINER_TERRY ===
@@ -10813,19 +10939,10 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer / HP Aware / Smart Switching
+AI: Basic Trainer
 
-Huffluff
-Level: 21
-
-Lombre
-Level: 21
-
-Lucrow
-Level: 22
-
-Pandaro (M)
-Level: 24
+Crocalor (M)
+Level: 26
 
 === TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
 Name: Orion
@@ -10834,19 +10951,10 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer / HP Aware / Smart Switching
+AI: Basic Trainer
 
-Huffluff
-Level: 21
-
-Lombre
-Level: 21
-
-Lucrow
-Level: 22
-
-Canokite (M)
-Level: 24
+Servine (M)
+Level: 26
 
 === TRAINER_PAXTON ===
 Name: PAXTON
@@ -10939,25 +11047,16 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
-Name: Orion
+Name: UNUSED
 Class: Rival
-Pic: Brendan
-Gender: Male
-Music: Male
+Pic: May
+Gender: Female
+Music: Female
 Double Battle: No
-AI: Basic Trainer / HP Aware / Smart Switching
+AI: Basic Trainer
 
-Huffluff
-Level: 21
-
-Lombre
-Level: 21
-
-Lucrow
-Level: 22
-
-Frogidoki (M)
-Level: 24
+Frogadier (F)
+Level: 26
 
 === TRAINER_MAY_RUSTBORO_MUDKIP ===
 Name: MAY
@@ -11029,10 +11128,10 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Raccat
+Zigzagoon
 Level: 6
 
-Luel
+Rookidee
 Level: 6
 
 === TRAINER_HALEY_1 ===
@@ -12387,21 +12486,19 @@ Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HENRY ===
-Name: HENRY
-Class: Fisherman
-Pic: Fisherman
+Name: Henry
+Class: Hiker
+Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nacli
+Level: 15
 
-Tentacruel
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Onix
+Level: 15
 
 === TRAINER_ROGER ===
 Name: ROGER
@@ -12947,10 +13044,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Arrokuda
-Level: 16
+Level: 17
 
-Arrokuda
-Level: 16
+Munchlax
+Level: 18
 
 === TRAINER_HAILEY ===
 Name: HAILEY
@@ -13030,16 +13127,25 @@ Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARCOS ===
-Name: Ben
-Class: Youngster
-Pic: Youngster
+Name: Brad & Amy
+Class: Young Couple
+Pic: Young Couple
 Gender: Male
-Music: Male
-Double Battle: No
+Music: Girl
+Double Battle: Yes
 AI: Basic Trainer
 
-Trubbish
-Level: 12
+Phanpy (M)
+Level: 14
+
+Chatot (F)
+Level: 14
+
+Trapinch (M)
+Level: 15
+
+Vivillon-Modern (F)
+Level: 15
 
 === TRAINER_RHETT ===
 Name: Rhett
@@ -13049,6 +13155,9 @@ Gender: Female
 Music: Male
 Double Battle: No
 AI: Basic Trainer
+
+Rellor
+Level: 12
 
 Tyrogue
 Level: 13
@@ -13511,30 +13620,41 @@ Level: 4
 - Astonish
 
 === TRAINER_PETE ===
-Name: PETE
-Class: Swimmer M
-Pic: Swimmer M
+Name: Pete
+Class: Camper
+Pic: Camper
 Gender: Male
-Music: Swimmer
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Tentacool
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bonsly
+Level: 14
+
+Slakoth
+Level: 14
+
+Teddiursa
+Level: 14
 
 === TRAINER_ISABELLE ===
-Name: ISABELLE
-Class: Swimmer F
-Pic: Swimmer F
+Name: Isabelle
+Class: Hex Maniac
+Pic: Hex Maniac
 Gender: Female
-Music: Swimmer
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Marill
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Greavard
+Level: 14
+- Headbutt
+- Roar
+- Bite
+- Lick
+
+Sinistea
+Level: 14
 
 === TRAINER_ANDRES_1 ===
 Name: ANDRES
