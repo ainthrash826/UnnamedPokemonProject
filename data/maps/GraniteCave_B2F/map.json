@@ -6,7 +6,7 @@
   "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SHADE",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
   "allow_escaping": true,
@@ -17,7 +17,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
+      "x": 1,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -30,7 +30,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 29,
+      "x": 24,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -131,6 +131,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_17"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 20,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "UnmCaveB2F_SubzeroGrunt1",
+      "flag": "FLAG_HIDE_OLD_IRONWORKS_SUBZERO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 15,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "UnmCaveB2F_SubzeroGrunt2",
+      "flag": "FLAG_HIDE_OLD_IRONWORKS_SUBZERO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 5,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "UnmCaveB2F_SubzeroGrunt3",
+      "flag": "FLAG_HIDE_OLD_IRONWORKS_SUBZERO"
     }
   ],
   "warp_events": [
@@ -149,33 +188,26 @@
       "dest_warp_id": "3"
     },
     {
-      "x": 8,
-      "y": 5,
+      "x": 2,
+      "y": 4,
       "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": "4"
-    },
-    {
-      "x": 12,
-      "y": 3,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": "5"
+      "dest_map": "MAP_CENTRA_NE_POKEMON_ACADEMY2F",
+      "dest_warp_id": "0"
     },
     {
       "x": 29,
-      "y": 2,
+      "y": 4,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_B1F",
-      "dest_warp_id": "6"
+      "dest_warp_id": "4"
     }
   ],
   "coord_events": [],
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 28,
-      "y": 6,
+      "x": 20,
+      "y": 4,
       "elevation": 3,
       "item": "ITEM_EVERSTONE",
       "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1"

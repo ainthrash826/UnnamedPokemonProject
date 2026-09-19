@@ -647,6 +647,12 @@ static const struct MenuAction MultichoiceList_FrontierRules[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_AdventureBook[] =
+{
+    {COMPOUND_STRING("Catching a Pokémon")},
+    {COMPOUND_STRING("Using the DexNav")},
+    {COMPOUND_STRING("Cancel")},
+};
 static const struct MenuAction MultichoiceList_FrontierPassInfo[] =
 {
     {COMPOUND_STRING("SYMBOLS")},
@@ -1144,7 +1150,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BASE_PC_WITH_REGISTRY]      = MULTICHOICE(MultichoiceList_BasePCWithRegistry),
     [MULTI_REGISTER_MENU]              = MULTICHOICE(MultichoiceList_RegisterMenu),
     [MULTI_SSTIDAL_LILYCOVE]           = MULTICHOICE(MultichoiceList_Exit),
-    [MULTI_UNUSED_9]                   = MULTICHOICE(MultichoiceList_Exit),
+    [MULTI_UNUSED_9]                   = MULTICHOICE(MultichoiceList_AdventureBook),
     [MULTI_UNUSED_10]                  = MULTICHOICE(MultichoiceList_Exit),
     [MULTI_FRONTIER_PASS_INFO]         = MULTICHOICE(MultichoiceList_FrontierPassInfo),
     [MULTI_BIKE]                       = MULTICHOICE(MultichoiceList_Bike),

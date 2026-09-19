@@ -6,7 +6,7 @@
   "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SHADE",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
   "allow_escaping": true,
@@ -17,8 +17,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 15,
-      "y": 21,
+      "x": 22,
+      "y": 8,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -27,57 +27,95 @@
       "trainer_sight_or_berry_tree_id": "ITEM_POKE_BALL",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_GRANITE_CAVE_B1F_POKE_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 47,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GraniteCave_B1F_EventScript_Hiker",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 6,
+      "y": 30,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "UnmCaveB1F_SubzeroGrunt1",
+      "flag": "FLAG_HIDE_OLD_IRONWORKS_SUBZERO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
+      "x": 3,
+      "y": 31,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "UnmCaveB1F_SubzeroGrunt2",
+      "flag": "FLAG_HIDE_OLD_IRONWORKS_SUBZERO"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 43,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "UnmCaveB1FHenry",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 25,
-      "y": 13,
+      "x": 48,
+      "y": 5,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 4,
-      "y": 21,
+      "x": 40,
+      "y": 53,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_1F",
       "dest_warp_id": "2"
     },
     {
-      "x": 29,
-      "y": 13,
+      "x": 53,
+      "y": 23,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_B2F",
       "dest_warp_id": "0"
     },
     {
-      "x": 28,
-      "y": 21,
+      "x": 54,
+      "y": 53,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_B2F",
       "dest_warp_id": "1"
     },
     {
-      "x": 8,
-      "y": 5,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B2F",
-      "dest_warp_id": "2"
-    },
-    {
-      "x": 12,
-      "y": 3,
+      "x": 4,
+      "y": 29,
       "elevation": 3,
       "dest_map": "MAP_GRANITE_CAVE_B2F",
       "dest_warp_id": "3"
-    },
-    {
-      "x": 29,
-      "y": 2,
-      "elevation": 3,
-      "dest_map": "MAP_GRANITE_CAVE_B2F",
-      "dest_warp_id": "4"
     }
   ],
   "coord_events": [],

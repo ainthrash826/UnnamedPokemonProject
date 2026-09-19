@@ -8,7 +8,28 @@ script RustboroCity_Flat1_1F_EventScript_Woman {
 
 script RustboroCity_Flat1_1F_EventScript_Man {
 	msgbox(format("Have you visited the Centra Berry Shop lately?\p"
-				  "I think it's pretty neat.\n"
-				  "But, in my opinion, they should sell more stuff, like nature Mints and medicinal herbs."), MSGBOX_NPC)
+				  "I heard that the ladies who run the shop have to work exceptionally hard to get the Berries they sell.\p"
+				  "It is the only place in the region to sell Berries, after all!"), MSGBOX_NPC)
+	end
+}
+
+script CentraFlat1_1F_Thief {
+	if(!checkitem(ITEM_TM_THIEF)) {
+		lock
+		faceplayer
+		msgbox(format("Boy, do I sure love being a Thief!\p"
+		              "I don't do it alone, though.\n"
+		              "I usually rely on this baby!"))
+		if(!giveitem(ITEM_TM_THIEF)) {
+			goto(Common_EventScript_ShowBagIsFull)
+		}
+		msgbox(format("With the Thief move, you can steal the target's held item while dealing damamge to it!\p"
+					  "It won't work if the user is already holding something, though."), MSGBOX_NPC)
+		release
+	} else {
+		msgbox(format("With the Thief move, you can steal the target's held item while dealing damamge to it!\p"
+				      "It won't work if the user is already holding something, though."), MSGBOX_NPC)
+
+	}
 	end
 }

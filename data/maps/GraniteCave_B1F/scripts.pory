@@ -1,13 +1,110 @@
-raw `
-GraniteCave_B1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
-	map_script MAP_SCRIPT_ON_TRANSITION, CaveHole_FixCrackedGround
-	map_script MAP_SCRIPT_ON_RESUME, GraniteCave_B1F_SetHoleWarp
-	.byte 0
+const LOCALID_DETONATOR = 2
+const FLAG_TALKED_TO_DETONATOR = FLAG_TEMP_1
 
-GraniteCave_B1F_SetHoleWarp:
-	setstepcallback STEP_CB_CRACKED_FLOOR
-	setholewarp MAP_GRANITE_CAVE_B2F
+mapscripts GraniteCave_B1F_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if(!var(VAR_UMN_CAVE_STATE)) {
+			setobjectxyperm(LOCALID_DETONATOR, 50, 53)
+		}
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_UMN_CAVE_STATE, UMN_CAVE_STATE_CAVE_IN_CLEARED {
+			//setmetatile(X, Y, 0x201, FALSE)
+			setmetatile(43, 50, 0x201, FALSE)
+			setmetatile(44, 50, 0x201, FALSE)
+			setmetatile(45, 50, 0x201, FALSE)
+			setmetatile(46, 50, 0x201, FALSE)
+			setmetatile(47, 50, 0x201, FALSE)
+			setmetatile(42, 51, 0x201, FALSE)
+			setmetatile(43, 51, 0x201, FALSE)
+			setmetatile(44, 51, 0x201, FALSE)
+			setmetatile(45, 51, 0x201, FALSE)
+			setmetatile(46, 51, 0x201, FALSE)
+			setmetatile(47, 51, 0x201, FALSE)
+			setmetatile(48, 51, 0x201, FALSE)
+			setmetatile(43, 52, 0x201, FALSE)
+			setmetatile(44, 52, 0x201, FALSE)
+			setmetatile(45, 52, 0x201, FALSE)
+			setmetatile(46, 52, 0x201, FALSE)
+			setmetatile(47, 52, 0x201, FALSE)
+			setmetatile(48, 52, 0x201, FALSE)
+			setmetatile(43, 53, 0x201, FALSE)
+			setmetatile(44, 53, 0x201, FALSE)
+			setmetatile(45, 53, 0x201, FALSE)
+			setmetatile(46, 53, 0x201, FALSE)
+			setmetatile(47, 53, 0x201, FALSE)
+			setmetatile(48, 53, 0x201, FALSE)
+			setmetatile(49, 53, 0x201, FALSE)
+			setmetatile(44, 54, 0x201, FALSE)
+			setmetatile(45, 54, 0x201, FALSE)
+			setmetatile(46, 54, 0x201, FALSE)
+			setmetatile(47, 54, 0x201, FALSE)
+			setmetatile(48, 54, 0x201, FALSE)
+			setmetatile(45, 55, 0x201, FALSE)
+			setmetatile(46, 55, 0x201, FALSE)
+			setmetatile(47, 55, 0x201, FALSE)
+			setmetatile(48, 55, 0x201, FALSE)
+			setmetatile(44, 56, 0x201, FALSE)
+			setmetatile(45, 56, 0x201, FALSE)
+			setmetatile(46, 56, 0x201, FALSE)
+			setmetatile(47, 56, 0x201, FALSE)
+		}
+	]
+}
+
+// NPCs
+
+script GraniteCave_B1F_EventScript_Hiker {
+	if(var(VAR_UMN_CAVE_STATE) < UMN_CAVE_STATE_CAVE_IN_CLEARED) {
+		if(!flag(FLAG_TALKED_TO_DETONATOR)) {
+			msgbox(format("Zzz zzz…\nZzz zzz…\p"
+						  "Whuh?\nOh, hey there.\p"
+						  "This part of the cave leads to the southern portion of Route 3. Unfortunately, it's been blocked off by a cave-in, so you'll have to find some way around it.\p"
+						  "Jeez, what time is it? My crew was supposed to be here hours ago with the dynamite to blast this thing!\p"
+						  "Come to think of it, I did see a group of weird-lookin' people with some equipment some time ago…\p"
+						  "Hey, you. If you happen to to run into some weird-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
+			setflag(FLAG_TALKED_TO_DETONATOR)
+		} else {
+			msgbox(format("This part of the cave leads to the southern portion of Route 3. Unfortunately, it's been blocked off by a cave-in, so you'll have to find some way around it.\p"
+						  "Jeez, what time is it? My crew was supposed to be here hours ago with the dynamite to blast this thing!\p"
+						  "Come to think of it, I did see a group of weird-lookin' people with some equipment some time ago…\p"
+						  "If you happen to to run into some weird-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
+		}
+	} else {
+		if(!flag(FLAG_TALKED_TO_DETONATOR)) {
+			msgbox(format("Hahah! Hey there kid!\nYou totally missed it! Me n' my crew just blasted the cave-in here!\p"
+						  "It was as if a bunch of fireworks were going off inside a dust devil.\p"
+						  "It was so awesome! Hahaha!"), MSGBOX_NPC)
+			setflag(FLAG_TALKED_TO_DETONATOR)
+		} else {
+			msgbox(format("The cave-in's been cleared. Now you can use this way to get to Olstern City."), MSGBOX_NPC)
+		}
+	}
 	end
+}
 
-`
+// Trainers
+
+script UnmCaveB1FHenry {
+	trainerbattle_single(TRAINER_HENRY,
+	                     format("Welcome to ??? Cave.\nTry not to get lost!"),
+						 format("Actually, getting lost here is easier said than done…"))
+	msgbox(format("I hitchhiked here all the way from ??? Town.\lBoy, what a journey's it's been!"), MSGBOX_NPC)
+	end
+}
+
+script UnmCaveB1F_SubzeroGrunt1 {
+	trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_1,
+	                     format(""),
+						 format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script UnmCaveB1F_SubzeroGrunt2 {
+	trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2,
+	                     format(""),
+						 format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}

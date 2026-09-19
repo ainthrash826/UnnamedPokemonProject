@@ -1,26 +1,38 @@
-raw `
-RustboroCity_Flat2_1F_MapScripts::
-	.byte 0
+mapscripts RustboroCity_Flat2_1F_MapScripts {}
 
-RustboroCity_Flat2_1F_EventScript_OldWoman::
-	msgbox RustboroCity_Flat2_1F_Text_DevonWorkersLiveHere, MSGBOX_NPC
-	end
-
-RustboroCity_Flat2_1F_EventScript_Skitty::
+script CentraIngameTrade {
 	lock
 	faceplayer
-	waitse
-	playmoncry SPECIES_SKITTY, CRY_MODE_NORMAL
-	msgbox RustboroCity_Flat2_1F_Text_Skitty, MSGBOX_DEFAULT
-	waitmoncry
+	if(!flag(FLAG_RUSTBORO_NPC_TRADE_COMPLETED)) {
+		if(flag(FLAG_BADGE02_GET)) {
+			msgbox(format("Hey there! I just traded off a really rare Pokémon.\p"
+						  "Too bad I don't have another! I would've definitely gave you one if I did.\p"
+						  "But nope! I don't.\nSo buzz off."), MSGBOX_NPC)
+			applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+			waitmovement(0)
+			release
+			end
+		}
+		ingame_trade(INGAME_TRADE_SEEDOT,
+		format("Hello, there! I'm looking to trade Pokémon!\p"
+			   "Would you happen to have an Aipom? I'll give you a special Pikachu for it."),
+		format("Oh, it's okay. Rare Pokémon just don't show up like this, y'know."),
+		format("Huh? That doesn't look anything like an Aipom to me."),
+		format("Thanks a ton! Getting my hands on an Aipom was such a task!\p"
+			   "By the way, that Pikachu is actually from a faraway region, so it knows moves it regularly shouldn't.\lIsn't that neat?\p"
+			   "Be warned, though. I heard if you have Cottonchu forget any of the moves it knows apart from Thunder Shock, it won't be able to relearn it."))
+		setflag(FLAG_RUSTBORO_NPC_TRADE_COMPLETED)
+	} else {
+		msgbox(format("Hey, {PLAYER}! How's Cottonchu doing?\p"
+		             "I want to thank you again for the Aipom. Getting my hands one of my own such a task!\p"
+				     "By the way, that Pikachu is actually from a faraway region, so it knows moves it regularly shouldn't.\lIsn't that neat?\p"
+			         "Be warned, though. I heard if you have Cottonchu forget any of the moves it knows apart from Thunder Shock, it won't be able to relearn it."))
+	}
 	release
 	end
+}
 
-RustboroCity_Flat2_1F_Text_DevonWorkersLiveHere:
-	.string "DEVON CORPORATION's workers live in\n"
-	.string "this building.$"
-
-RustboroCity_Flat2_1F_Text_Skitty:
-	.string "SKITTY: Gyaaaah!$"
-
-`
+script CentraSE_Flat1_3F_Purrloin {
+	setvar(VAR_TEMP_A, SPECIES_PURRLOIN)
+	goto(StaticMonNpc)
+}

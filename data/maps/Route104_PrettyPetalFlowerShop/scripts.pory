@@ -54,8 +54,7 @@ script CentraBerryShop_Woman {
 }
 
 script CentraBerryShop_Man {
-	msgbox(format("Man, this sucks! I came here to get me some EV-reducing Berries.\p"
-				  "But the workers told me they can't sell me any becuase I haven't beaten Leader Johnathan yet…"), MSGBOX_NPC)
+	msgbox(format("I came here to get me some EV-reducing Berries, but the workers told me they can't sell me any because I haven't defeated the {COLOR GREEN}Mostill City{COLOR DARK_GRAY} Gym yet!"), MSGBOX_NPC)
 	end
 }
 

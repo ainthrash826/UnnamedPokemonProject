@@ -1,22 +1,20 @@
-const LOCALID_GUIDE = 5
-
 mapscripts CentraSE_Gym_MapScripts{
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_CENTRA_SE_GYM_STATE, 0 {
 			lock
-			exclam(LOCALID_GUIDE)
-			applymovement(LOCALID_GUIDE, moves(walk_right
+			exclam(LOCALID_CENTRA_SE_GYM_GUIDE)
+			applymovement(LOCALID_CENTRA_SE_GYM_GUIDE, moves(walk_right
 											   walk_down))
 			waitmovement(0)
 			msgbox(format("Hey, there!\nHow's it going, Trainer?\p"
-						"Have you ever dreamed of becoming the Champion?\p"
-						"I'm no Trainer, not me, but I can sure give you winning advice!\p"
-						"Let me make your dreams come true!"), MSGBOX_AUTOCLOSE)
-			applymovement(LOCALID_GUIDE, moves(walk_up
+						  "Have you ever dreamed of becoming the Champion?\p"
+						  "I'm no Trainer, not me, but I can sure give you winning advice!\p"
+						  "Let me make your dreams come true!"), MSGBOX_AUTOCLOSE)
+			applymovement(LOCALID_CENTRA_SE_GYM_GUIDE, moves(walk_up
 											   walk_left
-											   walk_in_place_right))
+											   walk_in_place_fast_right))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
-													 walk_in_place_left))
+													 walk_in_place_fast_left))
 			waitmovement(0)
 			msgbox(format("For starters, I want you to have this!"))
 			giveitem(ITEM_FRESH_WATER)
@@ -24,47 +22,22 @@ mapscripts CentraSE_Gym_MapScripts{
 			msgbox(format("It's important to stay hydrated, even while battling!\p"
 						  "Now, to get the top, you as a Trainer have to collect Gym Badges from Leaders.\p"
 						  "Gym Leaders are no pushovers!\nAnd that's where I come in!\p"
-						  "Aria, the Gym Leader for this Gym, uses a Flying-type team.\p"
-						  "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock- and Electric-type moves.\p"
+						  "Aria, the Gym Leader for this Gym, primarily uses Flying-type Pokémon.\p"
+						  "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock-type and Electric-type moves.\p"
 						  "Aria, however, has a trick up her sleeve for this!\p"
 						  "That's all I can tell you now.\nGo get 'em!"), MSGBOX_AUTOCLOSE)
-			setvar(VAR_CENTRA_SE_GYM_STATE, 1)
+			setvar(VAR_CENTRA_SE_GYM_STATE, CENTRA_SE_GYM_STATE_CHALLENGE_STARTED)
 			end
 		}
     ]
 }
 
-script CentraSEGymAria {
-	trainerbattle_single(TRAINER_ROXANNE_1, format("Aria Intro Text"), format("Aria Defeat Text"), CentraSEGymAria_Continue, NO_MUSIC)
-}
-
-script CentraSEGymAria_Continue {
-	setflag(FLAG_DEFEATED_CENTRA_SE_GYM)
-	playfanfare(MUS_OBTAIN_BADGE)
-	message(format("{PLAYER} received the ??? Badge from Aria!"))
-	waitfanfare
-	setflag(FLAG_BADGE01_GET)
-	setvar(VAR_0x8008, 1)
-	call(Common_EventScript_SetGymTrainers)
-	msgbox("Take this too!")
-	giveitem(ITEM_TM_AERIAL_ACE)
-	if(var(VAR_RESULT)) {
-		setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
-		msgbox(format("This is a Techincal Machine, or “TM” for short.\p"
-					  "They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
-					  "The TM I gave you contains the move Aerial Ace.\p"
-					  "It's a pretty swift Flying-type move that never misses!"), MSGBOX_NPC)
-	} else {
-		call(Common_EventScript_BagIsFull)
-	}
-	setvar(VAR_CENTRA_SE_GYM_STATE, 2)
-	end
-}
-
 script CentraSEGymGuide {
-	if(!defeated(TRAINER_ROXANNE_1)) {
-		msgbox(format("Aria, the Gym Leader for this Gym, uses a Flying-type team.\p"
-		       	      "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock- and Electric-type moves.\p"
+	if(!defeated(TRAINER_ROXANNE_1)
+	|| !flag(FLAG_BADGE01_GET)
+	|| var(VAR_CENTRA_SE_GYM_STATE) < CENTRA_SE_GYM_STATE_DEFEATED) {
+		msgbox(format("Aria, the Gym Leader for this Gym, primarily uses Flying-type Pokémon.\p"
+		       	      "Flying-type Pokémon tend to excel in Speed, but they're weak to Rock-type and Electric-type moves.\p"
 				      "Aria, however, has a trick up her sleeve for this!\p"
 			          "That's all I can tell you now.\nGo get 'em!"), MSGBOX_NPC)
 	} else {
@@ -75,6 +48,40 @@ script CentraSEGymGuide {
 	}
 	end
 }
+
+script CentraSEGymAria {
+	lockall
+	faceplayer
+	if(!defeated(TRAINER_ROXANNE_1)
+	|| !flag(FLAG_BADGE01_GET)
+	|| var(VAR_CENTRA_SE_GYM_STATE) != CENTRA_SE_GYM_STATE_DEFEATED) {
+		message(format("I'm Aria, the Southeast Centra City Gym Leader!\p"
+					   "This is a PLACEHOLDER text line! I don't really have anything to say.\p"
+					   "But, as a Gym Leader I'll totally beat you with my Flying-type Pokémon!\lC'mon!"))
+		waitmessage
+		playbgm(GYM_LEADER_ENCOUNTER_MUSIC, FALSE)
+		waitbuttonpress
+		trainerbattle_no_intro(TRAINER_ROXANNE_1, format("Yeah…\p"
+		                                                 "{PAUSE_MUSIC}{PLAY_SE MUS_OBTAIN_BADGE}{PLAYER} received the ??? Badge from Aria!{WAIT_SE}{RESUME_MUSIC}"))
+		setvar(VAR_CENTRA_SE_GYM_STATE, CENTRA_SE_GYM_STATE_DEFEATED)
+		setflag(FLAG_BADGE01_GET)
+		msgbox("Take this, too!")
+		call(GiveTMAerialAce)
+	} elif(!flag(FLAG_RECEIVED_TM_AERIAL_ACE)) {
+		msgbox(format("Welcome back, {PLAYER}!\nI believe you came back for this?"))
+		call(GiveTMAerialAce)
+		releaseall
+		end
+	}
+	msgbox(format("Aria After-battle"), MSGBOX_NPC)
+	releaseall
+	end
+}
+script(local) GiveTMAerialAce {
+	setvar(VAR_0x8008, 1)
+	call(GymSetTrainersAndGiveTM)
+}
+
 
 script CentraSEGymDarren {
 	trainerbattle_single(TRAINER_JOSH, format(""), format(""))
@@ -91,11 +98,5 @@ script CentraSEGymEmily {
 script CentraSEGymMary {
 	trainerbattle_single(TRAINER_MARC, format(""), format(""))
 	msgbox(format(""), MSGBOX_NPC)
-	end
-}
-
-script CentraSEGymStatue {
-	msgbox("Southeast Centra Pokémon Gym\nLeader: Aria\p"
-		   "The ????????????!", MSGBOX_SIGN)
 	end
 }

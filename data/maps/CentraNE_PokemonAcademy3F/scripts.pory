@@ -1,9 +1,88 @@
-mapscripts CentraNE_PokemonAcademy3F_MapScripts {}
-
-// Extra
-script PokemonAcademy3FBoy {
-    msgbox(format("Man, fuck this school!\nThe teacher kicked me out again!\p"
-                  "And all because I was “whispering the n-word”? Bullshit!\p"
-                  "I didn't even say it! I was singing the Super Mario Bros. underground theme!"), MSGBOX_NPC)
-    end
+mapscripts CentraNE_PokemonAcademy3F_MapScripts {
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+        VAR_TEMP_0, FALSE {
+            hideobjectat(LOCALID_PLAYER, MAP_CENTRA_NE_POKEMON_ACADEMY3F)
+        }
+    ]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_INTRO_CUTSCENE_STATE, INTRO_CUTSCENE_STATE_0 {
+            lock
+            message("{PAUSE 50}T{PAUSE 2}o{PAUSE 2}d{PAUSE 2}a{PAUSE 2}y{PAUSE 2}\n{PAUSE 50}E{PAUSE 2}i{PAUSE 2}g{PAUSE 2}h{PAUSE 2}t{PAUSE 2}e{PAUSE 2}e{PAUSE 2}n{PAUSE 2} {PAUSE 2}Y{PAUSE 2}e{PAUSE 2}a{PAUSE 2}r{PAUSE 2}s{PAUSE 2} {PAUSE 2}A{PAUSE 2}g{PAUSE 2}o{PAUSE 100}")
+            waitmessage
+            closemessage
+            delay(100)
+            applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_up * 19
+                                                walk_right
+                                                walk_up * 4))
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 7
+                                                     walk_up * 12
+                                                     walk_right
+                                                     walk_up * 4))
+            waitmovement(0)
+            delay(4)
+            playse(SE_WALL_HIT)
+            message("(knock knock){PAUSE 30}")
+            waitmessage
+            message("Hello? Open up!{PAUSE 90}")
+            waitmessage
+            closemessage
+            delay(8)
+            applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_down * 2
+                                                walk_in_place_fast_up))
+            waitmovement(0)
+            delay(300)
+            applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_up * 2))
+            waitmovement(0)
+            playse(SE_WALL_HIT)
+            message("(KNOCK KNOCK KNOCK){PAUSE 30}")
+            waitmessage
+            message(format("I know you're home, you fat old bastard. Open the door!"))
+            waitmessage
+            delay(90)
+            closemessage
+            delay(8)
+            applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_down * 2
+                                                walk_in_place_fast_up))
+            waitmovement(0)
+            delay(135)
+            playse(SE_RG_DOOR)
+            setmetatile(10, 9, 0x282, TRUE)
+            special(DrawWholeMapView)
+            delay(30)
+            applymovement(LOCALID_INTRO_CUTSCENE_UNCLE1, moves(set_visible
+                                                       walk_down))
+            waitmovement(0)
+            exclam(LOCALID_INTRO_CUTSCENE_UNCLE1)
+            msgbox(format("The hell are YOU doin' here?\p"
+                          "… … … {PAUSE 60}Look, that don't matter right now.\nWe can talk about it inside. I don't want you standing in this cold-ass rain."), MSGBOX_AUTOCLOSE)
+            applymovement(LOCALID_INTRO_CUTSCENE_UNCLE1, moves(walk_right
+                                                       walk_in_place_fast_left))
+            waitmovement(0)
+            applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_up * 3
+                                                set_invisible))
+            waitmovement(0)
+            playse(SE_EXIT)
+            applymovement(LOCALID_INTRO_CUTSCENE_UNCLE1, moves(walk_left
+                                                       walk_up
+                                                       set_invisible))
+            waitmovement(0)
+            playse(SE_EXIT)
+            waitse
+            setmetatile(10, 9, 0x282, TRUE)
+            special(DrawWholeMapView)
+            fadescreenspeed(FADE_TO_BLACK, 4)
+            warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY4F, 14, 8)
+            waitstate
+            release
+            end
+            //applymovement(LOCALID_INTRO_CUTSCENE_ILANNA1, moves(walk_in_place_up))
+            //waitmovement(0)
+            //msgbox(format("What, you're surprised to see me?\nAnd I've come to see my daughter.\p"
+            //              "I've looked through the majority of Alexandria and there's not a lot of places for them to be besides here."))
+            //applymovement(LOCALID_INTRO_CUTSCENE_UNCLE1, moves(walk_in_place_down))
+            //waitmovement(0)
+            //msgbox(format("Look, li'l lady, last time I heard from your kid, both her and her daddy were doin' fine.\p"
+            //              "But lemme remind ya that you can't be here.\lNow I suggest you leave before you make this difficult."))
+        }
+    ]
 }

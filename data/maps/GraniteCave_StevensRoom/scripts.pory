@@ -1,119 +1,246 @@
-GraniteCave_StevensRoom_MapScripts::
-	.byte 0
+// LocalIds
+const LOCALID_GRUNT1 = 1
+const LOCALID_ADMIN = 2
+const LOCALID_ROTOM = 3
 
-GraniteCave_StevensRoom_EventScript_Steven::
+// Others
+const COORD_X  = VAR_TEMP_0
+const COORD_Y  = VAR_TEMP_1
+
+mapscripts GraniteCave_StevensRoom_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_LANDMARK_OLD_IRONWORKS)
+		if(!var(VAR_NEW_MAUVILLE_STATE)) {
+			setobjectmovementtype(LOCALID_ROTOM, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		}
+	}
+}
+
+script OldIronworksSubzeroEncounter {
 	lock
-	faceplayer
-	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
-	setvar VAR_0x8004, ITEM_LETTER
-	call Common_EventScript_PlayerHandedOverTheItem
-	setflag FLAG_DELIVERED_STEVEN_LETTER
-	msgbox GraniteCave_StevensRoom_Text_ThankYouTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_STEEL_WING
-	call_if_eq VAR_RESULT, FALSE, GraniteCave_StevensRoom_EventScript_BagFull
-	msgbox GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister, MSGBOX_DEFAULT
+	special(SpawnCameraObject)
+	getplayerxy(COORD_X, COORD_Y)
+	switch(var(COORD_X)) {
+		case 13:
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest * 3
+												 walk_down * 2))
+		case 14:
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest * 4
+												 walk_down))
+		case 15:
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_diag_southwest * 5))
+	}
+	waitmovement(0)
+	playmoncry(SPECIES_ROTOM, CRY_MODE_WEAK)
+	waitmoncry
+	exclam(LOCALID_ADMIN)
+	applymovement(LOCALID_ADMIN, moves(walk_in_place_fast_down * 3))
+	waitmovement(0)
+	msgbox(format("???: Gah! Have you ever heard of a Rotom that can't enter an appliance!?\p"
+				  "No worries. We aleady got what we needed from this old dump. This Rotom's just a minor fork in the road."))
+	applymovement(LOCALID_ADMIN, moves(walk_in_place_fast_right))
+	applymovement(LOCALID_GRUNT1, moves(walk_in_place_fast_left))
+	waitmovement(0)
+	msgbox(format("???: Let the other Grunts in ??? Cave know we're regrouping on Route 5.\pWe're done here."))
+	applymovement(LOCALID_GRUNT1, moves(walk_in_place_fast_left))
+	waitmovement(0)
+	msgbox(format("Grunt: Copy!"), MSGBOX_AUTOCLOSE)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+	applymovement(LOCALID_GRUNT1, moves(walk_in_place_fast_right
+										delay_8
+										walk_right * 3
+										walk_in_place_fast_up))
+	waitmovement(0)
+	exclam(LOCALID_GRUNT1)
+	msgbox(format("Grunt: Uh oh!\nIntruder alert!"), MSGBOX_AUTOCLOSE)
+	switch(var(COORD_X)) {
+		case 13:
+		applymovement(LOCALID_GRUNT1, moves(walk_fast_up * 2
+												 walk_fast_left
+												 walk_fast_up * 2))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 2
+												 walk_fast_left
+												 walk_fast_up * 3))
+		case 14:
+		applymovement(LOCALID_GRUNT1, moves(walk_fast_up * 4))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 5))
+		case 15:
+		applymovement(LOCALID_GRUNT1, moves(walk_fast_up * 2
+												 walk_fast_right
+												 walk_fast_up * 2))
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 2
+												 walk_fast_right
+												 walk_fast_up * 3))
+
+	}
+	waitmovement(0)
+	playbgm(MUS_ENCOUNTER_MAGMA, TRUE)
+	msgbox(format(""))
+	trainerbattle_no_intro(TRAINER_GRUNT_SEAFLOOR_CAVERN_1, format(""))
+	removeobject(LOCALID_GRUNT1)
+	msgbox(format("Look here li'l homie, I know we just met, but I can tell you're smart.\p"
+					"If you really were smart though, why are you interfering with the gift that Subzero has to offer to the world?\p"
+					"Here's a suggestion. Keep out of Subzero's business.\lAnd that starts now!"))
+	trainerbattle_no_intro(TRAINER_GRUNT_SEAFLOOR_CAVERN_2,
+						format("Yo, you're pretty good for an alleged rookie."))
+	msgbox(format("Smart and stubborn.\nJeez."), MSGBOX_AUTOCLOSE)
+	//setobjectxy(OBJ_EVENT_ID_PLAYER, 14, 5)
+	//trainerbattle_no_intro(TRAINER_GRUNT_SEAFLOOR_CAVERN_1,
+	//				format(""))
+	//applymovement(LOCALID_GRUNT1, moves(walk_in_place_left))
+	//waitmovement(0)
+	//message(format("Yo, ???! I know this seems like the worst time to say this…\p"
+	//			"But we've got company!"))
+	//delay(10)
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_fast_right))
+	//waitmessage
+	//waitbuttonpress
+	//exclam(LOCALID_ADMIN)
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_right))
+	//waitmovement(0)
+	//msgbox(format("Shit! It ain't the feds, is it?\nYou know I can't stand the feds!"))
+	//applymovement(LOCALID_GRUNT1, moves(walk_in_place_left))
+	//waitmovement(0)
+	//msgbox(format("Uh… {PAUSE 20}No?{PAUSE 30}\nIt's the Oak kid the Boss told us about!"))
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_right))
+	//waitmovement(0)
+	//msgbox(format("Oh.\n{PAUSE 30}Chill."), MSGBOX_AUTOCLOSE)
+	//delay(30)
+	//playse(SE_M_METRONOME)
+	//applymovement(LOCALID_GRUNT1, moves(emote_question_mark
+	//									delay_16 * 2
+	//									walk_in_place_fast_left))
+	//waitmovement(0)
+	//message(format("???, this is serious!"))
+	//delay(20)
+	//closemessage
+	//exclam(LOCALID_ADMIN)
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_fast_right))
+	//waitmovement(0)
+	//msgbox(format("Wait a minute, the Oak kid is here?!\n"
+	//				"That's worse than the feds!\p"
+	//				"Go let everyone in the cave know we've got what we need and we're outta here!"))
+	//applymovement(LOCALID_GRUNT1, moves(walk_in_place_left))
+	//waitmovement(0)
+	//msgbox(format("Copy!"), MSGBOX_AUTOCLOSE)
+	//applymovement(LOCALID_GRUNT1, moves(walk_fast_right
+	//									walk_fast_up * 6))
+	//applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16
+	//											delay_8
+	//											set_visible
+	//											walk_down * 6
+	//											walk_left * 3))
+	//waitmovement(0)
+	//applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right))
+	//special(RemoveCameraObject)
+	//applymovement(LOCALID_GRUNT1, moves(walk_fast_down * 6
+	//									walk_in_place_fast_left))
+	//waitmovement(0)
+	//message(format("Sir! All of the Ones in ??? Cave were instructed to head back the hideout!"))
+	//delay(16)
+	//applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+	//waitmessage
+	//waitbuttonpress
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_right))
+	//waitmovement(0)
+	//message(format("Aight, then let's bounce!"))
+	//delay(16)
+	//applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+	//waitmessage
+	//waitbuttonpress
+	//applymovement(LOCALID_GRUNT1, moves(walk_in_place_left))
+	//waitmovement(0)
+	//message(format("But sir! What about the Rotom?"))
+	//delay(16)
+	//applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+	//waitmessage
+	//waitbuttonpress
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_right))
+	//waitmovement(0)
+	//message(format("Just leave it! Who would want a Rotom that doesn't do the one thing that Rotoms do?"))
+	//delay(16)
+	//applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+	//waitmessage
+	//waitbuttonpress
+	//applymovement(LOCALID_ADMIN, moves(walk_in_place_right))
+	//waitmovement(0)
+	//msgbox(format("Last warning, Oak. Whatever you and Harley are planning, you'll end it if you know what's best for the both of you.\p"
+	//				"Subzero's visions for the future are what's best for it. If the two of you don't see it now, you'll definitely see it then."), MSGBOX_AUTOCLOSE)
+	//finditem(ITEM_ROTOMS_POKEBALL)
+	call(OlsternRotomMain)
 	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox GraniteCave_StevensRoom_Text_RegisteredSteven, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_REGISTERED_STEVEN_POKENAV
-	msgbox GraniteCave_StevensRoom_Text_IveGotToHurryAlong, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_FACING, DIR_NORTH, GraniteCave_StevensRoom_EventScript_StevenExitNorth
-	call_if_eq VAR_FACING, DIR_SOUTH, GraniteCave_StevensRoom_EventScript_StevenExitSouth
-	call_if_eq VAR_FACING, DIR_WEST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
-	call_if_eq VAR_FACING, DIR_EAST, GraniteCave_StevensRoom_EventScript_StevenExitWestEast
-	playse SE_EXIT
-	removeobject LOCALID_GRANITE_CAVE_STEVEN
+	fadedefaultbgm
+	delay(20)
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_HIDE_OLD_IRONWORKS_SUBZERO)
+	setvar(VAR_NEW_MAUVILLE_STATE, IRONWORKS_STATE_SUBZERO_DEFEATED)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	warpnofade(MAP_GRANITE_CAVE_STEVENS_ROOM, VAR_TEMP_0, VAR_TEMP_1)
+	waitstate
 	release
 	end
+}
+script(local) ReceiveRotom {
+	setflag(FLAG_RECEIVED_ROTOM_OLD_IRONWORKS)
+	bufferspeciesname(STR_VAR_2, SPECIES_ROTOM)
+	playfanfare(MUS_OBTAIN_ITEM)
+	message(format("{PLAYER} obtained the left-behind Rotom!"))
+	waitmessage
+	waitfanfare
+	bufferspeciesname(STR_VAR_1, SPECIES_ROTOM)
+}
 
-GraniteCave_StevensRoom_EventScript_StevenExitNorth::
-	applymovement LOCALID_GRANITE_CAVE_STEVEN, GraniteCave_StevensRoom_Movement_StevenExit
-	waitmovement 0
-	return
+script OlsternRotomMain {
+	playmoncry(SPECIES_ROTOM, CRY_MODE_DOUBLES)
+	waitmoncry
+	delay(8)
+	msgbox(format("It's the Rotom Subzero left behind…\n"
+	              "It's even got its Poké Ball, too.\p"
+	              "It seems it wants to tag along with you.\n"
+				  "Take the Rotom?"), MSGBOX_YESNO)
+	if(var(VAR_RESULT)) {
+		setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ROTOM)
+		setflag(FLAG_GIVEMON_SHINY)
+		switch (givemon(SPECIES_ROTOM, 15)) {
+			case MON_GIVEN_TO_PARTY:
+				call(ReceiveRotom)
+				msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+				if(var(VAR_RESULT)) {
+					call(Common_EventScript_GetGiftMonPartySlot)
+					call(Common_EventScript_NameReceivedPartyMon)
+				}
+				hidemonpic
+				playse(SE_BALL_OPEN)
+				applymovement(LOCALID_ROTOM, moves(enter_pokeball))
+				waitse
+				msgbox("{STR_VAR_2} was added to your party.")
+			case MON_GIVEN_TO_PC:
+				call(ReceiveRotom)
+				msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+				if(var(VAR_RESULT)) {
+					call(Common_EventScript_NameReceivedBoxMon)
+				}
+				hidemonpic
+				playse(SE_BALL_OPEN)
+				applymovement(LOCALID_ROTOM, moves(enter_pokeball))
+				waitse
+				msgbox("{STR_VAR_2} was sent to your Boxes.")
+			case MON_CANT_GIVE:
+				hidemonpic
+				msgbox(format("You have no more room for Pokémon! The Pokémon Boxes are full and can't accept any more!"), MSGBOX_SIGN)
+		}
+	} else {
+		msgbox(format("{PLAYER} let the Rotom be."), MSGBOX_NPC)
+	}
+	if(flag(FLAG_RECEIVED_ROTOM_OLD_IRONWORKS)) {
+		removeobject(LOCALID_ROTOM)
+	}
+}
 
-GraniteCave_StevensRoom_EventScript_StevenExitWestEast::
-	applymovement LOCALID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit
-	applymovement LOCALID_GRANITE_CAVE_STEVEN, GraniteCave_StevensRoom_Movement_StevenExit
-	waitmovement 0
-	return
-
-GraniteCave_StevensRoom_EventScript_StevenExitSouth::
-	applymovement LOCALID_PLAYER, GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit
-	applymovement LOCALID_GRANITE_CAVE_STEVEN, GraniteCave_StevensRoom_Movement_StevenExitSouth
-	waitmovement 0
-	return
-
-GraniteCave_StevensRoom_EventScript_BagFull::
-	msgbox GraniteCave_StevensRoom_Text_OhBagIsFull, MSGBOX_DEFAULT
-	return
-
-GraniteCave_StevensRoom_Movement_StevenExit:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	delay_8
-	step_end
-
-GraniteCave_StevensRoom_Movement_PlayerTurnTowardExit:
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_faster_up
-	step_end
-
-GraniteCave_StevensRoom_Movement_StevenExitSouth:
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_up
-	walk_up
-	delay_8
-	step_end
-
-GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
-	.string "My name is STEVEN.\p"
-	.string "I'm interested in rare stones,\n"
-	.string "so I travel here and there.\p"
-	.string "Oh?\n"
-	.string "A LETTER for me?$"
-
-GraniteCave_StevensRoom_Text_ThankYouTakeThis:
-	.string "STEVEN: Okay, thank you.\p"
-	.string "You went through all this trouble to\n"
-	.string "deliver that. I need to thank you.\p"
-	.string "Let me see…\n"
-	.string "I'll give you this TM.\p"
-	.string "It contains my favorite move,\n"
-	.string "STEEL WING.$"
-
-GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "STEVEN: Your POKéMON appear quite\n"
-	.string "capable.\p"
-	.string "If you keep training, you could even\n"
-	.string "become the CHAMPION of the POKéMON\l"
-	.string "LEAGUE one day. That's what I think.\p"
-	.string "I know, since we've gotten to know each\n"
-	.string "other, let's register one another in\l"
-	.string "our POKéNAVS.\p"
-	.string "… … … … … …$"
-
-GraniteCave_StevensRoom_Text_RegisteredSteven:
-	.string "Registered STEVEN\n"
-	.string "in the POKéNAV.$"
-
-GraniteCave_StevensRoom_Text_IveGotToHurryAlong:
-	.string "Now, I've got to hurry along.$"
-
-GraniteCave_StevensRoom_Text_OhBagIsFull:
-	.string "Oh, your BAG is full…\n"
-	.string "That's too bad, then.$"
-
+script OldIronworksRotom {
+	lock
+	faceplayer
+	call(OlsternRotomMain)
+	release
+	end
+}

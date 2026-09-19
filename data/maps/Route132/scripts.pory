@@ -1,9 +1,51 @@
 mapscripts Route132_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_CENTRA_CITY)
-		setrespawn(HEAL_LOCATION_ROUTE132)
 		end
 	}
+}
+
+script CentraCitySignBuffer_NW {
+	bufferstring(STR_VAR_1, "Northwest")
+	goto(CentraCitySign)
+}
+
+script CentraCitySign_PowerPlantGate {
+	call(EventScript_BufferTime)
+	msgbox("Centra City - Power Plant Gate\n{STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\l"
+	       "The Heart of the ??? Region\p"
+	       "This city is separated into four\n"
+	       "sections. You are currently located in\l"
+	       "the Northwest section.", MSGBOX_SIGN)
+}
+
+script CentraNWGymSign {
+	msgbox(format("Northwest Centra Pokémon Gym\nLeader: Laurent\l"
+		          "The Master of Light and Darkness!"), MSGBOX_SIGN)
+	end
+}
+
+// NPCs
+
+script CentraNW_PowerPlantGateBlock {
+	if(!flag(FLAG_BADGE04_GET)) {
+		msgbox(format("The Power Plant is up ahead.\p"
+		              "Unfortunately, I can only let personnel authorized by Leader Laurent beyond this point."), MSGBOX_NPC)
+	}
+	end
+}
+
+// Triggers 
+
+script CentraNW_PowerPlantGateBlockTrigger {
+	lock
+	applymovement(LOCALID_CENTRA_NW_POWER_PLANT_GATE_BLOCK, moves(walk_in_place_fast_down))
+	waitmovement(0)
+	msgbox(format("Sorry, I can only allow authorized personnel beyond this point at this time."), MSGBOX_NPC)
+	applymovement(LOCALID_PLAYER, moves(walk_right))
+	waitmovement(0)
+	release
+	end
 }
 
 raw `

@@ -35,14 +35,6 @@ script CentraSE_Flat1_2F_Leftovers {
 }
 
 script CentraSE_Flat1_2F_Munchlax {
-    lock
-	faceplayer
-	waitse
-	playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
-	message("Myunch!")
-	waitmessage
-	waitmoncry
-    delay(10)
-	release
-	end
+    setvar(VAR_TEMP_A, SPECIES_MUNCHLAX)
+    goto(StaticMonNpc)
 }

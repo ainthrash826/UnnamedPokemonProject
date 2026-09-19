@@ -1,5 +1,27 @@
-raw `
-GraniteCave_B2F_MapScripts::
-	.byte 0
+mapscripts GraniteCave_B2F_MapScripts {}
 
-`
+// Trainers
+
+script UnmCaveB2F_SubzeroGrunt1 {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_3,
+	                     format(""),
+						 format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script UnmCaveB2F_SubzeroGrunt2 {
+    trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_4,
+	                     format(""),
+						 format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script UnmCaveB2F_SubzeroGrunt3 {
+    trainerbattle_single(TRAINER_GRUNT_SEAFLOOR_CAVERN_3,
+	                     format(""),
+						 format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}

@@ -1,12 +1,13 @@
-const LOCALID_NURSE = 1
-
 mapscripts SlateportCity_PokemonCenter_1F_MapScripts {
     MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_SLATEPORT_CITY)
+	}
 }
 
 script CentraSE_PokemonCenter_1F_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
-	setvar(VAR_TEMP_A, 0)
+	setvar(VAR_0x800B, LOCALID_CENTRA_SE_NURSE)
+	setvar(VAR_TEMP_A, FALSE)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
 	if(!var(VAR_TEMP_A)) {
@@ -32,9 +33,15 @@ script CentraSE_PokemonCenter_1F_EventScript_Woman {
 
 
 script CentraSE_PokemonCenter_1F_EventScript_AriaHint {
-	msgbox(format("Wanna hear a secret?\p"
-				  "Gym Leader Aria primarily uses Flying-type Pokémon.\p"
-				  "But, one of her Pokémon is half Steel-type, so you'll struggle if you don't already have a Fire-type."), MSGBOX_NPC)
-	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	lock
+	faceplayer
+	msgbox(format("Wanna hear a secret?"), MSGBOX_YESNO)
+	if(var(VAR_RESULT)) {
+		msgbox(format("Leader Aria primarily uses Flying-type Pokémon, but one of her Pokémon is half Electric-type.\p"
+		              "So you'll struggle if you bring any Water-types or Flying-types of your own against her."), MSGBOX_NPC)
+	} else {
+		msgbox("Pssh, fine!", MSGBOX_NPC)
+	}
+	release
 	end
 }

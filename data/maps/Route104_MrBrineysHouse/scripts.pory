@@ -2,7 +2,7 @@ const LOCALID_KANE = 1
 
 mapscripts Route104_MrBrineysHouse_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		setflag(FLAG_LANDMARK_KANE_COTTAGE)
+		//setflag(FLAG_LANDMARK_KANE_COTTAGE)
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_KANE_STATE, 0 {
@@ -45,7 +45,6 @@ mapscripts Route104_MrBrineysHouse_MapScripts {
 			playse(SE_EXIT)
 			removeobject(LOCALID_KANE)
 			waitse
-			clearflag(FLAG_HIDE_ROUTE_4_KANE)
 			setvar(VAR_KANE_STATE, 1)
 			release
 			end

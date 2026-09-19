@@ -1,27 +1,103 @@
-FallarborTown_PokemonCenter_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, FallarborTown_PokemonCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
-	.byte 0
+const LOCALID_GIRL = 2
+const LOCALID_MART_CLERK = 3
+const LOCALID_HEX_MANIAC = 5
+// TODO: Nurse Joy and the Mart Clerk are absent and replaced with random citizens until Mary Anne is defeated
 
-FallarborTown_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_FALLARBOR_TOWN
-	call Common_EventScript_UpdateBrineyLocation
+mapscripts FallarborTown_PokemonCenter_1F_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_FALLARBOR_TOWN)
+		if(!flag(FLAG_BADGE07_GET)) {
+			setobjectmovementtype(LOCALID_HARETHO_NURSE, MOVEMENT_TYPE_INVISIBLE)
+			setobjectxyperm(LOCALID_HARETHO_NURSE, 7, 9)
+			setobjectmovementtype(LOCALID_MART_CLERK, MOVEMENT_TYPE_INVISIBLE)
+			setobjectxyperm(LOCALID_MART_CLERK, 7, 9)
+			setobjectxyperm(LOCALID_GIRL, 7, 13)
+			setobjectmovementtype(LOCALID_GIRL, MOVEMENT_TYPE_FACE_DOWN)
+			setobjectxyperm(LOCALID_HEX_MANIAC, 6, 2)
+			setobjectmovementtype(LOCALID_HEX_MANIAC, MOVEMENT_TYPE_FACE_DOWN)
+		}
+		end
+	}
+	MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+}
+
+script HarethoTown_PokemonCenter_1F_HexManiac {
+	lock
+	faceplayer
+	if(!flag(FLAG_BADGE07_GET)) {
+		message(gText_HowMayIServeYou)
+		waitmessage
+		pokemart
+		if(!var(VAR_TEMP_0)) {
+			msgbox(format("Jeez, running an entire Pokémart is hard!\p"
+						  "I wish there were other volunteers to help run this place.\p"
+						  "That way, I'd get a break…"))
+			exclam(LOCALID_HEX_MANIAC)
+			msgbox(format("Oops! There I go rambling again. My apologies!"))
+			addvar(VAR_TEMP_0, 1)
+		}
+		msgbox(gText_PleaseComeAgain, MSGBOX_AUTOCLOSE)
+	}
+	release
 	end
+}
 
+script HarethoTown_PokemonCenter_1F_Woman {
+	if(!flag(FLAG_BADGE07_GET)) {
+		lock
+		faceplayer
+		if(!flag(FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE)) {
+			msgbox(format("Hello, and welcome to the Haretho Town Pokémon Center.\p"
+						  "As you can see, both the Center Lady and the Mart Clerk downstairs are missing.\p"
+						  "So, a couple of locals decided to run this place until they return.\p"
+						  "Now, I'm glad I took those nursing classes last year!\p"
+						  "With that being said…\nWould you like me to heal your Pokémon back to perfect health?"), MSGBOX_YESNO)
+		} else {
+			call(BufferNurseTextByTime)
+		}
+		if(var(VAR_RESULT)) {
+			message(format("Alright, then I'll take your Pokémon for a few seconds."))
+			waitmessage
+			hidefollower(0)
+			applymovement(LOCALID_GIRL, moves(walk_in_place_faster_left))
+			delay(45)
+			applymovement(LOCALID_GIRL, moves(walk_in_place_faster_right))
+			waitmovement(0)
+			playse(SE_BALL)
+			delay(120)
+			playse(SE_USE_ITEM)
+			waitse
+			special(HealPlayerParty)
+			applymovement(LOCALID_GIRL, moves(walk_in_place_faster_down))
+			waitmovement(0)
+			callnative(UpdateFollowingPokemon)
+			if(!flag(FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE)) {
+				msgbox(format("Thanks for waiting! Your team should be all better now.\p"
+				              "By the way, if you happen to see the Center Lady, tell her the Pokémon Center was doing fine in her absence.\p"
+							  "We hope to see you again!"), MSGBOX_NPC)
+				setflag(FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE)
+			} else {
+				msgbox(format("Thanks for waiting! Your team should be all better now.\pWe hope to see you again!"), MSGBOX_NPC)
+			}
+		} else {
+			msgbox(format("We hope to see you again!"), MSGBOX_NPC)
+		}
+		release
+	} else {
+		msgbox(format("I wonder what POKéMON looked like long, long ago?\p"
+                      "Maybe the FOSSIL MANIAC at the edge of town will know."), MSGBOX_NPC)
+	}
+	end
+}
+
+raw `
+.set LOCALID_LANETTE, 4
 FallarborTown_PokemonCenter_1F_EventScript_Nurse::
-	setvar VAR_0x800B, LOCALID_FALLARBOR_NURSE
+	setvar VAR_0x800B, LOCALID_HARETHO_NURSE
 	call Common_EventScript_PkmnCenterNurse
 	waitmessage
 	waitbuttonpress
 	release
-	end
-
-FallarborTown_PokemonCenter_1F_EventScript_Girl::
-	msgbox FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown, MSGBOX_NPC
-	end
-
-FallarborTown_PokemonCenter_1F_EventScript_ExpertM::
-	msgbox FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees, MSGBOX_NPC
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_Lanette::
@@ -97,15 +173,3 @@ FallarborTown_PokemonCenter_1F_Text_LanetteGreeting:
 	.string "great you're using the Storage System.\p"
 	.string "If you could, please visit me at home.\n"
 	.string "My house is on ROUTE 114.$"
-
-FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
-	.string "I wonder what POKéMON looked like\n"
-	.string "long, long ago?\p"
-	.string "Maybe the FOSSIL MANIAC at the edge\n"
-	.string "of town will know.$"
-
-FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees:
-	.string "In the fields of FALLARBOR, we plant\n"
-	.string "seedlings of hardy trees that thrive\l"
-	.string "even in volcanic ash.$"
-

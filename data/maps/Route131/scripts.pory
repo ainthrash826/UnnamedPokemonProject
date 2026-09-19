@@ -1,107 +1,79 @@
-const LOCALID_CLASSMATE = 9
-
 mapscripts Route131_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_CENTRA_CITY)
-		setrespawn(HEAL_LOCATION_ROUTE131)
 		end
 	}
 	MAP_SCRIPT_ON_RESUME: Common_EventScript_RemoveStaticEncounter
 }
 
-script CentraSWClassmateTrigger {
-	goto_if_not_defeated(TRAINER_ROXANNE_1, Common_EventScript_BlockProgression)
-	lock
-	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
-	switch(var(VAR_TEMP_0)) {
-		case 11:
-			setobjectxy(LOCALID_CLASSMATE, 19, 24)
-		case 12:
-			setobjectxy(LOCALID_CLASSMATE, 20, 24)
-		case 13:
-			setobjectxy(LOCALID_CLASSMATE, 21, 24)
-	}
-	applymovement(LOCALID_CLASSMATE, moves(walk_left * 3
-											emote_exclamation_mark
-											delay_16 * 2
-											walk_left * 5
-											walk_down))
-	delay(48)
-	playse(SE_PIN)
-	delay(16)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	delay(72)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-	waitmovement(0)
-	msgbox(format("Oh hey, {PLAYER}!\nHow've you been?\p"
-					"It's me, Nolan! From the Trainer's School!\p"
-					"Looks like you're headed to Route 3, huh? Can I ask of you a huge favor?\p"
-					"I have a family member who lives on the edge of Route 3 that I need to deliver this Letter to.\p"
-					"Since you're already on your way there, would you deliver the Letter for me?"))
-	giveitem(ITEM_LETTER)
-	msgbox(format("Thanks a million, {PLAYER}!\nYou're the best, really!\p"
-					"Also, good luck on your Pokémon journey!"), MSGBOX_AUTOCLOSE)
-	applymovement(LOCALID_CLASSMATE, moves(walk_up * 10))
-	waitmovement(0)
-	removeobject(LOCALID_CLASSMATE)
-	setflag(FLAG_HIDE_CENTRA_SW_CLASSMATE)
-	setvar(VAR_CENTRA_SW_STATE, 1)
-	release
-	end
-}
 
+// NPCs
 script CentraSW_Wingull {
 	lock
 	faceplayer
-	if(flag(FLAG_BADGE08_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE07_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE06_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE05_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE04_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE03_GET)) {
-		setwildbattle(SPECIES_WINGULL, 60)
-	} elif(flag(FLAG_BADGE02_GET)) {
-		setwildbattle(SPECIES_WINGULL, 13)
-	} elif(flag(FLAG_BADGE01_GET)) {
-		setwildbattle(SPECIES_WINGULL, 9)
-	} else {
-		setwildbattle(SPECIES_WINGULL, 7)
-	}
+	setwildbattle(SPECIES_WINGULL, 7)
 	waitse
 	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
 	waitmoncry
 	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
 	dowildbattle
 	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
-	specialvar(VAR_RESULT, GetBattleOutcome)
-	if(var(VAR_RESULT) == B_OUTCOME_WON
-	|| var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
-		random(100)
-		if(var(VAR_RESULT) >= 75) {
-			random(5)
-			addvar(VAR_RESULT, 1)
-			copyvar(VAR_TEMP_8, VAR_RESULT)
-			additem(ITEM_PRETTY_FEATHER, VAR_TEMP_8)
-			if(var(VAR_RESULT)) {
-				buffernumberstring(STR_VAR_1, VAR_TEMP_8)
-				bufferitemnameplural(STR_VAR_2, ITEM_PRETTY_FEATHER, VAR_TEMP_8)
-				bufferstring(STR_VAR_3, "ITEMS")
-				setvar(VAR_0x8006, ITEM_PRETTY_FEATHER)
-				playfanfare(MUS_OBTAIN_ITEM)
-				message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
-				delay(10)
-				showitemdescription
-				waitfanfare
-				msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
-				hideitemdescription
-			}
-		}
-	}
+	setvar(VAR_TEMP_D, ITEM_PRETTY_FEATHER)
+	call(StaticMonItemDropChance)
+	release
+	end
+}
+
+// Signs
+script CentraCitySign_R3Gate {
+	call(EventScript_BufferTime)
+	msgbox("Centra City - Route 3 Gate, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
+	       "The Heart of the ??? Region\p"
+	       "This city is separated into four\n"
+	       "sections. You are currently located in\l"
+	       "the Southwest section.", MSGBOX_SIGN)
+}
+
+script CentraCitySignBuffer_SW {
+	bufferstring(STR_VAR_1, "Southwest")
+	goto(CentraCitySign)
+}
+
+// Triggers
+
+script CentraSWClassmateTrigger {
+	goto_if_not_defeated(TRAINER_ROXANNE_1, Common_EventScript_BlockProgression)
+	lock
+	showobjectat(LOCALID_CENTRA_SW_AIDE, MAP_ROUTE131)
+	getplayery
+	addvar(VAR_RESULT, 6)
+	setobjectxy(LOCALID_CENTRA_SW_AIDE, 8, VAR_RESULT)
+	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_up * 6
+									            walk_Left))
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+	waitmovement(0)
+	msgbox(format("Hello, {PLAYER}! Glad I caught up to you.\p"
+				  "I'm an Aide of Professor Watson's, here on his behalf to congratulate you for defeating the Southeast Centra Gym and obtaining your first Gym Badge!\p"
+				  "I've also come to give you two things, first of which is this!"))
+	playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	message(format("{PLAYER} received the DexNav!"))
+	waitfanfare
+	setflag(FLAG_SYS_DEXNAV_GET)
+	setflag(FLAG_DEXNAV_DETECTOR_MODE)
+	msgbox(format("Use that to complete your Pokédex quicker!\p"
+				  "The second thing I wanted to give you is this."))
+	giveitem(ITEM_LETTER)
+	msgbox(format("That Letter is from the Professor to a good friend of his in Olstern City, named Kane.\p"
+	              "Some people refer to him as “Ol' Man Kane”, I believe.\p"
+	              "Anyway, the Professor asked me to ask you to deliver it for him in hopes that you don't mind.\p"
+				  "With that being said, both the Professor and I wish you the best of luck on your Pokémon journey, {PLAYER}!"), MSGBOX_AUTOCLOSE)
+	giveitem(ITEM_DOWSING_MACHINE)
+	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_right
+									  walk_down * 10))
+	waitmovement(0)
+	removeobject(LOCALID_CENTRA_SW_AIDE)
+	setvar(VAR_CENTRA_SW_STATE, CENTRA_SW_STATE_RECEIVED_LETTER_DEXNAV)
 	release
 	end
 }
