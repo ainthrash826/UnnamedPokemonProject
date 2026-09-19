@@ -2,20 +2,35 @@
   "id": "MAP_ROUTE104_PROTOTYPE",
   "name": "Route104_Prototype",
   "layout": "LAYOUT_ROUTE104_PROTOTYPE",
-  "music": "MUS_ROUTE104",
+  "music": "MUS_DEWFORD",
   "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_104",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
-  "map_type": "MAP_TYPE_ROUTE",
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": false,
-  "show_map_name": true,
+  "allow_running": true,
+  "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SAVAGE_BAY",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SAVAGE_BAY",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

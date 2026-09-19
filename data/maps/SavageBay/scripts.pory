@@ -1,0 +1,8 @@
+mapscripts SavageBay_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if(var(VAR_SAVAGE_BAY_STATE) != 0) {
+            setflag(FLAG_VISITED_SAVAGE_BAY)
+            setrespawn(HEAL_LOCATION_SAVAGE_BAY)
+        }
+    }
+}
