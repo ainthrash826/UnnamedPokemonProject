@@ -1,306 +1,123 @@
-const LOCALID_ORION = 1
-const LOCALID_GS = 2
-const LOCALID_FS = 3
-const LOCALID_WS = 4
-
 mapscripts WoodridgeTown_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if(!flag(FLAG_IS_CHAMPION)) {
+			setmetatile(4, 2, 0x1DE, TRUE)
+			setmetatile(5, 2, 0x1DF, TRUE)
+			setmetatile(6, 2, 0x1DE, TRUE)
+			setmetatile(7, 2, 0x1DF, TRUE)
+			
+			setmetatile(4, 3, 0x1D6, TRUE)
+			setmetatile(5, 3, 0x1D7, TRUE)
+			setmetatile(6, 3, 0x1D6, TRUE)
+			setmetatile(7, 3, 0x1D7, TRUE)
+			
+			setmetatile(4, 4, 0x1DE, TRUE)
+			setmetatile(5, 4, 0x1DF, TRUE)
+			setmetatile(6, 4, 0x1DE, TRUE)
+			setmetatile(7, 4, 0x1DF, TRUE)
+			
+			setmetatile(4, 5, 0x1D6, TRUE)
+			setmetatile(5, 5, 0x1D7, TRUE)
+			setmetatile(6, 5, 0x1D6, TRUE)
+			setmetatile(7, 5, 0x1D7, TRUE)
+			setmetatile(8, 5, 0x1D6, TRUE)
+			setmetatile(9, 5, 0x1D7, TRUE)
+			
+			setmetatile(4, 6, 0x1DE, TRUE)
+			setmetatile(5, 6, 0x1DF, TRUE)
+			setmetatile(6, 6, 0x1DE, TRUE)
+			setmetatile(7, 6, 0x1DF, TRUE)
+			setmetatile(8, 6, 0x1E6, TRUE)
+			setmetatile(9, 6, 0x1E7, TRUE)
+
+			setmetatile(4, 7, 0x1D6, TRUE)
+			setmetatile(5, 7, 0x1D7, TRUE)
+			setmetatile(6, 7, 0x001, FALSE)
+
+			setmetatile(4, 8, 0x1E6, TRUE)
+			setmetatile(5, 8, 0x1E7, TRUE)
+			setmetatile(6, 8, 0x001, FALSE)
+		}
+	}
+
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_WOODRIDGE_TOWN)
-        setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN)
-		if(var(VAR_WOODRIDGE_TOWN_STATE) == 5) {
-			setobjectxyperm(LOCALID_ORION, 16, 31)
-		} elif(var(VAR_WOODRIDGE_TOWN_STATE) == 6) {
-			setobjectxyperm(LOCALID_ORION, 1, 11)
-			setobjectmovementtype(LOCALID_ORION, MOVEMENT_TYPE_INVISIBLE)
-		}
 		end
 	}
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_WOODRIDGE_TOWN_STATE, 5 {
-			playbgm(MUS_NONE, TRUE)
-			hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN)
-			end
+		VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_POST_VWT_SUBZERO_ENCOUNTER {
+			savebgm(MUS_NONE)
+			hideobjectat(LOCALID_PLAYER, MAP_WOODRIDGE_TOWN)
 		}
-    ]
+	]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_WOODRIDGE_TOWN_STATE, 2 { // Orion meets player for the first time and introduces himself, and asks the player out on a walk later that day
-    		lock
-			applymovement(LOCALID_ORION, moves(walk_up * 4
-											   walk_left
-											   walk_up
-											   face_player))
-			waitmovement(0)
-			applymovement(LOCALID_ORION, Common_Movement_ExclamationMark2)
-			playse(SE_PIN)
-			delay(8)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-			waitmovement(LOCALID_ORION)
-			applymovement(LOCALID_ORION, moves(walk_right * 3
-											   walk_in_place_up))
-			delay(32)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-			waitmovement(LOCALID_ORION)
-			playbgm(MUS_ENCOUNTER_BRENDAN, FALSE)
-			msgbox(format("Who are you?\p"
-						  "… … … … …\n… … … … …\p"
-						  "{PLAYER}, huh?\nNice to meet you! My name's Orion.\p"
-						  "Your family just moved to this region, correct?\p"
-						  "If you're not yet familiar with this area, how about a take you on a walk?\p"
-						  "There's a forest southeast from here that I like to retreat to, and I think you'll lke it.\p"
-						  "Great! See ya later tonight!\nLet your parents know first!"), MSGBOX_AUTOCLOSE)
-			applymovement(LOCALID_ORION, moves(walk_up))
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction
-													 walk_left
-													 unlock_facing_direction
-													 face_right))
-			waitmovement(0)
-			opendoor(18, 7)
-			waitdooranim
-			applymovement(LOCALID_ORION, moves(walk_up))
-			waitmovement(0)
-			removeobject(LOCALID_ORION)
-			fadedefaultbgm
-			closedoor(18, 7)
-			waitdooranim
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-			setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
-			clearflag(FLAG_HIDE_ORIONS_ROOM_ORION)
-			setvar(VAR_WOODRIDGE_TOWN_STATE, 3)
-			release
-			end
-		}
-		 VAR_WOODRIDGE_TOWN_STATE, 5 { // Cutscene after the Vast Woods Trail battle
+		VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_POST_VWT_SUBZERO_ENCOUNTER {
 			lock
 			special(SpawnCameraObject)
-			setobjectxy(OBJ_EVENT_ID_PLAYER, 17, 31)
-			applymovement(LOCALID_GS, moves(delay_8
-											walk_fast_up * 5
-											walk_fast_left
-											walk_fast_up * 4
-											walk_up * 5))
-			applymovement(LOCALID_FS, moves(delay_8
-											walk_fast_up * 5
-											walk_fast_left
-											walk_fast_up * 4
-											walk_up * 5))
-			applymovement(LOCALID_WS, moves(delay_16
-											walk_fast_up * 5
-											walk_fast_left
-											walk_fast_up * 4
-											walk_up * 4))
-			applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 3
-													 delay_8
-													 walk_fast_up * 3
-													 walk_up * 6))
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
-													 player_run_up * 5
-													 player_run_left
-													 player_run_up * 4
-													 walk_up * 6
-													 delay_16 * 2
-													 walk_in_place_fast_down))
-			applymovement(LOCALID_ORION, moves(set_visible
-											   walk_fast_up * 5
-											   walk_fast_left
-											   walk_fast_up * 4
-											   walk_up * 6
-											   delay_16 * 2
-											   walk_in_place_fast_down))
+			addobject(LOCALID_WOODRIDGE_HARLEY)
+			getobjectxy(LOCALID_WOODRIDGE_HARLEY, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+			subvar(VAR_TEMP_0, 1)
+			setobjectxy(LOCALID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
+			applymovement(LOCALID_PLAYER, moves(set_visible
+				                                player_run_up * 3
+			                                    walk_up * 3
+												delay_16 * 3
+												walk_in_place_fast_right))
+			applymovement(LOCALID_WOODRIDGE_HARLEY, moves(walk_fast_up * 3
+			                                              walk_up * 3
+														  delay_16 * 2
+												          walk_in_place_fast_left))
 			waitmovement(0)
-			special(RemoveCameraObject)
-			delay(20)
-			msgbox(format("Okay, it looks like we weren't followed."))
-			applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-			waitmovement(0)
-			msgbox(format("{PLAYER}, It's getting really late.\nYou should head home.\p"
-						  "Tell your parents to meet at my house in the morning.\p"
-						  "In the mean time, the Pokemon will reside by the pond for the night.\pLet's just hope those turds don't plan on entering our town."), MSGBOX_AUTOCLOSE)
-			applymovement(LOCALID_ORION, moves(walk_in_place_down
-											   delay_16 * 2
-											   walk_in_place_up))
-			waitmovement(0)
-			applymovement(LOCALID_ORION, moves(walk_up
-											   walk_right
-											   walk_up * 4
-											   walk_left
-											   walk_up))
-			applymovement(LOCALID_GS, moves(walk_up * 2
-											walk_right
-											walk_up * 4
-											walk_left
-											walk_up))
-			applymovement(LOCALID_FS, moves(walk_left
-											walk_up * 2
-											walk_right
-											walk_up * 4
-											walk_left
-											walk_up))
-			applymovement(LOCALID_WS, moves(delay_16
-											walk_up * 3
-											walk_right
-											walk_up * 4
-											walk_left
-											walk_up))
-			delay(16)
-			applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
-			waitmovement(LOCALID_WS)
-			setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
-			setflag(FLAG_HIDE_WOODRIDGE_TOWN_POKEMON)
-			clearflag(FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS)
+			msgbox(format("Do you have somewhere for us to hideout so I can talk about what's going on?\p"
+			              "… … You have a house in {COLOR GREEN}Woodridge{COLOR DARK_GRAY}?\nLucky bastard. My dad's been trying to move out here for years!\lAnyways…\p"
+						  "Let's go to your house for the time being."), MSGBOX_AUTOCLOSE)
+			applymovement(LOCALID_PLAYER, moves(walk_up * 6))
+			applymovement(LOCALID_WOODRIDGE_HARLEY, moves(walk_up * 6))
+			delay(48)
 			fadescreen(FADE_TO_BLACK)
-			delay(30)
-			msgbox("The next day…")
-			warpnofade(MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F, 6, 5)
+			waitmovement(0)
+			removeobject(LOCALID_WOODRIDGE_HARLEY)
+			warpnofade(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE1F, 2, 7)
 			waitstate
 			release
 			end
+			//switch (var(VAR_STARTER_MON)) {
+			//	case 0:
+			//		trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TORCHIC, format("é"))
+			//	case 1:
+			//		trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_TREECKO, format("é"))
+			//	case 2:
+			//		trainerbattle_no_intro(TRAINER_BRENDAN_ROUTE_103_MUDKIP, format("é"))
+			//}
+			//if(defeated(TRAINER_BRENDAN_ROUTE_103_TREECKO)
+			//|| defeated(TRAINER_BRENDAN_ROUTE_103_TORCHIC)
+			//|| defeated(TRAINER_BRENDAN_ROUTE_103_MUDKIP)) {
+			//		msgbox(format("TRUE"), MSGBOX_AUTOCLOSE)
+			//} else {
+			//		msgbox(format("FALSE"), MSGBOX_AUTOCLOSE)
+            //
+			//}
+			//special(HealPlayerParty)
 		}
-    ]
+	]
 }
 
 // NPCs
 
-// Signs, etc
+script WoodridgeTownFatMan {
+	msgbox(format("Technology is incredible!"), MSGBOX_NPC)
+	end
+}
+
+// Signs
 
 script WoodridgeTownSign {
-	msgbox("Woodridge Town", MSGBOX_SIGN)
+	call(EventScript_BufferTime)
+	msgbox("Woodridge Town, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}", MSGBOX_SIGN)
 	end
 }
 
 script PlayersHouseSign {
-	msgbox("The ??????? Residence", MSGBOX_SIGN)
+	msgbox("{PLAYER}'s House", MSGBOX_SIGN)
 	end
-}
-
-script OrionsHouseSign {
-	msgbox("The Fields Residence", MSGBOX_SIGN)
-	end
-}
-
-script WoodridgeTown3rdHouseScript {
-	if (var(VAR_ANIMORA_CITY_STATE) >= 2 || var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
-		msgbox(format("This door is locked."), MSGBOX_SIGN)
-	} else {
-		msgbox(format("The door feels like it's barricaded shut.\pYou can hear faint snoring coming from inside."), MSGBOX_SIGN)
-	}
-	end
-}
-
-// Triggers
-
-script WoodridgeFirstBattle {
-	lock
-	addvar(VAR_WOODRIDGE_TOWN_STATE, 1)
-	setobjectxy(LOCALID_ORION, 9, 13)
-	msgbox("Wait up, {PLAYER}!", MSGBOX_AUTOCLOSE)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	switch (var(VAR_TEMP_1)) {
-        case 0:
-			applymovement(LOCALID_ORION, moves(set_visible
-											   walk_left * 8
-											   face_up))
-			delay(112)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-        case 1:
-			applymovement(LOCALID_ORION, moves(set_visible
-											   walk_left * 4
-											   walk_down
-											   walk_left * 4
-											   face_up))
-			delay(112)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-        case 2:
-			applymovement(LOCALID_ORION, moves(set_visible
-											   walk_left * 8
-											   face_down))
-			delay(112)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-        case 3:
-			applymovement(LOCALID_ORION, moves(set_visible
-											   walk_left * 5
-											   walk_down
-											   walk_left * 3
-											   face_down))
-			delay(128)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-    }
-	waitmovement(LOCALID_ORION)
-	playbgm(MUS_ENCOUNTER_BRENDAN, TRUE)
-	msgbox(format("Since we're about to start our adventures as trainers, it's right we have a proper battle!\p"
-				  "Alright!\nNo holding back, {PLAYER}!"))
-	setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN_PLAYERS_HOUSE_2F)
-	if (!flag(FLAG_LOST_FIRST_BATTLE)) {
-		switch (var(VAR_STARTER_MON)) {
-        	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TORCHIC, OrionDefeat)
-        	case 1:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_TREECKO, OrionDefeat)
-        	case 2:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_103_MUDKIP, OrionDefeat)
-	    }
-    } else {
-		switch (var(VAR_STARTER_MON)) {
-        	case 0:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TORCHIC, OrionDefeat)
-        	case 1:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_TREECKO, OrionDefeat)
-        	case 2:
-				trainerbattle_no_intro_no_whiteout(TRAINER_BRENDAN_ROUTE_110_MUDKIP, OrionDefeat)
-    	}
-	}
-	if(defeated(TRAINER_BRENDAN_ROUTE_103_TREECKO)
-    || defeated(TRAINER_BRENDAN_ROUTE_103_TORCHIC)
-    || defeated(TRAINER_BRENDAN_ROUTE_103_MUDKIP)
-    || defeated(TRAINER_BRENDAN_ROUTE_110_TREECKO)
-    || defeated(TRAINER_BRENDAN_ROUTE_110_TORCHIC)
-    || defeated(TRAINER_BRENDAN_ROUTE_110_MUDKIP)) {
-			msgbox(format("That battle could've gone either way.\nIt was that close!\p
-			               Alright {PLAYER}, I'm gonna start heading over to Animora City.\p
-						   See you later!"), MSGBOX_AUTOCLOSE)
-	} else {
-			msgbox(format("Alright! I won! But that battle could've gone either way. It was that close!\p
-			        	   Alright {PLAYER}, I'm gonna start heading over to Animora City.\p
-					       See you later!"), MSGBOX_AUTOCLOSE)
-
-	}
-	applymovement(LOCALID_ORION, moves(walk_left * 10))
-	delay(36)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-	waitmovement(0)
-	removeobject(LOCALID_ORION)
-	fadedefaultbgm
-	savebgm(MUS_LITTLEROOT)
-	setflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
-	setflag(FLAG_HIDE_ORIONS_ROOM_ORION)
-	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
-	special(HealPlayerParty)
-	release
-	end
-}
-
-text OrionDefeat {
-	format("What a great battle!\nWe're going to be strong trainers someday, I know it!")
-}
-
-script WoodridgeBattleTrigger0 {
-	setvar(VAR_TEMP_1, 0)
-	goto(WoodridgeFirstBattle)
-}
-
-script WoodridgeBattleTrigger1 {
-	setvar(VAR_TEMP_1, 1)
-	goto(WoodridgeFirstBattle)
-}
-
-
-script WoodridgeBattleTrigger2 {
-	setvar(VAR_TEMP_1, 2)
-	goto(WoodridgeFirstBattle)
-}
-
-
-script WoodridgeBattleTrigger3 {
-	setvar(VAR_TEMP_1, 3)
-	goto(WoodridgeFirstBattle)
 }

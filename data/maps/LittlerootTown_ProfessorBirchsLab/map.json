@@ -13,26 +13,12 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_BIRCHS_LAB_AIDE",
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 9,
-      "y": 8,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LittlerootTown_ProfessorBirchsLab_EventScript_Aide",
-      "flag": "0"
-    },
-    {
-      "local_id": "LOCALID_BIRCHS_LAB_BIRCH",
+      "local_id": "LOCALID_WATSONS_LAB_WATSON",
       "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 8,
+      "x": 13,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -44,54 +30,86 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_BIRCHS_LAB_AIDE_2",
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
-      "x": 5,
-      "y": 10,
+      "x": 1,
+      "y": 7,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
       "movement_range_x": 0,
-      "movement_range_y": 0,
+      "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_BIRCHS_LAB_CYNDAQUIL_BALL",
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 16,
-      "y": 8,
-      "elevation": 0,
+      "local_id": "LOCALID_WATSONS_LAB_AIDE_2",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 15,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_WATSONS_LAB_HARLEY",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 14,
+      "y": 10,
+      "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_ORION_PROF_LAB"
+      "flag": "FLAG_HIDE_ANIMORA_CITY_HARLEY"
+    },
+    {
+      "local_id": "LOCALID_ANIMORA_STARTER",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 14,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WatsonsLab_Starter",
+      "flag": "FLAG_HIDE_PROFESSORS_LAB_STARTER"
     }
   ],
   "warp_events": [
     {
-      "x": 8,
-      "y": 12,
-      "elevation": 0,
+      "x": 13,
+      "y": 10,
+      "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY",
       "dest_warp_id": "1"
     },
     {
-      "x": 9,
-      "y": 12,
-      "elevation": 0,
+      "x": 14,
+      "y": 10,
+      "elevation": 3,
       "dest_map": "MAP_PETALBURG_CITY",
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "WatsonsLab_AdventureBooklet"
+    }
   ]
 }

@@ -1,12 +1,33 @@
-const LOCALID_OLD_WOMAN = 1
-
 mapscripts PetalburgCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_ANIMORA_CITY)
-		setrespawn(HEAL_LOCATION_PETALBURG_CITY)
 		if(!var(VAR_ANIMORA_CITY_STATE)) {
-			setobjectxyperm(LOCALID_OLD_WOMAN, 32, 8)
-			setobjectmovementtype(LOCALID_OLD_WOMAN, MOVEMENT_TYPE_LOOK_AROUND)
+			setobjectxyperm(LOCALID_ANIMORA_OLD_WOMAN, 8, 18)
+			setobjectmovementtype(LOCALID_ANIMORA_OLD_WOMAN, MOVEMENT_TYPE_LOOK_AROUND)
+		}
+		switch(var(VAR_WATSON_CAUGHT_MON)) {
+			case SPECIES_FLETCHLING:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(FLETCHLING))
+			case SPECIES_SENTRET:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SENTRET))
+			case SPECIES_ROOKIDEE:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(ROOKIDEE))
+			case SPECIES_ZIGZAGOON_GALAR:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(ZIGZAGOON_GALAR))
+			case SPECIES_ZIGZAGOON:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(ZIGZAGOON))
+			case SPECIES_PIDOVE:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(PIDOVE))
+			case SPECIES_SHROODLE:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SHROODLE))
+			case SPECIES_SKWOVET:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SKWOVET))
+			case SPECIES_PURRLOIN:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(PURRLOIN))
+			case SPECIES_MUNCHLAX:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(MUNCHLAX))
+			default:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(NONE))
 		}
 		end
 	}
@@ -15,12 +36,18 @@ mapscripts PetalburgCity_MapScripts {
 // Signs
 
 script AnimoraCitySign {
-	msgbox("Animora City", MSGBOX_SIGN)
+	call(EventScript_BufferTime)
+	msgbox("Animora City, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}", MSGBOX_SIGN)
 	end
 }
 
-script BoutiqueSign {
-	msgbox("Closed for renovations.\nSorry in advance!\p-Boutique Mgnt", MSGBOX_SIGN)
+script AnimoraLabSign {
+	msgbox("Professor Watson's Pokémon Laboratory", MSGBOX_SIGN)
+	end
+}
+
+script Sign_DrumoraTunnel {
+	msgbox("Drumora Tunnel", MSGBOX_SIGN)
 	end
 }
 
@@ -33,19 +60,19 @@ script AnimoraOldLady {
 		{
 			msgbox(format("You seem to be a new face.\nHave you stopped by Professor Watson's Lab yet?\p"
 			              "Fufufu… I may be old, but my bones can still sense a rookie Pokémon Trainer!\p"
-						  "Professor Watson's Lab is the western-most building.\l"
+						  "Professor Watson's Lab is the northern-most building.\l"
 						  "Why not pay him a visit, young one?"), MSGBOX_NPC)
 			setvar(VAR_TEMP_0, 1)
 		}
 		else
 		{
-			msgbox(format("Professor Watson's Lab is the western-most building.\l"
+			msgbox(format("Professor Watson's Lab is the northern-most building.\l"
 						  "Why not pay him a visit, young one?"), MSGBOX_NPC)
 		}
 	}
 	else
 	{
-		msgbox(format("I grew old with Animora.\nSeveral years have passed, however, and there's still not much to say about this small city."), MSGBOX_NPC)
+		msgbox(format("I grew old with Animora City.\nSeveral years have passed, however, and there's still not much to say about this small city."), MSGBOX_NPC)
 	}
 	end
 }
@@ -54,32 +81,119 @@ script AnimoraOldLady {
 
 script AnimoraCityBlockPlayerFromLeaving {
 	lock
-	turnobject(LOCALID_OLD_WOMAN, DIR_NORTH)
-	exclam(LOCALID_OLD_WOMAN)
+	applymovement(LOCALID_ANIMORA_OLD_WOMAN, moves(walk_in_place_fast_up))
+	waitmovement(0)
+	exclam(LOCALID_ANIMORA_OLD_WOMAN)
 	message("Hello!\nYou there!")
 	delay(8)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_down))
+	waitmovement(0)
 	waitmessage
 	waitbuttonpress
-	closemessage
-	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
-	switch(var(VAR_TEMP_1))
+	switch(getplayery)
 	{
-		case 6:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right
-													 walk_down))
-		case 7:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right
-													 face_down))
+		case 15:
+			closemessage
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))
+		case 16:
+			closemessage
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
+		case 17:
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	}
 	waitmovement(0)
 	msgbox(format("You seem to be a new face.\nHave you stopped by Professor Watson's Lab yet?\p"
 			      "Fufufu… I may be old, but my bones can still sense a rookie Pokémon Trainer!\p"
-				  "Professor Watson's Lab is the western-most building.\l"
+				  "Professor Watson's Lab is the northern-most building.\l"
 				  "Why not pay him a visit, young one?"), MSGBOX_AUTOCLOSE)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
 	waitmovement(0)
 	setvar(VAR_TEMP_0, 1)
+	release
+	end
+}
+
+script AnimoraHarleyTrigger {
+	lock
+	if(getplayerx < 24) {
+		applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_in_place_fast_left))
+	} else {
+		applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_in_place_fast_right))
+	}
+	waitmovement(0)
+	msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: You made it, {PLAYER}!\nLet's head inside."), MSGBOX_AUTOCLOSE)
+	switch(getplayerx) {
+		case 22:
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_left
+			                                            walk_in_place_fast_up))
+			applymovement(LOCALID_PLAYER, moves(walk_right
+			                                    walk_in_place_fast_up))
+			waitmovement(0)
+			playse(SE_DOOR)
+			opendoor(23, 8)
+			waitdooranim
+			applymovement(LOCALID_PLAYER, moves(walk_up
+			                                    set_invisible))
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_up * 2
+			                                            set_invisible))
+		case 23:
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_left
+			                                            walk_in_place_fast_up))
+			applymovement(LOCALID_PLAYER, moves(walk_up))
+			waitmovement(0)
+			playse(SE_DOOR)
+			opendoor(23, 8)
+			waitdooranim
+			applymovement(LOCALID_PLAYER, moves(walk_up
+			                                    set_invisible))
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_up * 2
+			                                            set_invisible))
+		case 25:
+			applymovement(LOCALID_PLAYER, moves(walk_left * 2
+			                                    walk_in_place_fast_up))
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_left
+		                                            walk_up))
+			waitmovement(0)
+			playse(SE_DOOR)
+			opendoor(23, 8)
+			waitdooranim
+			applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_up
+			                                            set_invisible))
+			applymovement(LOCALID_PLAYER, moves(walk_up * 2
+			                                    set_invisible))
+	}
+	waitmovement(0)
+	closedoor(23, 8)
+	waitdooranim
+	warpsilent(MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 0)
+	waitstate
+	release
+	end
+}
+
+script AnimoraCityHarley {
+	lock
+	faceplayer
+	msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: You made it, {PLAYER}!\nLet's head inside."), MSGBOX_AUTOCLOSE)
+	hidefollower
+	applymovement(LOCALID_PLAYER, moves(walk_up
+	                                    walk_left
+										walk_in_place_fast_up))
+	applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_left
+											walk_up))
+	waitmovement(0)
+	playse(SE_DOOR)
+	opendoor(23, 8)
+	waitdooranim
+	applymovement(LOCALID_ANIMORA_HARLEY, moves(walk_up
+												set_invisible))
+	applymovement(LOCALID_PLAYER, moves(walk_up * 2
+										set_invisible))
+	waitmovement(0)
+	closedoor(23, 8)
+	waitdooranim
+	warpsilent(MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 0)
+	waitstate
 	release
 	end
 }

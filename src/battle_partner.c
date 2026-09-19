@@ -21,7 +21,7 @@ const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
 };
 #endif
 
-#define STEVEN_OTID 61226
+#define HARLEY_OTID 61226
 
 void FillPartnerParty(u16 trainerId)
 {
@@ -40,8 +40,10 @@ void FillPartnerParty(u16 trainerId)
         const struct Trainer *partner = GetTrainerStructFromId(trainerId);
         struct TrainerGenerator partnerGen;
         MakePartnerGenerator(&partnerGen, partner);
-        if (trainerId == TRAINER_PARTNER(PARTNER_STEVEN))
-            partnerGen.otID = OTID_STRUCT_PRESET(STEVEN_OTID);
+        if ((trainerId == TRAINER_PARTNER(PARTNER_VWT_HARLEY_GRASS))
+         || (trainerId ==  TRAINER_PARTNER(PARTNER_VWT_HARLEY_FIRE))
+         || (trainerId == TRAINER_PARTNER(PARTNER_VWT_HARLEY_WATER)))
+            partnerGen.otID = OTID_STRUCT_PRESET(HARLEY_OTID);
         for (i = 0; i < lastIndex && i < partner->partySize; i++)
         {
             GenerateMonFromTrainerMon(&gParties[B_TRAINER_PARTNER][i], &partner->party[i], &partnerGen);

@@ -958,6 +958,13 @@ u8 GetPlayerTrainerIdOnesDigit(void)
     return (u16)((gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0]) % 10;
 }
 
+void InitNewgameCLock(void)
+{
+    //RtcInitLocalTimeOffset(((GetPlayerTrainerIdOnesDigit() * 3) - 4), 0);
+    RtcInitLocalTimeOffset((Random() % HOURS_PER_DAY), 0);
+    VarSet(VAR_WOODRIDGE_TOWN_STATE, 1); // WOODRIDGE_STATE_CLOCK_SET
+}
+
 void GetPlayerBigGuyGirlString(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)

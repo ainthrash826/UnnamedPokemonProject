@@ -2,7 +2,7 @@ mapscripts WoodridgeTown_PlayersHouse2F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         if(!var(VAR_WOODRIDGE_TOWN_STATE))
         {
-            initclock(16, 30)
+            special(InitNewgameClock)
             end
         }
     }
@@ -11,14 +11,46 @@ mapscripts WoodridgeTown_PlayersHouse2F_MapScripts {
 script PlayersHouseClock {
     incrementgamestat(GAME_STAT_CHECKED_CLOCK)
     call(EventScript_BufferTime)
-    if(!flag(FLAG_SYS_USE_24HR))
-    {
-        msgbox("It's {STR_VAR_1}:{STR_VAR_2} {STR_VAR_3}.", MSGBOX_SIGN)
-    }
-    else
-    {
-        msgbox("It's {STR_VAR_1}:{STR_VAR_2}.", MSGBOX_SIGN)
-    }
+    msgbox("It's {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}.", MSGBOX_SIGN)
 	release
 	end
+}
+
+script PlayersHouseTV {
+    lock
+    //incrementgamestat(GAME_STAT_WATCHED_TV)
+    //msgbox(format("There's a movie playing.\nIt's The Crimson Bush III: TBD!\p"
+    //              "…… …… ……\n…… …… ……\l…… …… ……\p"
+    //              "Whoops, got sidetracked!"), MSGBOX_AUTOCLOSE)
+    release
+    end
+}
+
+script PlayersRoomBox {
+    msgbox(format("This box is filled with neatly-packed belongings."), MSGBOX_AUTOCLOSE)
+}
+
+script PlayersRoomPc {
+    lockall
+    if(var(VAR_WOODRIDGE_TOWN_STATE) == WOODRIDGE_STATE_CLOCK_SET) {
+        //Todo: AFter player steps out of bed they get a video call from mom and dad on the pc
+        setvar(VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_CALLED_PARENTS)
+    } else {
+        setvar(VAR_0x8004, PC_LOCATION_BRENDANS_HOUSE)
+        special(DoPCTurnOnEffect)
+        playse(SE_PC_ON)
+        msgbox("{PLAYER} booted up the PC.")
+        special(BedroomPC)
+    }
+	releaseall
+	end
+}
+
+script PlayersHouseBlockFromLeaving {
+    lock
+    msgbox(format("You can't leave yet!\nYour parents are video-calling you on the PC!"), MSGBOX_AUTOCLOSE)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+    waitmovement(0)
+    release
+    end
 }

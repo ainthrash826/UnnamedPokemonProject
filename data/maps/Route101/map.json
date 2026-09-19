@@ -15,22 +15,22 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_PETALBURG_CITY",
-      "offset": -32,
-      "direction": "up"
+      "map": "MAP_WOODRIDGE_TOWN",
+      "offset": -4,
+      "direction": "right"
     },
     {
-      "map": "MAP_WOODRIDGE_TOWN",
-      "offset": 4,
-      "direction": "right"
+      "map": "MAP_PETALBURG_CITY",
+      "offset": -14,
+      "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 57,
-      "y": 11,
-      "elevation": 0,
+      "x": 23,
+      "y": 15,
+      "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -38,30 +38,131 @@
       "trainer_sight_or_berry_tree_id": "ITEM_POTION",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_1_POTION"
+    },
+    {
+      "local_id": "LOCALID_R1_WATSON",
+      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
+      "x": 19,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_PLAYER",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_1_CATCH_TUTORIAL"
+    },
+    {
+      "local_id": "LOCALID_R1_STARTER",
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 18,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_1_CATCH_TUTORIAL"
+    },
+    {
+      "local_id": "LOCALID_R1_HARLEY",
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 19,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_PLAYER",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_ROUTE_1_CATCH_TUTORIAL"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 21,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 22,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 23,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 24,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 25,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 26,
+      "elevation": 3,
+      "var": "VAR_ROUTE1_STATE",
+      "var_value": "1",
+      "script": "Route1_ScriptedWildMon"
+    }
   ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 13,
-      "y": 5,
-      "elevation": 0,
+      "x": 57,
+      "y": 7,
+      "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route1Sign1"
     },
     {
       "type": "sign",
-      "x": 58,
-      "y": 16,
-      "elevation": 0,
+      "x": 17,
+      "y": 7,
+      "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route1Sign2"
+    },
+    {
+      "type": "sign",
+      "x": 33,
+      "y": 20,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrainerTips_1"
     }
   ]
 }

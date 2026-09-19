@@ -6,7 +6,7 @@ Common_EventScript_PkmnCenterNurse::
 	specialvar VAR_RESULT, CountPlayerTrainerStars
 	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
 .endif
-	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+	call BufferNurseTextByTime
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
 	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
 	end

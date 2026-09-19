@@ -1,13 +1,113 @@
 mapscripts Route101_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		switch(var(VAR_STARTER_MON)) {
+			case 0:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(FROAKIE))
+			case 1:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(FUECOCO))
+			case 2:
+				setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SNIVY))
+		}
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_ROUTE1_STATE, R1_STATE_CATCH_TUTORIAL {
+			hideobjectat(LOCALID_PLAYER, MAP_ROUTE101)
+
+		}
+	]
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_ROUTE1_STATE, R1_STATE_NO_ENTRY: Common_EventScript_BlockProgression
+		VAR_ROUTE1_STATE, R1_STATE_CATCH_TUTORIAL {
+			lock
+			special(SpawnCameraObject)
+			setobjectxy(LOCALID_PLAYER, 19, 3)
+			applymovement(LOCALID_R1_WATSON, moves(walk_down * 6
+												  walk_left * 5
+												  walk_in_place_fast_right))
+			applymovement(LOCALID_R1_STARTER, moves(delay_16
+													walk_down * 5
+													walk_slow_left
+													walk_left * 3))
+			applymovement(LOCALID_PLAYER, moves(delay_16 * 3
+												set_visible
+											    walk_down * 6
+												walk_left * 2
+												walk_up
+												walk_left))
+			applymovement(LOCALID_R1_HARLEY, moves(delay_16
+												   walk_down * 6
+												   walk_left * 3))
+			waitmovement(LOCALID_R1_WATSON)
+			msgbox(format("{COLOR BLUE}Prof. Watson{COLOR DARK_GRAY}: Alright, kids! The first thing you gotta know is wild Pokémon hide in the tall grass."))
+			applymovement(LOCALID_R1_WATSON, moves(walk_left))
+			applymovement(LOCALID_R1_STARTER, moves(walk_left))
+			waitmovement(0)
+			message(format("Spend enough time in it and…"))
+			waitmessage
+			delay(16)
+			exclam(LOCALID_R1_WATSON)
+			msgbox(format("{COLOR BLUE}Prof. Watson{COLOR DARK_GRAY}: You'll encounter a Pokémon like this!"), MSGBOX_AUTOCLOSE)
+			special(SavePlayerParty)
+			special(LoadWallyZigzagoon)
+			special(StartWallyTutorialBattle)
+			special(LoadPlayerParty)
+			clearflag(FLAG_HIDE_WATSONS_LAB_CAUGHT_MON)
+			setvar(VAR_ROUTE1_STATE, R1_STATE_COMPLETED_CATCH_TUT)
+			// todo
+			clearflag(FLAG_HIDE_PROFESSORS_LAB_STARTER)
+			setflag(FLAG_HIDE_ROUTE_1_CATCH_TUTORIAL)
+			pausefakertc
+			fadenewbgm(MUS_NONE)
+			fadescreen(FADE_TO_BLACK)
+			delay(75)
+			message("Meanwhile…{PAUSE 40}\nSomewhere deep in the Vast Woods…{PAUSE 60}")
+			waitmessage
+			delay(30)
+			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 8)
+			waitstate
+			waitstate
+			release
+			end
+		}
+	]
 }
 
-
 script Route1Sign1 {
-	msgbox("Route 1\n{UP_ARROW} Animora City\l{RIGHT_ARROW} Woodridge Town", MSGBOX_SIGN)
+	call(EventScript_BufferTime)
+	msgbox("Route 1 “Woodridge Path”, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n{UP_ARROW}{LEFT_ARROW} Animora City", MSGBOX_SIGN)
 	end
 }
 
 script Route1Sign2 {
-	msgbox("Route 1\n{LEFT_ARROW} Animora City\l{RIGHT_ARROW} Woodridge Town", MSGBOX_SIGN)
+	call(EventScript_BufferTime)
+	msgbox("Route 1 “Woodridge Path”, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\nWoodridge Town {DOWN_ARROW}{RIGHT_ARROW}", MSGBOX_SIGN)
+	end
+}
+
+script TrainerTips_1 {
+	msgbox(format("{CLEAR_TO 64}TRAINER TIPS\nMake an effort to talk to all the people you meet during your journey!\p"
+		   		  "Chances are they will have something useful to tell you."), MSGBOX_SIGN)
+	end
+}
+
+script Route1_ScriptedWildMon {
+	lock
+	// possible anticheat?
+	switch(random(5)) {
+		case 0:
+			setwildbattle(SPECIES_ROOKIDEE, 2)
+		case 1:
+			setwildbattle(SPECIES_SENTRET, 2)
+		case 2:
+			setwildbattle(SPECIES_FLETCHLING, 2)
+		case 3:
+			setwildbattle(SPECIES_ZIGZAGOON, 2)
+		case 4:
+			setwildbattle(SPECIES_ZIGZAGOON_GALAR, 2)
+	}
+	dowildbattle
+	clearflag(FLAG_ADVENTURE_STARTED)
+	setvar(VAR_ROUTE1_STATE, R1_STATE_SCRIPTED_WILD_MON)
+	release
 	end
 }

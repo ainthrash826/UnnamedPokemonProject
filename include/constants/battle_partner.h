@@ -3,9 +3,9 @@
 #define GUARD_CONSTANTS_BATTLE_PARTNERS_H
 
 #define PARTNER_NONE                0
-#define PARTNER_ORION_GRASS         1
-#define PARTNER_ORION_FIRE          2
-#define PARTNER_ORION_WATER         3
+#define PARTNER_VWT_HARLEY_GRASS    1
+#define PARTNER_VWT_HARLEY_FIRE     2
+#define PARTNER_VWT_HARLEY_WATER    3
 #define PARTNER_COUNT               4
 
 #endif  // GUARD_CONSTANTS_BATTLE_PARTNERS_H

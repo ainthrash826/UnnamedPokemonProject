@@ -1,0 +1,632 @@
+const CURRENT_HOUR = VAR_0x8000
+const CURRENT_MINUTE = VAR_0x8001
+const TEMP_HOUR = VAR_TEMP_A
+const TEMP_MINUTE = VAR_TEMP_B
+const SHOULDNT_CONTINUE = VAR_TEMP_C
+
+// TODO:
+// make weather advance every 30 mins instead of every hour
+// buffer last recorded time
+// buffer expected cycle time
+
+// To properly enable the TimeWeather func, delete the following
+//                              //TW                   
+
+const NUM_WEATHER_SLOTS = 2 // Number of vars used before VAR_CURRENT_WEATHER
+
+const RANDOM_WEATHER_SUNNY = 0
+const RANDOM_WEATHER_RAIN = 1
+const RANDOM_WEATHER_DROUGHT = 2
+const RANDOM_WEATHER_SHADE = 3
+const RANDOM_WEATHER_THUNDERSTORM = 4
+const RANDOM_WEATHER_SNOW = 5
+const RANDOM_WEATHER_FOG = 6
+const RANDOM_WEATHER_FORCED_SUNNY = 7
+
+// Time constants
+const HOUR_12AM =  0
+const  HOUR_1AM =  1
+const  HOUR_2AM =  2
+const  HOUR_3AM =  3
+const  HOUR_4AM =  4
+const  HOUR_5AM =  5
+const  HOUR_6AM =  6
+const  HOUR_7AM =  7
+const  HOUR_8AM =  8
+const  HOUR_9AM =  9
+const HOUR_10AM = 10
+const HOUR_11AM = 11
+const HOUR_12PM = 12
+const  HOUR_1PM = 13
+const  HOUR_2PM = 14
+const  HOUR_3PM = 15
+const  HOUR_4PM = 16
+const  HOUR_5PM = 17
+const  HOUR_6PM = 18
+const  HOUR_7PM = 19
+const  HOUR_8PM = 20
+const  HOUR_9PM = 21
+const HOUR_10PM = 22
+const HOUR_11PM = 23
+
+script BufferWelcomeTextByTime {
+    gettime
+    if((var(CURRENT_HOUR) >= HOUR_7PM)
+    || (var(CURRENT_HOUR) <= HOUR_3AM)) {
+        bufferstring(STR_VAR_1, "Good evening")
+    } elif(var(CURRENT_HOUR) < HOUR_12PM) {
+        bufferstring(STR_VAR_1, "Good morning")
+    } else {
+        bufferstring(STR_VAR_1, "Welcome")
+    }
+}
+script BufferClerkTextByTime {
+    call(BufferWelcomeTextByTime)
+    message("{STR_VAR_1}!\n"
+            "How may I serve you?")
+}
+
+script BufferNurseTextByTime {
+    call(BufferWelcomeTextByTime)
+    msgbox("{STR_VAR_1}! Would you like me to heal\n"
+           "your Pokémon back to perfect health?", MSGBOX_YESNO)
+}
+
+const DROUGHT_MIN = HOUR_10AM
+const DROUGHT_MAX =  HOUR_6PM
+const DROUGHT_SET_MIN = (DROUGHT_MIN - NUM_WEATHER_SLOTS)
+const DROUGHT_SET_MAX = (DROUGHT_MAX - NUM_WEATHER_SLOTS)
+
+script EventScript_RandomWeather {
+    //if(!flag(FLAG_SYS_POKEDEX_GET)) {
+    //    //TWsetvar(VAR_TEMP_F, 232)
+    //    return
+    //}
+    //if(flag(FLAG_SYS_WEATHER_CTRL)) {
+    //    //TWsetvar(VAR_TEMP_F, 233)
+    //    return
+    //}
+//
+	//gettime
+    //if(var(CURRENT_HOUR) != VAR_LAST_HOUR) {
+    //    call(EventScript_RandomWeather_SetNext)
+	//} else {
+    //    call(EventScript_RandomWeather_DoCurrent)
+	//}
+}
+script(local) EventScript_RandomWeather_SetNext {
+	copyvar(VAR_LAST_HOUR, CURRENT_HOUR)
+	copyvar(VAR_LAST_MINUTE, CURRENT_MINUTE)
+    
+    // Move next weather to current. There should be NUM_WEATHER_SLOTS instructions here
+    copyvar(VAR_CURRENT_WEATHER, VAR_NEXT_WEATHER)
+    copyvar(VAR_NEXT_WEATHER, VAR_NEXT2_WEATHER)
+
+    // Execute current
+    call(EventScript_RandomWeather_DoCurrent)
+
+    // Determine new next. Always sunny if pokedex is unobtained otherwise random
+    setvar(SHOULDNT_CONTINUE, FALSE)
+    random(120)
+    //TWcopyvar(VAR_TEMP_F, VAR_RESULT)
+    switch(var(VAR_WEATHER_SET)) {
+        default:
+        case WEATHER_SET_DEFAULT:
+            if (var(VAR_RESULT) > 99) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_RAIN)
+            } else {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SUNNY)
+            }
+        case WEATHER_SET_DEFAULT_PLUS:
+            if(var(VAR_RESULT) > 99) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_THUNDERSTORM)
+                if((var(VAR_CURRENT_WEATHER) == RANDOM_WEATHER_THUNDERSTORM)
+                && random(50) > 29) {
+                    setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_SHADE)
+                    setvar(SHOULDNT_CONTINUE, TRUE)
+                }
+            } elif(var(VAR_RESULT) > 79) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SHADE)
+                if((var(VAR_CURRENT_WEATHER) == RANDOM_WEATHER_SHADE)
+                 && random(50) > 29) {
+                    setvar(SHOULDNT_CONTINUE, TRUE)
+                    if(!random(2)) {
+                        setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_THUNDERSTORM)
+                    } else {
+                        setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_RAIN)
+                    }
+                }
+            } elif (var(VAR_RESULT) > 59) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_RAIN)
+                if((var(VAR_CURRENT_WEATHER) == RANDOM_WEATHER_RAIN)
+                && random(50) > 29) {
+                    setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_SHADE)
+                    setvar(SHOULDNT_CONTINUE, TRUE)
+                }
+            } else {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SUNNY)
+            }
+        case WEATHER_SET_ANY:
+            if(var(VAR_RESULT) > 114) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SNOW)
+            } elif(var(VAR_RESULT) > 109) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_THUNDERSTORM)
+                if((var(VAR_CURRENT_WEATHER) == RANDOM_WEATHER_THUNDERSTORM)
+                 && random(50) > 29) {
+                    setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_SHADE)
+                    setvar(SHOULDNT_CONTINUE, TRUE)
+                }
+            } elif(var(VAR_RESULT) > 99) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SHADE)
+                if((var(VAR_CURRENT_WEATHER) == RANDOM_WEATHER_SHADE)
+                 && random(50) > 29) {
+                    setvar(SHOULDNT_CONTINUE, TRUE)
+                    if(!random(2)) {
+                        setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_THUNDERSTORM)
+                    } else {
+                        setvar(VAR_NEXT_WEATHER, RANDOM_WEATHER_RAIN)
+                    }
+                }
+            } elif(var(VAR_RESULT) > 89) {
+                // Drought between 10a-5p, otherwise fog
+                gettime
+                if(var(CURRENT_HOUR) <= DROUGHT_SET_MAX
+                && var(CURRENT_HOUR) >= DROUGHT_SET_MIN) {
+                    setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_DROUGHT)
+                } else {
+                    setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_FOG)
+                }
+            } elif(var(VAR_RESULT) > 59) {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_RAIN)
+            } else {
+                setvar(VAR_NEXT2_WEATHER, RANDOM_WEATHER_SUNNY)
+            }
+    }
+
+    // Random chance to continue current weather
+    if(var(SHOULDNT_CONTINUE) == FALSE
+    && var(VAR_CURRENT_WEATHER) != RANDOM_WEATHER_SUNNY
+    && var(VAR_CURRENT_WEATHER) != RANDOM_WEATHER_FORCED_SUNNY) {
+        switch(var(VAR_WEATHER_SET)) {
+            default:
+                if(!random(5)) {
+                    //TWsetvar(VAR_TEMP_F, 231)
+                    copyvar(VAR_NEXT_WEATHER, VAR_CURRENT_WEATHER)
+                }
+            case WEATHER_SET_DEFAULT:
+                if(!random(2)) {
+                    //TWsetvar(VAR_TEMP_F, 231)
+                    copyvar(VAR_NEXT_WEATHER, VAR_CURRENT_WEATHER)
+                }
+        }
+    }
+}
+script(local) EventScript_RandomWeather_DoCurrent {
+    switch(var(VAR_CURRENT_WEATHER)) {
+        case RANDOM_WEATHER_RAIN:
+            setweather(WEATHER_RAIN)
+        case RANDOM_WEATHER_DROUGHT:
+            gettime
+            if(var(CURRENT_HOUR) <= DROUGHT_MAX
+            && var(CURRENT_HOUR) >= DROUGHT_MIN) {
+                setweather(WEATHER_DROUGHT)
+            } else {
+                setweather(WEATHER_FOG_HORIZONTAL)
+                setvar(VAR_CURRENT_WEATHER, RANDOM_WEATHER_FOG)
+            }
+        case RANDOM_WEATHER_SHADE:
+            setweather(WEATHER_SHADE)
+        case RANDOM_WEATHER_THUNDERSTORM:
+            setweather(WEATHER_RAIN_THUNDERSTORM)
+        case RANDOM_WEATHER_SNOW:
+            setweather(WEATHER_SNOW)
+        case RANDOM_WEATHER_FOG:
+            gettime
+            if(var(CURRENT_HOUR) > DROUGHT_MAX
+            || var(CURRENT_HOUR) < DROUGHT_MIN) {
+                setweather(WEATHER_FOG_HORIZONTAL)
+            } else {
+                setweather(WEATHER_DROUGHT)
+                setvar(VAR_CURRENT_WEATHER, RANDOM_WEATHER_DROUGHT)
+            }
+        case RANDOM_WEATHER_FORCED_SUNNY:
+        default:
+            setweather(WEATHER_SUNNY)
+    }
+    doweather
+}
+
+script EventScript_TimeWeather {
+	lockall
+    //call(EventScript_RandomWeather)
+	call(EventScript_BufferTime)
+    msgbox("Current Time: {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}")
+	call(EventScript_BufferLastTime)
+    msgbox("Last Time: {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}")
+	switch(var(VAR_CURRENT_WEATHER)) { 
+		case RANDOM_WEATHER_RAIN:
+			bufferstring(STR_VAR_1, "Rain")
+		case RANDOM_WEATHER_DROUGHT:
+			bufferstring(STR_VAR_1, "Drought")
+		case RANDOM_WEATHER_SHADE:
+			bufferstring(STR_VAR_1, "Shade")
+		case RANDOM_WEATHER_THUNDERSTORM:
+			bufferstring(STR_VAR_1, "Thunderstorm")
+		case RANDOM_WEATHER_SNOW:
+			bufferstring(STR_VAR_1, "Snow")
+		case RANDOM_WEATHER_FOG:
+			bufferstring(STR_VAR_1, "Fog")
+		case RANDOM_WEATHER_FORCED_SUNNY:
+			bufferstring(STR_VAR_1, "Forced Clear")
+		default:
+			bufferstring(STR_VAR_1, "Clear")
+	}    
+	switch(var(VAR_WEATHER_SET)) { 
+		case WEATHER_SET_DEFAULT:
+			bufferstring(STR_VAR_2, "Default")
+		case WEATHER_SET_DEFAULT_PLUS:
+			bufferstring(STR_VAR_2, "Default+")
+		case WEATHER_SET_RAIN_ONLY:
+			bufferstring(STR_VAR_2, "Rain Only")
+		case WEATHER_SET_RAIN_PLUS:
+			bufferstring(STR_VAR_2, "Rain+")
+		case WEATHER_SET_SNOW_CYCLE:
+			bufferstring(STR_VAR_2, "Snow Cycle")
+		case WEATHER_SET_SNOW_ONLY:
+			bufferstring(STR_VAR_2, "Snow Only")
+		case WEATHER_SET_ANY:
+			bufferstring(STR_VAR_2, "Any/Unset")
+	}    
+	msgbox("Weather Set: {STR_VAR_2}\n"
+           "Current weather: {STR_VAR_1}")
+	switch(var(VAR_NEXT2_WEATHER)) { 
+		case RANDOM_WEATHER_RAIN:
+			bufferstring(STR_VAR_1, "Rain")
+		case RANDOM_WEATHER_DROUGHT:
+			bufferstring(STR_VAR_1, "Drought")
+		case RANDOM_WEATHER_SHADE:
+			bufferstring(STR_VAR_1, "Shade")
+		case RANDOM_WEATHER_THUNDERSTORM:
+			bufferstring(STR_VAR_1, "Thunderstorm")
+		case RANDOM_WEATHER_SNOW:
+			bufferstring(STR_VAR_1, "Snow")
+		case RANDOM_WEATHER_FOG:
+			bufferstring(STR_VAR_1, "Fog")
+		case RANDOM_WEATHER_FORCED_SUNNY:
+			bufferstring(STR_VAR_1, "Forced Clear")
+		default:
+			bufferstring(STR_VAR_1, "Clear")
+	}
+	switch(var(VAR_NEXT_WEATHER)) { 
+		case RANDOM_WEATHER_RAIN:
+			bufferstring(STR_VAR_3, "Rain")
+		case RANDOM_WEATHER_DROUGHT:
+			bufferstring(STR_VAR_3, "Drought")
+		case RANDOM_WEATHER_SHADE:
+			bufferstring(STR_VAR_3, "Shade")
+		case RANDOM_WEATHER_THUNDERSTORM:
+			bufferstring(STR_VAR_3, "Thunderstorm")
+		case RANDOM_WEATHER_SNOW:
+			bufferstring(STR_VAR_3, "Snow")
+		case RANDOM_WEATHER_FOG:
+			bufferstring(STR_VAR_3, "Fog")
+		case RANDOM_WEATHER_FORCED_SUNNY:
+			bufferstring(STR_VAR_3, "Forced Clear")
+		default:
+			bufferstring(STR_VAR_3, "Clear")
+	}
+    switch(var(VAR_TEMP_F)) {
+        case 231: // Current weather was continued
+            msgbox("Next2: {STR_VAR_1}\n"
+                   "Next: {STR_VAR_3} (continued)")
+        case 232: // Pokédex is unobtained
+            msgbox("Pokédex Unobtained\n"
+                   "Next2: {STR_VAR_1}\l"
+                   "Next: {STR_VAR_3}")
+        case 233: // Flag FLAG_SYS_WEATHER_CTRL is on
+            msgbox("Weather disabled via flag")
+        default:
+            buffernumberstring(STR_VAR_2, VAR_TEMP_F)
+            msgbox("Next2: {STR_VAR_1}, rolled {STR_VAR_2}\n"
+                   "Next: {STR_VAR_3}")
+    }
+    closemessage
+    releaseall
+	end
+}
+
+script EventScript_BufferTime {
+    // Bufers the current hour to STR_VAR_1,
+    // the current minute to STR_VAR_2,
+    // and time of day (AM/PM) to STR_VAR_3
+    gettime
+    
+    // Hour
+    if(!flag(FLAG_SYS_USE_24HR)) {
+        copyvar(TEMP_HOUR, CURRENT_HOUR)
+        if(var(TEMP_HOUR) == HOUR_12AM) {
+            setvar(TEMP_HOUR, 12)
+        } elif(var(TEMP_HOUR) > HOUR_12PM) {
+            subvar(TEMP_HOUR, 12)
+        } 
+        buffernumberstring(STR_VAR_1, TEMP_HOUR)
+
+        // AM/PM
+        if(var(CURRENT_HOUR) < HOUR_12PM) {
+            bufferstring(STR_VAR_3, " AM")
+        } else {
+            bufferstring(STR_VAR_3, " PM")
+        }
+    } else {
+        bufferstring(STR_VAR_3, "")
+        switch(var(CURRENT_HOUR)) {
+            default:
+                buffernumberstring(STR_VAR_1, CURRENT_HOUR)
+            case HOUR_12AM:
+                bufferstring(STR_VAR_1, "00")
+            case HOUR_1AM:
+                bufferstring(STR_VAR_1, "01")
+            case HOUR_2AM:
+                bufferstring(STR_VAR_1, "02")
+            case HOUR_3AM:
+                bufferstring(STR_VAR_1, "03")
+            case HOUR_4AM:
+                bufferstring(STR_VAR_1, "04")
+            case HOUR_5AM:
+                bufferstring(STR_VAR_1, "05")
+            case HOUR_6AM:
+                bufferstring(STR_VAR_1, "06")
+            case HOUR_7AM:
+                bufferstring(STR_VAR_1, "07")
+            case HOUR_8AM:
+                bufferstring(STR_VAR_1, "08")
+            case HOUR_9AM:
+                bufferstring(STR_VAR_1, "09")
+        }
+    }
+
+    // Minute
+    switch(var(CURRENT_MINUTE)) {
+        default:
+            buffernumberstring(STR_VAR_2, CURRENT_MINUTE)
+        case 0:
+            bufferstring(STR_VAR_2, "00")
+        case 1:
+            bufferstring(STR_VAR_2, "01")
+        case 2:
+            bufferstring(STR_VAR_2, "02")
+        case 3:
+            bufferstring(STR_VAR_2, "03")
+        case 4:
+            bufferstring(STR_VAR_2, "04")
+        case 5:
+            bufferstring(STR_VAR_2, "05")
+        case 6:
+            bufferstring(STR_VAR_2, "06")
+        case 7:
+            bufferstring(STR_VAR_2, "07")
+        case 8:
+            bufferstring(STR_VAR_2, "08")
+        case 9:
+            bufferstring(STR_VAR_2, "09")
+    }
+}
+script EventScript_BufferLastTime {
+    // Bufers the last hour to STR_VAR_1,
+    // the last minute to STR_VAR_2,
+    // and time of day (AM/PM) to STR_VAR_3
+    
+    // Hour
+    if(!flag(FLAG_SYS_USE_24HR)) {
+        copyvar(TEMP_HOUR, VAR_LAST_HOUR)
+        if(var(TEMP_HOUR) == HOUR_12AM) {
+            setvar(TEMP_HOUR, 12)
+        } elif(var(TEMP_HOUR) > HOUR_12PM) {
+            subvar(TEMP_HOUR, 12)
+        } 
+        buffernumberstring(STR_VAR_1, TEMP_HOUR)
+
+        // AM/PM
+        if(var(VAR_LAST_HOUR) < HOUR_12PM) {
+            bufferstring(STR_VAR_3, " AM")
+        } else {
+            bufferstring(STR_VAR_3, " PM")
+        }
+    } else {
+        bufferstring(STR_VAR_3, "")
+        switch(var(VAR_LAST_HOUR)) {
+            default:
+                buffernumberstring(STR_VAR_1, VAR_LAST_HOUR)
+            case HOUR_12AM:
+                bufferstring(STR_VAR_1, "00")
+            case HOUR_1AM:
+                bufferstring(STR_VAR_1, "01")
+            case HOUR_2AM:
+                bufferstring(STR_VAR_1, "02")
+            case HOUR_3AM:
+                bufferstring(STR_VAR_1, "03")
+            case HOUR_4AM:
+                bufferstring(STR_VAR_1, "04")
+            case HOUR_5AM:
+                bufferstring(STR_VAR_1, "05")
+            case HOUR_6AM:
+                bufferstring(STR_VAR_1, "06")
+            case HOUR_7AM:
+                bufferstring(STR_VAR_1, "07")
+            case HOUR_8AM:
+                bufferstring(STR_VAR_1, "08")
+            case HOUR_9AM:
+                bufferstring(STR_VAR_1, "09")
+        }
+    }
+
+    // Minute
+    switch(var(VAR_LAST_MINUTE)) {
+        default:
+            buffernumberstring(STR_VAR_2, VAR_LAST_MINUTE)
+        case 0:
+            bufferstring(STR_VAR_2, "00")
+        case 1:
+            bufferstring(STR_VAR_2, "01")
+        case 2:
+            bufferstring(STR_VAR_2, "02")
+        case 3:
+            bufferstring(STR_VAR_2, "03")
+        case 4:
+            bufferstring(STR_VAR_2, "04")
+        case 5:
+            bufferstring(STR_VAR_2, "05")
+        case 6:
+            bufferstring(STR_VAR_2, "06")
+        case 7:
+            bufferstring(STR_VAR_2, "07")
+        case 8:
+            bufferstring(STR_VAR_2, "08")
+        case 9:
+            bufferstring(STR_VAR_2, "09")
+    }
+}
+
+const TARGET_ITEM = VAR_TEMP_D
+const ITEM_COUNT = VAR_TEMP_E
+
+script StaticMonItemDropChance {
+    specialvar(VAR_RESULT, GetBattleOutcome)
+	if(var(VAR_RESULT) == B_OUTCOME_WON
+	|| var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		if(random(100) < 25
+        || flag(FLAG_TEMP_10)) {
+			if(!var(ITEM_COUNT)) {
+                random(5)
+			    addvar(VAR_RESULT, 1)
+			    copyvar(ITEM_COUNT, VAR_RESULT)
+            }
+            msgbox(format("The wild Pokémon dropped something!"))
+            giveitem(TARGET_ITEM, ITEM_COUNT)
+			//if(additem(TARGET_ITEM, ITEM_COUNT)) {
+            //    // Not working properly, placeholder instead until fixed
+			//	//copyvar(VAR_0x8006, TARGET_ITEM)
+			//	//buffernumberstring(STR_VAR_1, ITEM_COUNT)
+			//	//bufferitemnameplural(STR_VAR_2, TARGET_ITEM, ITEM_COUNT)
+			//	//switch(checkitemtype(TARGET_ITEM)) {
+            //    //    case POCKET_ITEMS:
+            //    //        bufferstring(STR_VAR_3, STDSTRING_ITEMS)
+			//	//        playfanfare(MUS_OBTAIN_ITEM)
+	        //    //    case POCKET_KEY_ITEMS:
+            //    //        bufferstring(STR_VAR_3, STDSTRING_KEYITEMS)
+			//	//        playfanfare(MUS_RG_OBTAIN_KEY_ITEM)
+	        //    //    case POCKET_POKE_BALLS:
+            //    //        bufferstring(STR_VAR_3, STDSTRING_POKEBALLS)
+			//	//        playfanfare(MUS_OBTAIN_ITEM)
+	        //    //    case POCKET_TM_HM:
+            //    //        bufferstring(STR_VAR_3, STDSTRING_TMHMS)
+			//	//        playfanfare(MUS_OBTAIN_TMHM)
+	        //    //    case POCKET_BERRIES:
+            //    //        bufferstring(STR_VAR_3, STDSTRING_BERRIES)
+			//	//        playfanfare(MUS_OBTAIN_BERRY)
+            //    //}
+			//	//message("The Pokémon dropped\n{STR_VAR_1} {STR_VAR_2}!")
+			//	//delay(10)
+			//	//showitemdescription
+			//	//waitfanfare
+            //    //waitmessage
+			//	//msgbox(gText_PutItemInPocket, MSGBOX_AUTOCLOSE)
+			//	//hideitemdescription
+			//}
+            clearflag(FLAG_TEMP_10)
+		}
+	}
+}
+
+const TARGET_LEADER = VAR_0x8008
+const LEADER_ARIA = 1
+const LEADER_REDBEARD = 2
+const LEADER_HASH = 3
+const LEADER_LAURENT = 4
+const LEADER_ALPH = 5
+const LEADER_DULCE = 6
+const LEADER_MARYANNE = 7
+const LEADER_BOTOW = 8
+
+script GymSetTrainersAndGiveTM {
+    switch(var(TARGET_LEADER)) {
+        case LEADER_ARIA:
+            settrainerflag(TRAINER_JOSH)
+            settrainerflag(TRAINER_TOMMY)
+            settrainerflag(TRAINER_MARC)
+
+            giveitem(ITEM_TM_AERIAL_ACE)
+
+        case LEADER_REDBEARD:
+            settrainerflag(TRAINER_TAKAO)
+            settrainerflag(TRAINER_JOCELYN)
+            settrainerflag(TRAINER_LAURA)
+            settrainerflag(TRAINER_BRENDEN)
+            settrainerflag(TRAINER_CRISTIAN)
+            settrainerflag(TRAINER_LILITH)
+            settrainerflag(TRAINER_DARIAN)
+
+            giveitem(ITEM_TM_AQUA_CUTTER)
+
+        default: // Failsafe
+            giveitem(ITEM_NUGGET)
+    }
+    if(var(VAR_RESULT)) {
+        switch(var(TARGET_LEADER)) {
+            case LEADER_ARIA:
+                setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
+                msgbox(format("This is a Techincal Machine, or “TM” for short. They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
+                              "The TM I gave you contains the move Aerial Ace. It's a pretty swift Flying-type move that never misses!\p"
+                              "Well, most of the time, usually."))
+            case LEADER_REDBEARD:
+                setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
+                msgbox(format("I forged that TM with me own hook!\nHa ha!\p"
+                              "That there be the move Aqua Cutter, a sharp Water-type move with a high critical-hit ratio!\p"
+                              "Use it on a Pokémon with a divine cutlass! Ha ha ha!"))
+            default: // Failsafe
+                msgbox(format("My TM wasn't assigned, so I gave you that instead. Sorry!"))
+        }
+    } else {call(Common_EventScript_BagIsFull)}
+}
+
+script EventScript_ViewMap {
+    lockall
+    fadescreen(FADE_TO_BLACK)
+    special(FieldShowRegionMap)
+	releaseall
+    end
+}
+
+script Common_EventScript_MartClerk {
+	lock
+	faceplayer
+	call(BufferClerkTextByTime)
+	waitmessage
+	if(!flag(FLAG_SYS_POKEDEX_GET)) {
+		pokemart(PokemartNoDex)
+	} else {
+		pokemart
+	}
+	msgbox(gText_PleaseComeAgain, MSGBOX_AUTOCLOSE)
+	end
+}
+
+mart PokemartNoDex {
+	ITEM_POTION
+}
+
+const TARGET_NPC_MON = VAR_TEMP_A
+
+script StaticMonNpc {
+    lock
+	faceplayer
+    if(!random(4)) {
+		playmoncry(TARGET_NPC_MON, CRY_MODE_DOUBLES)
+    } else {
+	    playmoncry(TARGET_NPC_MON, CRY_MODE_NORMAL)
+    }
+	waitmoncry
+    delay(8)
+	release
+	end
+}

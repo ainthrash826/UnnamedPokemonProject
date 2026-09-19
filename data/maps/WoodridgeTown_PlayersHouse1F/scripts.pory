@@ -1,77 +1,62 @@
-const LOCALID_MOM = 1
-
-//                                         TODO:
-// Player receives costume box and running shoes from boxes in their room	NOT STARTED
-// Vast Woods (Trail) becomes accessible to player after the Leon encounter	NOT STARTED
-
 mapscripts WoodridgeTown_PlayersHouse1F_MapScripts {
-	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_WOODRIDGE_TOWN_STATE, 0 { // Player walks down the stairs for the first time
-			lock
-			playse(SE_PIN)
-			exclam(LOCALID_MOM)
-			msgbox(format("Mom: Oh! {PLAYER}!\n You're awake!"))
-			playbgm(MUS_RG_FOLLOW_ME, FALSE)
-			closemessage
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 2
-											 		 walk_down * 2
-													 walk_left
-													 walk_down
-													 walk_in_place_fast_left))
-			waitmovement(0)
-			msgbox(format("Wow, sleepyhead! Jet Lag must've hit you big time, huh?\p"
-				  		  "Just messing with you, haha!\nNow you don't want to make yourself look like a bad neighbor, do you?\p"
-						  "Of course you don't.\nSo, why don't you go introduce yourself?"), MSGBOX_AUTOCLOSE)
-			fadedefaultbgm
-			setvar(VAR_WOODRIDGE_TOWN_STATE, 1)
-			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
-			setvar(VAR_BLOCK_PROGRESSION_WEST, 1)
-			release
-			end
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_WOODRIDGE_TOWN)
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_POST_VWT_SUBZERO_ENCOUNTER {
+			savebgm(MUS_NONE)
+			turnobject(LOCALID_PLAYER, DIR_EAST)
 		}
-		VAR_WOODRIDGE_TOWN_STATE, 3 { // Player has a chat with Mom before heading out for walk with Orion
+	]
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_POST_VWT_SUBZERO_ENCOUNTER {
 			lock
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 3
-													 walk_up * 2
-													 walk_in_place_left))
+			delay(90)
+			playse(SE_EXIT)
+			addobject(LOCALID_PLAYERS_HOUSE_HARLEY)
+			applymovement(LOCALID_PLAYERS_HOUSE_HARLEY, moves(walk_down * 3
+			                                                  walk_left * 3
+															  walk_down * 2
+															  walk_in_place_fast_left))
 			waitmovement(0)
-			applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceRight)
+			msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: Thanks again for letting me use your bedroom to change out of that God-awful uniform.\p"
+			              "By the way, I never caught your name.\n"
+			              "… … … … … … … …\l{PLAYER}, huh? Nice to meet you.\p"
+						  "Look {PLAYER}, this might sound a bit silly, but I'm not actually apart of Subzero.\p"
+						  "When I first heard of the group, I thought something was sketchy about it as a whole.\p"
+						  "So, I decided to join it to try and single-handedly take Subzero down from the inside with help from my boyfriend, {COLOR BLUE}Leon{COLOR DARK_GRAY}.\p"
+						  "Unfortunately for me, I haven't had the best of luck lately, and bringing {COLOR BLUE}Leon{COLOR DARK_GRAY} with me was an even bigger mistake than I anticipated.\p"
+						  "Anyways, {PLAYER}, the bottom line is Subzero is planning something big and presumably dangerous.\p"
+						  "But for some reason, everyone I've asked about Subzero seems to be oblivious to the fact that it even exists!\p"
+				          "Who could I possibly go to about this around here…?"), MSGBOX_AUTOCLOSE)
+			delay(120)
+			exclam(LOCALID_PLAYERS_HOUSE_HARLEY)
+			applymovement(LOCALID_PLAYERS_HOUSE_HARLEY, moves(walk_in_place_left))
 			waitmovement(0)
-			msgbox(format("Did you introduce yourself to the neighbors, {PLAYER}?\p"
-						  "… … … … …\n… … … … …\p"
-						  "The kid next door asked to take you on a walk into the woods?\p"
-						  "Well, sounds like you two will have a great time.\p"
-						  "Just be careful, please {PLAYER}!\nRemember, we just moved here and we aren't familiar with the environment.\p"
-						  "If anything happens to you let me know."), MSGBOX_AUTOCLOSE)
-			setvar(VAR_WOODRIDGE_TOWN_STATE, 4)
-			setvar(VAR_BLOCK_PROGRESSION_SOUTH, 2)
+			msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: Wait a minute. {COLOR GREEN}Animora City{COLOR DARK_GRAY}'s home to Pokémon Professor {COLOR BLUE}Watson{COLOR DARK_GRAY}!\p"
+			              "He'll certainly have some knowledge about Subzero, or would like to hear about it at the very least.\p"
+						  "Alright, it's set, {PLAYER}.\n"
+						  "We're going to {COLOR GREEN}Animora City{COLOR DARK_GRAY} to speak to the Professor!\p"
+						  "Oh! Speaking of, {PLAYER}, I want you to have this!"))
+			giveitem(ITEM_POTION)
+			msgbox(format("Wild Pokémon may attack you in the tall grass on your way to {COLOR GREEN}Animora{COLOR DARK_GRAY}.\p"
+			              "If your Pokémon gets hurt, use that spray on it to heal it up.\p"
+						  "Alright, I'm gonna get a head-start.\nI'll meet you in {COLOR GREEN}Animora{COLOR DARK_GRAY}, {PLAYER}!"), MSGBOX_AUTOCLOSE)
+			applymovement(LOCALID_PLAYERS_HOUSE_HARLEY, moves(walk_fast_down
+															  walk_fast_right * 3
+			                                                  walk_in_place_down))
+			waitmovement(0)
+			playse(SE_EXIT)
+			removeobject(LOCALID_PLAYERS_HOUSE_HARLEY)
+			setflag(FLAG_ADVENTURE_STARTED)
+			clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+			clearflag(FLAG_HIDE_WOODRIDGE_TOWN_FAT_MAN)
+			setvar(VAR_ROUTE1_STATE, R1_STATE_ENTRY_ALLOWED)
+			setvar(VAR_WOODRIDGE_TOWN_STATE, WOODRIDGE_STATE_ADVENTURE_BEGIN)
+			waitse
+			playbgm(MUS_LITTLEROOT, TRUE)
 			release
 			end
 		}
     ]
-}
-
-script WoodridgePlayersHouse1F_Mom {
-	if(var(VAR_WOODRIDGE_TOWN_STATE) < 4 ) {
-		msgbox(format("I saw that there were other people in this town.\p"
-					  "Don't let yourself look like a bad neightbor, {PLAYER}. Go introduce yourself!"), MSGBOX_NPC)
-	} elif(var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
-		msgbox(format("If anything happens to you let me know."), MSGBOX_NPC)
-	} elif(var(VAR_TEMP_1) == TRUE) {
-		msgbox("You look all refreshed!\nTake care, {PLAYER}!", MSGBOX_NPC)
-	} else {
-		lock
-		faceplayer
-		msgbox("Oh! Welcome home, {PLAYER}!\nYou should take a rest.", MSGBOX_AUTOCLOSE)
-		playse(SE_USE_ITEM)
-		special(HealPlayerParty)
-		waitse
-		msgbox("There. You look all refreshed!\nTake care!", MSGBOX_NPC)
-		setvar(VAR_TEMP_1, TRUE)
-		incrementgamestat(GAME_STAT_RESTED_AT_HOME)
-		release
-	}
-	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
-	waitmovement(0)
-	end
 }

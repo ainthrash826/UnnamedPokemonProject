@@ -1,38 +1,17 @@
 const LOCALID_ORIONS_MOM = 1
 const LOCALID_ORION = 2
 const LOCALID_PLAYERS_MOM = 3
-const LOCALID_GS = 4
-const LOCALID_FS = 5
-const LOCALID_WS = 6
  
-// TODO: Move player's and orion's battle to frame table
 mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         if(var(VAR_WOODRIDGE_TOWN_STATE) == 1) {
 	        setobjectxyperm(LOCALID_ORIONS_MOM, 4, 5)
             setobjectmovementtype(LOCALID_ORIONS_MOM, MOVEMENT_TYPE_FACE_DOWN)
-        } elif(var(VAR_WOODRIDGE_TOWN_STATE) == 5) {
-            switch (var(VAR_STARTER_MON)) {
-                case 0:
-			        setobjectmovementtype(LOCALID_GS, MOVEMENT_TYPE_INVISIBLE)
-                    setobjectxyperm(LOCALID_FS, 5, 2)
-                    setobjectxyperm(LOCALID_WS, 4, 2)
-                case 1:
-                    setobjectxyperm(LOCALID_GS, 5, 2)
-                    setobjectxyperm(LOCALID_FS, 4, 2)
-			        setobjectmovementtype(LOCALID_WS, MOVEMENT_TYPE_INVISIBLE)
-                case 2:
-                    setobjectxyperm(LOCALID_GS, 4, 2)
-			        setobjectmovementtype(LOCALID_FS, MOVEMENT_TYPE_INVISIBLE)
-			        setobjectxyperm(LOCALID_WS, 5, 2)
-            }
         }
 		end
 	}
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
 		VAR_WOODRIDGE_TOWN_STATE, 5 {
-            playbgm(MUS_NONE, TRUE)
-	        hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F)
         }
     ]
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -47,14 +26,13 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
                           "So you're our new neighbor?\nNice to meet you, {PLAYER}.\p"
                           "If you're looking for someone to talk to, I have a son who's about your age.\p"
                           "I'm sure he'd like to meet you, but he's not here right now.\p"
-                          "He's on one of his nature strolls in the woods south of here."), MSGBOX_AUTOCLOSE)
+                          "He's on one of his nature strolls in the woods east of here."), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_ORIONS_MOM, moves(walk_up * 2
                                                     walk_right * 6
                                                     walk_down
                                                     walk_in_place_left))
             waitmovement(0)
             setflag(FLAG_HIDE_MAP_NAME_POPUP)
-            clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
             setvar(VAR_WOODRIDGE_TOWN_STATE, 2)
             release
             end
@@ -108,14 +86,16 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
             turnobject(LOCALID_ORION, DIR_SOUTH)
             msgbox(format("Which leads to my next point.\p{PLAYER} and Orion, since this is your first time “owning” a Pokémon, we want you to pay a visit to the Professor's Lab in Animora City.\p"
-                        "What happens next is entirely up to him."
-                        "You can take Route 1, which is directly west of here, to get to Animora City."))
+                          "But first, you two will need these!"))
+            giveitem(ITEM_TOWN_MAP)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox("Will do, ma'am!")
+            applymovement(LOCALID_PLAYERS_MOM, Common_Movement_WalkInPlaceUp)
+            // Mom(s) explain(s) how to use the town map and marks Animora's location on Player's and Orion's map
+            waitmovement(0)
             applymovement(LOCALID_PLAYERS_MOM, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            msgbox(format("Mom: Alright, I'm gonna get going.\pThank you for having me over, Ms. Fields."))
+            msgbox(format("Mom: Alright, I'm gonna get going.\nThank you for having me over, Ms. Fields."))
             applymovement(LOCALID_ORIONS_MOM, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
             msgbox("Anytime!", MSGBOX_AUTOCLOSE)
@@ -127,39 +107,10 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             delay(96)
             playse(SE_EXIT)
             waitse
-            playbgm(MUS_LITTLEROOT, TRUE)
             applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
             applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            msgbox(format("{PLAYER}, we have a problem!\nFollow me!"), MSGBOX_AUTOCLOSE)
-            applymovement(OBJ_EVENT_ID_PLAYER,  moves(walk_right * 3
-                                                      walk_up * 2
-                                                      walk_left * 4))
-            applymovement(LOCALID_ORION, moves(walk_right * 2
-                                               walk_up * 2
-                                               walk_left * 5
-                                               walk_in_place_right))
-            waitmovement(0)
-            msgbox(format("When I went to go check on the Pokemon this morning, one of them was missing!\p"
-                        "I looked all around the Town, but I couldn't find anything…"))
-            closemessage
-            delay(35)
-            msgbox(format("k see ya later"), MSGBOX_AUTOCLOSE)
-            applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceUp)
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
-            waitmovement(0)
-            switch (var(VAR_STARTER_MON)) {
-                case 0:
-                    removeobject(LOCALID_WS)
-                    applymovement(LOCALID_FS, Common_Movement_EnterBall)
-                case 1:
-                    removeobject(LOCALID_FS)
-                    applymovement(LOCALID_GS, Common_Movement_EnterBall)
-                case 2:
-                    removeobject(LOCALID_GS)
-                    applymovement(LOCALID_WS, Common_Movement_EnterBall)
-            }
-            delay(20)
+            msgbox(format("{PLAYER}, we have a problem!\nMeet me outside!"), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_ORION, moves(walk_left * 2
                                                walk_up
                                                set_invisible))
@@ -168,16 +119,9 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
             waitse
             removeobject(LOCALID_ORION)
             removeobject(LOCALID_PLAYERS_MOM)
-            removeobject(LOCALID_GS)
-            removeobject(LOCALID_FS)
-            removeobject(LOCALID_WS)
-            setflag(FLAG_SYS_POKEMON_GET)
-            setflag(FLAG_HIDE_ORIONS_HOUSE_CUTSCENE_NPCS)
             setvar(VAR_WOODRIDGE_TOWN_STATE, 6)
             setvar(VAR_BLOCK_PROGRESSION_SOUTH, 1)
             setvar(VAR_BLOCK_PROGRESSION_WEST, 0)
-            clearflag(FLAG_HIDE_WOODRIDGE_TOWN_ORION)
-            clearflag(FLAG_HIDE_ORIONS_ROOM_ORION)
             release
             end 
         }
@@ -189,7 +133,7 @@ mapscripts WoodridgeTown_OrionsHouse1F_MapScripts {
 script WoodridgeOrionHouse1F_OrionsMom {
     if(var(VAR_WOODRIDGE_TOWN_STATE) < 3) {
         msgbox(format("If you're looking for someone to talk to, I have a son who's about your age.\p"
-                      "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods south of here."), MSGBOX_NPC)
+                      "I'm sure he'd like to meet you, but he's not here right now.\pHe's on one of his nature strolls in the woods east of here."), MSGBOX_NPC)
     } elif(var(VAR_WOODRIDGE_TOWN_STATE) < 6) {
         msgbox("Hello, {PLAYER}.", MSGBOX_NPC)
     } else {

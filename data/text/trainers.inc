@@ -180,20 +180,6 @@ Route104_Text_MiaNotEnoughMons:
 	.string "POKéMON with you.\l"
 	.string "We're too strong for you!$"
 
-Route104_Text_IvanIntro:
-	.string "Why keep it a secret?\n"
-	.string "I'm the WATER POKéMON expert!\p"
-	.string "Huh?\n"
-	.string "You don't know me?$"
-
-Route104_Text_IvanDefeat:
-	.string "I thought I wasn't too bad, if I may\n"
-	.string "say so, but I guess not… Bleah…$"
-
-Route104_Text_IvanPostBattle:
-	.string "I got too into fishing.\n"
-	.string "I forgot I had to raise my POKéMON…$"
-
 Route104_Text_BillyIntro:
 	.string "Leaving footprints in the sand is\n"
 	.string "so fun!$"

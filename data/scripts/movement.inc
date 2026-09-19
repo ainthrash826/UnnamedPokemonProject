@@ -3,6 +3,12 @@
 Common_Movement_FollowerSafeStart::
 Common_Movement_QuestionMark:
 	emote_question_mark
+.if IS_FRLG == FALSE
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+.endif
 	step_end
 
 Common_Movement_ExclamationMark:
@@ -11,6 +17,8 @@ Common_Movement_ExclamationMark:
 
 Common_Movement_ExclamationMark2:
 	emote_exclamation_mark
+	delay_16
+	delay_16
 	delay_16
 	delay_16
 	step_end

@@ -1,11 +1,12 @@
-const LOCALID_NURSE = 1
-
 mapscripts PetalburgCity_PokemonCenter_1F_MapScripts {
     MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_PETALBURG_CITY)
+	}
 }
 
 script AnimoraCity_PokemonCenter_1F_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
+	setvar(VAR_0x800B, LOCALID_ANIMORA_NURSE)
 	setvar(VAR_TEMP_A, 0)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
@@ -17,8 +18,14 @@ script AnimoraCity_PokemonCenter_1F_EventScript_Nurse {
 	end
 }
 
+script AnimoraCityPokemonCenter_Hiker {
+	msgbox(format("The Poké Mart is located downstairs in ever Pokémon Center.\p"
+	              "What they can sell to you depends the total amount of Gym badges you have."), MSGBOX_NPC)
+	end
+}
+
 script AnimoraCity_PokemonCenter_1F_EventScript_Youngster {
-	msgbox(format("When my Pokémon ate an Oran Berry, it regained HP!"), MSGBOX_NPC)
+	msgbox(format("When my Pokémon ate an Oran Berry, it regained a bit of health!"), MSGBOX_NPC)
 	end
 }
 
@@ -26,5 +33,12 @@ script AnimoraCity_PokemonCenter_1F_EventScript_Woman {
 	msgbox(format("There are many types of Pokémon.\p"
 				  "All types have their strengths and weaknesses against other types.\p"
                   "Depending on the type of Pokémon, a battle could be easy or hard."), MSGBOX_NPC)
+	end
+}
+
+script AnimoraCityPokemonCenter_Boy {
+	msgbox(format("If you have Pokémon that are too weak or not yet ready for battle, you should keep out of the tall grass.\p"
+				  "Alternatively, if you want them to gain experience without actually battling, move your target Pokémon to the first slot, and when a battle starts, immediately switch it out.\p"
+				  "This way it'll be safe from most harm while gaining experience!"), MSGBOX_NPC)
 	end
 }

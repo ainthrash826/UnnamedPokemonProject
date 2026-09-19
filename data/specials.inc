@@ -166,6 +166,7 @@ gSpecials::
 	def_special PetalburgGymSlideOpenRoomDoors, waitstate=1
 	def_special PetalburgGymUnlockRoomDoors
 	def_special GetPlayerTrainerIdOnesDigit
+	def_special InitNewgameClock
 	def_special GetPlayerBigGuyGirlString
 	def_special GetRivalSonDaughterString
 	def_special SetHiddenItemFlag

@@ -3,6 +3,7 @@
   "name": "WoodridgeTown",
   "layout": "LAYOUT_WOODRIDGE_TOWN",
   "music": "MUS_LITTLEROOT",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -15,235 +16,111 @@
   "connections": [
     {
       "map": "MAP_VAST_WOODS_TRAIL",
-      "offset": 0,
-      "direction": "down"
+      "offset": 4,
+      "direction": "right"
     },
     {
       "map": "MAP_ROUTE101",
-      "offset": -4,
+      "offset": 4,
       "direction": "left"
     }
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 16,
-      "y": 14,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
+      "local_id": "LOCALID_WOODRIDGE_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "x": 20,
+      "y": 29,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
+      "movement_range_x": 2,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_ORION"
+      "script": "WoodridgeTownFatMan",
+      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_FAT_MAN"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(JUNGLIDE)",
-      "x": 16,
-      "y": 31,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
+      "x": 3,
+      "y": 29,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_POKEMON"
+      "script": "0",
+      "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PARMI)",
-      "x": 17,
-      "y": 31,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "local_id": "LOCALID_WOODRIDGE_HARLEY",
+      "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
+      "x": 31,
+      "y": 26,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_POKEMON"
+      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_HARLEY"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RADPOLE)",
-      "x": 16,
-      "y": 31,
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 21,
+      "y": 19,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
       "script": "NULL",
-      "flag": "FLAG_HIDE_WOODRIDGE_TOWN_POKEMON"
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 4,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 36,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "LIGHT_TYPE_BALL",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 20,
-      "y": 15,
-      "elevation": 0,
+      "x": 19,
+      "y": 19,
+      "elevation": 3,
       "dest_map": "MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE1F",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 18,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_WOODRIDGE_TOWN_ORIONS_HOUSE1F",
-      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_WOODRIDGE_TOWN_STATE",
-      "var_value": "6",
-      "script": "WoodridgeBattleTrigger0"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 13,
-      "elevation": 0,
-      "var": "VAR_WOODRIDGE_TOWN_STATE",
-      "var_value": "6",
-      "script": "WoodridgeBattleTrigger1"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_WOODRIDGE_TOWN_STATE",
-      "var_value": "6",
-      "script": "WoodridgeBattleTrigger2"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 15,
-      "elevation": 0,
-      "var": "VAR_WOODRIDGE_TOWN_STATE",
-      "var_value": "6",
-      "script": "WoodridgeBattleTrigger3"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 12,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_WEST",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 13,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_WEST",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_WEST",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 15,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_WEST",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 13,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 14,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 16,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 18,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 19,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    },
-    {
-      "type": "trigger",
-      "x": 20,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_BLOCK_PROGRESSION_SOUTH",
-      "var_value": "1",
-      "script": "Common_EventScript_BlockProgression"
-    }
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",
-      "x": 11,
+      "x": 14,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -251,27 +128,27 @@
     },
     {
       "type": "sign",
-      "x": 18,
-      "y": 15,
-      "elevation": 0,
+      "x": 17,
+      "y": 20,
+      "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PlayersHouseSign"
     },
     {
       "type": "sign",
-      "x": 16,
-      "y": 7,
-      "elevation": 0,
+      "x": 14,
+      "y": 10,
+      "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "OrionsHouseSign"
+      "script": "WoodridgeTownSign"
     },
     {
       "type": "sign",
-      "x": 20,
-      "y": 22,
-      "elevation": 0,
+      "x": 33,
+      "y": 27,
+      "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "WoodridgeTown3rdHouseScript"
+      "script": "WoodridgeTownSign"
     }
   ]
 }

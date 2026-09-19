@@ -1,1 +1,13 @@
-mapscripts CentraNE_PokemonAcademy4F_MapScripts {}
+mapscripts CentraNE_PokemonAcademy4F_MapScripts {
+    MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [VAR_TEMP_0, FALSE {hideobjectat(LOCALID_PLAYER, MAP_CENTRA_NE_POKEMON_ACADEMY4F)}]
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_INTRO_CUTSCENE_STATE, INTRO_CUTSCENE_STATE_0 {
+            lock
+            fadescreenspeed(FADE_TO_BLACK, 12)
+            warpnofade(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F, 1, 4)
+            waitstate
+            release
+            end
+        }
+    ]
+}

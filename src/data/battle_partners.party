@@ -5,33 +5,35 @@ Pic: Brendan
 Gender: Male
 Music: Male
 
-=== PARTNER_ORION_GRASS ===
-Name: Orion
+=== PARTNER_VWT_HARLEY_GRASS ===
+Name: Harley
 Class: Rival
 Pic: Steven
-Gender: Male
-Music: Male
+Gender: Female
+Music: Female
 AI: Basic Trainer
 
-Junglide (M)
+Snivy (F)
 Level: 5
 
-=== PARTNER_ORION_FIRE ===
-Name: Orion
+=== PARTNER_VWT_HARLEY_FIRE ===
+Name: Harley
 Class: Rival
 Pic: Steven
-Gender: Male
-Music: Male
+Gender: Female
+Music: Female
+AI: Basic Trainer
 
-Parmi (M)
+Fuecoco (F)
 Level: 5
 
-=== PARTNER_ORION_WATER ===
-Name: Orion
+=== PARTNER_VWT_HARLEY_WATER ===
+Name: Harley
 Class: Rival
 Pic: Steven
-Gender: Male
-Music: Male
+Gender: Female
+Music: Female
+AI: Basic Trainer
 
-Radpole (M)
+Froakie (F)
 Level: 5

@@ -9,15 +9,15 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
     MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
         VAR_VAST_WOODS_STATE, 0 {
             savebgm(MUS_NONE)
-            hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
-            hideobjectat(LOCALID_ILANNA, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            hideobjectat(LOCALID_PLAYER, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
             hideobjectat(LOCALID_ADMIN1, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
             hideobjectat(LOCALID_ADMIN2, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
+            hideobjectat(LOCALID_ILANNA, MAP_CENTRA_NE_POKEMON_ACADEMY1F)
             end
         }
     ]
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_VAST_WOODS_STATE, 0 {
+        VAR_VAST_WOODS_STATE, VAST_WOODS_STATE_SUBZERO_HIDEOUT_CUTSCENE {
             lock
             applymovement(LOCALID_LEON, moves(walk_left * 2
                                               walk_right * 3
@@ -28,32 +28,32 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             delay(80)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(LOCALID_LEON)
-            msgbox(format("Yo, any word from the Boss yet? She should've been here by now."))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Yo, any word from the Boss yet? She should've been here by now."))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Leon, you gotta chill out!\nShe'll be here any minute."))
+            msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Leon, you gotta chill out!\nShe'll be here any minute."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Yeah, I know.\nIt's just that we're short a person and 3 whole Pokémon, and I honestly don't think she'll take that kind of news lightly…"))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Yeah, I know. But we're short a person and three whole Pokémon!\lDo you really think she'll take that kind of news lightly?"))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Again, you gotta relax dude!\nAs long as you tell the truth like you said you would, you'll be fine.\p"
-                          "I don't think she's the type of person to trip over something slightly inconvenient, anyway."))
+            msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Again, you gotta relax dude!\nAs long as you tell the truth like you said you would, we'll be fine.\p"
+                          "And no, I don't think she's the type of person to trip over something slightly inconvenient, anyway."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Huh.{PAUSE 40}\nI suppose you're right."), MSGBOX_AUTOCLOSE)
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Huh.{PAUSE 40}\nI guess you're right."), MSGBOX_AUTOCLOSE)
             applymovement(LOCALID_LEON, moves(walk_left * 2
                                               walk_right * 3
                                               walk_left * 2
                                               walk_in_place_fast_down))
             waitmovement(0)
-            msgbox(format("I'm gonna grab a drink.\nYou want anything?"))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: I'm gonna grab a drink.\nYou want anything?"))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceRight)
             waitmovement(0)
-            msgbox(format("Just get me a Lemonade."))
+            msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Just get me a Fresh Water, thanks."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Aight."), MSGBOX_AUTOCLOSE)
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Aight."), MSGBOX_AUTOCLOSE)
             delay(8)
             applymovement(LOCALID_LEON, moves(walk_down * 2
                                               walk_right * 8))
@@ -68,7 +68,7 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             applymovement(LOCALID_ILANNA, moves(set_visible
                                                 walk_down))
             waitse
-            msgbox("???: Please excuse our tardiness.", MSGBOX_AUTOCLOSE)
+            msgbox("{COLOR RED}???{COLOR DARK_GRAY}: Please excuse our tardiness.", MSGBOX_AUTOCLOSE)
             playse(SE_EXIT)
             applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 3
                                                      walk_down
@@ -111,114 +111,88 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             msgbox(format("Both: Boss!"))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Leon: Don't even worry about being late, ma'am. It's all cool!"), MSGBOX_AUTOCLOSE)
-            delay(60)
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Don't even worry about being late, ma'am. It's all cool!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("You seem to be short a person.\nAny explanations?"))
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: You seem to be short a person.\nAny explanations?"))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Well, you see Boss, the 3 Pokémon you gave to the 3 of us suddenly ran out of the hideout and out of the Woods.\p"
-                          "We all trailed behind them, but by the time we caught up to them, there were two kids standing in the way of us and the Pokémon!\p"
-                          "They battled us with the Pokémon, and then fled to Woodridge Town.\p"
-                          "Harley, without question, decided to go AWOL and follow them into the Town.\p"
-                          "Gavin and I, however, retreated back to this hideout.\p"
-                          "Neither of us have seen Harley, the two kids, or the Pokémon since yesterday evening."))
-            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            waitmovement(0)
-            msgbox(format("Interesting.{PAUSE 40}\nDid you happen to get the names of the kids?"))
-            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
-            waitmovement(0)
-            msgbox(format("We did, ma'am. Their names were {PLAYER} and Orion."))
-            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            waitmovement(0)
-            msgbox(format("H{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}h{PAUSE 8}m{PAUSE 8}.{PAUSE 8}.{PAUSE 8}.{PAUSE 40}\n"
-                          "Looks like the rumors were true."))
-            playse(SE_M_METRONOME)
-            applymovement(LOCALID_LEON, moves(emote_question_mark
-                                              delay_16 * 2
-                                              walk_in_place_up))
-            waitmovement(0)
-            msgbox(format("Huh?\nWhat rumors, Boss?\lWere you expecting them to interfere?"))
-            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            waitmovement(0)
-            msgbox(format("Oh, no.\nNot at all.\pLet me ask you two something.\nAre you familiar with Prof. Oak?"))
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
-            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
-            waitmovement(0)
-            msgbox(format("Leon: Of course!\nGavin: Yes ma'am!"))
-            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            waitmovement(0)
-            checkplayergender
-            if(!var(VAR_RESULT)){
-                bufferstring(STR_VAR_1, "son")
+            if(flag(FLAG_LOST_FIRST_BATTLE)) {
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Well, you see Boss, the three Pokémon you gave to the three of us suddenly ran out of the hideout and out of the Woods.\p"
+                          "We all trailed behind them, but by the time we caught up to them, the Pokémon were hiding behind some random kid.\p"
+                          "{COLOR RED}Harley{COLOR DARK_GRAY} and I got into a fight, and she ended up battling against us with the rando.\p"
+                          "We defeated them, but both {COLOR RED}Harley{COLOR DARK_GRAY} and the kid took the Pokémon and ran towards Woodridge after the battle.\p"
+                          "Grant and I retreated back to this hideout, and haven't seen any of them since yesterday."))
             } else {
-                bufferstring(STR_VAR_1, "daughter")
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Well, you see Boss, the three Pokémon you gave to the three of us suddenly ran out of the hideout and out of the Woods.\p"
+                          "We all trailed behind them, but by the time we caught up to them, the Pokémon were hiding behind some random kid.\p"
+                          "{COLOR RED}Harley{COLOR DARK_GRAY} and I got into a fight, and she ended up battling against us with the rando.\p"
+                          "After the battle, both {COLOR RED}Harley{COLOR DARK_GRAY} and the kid took the Pokémon and ran towards Woodridge.\p"
+                          "Grant and I retreated back to this hideout, and haven't seen any of them since yesterday."))
             }
-            msgbox("A little birdie informed me that two\n"
-                   "descendants of Prof. Oak had recently\l"
-                   "moved to this region.\p"
-                   "I've done my research. Those\n"
-                   "descendants are his granddaughter\l"
-                   "Daisy, and her {STR_VAR_1}, {PLAYER}.$")
-            applymovement(LOCALID_GRUNT, moves(delay_8
-                                               emote_exclamation_mark))
-            applymovement(LOCALID_LEON, moves(emote_exclamation_mark
-                                              delay_16 * 2
-                                              walk_in_place_up))
-            playse(SE_PIN)
-            delay(8)
-            playse(SE_PIN)
-            waitmovement(0)
-            msgbox(format("Holy Miltank!\nAre you serious?!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Very."))
-            applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: Did you happen to get the kid's name?"))
+            applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Wow…{PAUSE 40}\nI would've never guessed that in a million years!"))
-            //applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
-            //waitmovement(0)
-            //msgbox(format("Now that {PLAYER} and Orion know about Subzero's existence, and considering {PLAYER}'s uncle's past, unfortunately, with this information comes a threat to Subzero as a whole."))
+            if(!checkplayergender){
+                bufferstring(STR_VAR_1, "")
+                bufferstring(STR_VAR_2, "{COLOR BLUE}")
+            } else {
+                bufferstring(STR_VAR_1, "s")
+                bufferstring(STR_VAR_2, "{COLOR RED}")
+            }
+            msgbox("{COLOR BLUE}Grant{COLOR DARK_GRAY}: We did, ma'am!\n It's {STR_VAR_2}{PLAYER}{COLOR DARK_GRAY}.\p"
+                   "We were able to catch it before {STR_VAR_1}he and\n"
+                   "{COLOR RED}Harley{COLOR DARK_GRAY} bolted off!")
+            applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
+            waitmovement(0)
+            msgbox("Boss: {STR_VAR_2}{PLAYER}{COLOR DARK_GRAY}… {PAUSE 45}Interesting.\n"
+                   "{PAUSE 45}As for {COLOR RED}Harley{COLOR DARK_GRAY}, I can already tell she was\l"
+                   "going to be a problem.\p"
+                   "But, if she's now willing to go AWOL and\n"
+                   "bring a stranger into this such as\l"
+                   "this {STR_VAR_2}{PLAYER}{COLOR DARK_GRAY} you speak of, then that\l"
+                   "must mean…")
             exclam(LOCALID_ILANNA)
-            msgbox(format("Pardon me, it seems we've gone a bit off-track.\p"
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: Pardon me, it seems we've gone a bit off-track.\p"
                           "You three had been assigned a mission here. Were you able to complete it?"))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
             msgbox(format("Both: Yes, ma'am!\p"
-                          "Leon: We were able to locate and excavate some debris from what seems to be a satellite scattered throughout the Woods!"))
+                          "{COLOR BLUE}Leon{COLOR DARK_GRAY}: We were able to locate and excavate some debris from what seems to be a satellite scattered throughout the Woods!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Excellent to hear.{PAUSE 40}\nLeon, your continued loyalty to Subzero has rightfully landed you a promotion to General.\pCongratulations."))
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: Excellent to hear.{PAUSE 40} Leon, your continued loyalty to Subzero has rightfully landed you a promotion to General.\pCongratulations."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("It is an honor, Boss!"))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: It is an honor, Boss!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("As for Harley, she's wanted for treason."))
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: As for {COLOR RED}Harley{COLOR DARK_GRAY}, she's now wanted for treason."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("I see…"))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: I see…"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("I'm not sending a specialized group to look for her, however.\p"
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: I'm not sending a specialized group or anything of that sort to look for her, however.\p"
                           "I'm leaving that solely in the hands of you, Leon, as your first mission as General.\p"
-                          "Find Harley.{PAUSE 40}\nI want her alive."))
+                          "Find {COLOR RED}Harley{COLOR DARK_GRAY}.{PAUSE 40}\nI want her alive."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Yes, ma'am!"))
+            msgbox(format("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Yes, ma'am!"))
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("This is also a reminder to the both of you that we'll be holding a mandatory meeting at the main HQ 3 days from now.\p"
-                          "Until then, Leon, I order you to stay put in this hideout. Gavin's coming back to HQ with me."))
+            msgbox(format("{COLOR RED}Boss{COLOR DARK_GRAY}: This is also a reminder to the now both of you about the mandatory meeting at the main HQ in the very near future, so make sure to check your email for updates.\p"
+                          "Until this meeting, Leon, I order you to stay put in this hideout until further notice. Grant's coming back to HQ with me."))
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
             msgbox(format("Both: Yes, Boss!"))
             applymovement(LOCALID_ILANNA, moves(walk_in_place_fast_right))
             waitmovement(0)
-            message(format("You two. {PAUSE 48}Grab the scrap they found and meet us outside."))
+            message(format("{COLOR RED}Boss{COLOR DARK_GRAY}: You two. {PAUSE 48}Grab the scrap they found and meet us outside."))
             delay(20)
             applymovement(LOCALID_ADMIN1, moves(walk_in_place_fast_left))
             applymovement(LOCALID_ADMIN2, moves(walk_in_place_fast_right))
@@ -239,18 +213,27 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             delay(48)
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceUp)
             waitmovement(0)
-            msgbox(format("Wait! Boss, what exactly do you plan on doing about Orion and {PLAYER}?"))
+            if(!checkplayergender){
+                bufferstring(STR_VAR_1, "im")
+                bufferstring(STR_VAR_2, "{COLOR BLUE}")
+            } else {
+                bufferstring(STR_VAR_1, "er")
+                bufferstring(STR_VAR_2, "{COLOR RED}")
+            }
+            msgbox("{COLOR BLUE}Leon{COLOR DARK_GRAY}: Wait! Boss, what do you\nplan on doing about {STR_VAR_2}{PLAYER}{COLOR DARK_GRAY}?")
             applymovement(LOCALID_ILANNA, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Those two…{PAUSE 40}\nI'll just simply leave them in the hands of a good friend of mine.\p"
-                          "Alright.\nLet's get going, Gavin."))
+            msgbox("{COLOR RED}Boss{COLOR DARK_GRAY}: {STR_VAR_2}{PLAYER}{COLOR DARK_GRAY}…{PAUSE 40}\nI'll just simply leave h{STR_VAR_1} in the hands\l"
+                   "of a good friend of mine.\p"
+                   "Alright.\nLet's get going, Grant.")
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceUp)
             applymovement(LOCALID_LEON, Common_Movement_WalkInPlaceLeft)
             waitmovement(0)
-            msgbox(format("Yes, Boss!"))
+            msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Yes, Boss!"))
             applymovement(LOCALID_GRUNT, Common_Movement_WalkInPlaceDown)
             waitmovement(0)
-            msgbox(format("Let's go, Snorunt!"), MSGBOX_AUTOCLOSE)
+            msgbox(format("Let's go, Snorunt!"))
+            closemessage
             applymovement(LOCALID_SNORUNT2, moves(walk_left * 3
                                                   walk_up * 7
                                                   walk_left * 3
@@ -297,7 +280,6 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
                                                 walk_up * 3
                                                 set_invisible))
             delay(16)
-            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
             waitmovement(LOCALID_ILANNA)
             playse(SE_EXIT)
             applymovement(LOCALID_LEON, moves(walk_in_place_fast_down))
@@ -307,22 +289,18 @@ mapscripts CentraNE_PokemonAcademy1F_MapScripts {
             playse(SE_EXIT)
             applymovement(LOCALID_LEON, moves(walk_in_place_fast_left))
             delay(32)
-            applymovement(LOCALID_LEON, moves(walk_in_place_fast_up))
             waitmovement(LOCALID_ADMIN2)
             playse(SE_EXIT)
             waitmovement(LOCALID_ADMIN1)
             playse(SE_EXIT)
             waitse
-            fadenewbgm(MUS_NONE)
+            fadenewbgm(MUS_DUMMY)
             fadescreen(FADE_TO_BLACK)
 			setflag(FLAG_HIDE_VAST_WOODS_SUBZERO_HIDEOUT_NPCS)
             setvar(VAR_VAST_WOODS_STATE, 1)
-			setflag(FLAG_HIDE_GYM_GUIDE_CENTRA_SE)
-			clearflag(FLAG_HIDE_CENTRA_CITY_HARLEY)
-            setvar(VAR_CENTRA_CITY_STATE, 1)
-            delay(75)
             resumefakertc
-            warpnofade(MAP_RUSTBORO_CITY_POKEMON_SCHOOL, 8, 5)
+            delay(75)
+            warpnofade(MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 13, 6)
             waitstate
             release
             end
