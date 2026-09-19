@@ -1,3 +1,4 @@
+raw `
 VictoryRoad_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
 	.byte 0
@@ -216,3 +217,4 @@ VictoryRoad_1F_Text_KatelynnDefeat:
 VictoryRoad_1F_Text_KatelynnPostBattle:
 	.string "Humph, go right on ahead.\n"
 	.string "See if I care.$"
+`

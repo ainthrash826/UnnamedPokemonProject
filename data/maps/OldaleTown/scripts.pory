@@ -5,14 +5,12 @@ mapscripts OldaleTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_IMPERIAL_ISLAND)
 		setrespawn(HEAL_LOCATION_OLDALE_TOWN)
-		random(100)
-		if(var(VAR_RESULT) == 22) {
+		if(random(240) == 22) {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES_SHINY(WINGULL))
 		} else {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(WINGULL))
 		}
-		random(100)
-		if(var(VAR_RESULT) < 90) {
+		if(random(100) < 90) {
 			setflag(FLAG_TEMP_1)
 		}
 		end
@@ -46,14 +44,14 @@ script ImperialIslandSign {
 		waitse
 		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_up * 7))
 		waitmovement(0)
-		msgbox(format("{CLEAR_TO 70}Globe Crater{PAUSE 60}\n"
-					  "This crater was created thousands of years ago via impact from a relatively small meteor.\p"
+		msgbox(format("{CLEAR_TO 70}Globe Crater\n"
+					  "This crater was created around four hundred years ago via impact from a relatively small meteor.\p"
 					  "Over the years, it began taking on the planet-like appearance it has today."), MSGBOX_AUTOCLOSE)
 		waitbuttonpress
 		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_down * 7))
 		waitmovement(0)
 		special(RemoveCameraObject)
-		msgbox(format("A note from Leader Redbeard:\nYarrgh! Don't be littering in me island's mural!\p'Er else I'll be after yer head!"), MSGBOX_SIGN)
+		msgbox(format("A note from Redbeard:\nYarrgh! Don't be littering in me island's mural!\p'Er else I'll be after yer head!"), MSGBOX_SIGN)
 	}
 	end
 }

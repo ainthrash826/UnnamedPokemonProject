@@ -1,3 +1,4 @@
+raw `
 LilycoveCity_PokemonTrainerFanClub_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LilycoveCity_PokemonTrainerFanClub_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_PokemonTrainerFanClub_OnTransition
@@ -808,3 +809,4 @@ LilycoveCity_PokemonTrainerFanClub_Text_YourePowerfulButNotTrueStrength:
 	.string "True strength is…!\n"
 	.string "… …\p"
 	.string "Actually, I have no idea, either.$"
+`

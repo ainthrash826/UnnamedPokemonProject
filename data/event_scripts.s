@@ -39,6 +39,7 @@
 #include "constants/game_stat.h"
 #include "constants/item.h"
 #include "constants/items.h"
+#include "constants/newstates.h"
 #include "constants/heal_locations.h"
 #include "constants/layouts.h"
 #include "constants/lilycove_lady.h"
@@ -1058,6 +1059,7 @@ gStdScripts_End::
 
 	.include "data/scripts/config.inc"
 	.include "data/scripts/debug.inc"
+	.include "data/scripts/new.inc"
 
 EventScript_WhiteOut::
 	call EverGrandeCity_HallOfFame_EventScript_ResetEliteFour
@@ -1068,8 +1070,8 @@ EventScript_AfterWhiteOutHeal::
 	lockall
 	msgbox gText_FirstShouldRestoreMonsHealth
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
-	call_if_unset FLAG_DEFEATED_CENTRA_SE_GYM, EventScript_AfterWhiteOutHealMsgPreFirstBoss
-	call_if_set FLAG_DEFEATED_CENTRA_SE_GYM, EventScript_AfterWhiteOutHealMsg
+	call_if_unset FLAG_BADGE01_GET, EventScript_AfterWhiteOutHealMsgPreFirstBoss
+	call_if_set FLAG_BADGE01_GET, EventScript_AfterWhiteOutHealMsg
 	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	fadedefaultbgm
@@ -1556,16 +1558,15 @@ EventScript_OWHealParty::
 	end
 
 EventScript_ToggleAutorun::
-	goto_if_set FLAG_SYS_AUTORUN, EventScript_ToggleAutorun_2
+	goto_if_set FLAG_SYS_AUTORUN, EventScript_ToggleAutorun_1
 	setflag FLAG_SYS_AUTORUN
 	playse SE_PC_LOGIN
-EventScript_ToggleAutorun_1:
 	end
 
-EventScript_ToggleAutorun_2:
+EventScript_ToggleAutorun_1:
 	clearflag FLAG_SYS_AUTORUN
 	playse SE_PC_OFF
-	goto EventScript_ToggleAutorun_1
+	end
 
 Common_EventScript_RemoveStaticEncounter::
 	goto_if_set FLAG_SYS_CTRL_OBJ_DELETE, Common_EventScript_RemoveStaticEncounter_1
@@ -1584,192 +1585,6 @@ Common_EventScript_RemoveStaticEncounter_2:
 	removeobject VAR_LAST_TALKED
 	goto Common_EventScript_RemoveStaticEncounter_3
 
-EventScript_BufferTime::
-	gettime
-	goto_if_unset FLAG_SYS_USE_24HR, EventScript_BufferTime_2
-	compare VAR_0x8000, 9
-	goto_if_le EventScript_BufferTime_14
-	buffernumberstring STR_VAR_1, VAR_0x8000
-EventScript_BufferTime_1:
-	compare VAR_0x8001, 10
-	goto_if_lt EventScript_BufferTime_6
-	buffernumberstring STR_VAR_2, VAR_0x8001
-EventScript_BufferTime_5:
-	goto_if_unset FLAG_SYS_USE_24HR, EventScript_BufferTime_17
-	return
-
-EventScript_BufferTime_2:
-	copyvar VAR_TEMP_0, VAR_0x8000
-	compare VAR_TEMP_0, 13
-	goto_if_ge EventScript_BufferTime_10
-	compare VAR_TEMP_0, 0
-	goto_if_eq EventScript_BufferTime_11
-EventScript_BufferTime_9:
-	buffernumberstring STR_VAR_1, VAR_TEMP_0
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_6:
-	switch VAR_0x8001
-	case 0, EventScript_BufferTime_20
-	case 1, EventScript_BufferTime_21
-	case 2, EventScript_BufferTime_22
-	case 3, EventScript_BufferTime_23
-	case 4, EventScript_BufferTime_24
-	case 5, EventScript_BufferTime_25
-	case 6, EventScript_BufferTime_26
-	case 7, EventScript_BufferTime_27
-	case 8, EventScript_BufferTime_28
-	case 9, EventScript_BufferTime_29
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_10:
-	subvar VAR_TEMP_0, 12
-	goto EventScript_BufferTime_9
-
-EventScript_BufferTime_11:
-	setvar VAR_TEMP_0, 12
-	goto EventScript_BufferTime_9
-
-EventScript_BufferTime_14:
-	switch VAR_0x8000
-	case 0, EventScript_BufferTime_31
-	case 1, EventScript_BufferTime_32
-	case 2, EventScript_BufferTime_33
-	case 3, EventScript_BufferTime_34
-	case 4, EventScript_BufferTime_35
-	case 5, EventScript_BufferTime_36
-	case 6, EventScript_BufferTime_37
-	case 7, EventScript_BufferTime_38
-	case 8, EventScript_BufferTime_39
-	case 9, EventScript_BufferTime_40
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_17:
-	compare VAR_0x8000, 12
-	goto_if_ge EventScript_BufferTime_41
-	bufferstring STR_VAR_3, EventScript_BufferTime_Text_1
-	return
-
-EventScript_BufferTime_20:
-	bufferstring STR_VAR_2, TimeString_0
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_21:
-	bufferstring STR_VAR_2, TimeString_1
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_22:
-	bufferstring STR_VAR_2, TimeString_2
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_23:
-	bufferstring STR_VAR_2, TimeString_3
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_24:
-	bufferstring STR_VAR_2, TimeString_4
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_25:
-	bufferstring STR_VAR_2, TimeString_5
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_26:
-	bufferstring STR_VAR_2, TimeString_6
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_27:
-	bufferstring STR_VAR_2, TimeString_7
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_28:
-	bufferstring STR_VAR_2, TimeString_8
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_29:
-	bufferstring STR_VAR_2, TimeString_9
-	goto EventScript_BufferTime_5
-
-EventScript_BufferTime_31:
-	bufferstring STR_VAR_1, TimeString_0
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_32:
-	bufferstring STR_VAR_1, TimeString_1
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_33:
-	bufferstring STR_VAR_1, TimeString_2
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_34:
-	bufferstring STR_VAR_1, TimeString_3
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_35:
-	bufferstring STR_VAR_1, TimeString_4
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_36:
-	bufferstring STR_VAR_1, TimeString_5
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_37:
-	bufferstring STR_VAR_1, TimeString_6
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_38:
-	bufferstring STR_VAR_1, TimeString_7
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_39:
-	bufferstring STR_VAR_1, TimeString_8
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_40:
-	bufferstring STR_VAR_1, TimeString_9
-	goto EventScript_BufferTime_1
-
-EventScript_BufferTime_41:
-	bufferstring STR_VAR_3, EventScript_BufferTime_Text_0
-	return
-
-
-EventScript_BufferTime_Text_0:
-	.string "PM$"
-
-EventScript_BufferTime_Text_1:
-	.string "AM$"
-
-TimeString_0::
-	.string "00$"
-
-TimeString_1::
-	.string "01$"
-
-TimeString_2::
-	.string "02$"
-
-TimeString_3::
-	.string "03$"
-
-TimeString_4::
-	.string "04$"
-
-TimeString_5::
-	.string "05$"
-
-TimeString_6::
-	.string "06$"
-
-TimeString_7::
-	.string "07$"
-
-TimeString_8::
-	.string "08$"
-
-TimeString_9::
-	.string "09$"
 
 	.include "data/scripts/field_poison.inc"
 
@@ -1977,3 +1792,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/wild_encounter.inc"
+
+	.include "data/maps/SavageBay/scripts.inc"

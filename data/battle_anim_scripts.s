@@ -296,21 +296,23 @@ gBattleAnimMove_Feint::
 	end
 
 gBattleAnimMove_Pluck::
-	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_ATTACKER
 	create_basic_hitsplat_sprite ANIM_ATTACKER, 40, x=-10, y=-5, relative_to=ANIM_TARGET, animation=2
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 3, 0, 20, 2, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 7, 1, 20, 1, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, -3, 5, 25, 2, -1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 4, -4, 30, 3, -1
-	delay 30
-	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 7, 1
+	delay 10
+	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_ATTACKER
 	create_basic_hitsplat_sprite ANIM_ATTACKER, 40, x=5, y=10, relative_to=ANIM_TARGET, animation=2
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 3, -4, 20, 1, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 7, -6, 20, 0, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, -3, -9, 25, 1, -1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 4, -4, 30, 2, -1
-	delay 30
-	playsewithpan SE_M_POISON_POWDER, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 7, 1
+	delay 10
+	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_ATTACKER
 	create_basic_hitsplat_sprite ANIM_ATTACKER, 40, x=0, y=0, relative_to=ANIM_TARGET, animation=2
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, -3, -4, 20, 1, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 7, -6, 25, 0, 1
@@ -319,7 +321,7 @@ gBattleAnimMove_Pluck::
 	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 7, 1
 	delay 10
 	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_ATTACKER
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 40, 5, 10, 1, 2
+	create_basic_hitsplat_sprite ANIM_ATTACKER, 40, x=0, y=0, relative_to=ANIM_TARGET, animation=2
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 3, -4, 20, 1, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, 7, -6, 20, 0, 1
 	createsprite gPluckParticleSpriteTemplate, ANIM_ATTACKER, 40, -3, -9, 25, 1, -1
@@ -2417,7 +2419,6 @@ gBattleAnimMove_Discharge::
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_DEF_PARTNER, 5, 14
 	createvisualtask AnimTask_HorizontalShake, 5, ANIM_ATK_PARTNER, 5, 14
-	call DischargeElectrify
 	waitforvisualfinish
 	clearmonbg ANIM_ATTACKER
 	blendoff
@@ -14010,7 +14011,7 @@ gBattleAnimMove_Snowscape::
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
 	createvisualtask AnimTask_CreateSnowflakes, 2, 0, 3, 120
-	delay 60
+	waitforvisualfinish
 	playsewithpan SE_M_GUST2, SOUND_PAN_ATTACKER
 	delay 30
 	waitforvisualfinish
@@ -29051,7 +29052,7 @@ gBattleAnimGeneral_GulpMissile:: @ Tackle anim (placeholder)
 	end
 
 gBattleAnimGeneral_StrongWinds::
-	playsewithpan SE_M_GUST, SOUND_PAN_MIDDLE
+	playsewithpan SE_M_TWISTER, SOUND_PAN_MIDDLE
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 12, 12, RGB(20, 20, 20)
 	waitforvisualfinish
 	createvisualtask AnimTask_LoadWindstormBackground, 5, FALSE

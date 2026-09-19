@@ -1,3 +1,4 @@
+raw `
 BattleFrontier_OutsideEast_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_OutsideEast_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_OutsideEast_OnTransition
@@ -434,3 +435,4 @@ BattleFrontier_OutsideEast_Text_StickyMonWithLongTail:
 	.string "with a long tail up ahead!\p"
 	.string "It was hiding under a boulder, and\n"
 	.string "it kept staring at me!$"
+`

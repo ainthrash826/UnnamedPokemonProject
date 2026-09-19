@@ -1,3 +1,4 @@
+raw `
 TrainerHill_Entrance_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, TrainerHill_Entrance_OnResume
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrainerHill_Entrance_OnReturn
@@ -448,3 +449,4 @@ TrainerHill_Entrance_Text_DoYouKnowWhenTheyOpen:
 TrainerHill_Elevator_Text_ReturnToReception:
 	.string "Would you like to return to\n"
 	.string "the reception counter?$"
+`

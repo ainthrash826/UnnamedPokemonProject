@@ -1,3 +1,4 @@
+raw `
 MossdeepCity_SpaceCenter_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_SpaceCenter_1F_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_1F_OnTransition
@@ -422,3 +423,4 @@ MossdeepCity_SpaceCenter_1F_Text_MagmaIntentToStealNotice:
 	.string "We will take the fuel no matter what.\p"
 	.string "“Let there be more land!\n"
 	.string "                                          TEAM MAGMA”$"
+`

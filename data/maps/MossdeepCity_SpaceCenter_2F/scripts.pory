@@ -1,3 +1,4 @@
+raw `
 MossdeepCity_SpaceCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, MossdeepCity_SpaceCenter_2F_OnFrame
@@ -245,7 +246,7 @@ MossdeepCity_SpaceCenter_2F_EventScript_ChoosePartyForMultiBattle::
 	goto MossdeepCity_SpaceCenter_2F_EventScript_ReadyForBattlePrompt
 
 MossdeepCity_SpaceCenter_2F_EventScript_DoStevenMultiBattle::
-	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_STEVEN
+	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand, TRAINER_TABITHA_MOSSDEEP, MossdeepCity_SpaceCenter_Text_TabithaDefeat, PARTNER_VWT_HARLEY_GRASS
 	switch VAR_RESULT
 	case 1, MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha
 	fadescreen FADE_TO_BLACK
@@ -488,3 +489,4 @@ MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:
 	.string "after this.\p"
 	.string "Oh, yes, I don't live in RUSTBORO CITY.\n"
 	.string "I live right here on this island.$"
+`

@@ -1,3 +1,4 @@
+raw `
 RusturfTunnel_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RusturfTunnel_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, RusturfTunnel_OnFrame
@@ -335,7 +336,6 @@ RusturfTunnel_EventScript_Grunt::
 	clearflag FLAG_DEVON_GOODS_STOLEN
 	setflag FLAG_RECOVERED_DEVON_GOODS
 	setvar VAR_RUSTBORO_CITY_STATE, 4
-	setvar VAR_BRINEY_HOUSE_STATE, 1
 	setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
 	release
 	end
@@ -525,3 +525,4 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "protect POKéMON, right?\l"
 	.string "There's a feel-good story!$"
 
+`

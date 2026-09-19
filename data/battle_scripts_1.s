@@ -2710,7 +2710,7 @@ BattleScript_FaintBattler::
 	undodynamax BS_FAINTED
 	playfaintcry BS_FAINTED
 .if N_FAINT_WAITMONCRY == TRUE
-	waitcry BS_FAINTED
+	waitcry
 .else
 	pause B_WAIT_TIME_LONG
 	pause B_WAIT_TIME_LONG
@@ -2898,8 +2898,6 @@ BattleScript_LocalBattleLost::
 	jumpifbattletype BATTLE_TYPE_TRAINER_HILL, BattleScript_LocalBattleLostPrintTrainersWinText
 	jumpifbattletype BATTLE_TYPE_EREADER_TRAINER, BattleScript_LocalBattleLostEnd
 	jumpifhalfword CMP_EQUAL, gTrainerBattleParameter + 2, TRAINER_SECRET_BASE, BattleScript_LocalBattleLostEnd
-	jumpifbyte CMP_EQUAL, gTrainerBattleParameter + 2, TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT, BattleScript_LocalBattleLostPrintNoWhiteout
-	jumpifbyte CMP_EQUAL, gTrainerBattleParameter + 2, TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT, BattleScript_LocalBattleLostPrintNoWhiteout
 	jumpifbyte CMP_NOT_EQUAL, cMULTISTRING_CHOOSER, 0, BattleScript_RivalBattleLost
 	jumpifnowhiteout BattleScript_LocalBattleLostEnd_
 	jumpifbattletype BATTLE_TYPE_INGAME_PARTNER, BattleScript_LocalBattleLostPrintWhiteOut
@@ -2926,11 +2924,6 @@ BattleScript_LocalBattleLostEnd::
 BattleScript_LocalBattleLostEnd::
 	end
 .endif
-
-BattleScript_LocalBattleLostPrintNoWhiteout::
-	printstring STRINGID_PLAYERLOSTTOENEMYTRAINER
-	waitmessage B_WAIT_TIME_LONG
-	end2
 
 BattleScript_CheckDomeDrew::
 	jumpifbyte CMP_EQUAL, gBattleOutcome, B_OUTCOME_DREW, BattleScript_LocalBattleLostEnd_
@@ -3173,6 +3166,8 @@ BattleScript_WeatherContinues::
 .if N_SKIP_WEATHER_MESSAGES == FALSE
 	printfromtable gWeatherTurnStringIds
 	waitmessage B_WAIT_TIME_LONG
+.else
+	printstring STRINGID_EMPTYSTRING4
 .endif
 	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
 	setbyte gBattleCommunication, 0

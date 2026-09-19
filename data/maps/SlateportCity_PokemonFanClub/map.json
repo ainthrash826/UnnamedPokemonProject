@@ -2,9 +2,9 @@
   "id": "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
   "name": "SlateportCity_PokemonFanClub",
   "layout": "LAYOUT_SLATEPORT_CITY_POKEMON_FAN_CLUB",
-  "music": "MUS_SLATEPORT",
   "region": "REGION_HOENN",
-  "region_map_section": "MAPSEC_SLATEPORT_CITY",
+  "music": "MUS_RUSTBORO",
+  "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -138,14 +138,14 @@
       "x": 6,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY",
+      "dest_map": "MAP_MAUVILLE_CITY",
       "dest_warp_id": "4"
     },
     {
       "x": 7,
       "y": 10,
       "elevation": 0,
-      "dest_map": "MAP_SLATEPORT_CITY",
+      "dest_map": "MAP_MAUVILLE_CITY",
       "dest_warp_id": "4"
     }
   ],

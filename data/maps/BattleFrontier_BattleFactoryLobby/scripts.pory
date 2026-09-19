@@ -1,3 +1,4 @@
+raw `
 BattleFrontier_BattleFactoryLobby_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleFactoryLobby_OnFrame
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleFactoryLobby_OnWarp
@@ -549,3 +550,4 @@ BattleFrontier_BattleFactoryLobby_Text_ExplainOpenLvRules:
 	.string "In the Open Level, the rental POKéMON\n"
 	.string "and the opposing TRAINERS' POKéMON\l"
 	.string "are all Level 100.$"
+`

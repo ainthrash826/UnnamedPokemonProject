@@ -1,3 +1,4 @@
+raw `
 SlateportCity_Harbor_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, SlateportCity_Harbor_OnTransition
 	.byte 0
@@ -538,3 +539,4 @@ SlateportCity_Harbor_Text_HandedScannerToStern:
 SlateportCity_Harbor_Text_ThisWillHelpResearch:
 	.string "CAPT. STERN: Thanks, {PLAYER}{KUN}!\n"
 	.string "This will help our research a lot!$"
+`

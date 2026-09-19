@@ -1,3 +1,4 @@
+raw `
 LilycoveCity_DepartmentStore_5F_MapScripts::
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LilycoveCity_DepartmentStore_5F_OnWarp
 	.byte 0
@@ -159,3 +160,4 @@ LilycoveCity_DepartmentStore_5F_Text_SellManyCuteMatsHere:
 LilycoveCity_DepartmentStore_5F_Text_ClosedRooftopForWeather:
 	.string "I think they closed the rooftop\n"
 	.string "because the weather is wild today.$"
+`

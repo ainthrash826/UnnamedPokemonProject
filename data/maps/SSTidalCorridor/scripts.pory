@@ -1,3 +1,4 @@
+raw `
 SSTidalCorridor_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SSTidalCorridor_OnFrame
 	.byte 0
@@ -334,3 +335,4 @@ SSTidalCorridor_Text_Cabin3:
 
 SSTidalCorridor_Text_Cabin4:
 	.string "Cabin 4$"
+`

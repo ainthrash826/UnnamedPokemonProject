@@ -1,3 +1,4 @@
+raw `
 SootopolisCity_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SootopolisCity_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_OnTransition
@@ -1698,3 +1699,4 @@ SootopolisCity_Text_DazzledByMentor:
 	.string "WALLACE: I'm sure that you will be\n"
 	.string "dazzled by my mentor's breathtakingly\l"
 	.string "elegant battle style.$"
+`

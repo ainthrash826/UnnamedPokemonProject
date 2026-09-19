@@ -1,3 +1,4 @@
+raw `
 LilycoveCity_Harbor_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_Harbor_OnTransition
 	.byte 0
@@ -583,3 +584,4 @@ LilycoveCity_Harbor_Text_SailorFerryAvailable:
 	.string "The folks at the SHIPYARD in SLATEPORT\n"
 	.string "must've worked extra hard.\p"
 	.string "Well, it's my turn to get busy now!$"
+`

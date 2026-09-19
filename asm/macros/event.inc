@@ -565,6 +565,16 @@
 	.2byte \y
 	.endm
 
+	@ Retrieves the player's zero-indexed x-coordinate in the map, and stores them in the specified variable.
+	.macro getplayerx x=VAR_RESULT
+	getplayerxy \x, VAR_TEMP_0
+	.endm
+
+	@ Retrieves the player's zero-indexed y-coordinate in the map, and stores them in the specified variable.
+	.macro getplayery y=VAR_RESULT
+	getplayerxy VAR_TEMP_0, \y
+	.endm
+
 	@ Retrieves the number of Pokemon in the player's party, and stores that number in VAR_RESULT.
 	.macro getpartysize
 	.byte SCR_OP_GETPARTYSIZE
@@ -648,6 +658,13 @@
 	.2byte \decoration
 	.endm
 
+	@ Applies the question mark emote to the specified (localId) object and plays the SE_M_METRONOME sfx.
+	.macro equestion localId:req
+	playse SE_M_METRONOME
+	applymovement \localId, Common_Movement_QuestionMark
+	waitmovement 0
+	.endm
+
 	@ Applies the exclamation mark emote to the specified (localId) object and plays the SE_PIN sfx.
 	.macro exclam localId:req
 	playse SE_PIN
@@ -726,6 +743,7 @@
 	.endm
 
 	@ Sets the specified object's invisibility to FALSE.
+	@ If no map is specified, then the current map is used.
 	.macro showobjectat localId:req, map:req
 	.byte SCR_OP_SHOWOBJECTAT
 	.2byte \localId
@@ -837,17 +855,6 @@
 	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
 	trainerbattle LOCALID_NONE, \trainer, NULL, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE
-	.endm
-
-	@ Starts a single trainer battle. Takes a trainer, intro text, loss text, and an event script which continues after the battle,regardless of the result.
-	@ When used with an event script, you can also pass in an optional flag to disable music
-    .macro trainerbattle_no_whiteout_continue_script trainer:req, intro_text:req, lose_text:req, event_script:req
-	trainerbattle TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, FALSE, FALSE
-	.endm
-
-	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text. Does not warp the player to last heal location if they lose. 
-	.macro trainerbattle_no_intro_no_whiteout trainer:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT, OBJ_ID_NONE, \trainer, NULL, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, FALSE, FALSE
 	.endm
 
 	@ Starts a double battle with the player against two trainers
@@ -1328,7 +1335,7 @@
 
 	@ Opens the Pokemart system, offering the specified products for sale.
 	@ Products should be a list of .2byte item values preceded by an .align 2
-	.macro pokemart products=Pokemart_DefaultItemList
+	.macro pokemart products=0
 	.byte SCR_OP_POKEMART
 	.4byte \products
 	.endm
@@ -1539,6 +1546,13 @@
 	.macro setweather type:req
 	.byte SCR_OP_SETWEATHER
 	.2byte \type
+	.endm
+
+	@ (set/do)weather shortcut.
+	.macro startweather type:req
+	.byte SCR_OP_SETWEATHER
+	.2byte \type
+	.byte SCR_OP_DOWEATHER
 	.endm
 
 	@ Executes the weather change queued with resetweather or setweather. The current weather will smoothly fade into the queued weather.
