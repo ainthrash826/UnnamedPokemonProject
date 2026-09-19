@@ -4,7 +4,7 @@
   "layout": "LAYOUT_DEWFORD_TOWN_GYM",
   "music": "MUS_GYM",
   "region": "REGION_HOENN",
-  "region_map_section": "MAPSEC_OLDALE_TOWN",
+  "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -13,9 +13,10 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_OLSTERN_GYM_REDBEARD",
       "graphics_id": "OBJ_EVENT_GFX_BRAWLY",
       "x": 23,
       "y": 10,
@@ -25,10 +26,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ImperialGymRedbeard",
+      "script": "OlsternGymRedbeard",
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_OLSTERN_GYM_GUIDE",
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 3,
       "y": 14,
@@ -47,15 +49,15 @@
       "x": 4,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_TOWN",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_MAUVILLE_CITY",
+      "dest_warp_id": "0"
     },
     {
       "x": 5,
       "y": 16,
       "elevation": 0,
-      "dest_map": "MAP_OLDALE_TOWN",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_MAUVILLE_CITY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -411,22 +413,5 @@
       "script": "ImperialGym_EnterPool"
     }
   ],
-  "bg_events": [
-    {
-      "type": "sign",
-      "x": 2,
-      "y": 14,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "ImperialGymStatue"
-    },
-    {
-      "type": "sign",
-      "x": 7,
-      "y": 14,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-      "script": "ImperialGymStatue"
-    }
-  ]
+  "bg_events": []
 }

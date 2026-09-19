@@ -1,5 +1,18 @@
 mapscripts Route105_MapScripts {
-	
+}
+
+script Route4South_RouteSign1 {
+	call(EventScript_BufferTime)
+	msgbox("Route 4 “Reno Boardwalk”, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
+		   "{UP_ARROW}{LEFT_ARROW} Wyrdech City", MSGBOX_SIGN)
+	end
+}
+
+script Route4South_TrainerTips {
+	msgbox(format("{CLEAR_TO 64}TRAINER TIPS\n"
+	              "Advice on catching Pokémon with a Rod: Press the A Button if you get a bite.\p"
+				  "Every area has different Rod encounters. Make sure to check through them all!"), MSGBOX_SIGN)
+	end
 }
 
 raw `

@@ -1,57 +1,40 @@
-MauvilleCity_PokemonCenter_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_PokemonCenter_1F_OnTransition
-	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
-	.byte 0
+mapscripts MauvilleCity_PokemonCenter_1F_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_MAUVILLE_CITY)
+		end
+	}
+	MAP_SCRIPT_ON_RESUME: CableClub_OnResume
+}
 
-MauvilleCity_PokemonCenter_1F_OnTransition:
-	call Common_EventScript_UpdateBrineyLocation
-	goto MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx
-	end
-
-MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx::
-	special SetMauvilleOldManObjEventGfx
-	end
-
-MauvilleCity_PokemonCenter_1F_EventScript_Woman1::
-	msgbox MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings, MSGBOX_NPC
-	end
-
-MauvilleCity_PokemonCenter_1F_EventScript_Woman2::
-	msgbox MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner, MSGBOX_NPC
-	end
-
-MauvilleCity_PokemonCenter_1F_EventScript_Youngster::
-	msgbox MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun, MSGBOX_NPC
-	end
-
-MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings:
-	.string "That man over there, he says weird\n"
-	.string "things!\p"
-	.string "He's funny in a weird way.\n"
-	.string "I doubt I'll forget about him!$"
-
-MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner:
-	.string "When I accessed the RECORD CORNER,\n"
-	.string "the data for what's hot in DEWFORD\l"
-	.string "got updated.\p"
-	.string "Now that bit of data is the same\n"
-	.string "as my friend's!$"
-
-MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun:
-	.string "A RECORD CORNER opened upstairs in\n"
-	.string "the POKéMON CENTER.\p"
-	.string "I don't know what it's about, but it\n"
-	.string "sounds fun. I'll go check it out!$"
-
-script MauvilleCity_PokemonCenter_1F_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
+script OlsternPokemonCenter1F_Nurse {
+	setvar(VAR_0x800B, LOCALID_OLSTERN_NURSE)
+	setvar(VAR_TEMP_A, FALSE)
 	call(Common_EventScript_PkmnCenterNurse)
 	waitmessage
-	waitbuttonpress
-	if (var(VAR_OLSTERN_CITY_STATE) == 1) {
-		clearflag(FLAG_HIDE_ORION_OLSTERN_CITY)
-		setvar(VAR_OLSTERN_CITY_STATE, 2)
+	if(!var(VAR_TEMP_A)) {
+		waitbuttonpress
 	}
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	release
+	end
+}
+
+// NPCs
+
+script OlsternPokemonCenter1F_Woman {
+	msgbox(format("That man over there, he says weird things!\p"
+                  "He's funny in a weird way. I doubt I'll forget about him!"), MSGBOX_NPC)
+	end
+}
+
+script OlsternPokemonCenter1F_Sailor {
+	msgbox(format("The Olstern Gym Leader moved here a few months ago.\p"
+				  "Apparently, he used to be a professional racer."), MSGBOX_NPC)
+	end
+}
+
+script OlsternPokemonCenter1F_Youngster {
+	msgbox(format("A Record Corner opened upstairs in the Pokémon Center.\p"
+                  "I don't know what it's about, but it sounds fun. I'll go check it out!"), MSGBOX_NPC)
 	end
 }

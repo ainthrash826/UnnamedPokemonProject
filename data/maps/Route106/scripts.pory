@@ -1,7 +1,76 @@
-raw `
-Route106_MapScripts::
-	.byte 0
+const LOCALID_CHECKPOINT = 1
+const GIRL_TALKED_TO = FLAG_TEMP_1
 
+mapscripts Route106_MapScripts {
+}
+
+script Route4North_RouteSign1 {
+	msgbox("Route 4 “Reno Boardwalk”\n"
+		   "Olstern City {DOWN_ARROW}{RIGHT_ARROW}", MSGBOX_SIGN)
+	end
+}
+script Route4North_RouteSign2 {
+	call(EventScript_BufferTime)
+	msgbox("Route 4 “Reno Boardwalk”, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
+		   "{UP_ARROW} Wyrdech City\lOlstern City {DOWN_ARROW}{RIGHT_ARROW}", MSGBOX_SIGN)
+	end
+}
+
+script Route4North_HalfwayGirlTrigger {
+	lock
+	applymovement(LOCALID_CHECKPOINT, moves(walk_in_place_fast_left))
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+	waitmovement(0)
+	setflag(GIRL_TALKED_TO)
+	msgbox(format("{COLOR RED}Woman{COLOR DARK_GRAY}: Hi!"))
+	closemessage
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	switch(var(VAR_TEMP_0)) {
+		case 16:
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 2))
+		case 17:
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
+	}
+	waitmovement(0)
+	msgbox(format("smack cam\p"
+				  "With that being said, you and your Pokémon look staggeringly tired. Why not rest up a bit?"))
+	closemessage
+	playse(SE_USE_ITEM)
+	special(HealPlayerParty)
+	delay(60)
+	msgbox(format("There you go! Now I want you to have this!"))
+	giveitem(ITEM_FRESH_WATER)
+	call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+	setvar(VAR_ROUTE4_STATE, R4_STATE_REACHED_HALFWAY)
+	msgbox(format("Remember to stay hydrated also you're almost there!"), MSGBOX_NPC)
+	release
+	end
+}
+
+script Route4North_Checkpoint {
+	lock
+	faceplayer
+	if(!var(VAR_ROUTE4_STATE)) {setvar(VAR_ROUTE4_STATE, R4_STATE_REACHED_HALFWAY)}
+	if(!flag(GIRL_TALKED_TO)) {
+		setflag(GIRL_TALKED_TO)
+		msgbox(format("{COLOR RED}Woman{COLOR DARK_GRAY}: Hi!\p"
+						"smack cam\p"
+						"With that being said, you and your Pokémon look staggeringly tired. Why not rest up a bit?"))
+		closemessage
+		playse(SE_USE_ITEM)
+		special(HealPlayerParty)
+		delay(60)
+		msgbox(format("There you go! Now I want you to have this!"))
+		giveitem(ITEM_FRESH_WATER)
+		call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
+		msgbox(format("Remember to stay hydrated also you're almost there!"), MSGBOX_NPC)
+	}
+	release
+	end
+}
+
+raw `
 Route106_EventScript_TrainerTipsSign::
 	msgbox Route106_Text_TrainerTips, MSGBOX_SIGN
 	end

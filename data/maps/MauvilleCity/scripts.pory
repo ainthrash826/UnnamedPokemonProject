@@ -1,179 +1,603 @@
-raw `
-.set LOCALID_ORION, 4
-.set LOCALID_WEIRDO, 5
-`
+const COORD_X = VAR_TEMP_0
+const COORD_Y = VAR_TEMP_1
 
 mapscripts MauvilleCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_OLSTERN_CITY)
-		setrespawn(HEAL_LOCATION_MAUVILLE_CITY)
 		end
 	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_TAMMY_ENCOUNTER_START {hideobjectat(LOCALID_PLAYER, MAP_MAUVILLE_CITY)}
+	]
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		 VAR_OLSTERN_CITY_STATE, 2 : OlsternCityOrion
+		VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_TAMMY_ENCOUNTER_START {
+			lock
+			// Todo
+			fadedefaultbgm
+			showobjectat(OBJ_EVENT_ID_PLAYER, MAP_MAUVILLE_CITY)
+			removeobject(LOCALID_OLSTERN_TAMMY)
+			setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_TAMMY_ENCOUNTER_END)
+			release
+			end
+		}
+		VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_GYM_DEFEATED {
+			lock
+			playbgm(MUS_NONE, FALSE)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			delay(10)
+			playse(SE_M_EXPLOSION)
+			waitse
+			exclam(OBJ_EVENT_ID_PLAYER)
+			msgbox(format("It sounded like that loud explosion came from inside the ??? Cave!"), MSGBOX_AUTOCLOSE)
+			fadedefaultbgm
+			setvar(VAR_UMN_CAVE_STATE, UMN_CAVE_STATE_CAVE_IN_CLEARED)
+			setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_EXPLOSION_HEARD)
+			clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+			release
+			end
+		}
+		//VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_HEALED_AFTER_GYM_BATTLE {
+		//lock
+		////setrespawn(HEAL_LOCATION_OLSTERN_CITY_POKEMON_CENTER)
+		//applymovement(LOCALID_ORION, moves(walk_down * 7
+		//								walk_in_place_right
+		//								emote_exclamation_mark
+		//								delay_16 * 2
+		//								walk_right * 3))
+		//delay(128)
+		//applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+		//playse(SE_PIN)
+		//delay(16)
+		//turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+		//waitmovement(LOCALID_ORION)
+		//msgbox(format("Oh! What's up, {PLAYER}!\p"
+		//			  "So, you just got your ??? Badge, huh?\pWell, I'm glad I caught you at a time like now!\p"
+		//			  "I've also got my ??? Badge! And I've been catching and training a lot of Pokemon!\p"
+		//			  "Let me show you, {PLAYER}!"))
+		//switch (var(VAR_STARTER_MON)) {
+		//	case 0:
+		//		trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_MUDKIP, OrionDefeat2)
+		//	case 1:
+		//		trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_TORCHIC, OrionDefeat2)
+		//	case 2:
+		//		trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_TREECKO, OrionDefeat2)
+		//}
+		//msgbox(format("I've also been thinking about those Subzero goons.\p"
+		//			  "What do you think they've been up to since our encounter?\pAnd what do you think they could be up to now?\p"
+		//			  "Anyway, Route 7 is home to a plethora of cool Pokemon, {PLAYER}!\pYou should catch you some."), MSGBOX_AUTOCLOSE)
+		//delay(20)
+		//applymovement(LOCALID_MAN, moves(walk_up * 6
+		//								walk_right * 2))
+		//waitmovement(LOCALID_MAN)
+		//msgbox("???: Um, Excuse me!\nYou two!")
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+		//applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+		//delay(16)
+		//applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+		//applymovement(LOCALID_ORION, Common_Movement_ExclamationMark)
+		//playse(SE_PIN)
+		//delay(48)
+		//msgbox(format("Man: You two must be Orion and {PLAYER}, yes?\pWould you two follow me, please?"))
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+		//waitmovement(0)
+		//msgbox(format("I'm sorry.\nWho are you and for what reason should we follow you?"))
+		//applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceRight)
+		//waitmovement(0)
+		//msgbox(format("I'm uh.{PAUSE 10}.{PAUSE 10}.{PAUSE 30} I uhm.{PAUSE 10}.{PAUSE 10}.{PAUSE 30}\nOh, yes!\p"
+		//			"I have affiliation with Professor Watson!"))
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+		//waitmovement(0)
+		//msgbox(format("Bullshit!\nWhy were you just heistating?"))
+		//applymovement(LOCALID_MAN, Common_Movement_ExclamationMark)
+		//playse(SE_PIN)
+		//delay(48)
+		//applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceRight)
+		//waitmovement(0)
+		//msgbox(format("Look I'm really sorry if what I was trying to say didn't come through as quickly as you wanted it to.\p"
+		//			  "To be honest, I'm one of the Professor's newest aides, and I honestly don't know what I'm doing.\p"
+		//			  "But I know I'm here specifically to seek you two.\p"
+		//			  "So, on behalf of the Professor, whould you so kindly follow me, please?"))
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+		//waitmovement(0)
+		//msgbox(format("{PLAYER}, this could probably be important!"))
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
+		//applymovement(LOCALID_MAN, Common_Movement_WalkInPlaceLeft)
+		//waitmovement(0)
+		//msgbox("Alright!\nFollow me!", MSGBOX_AUTOCLOSE)
+		//applymovement(LOCALID_MAN, moves(walk_left * 2
+		//								 walk_up * 14
+		//								 walk_left * 6
+		//								 walk_up
+		//								 walk_left * 2
+		//								 walk_in_place_fast_right))
+		//applymovement(LOCALID_ORION, moves(walk_left * 3
+		//								   walk_up * 14
+		//								   walk_left * 6
+		//								   walk_up
+		//								   walk_left))
+		//applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 4
+		//										 walk_up * 14
+		//										 walk_left * 6
+		//										 walk_up
+		//										 walk_in_place_left))
+		//delay(368)
+		//opendoor(31, 7)
+		//waitmovement(LOCALID_MAN)
+		//msgbox("After you.", MSGBOX_AUTOCLOSE)
+		//applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
+		//applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+		//delay(40)
+		//applymovement(LOCALID_ORION, moves(walk_in_place_up
+		//								   delay_16 * 2
+		//								   walk_up
+		//								   set_invisible))
+		//applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16 * 3
+		//										 walk_left
+		//										 walk_up
+		//										 set_invisible))
+		//delay(64)
+		//special(SpawnCameraObject)
+		//applymovement(LOCALID_MAN, moves(delay_16 * 2
+		//								 walk_right
+		//								 walk_in_place_fast_down
+		//								 delay_16 * 2
+		//								 delay_8
+		//								 delay_4
+		//								 delay_1
+		//								 walk_in_place_fast_up
+		//								 delay_8
+		//								 walk_up
+		//								 set_invisible))
+		//waitmovement(0)
+		//closedoor(31, 7)
+		//waitdooranim
+		//setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_KIDNAPPED)
+		//warpsilent(MAP_MAUVILLE_CITY_HOUSE2, 4, 5)
+		//waitstate
+		//release
+		//end
+		//
+		//AR_OLSTERN_CITY_STATE, OLSTERN_STATE_KIDNAPPED {
+		//lock
+		//special(SpawnCameraObject)
+		//opendoor(31, 7)
+		//waitdooranim
+		//applymovement(LOCALID_PIRATE1, moves(lock_facing_direction
+		//									 set_visible
+		//									 walk_fast_down * 2))
+		//applymovement(LOCALID_PIRATE2, moves(delay_8
+		//									 set_visible
+		//									 walk_fast_down))
+		//waitmovement(0)
+		//closedoor(31, 7)
+		//waitdooranim
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_fast_left * 3
+		//										 walk_fast_up * 4))
+		//applymovement(LOCALID_PIRATE1, moves(lock_facing_direction
+		//									 walk_fast_left * 3
+		//									 walk_fast_up * 4))
+		//applymovement(LOCALID_PIRATE2, moves(lock_facing_direction
+		//									 walk_fast_left * 3
+		//									 walk_fast_up * 4))
+		//waitmovement(0)
+		//delay(8)
+		//applymovement(LOCALID_PIRATE2, Common_Movement_WalkInPlaceUp)
+		//waitmovement(0)
+		//message("???????!\nUse Cut!")
+		//waitmessage
+		//playse(SE_BALL_OPEN)
+		//applymovement(LOCALID_PIRATESPKMN, Common_Movement_ExitBall)
+		//delay(10)
+		//turnobject(LOCALID_PIRATESPKMN, DIR_WEST)
+		//playmoncry(SPECIES_DOUBLADE, CRY_MODE_NORMAL)
+		//delay(28)
+		//playse(SE_M_CUT)
+		//applymovement(5, Movement_CutTreeDown)
+		//waitmovement(0)
+		//playse(SE_BALL_OPEN)
+		//applymovement(LOCALID_PIRATESPKMN, Common_Movement_EnterBall)
+		//waitmovement(0)
+		//closemessage
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 3
+		//										 walk_fast_up
+		//										 walk_fast_left * 6
+		//										 walk_fast_down * 14
+		//										 walk_fast_left * 2
+		//										 walk_fast_down * 9))
+		//applymovement(LOCALID_PIRATE2, moves(walk_in_place_down
+		//									 delay_16 * 2
+		//									 lock_facing_direction
+		//									 walk_fast_up
+		//									 unlock_facing_direction
+		//									 face_right
+		//									 lock_facing_direction
+		//									 walk_fast_left * 6
+		//									 unlock_facing_direction
+		//									 face_up
+		//									 lock_facing_direction
+		//									 walk_fast_down * 14
+		//									 unlock_facing_direction
+		//									 face_right
+		//									 lock_facing_direction
+		//									 walk_fast_left * 2
+		//									 unlock_facing_direction
+		//									 face_up
+		//									 lock_facing_direction
+		//									 walk_fast_down * 9
+		//									 unlock_facing_direction))
+		//applymovement(LOCALID_PIRATE1, moves(walk_in_place_up
+		//									 delay_16 * 2
+		//									 walk_fast_up
+		//									 unlock_facing_direction
+		//									 face_left
+		//									 lock_facing_direction
+		//									 walk_fast_up
+		//									 walk_fast_left * 5
+		//									 unlock_facing_direction
+		//									 face_down
+		//									 lock_facing_direction
+		//									 walk_fast_left
+		//									 walk_fast_down * 13
+		//									 unlock_facing_direction
+		//									 face_left
+		//									 lock_facing_direction
+		//									 walk_fast_down
+		//									 walk_fast_left
+		//									 unlock_facing_direction
+		//									 face_down
+		//									 lock_facing_direction
+		//									 walk_fast_left
+		//									 walk_fast_down * 8
+		//									 delay_16
+		//									 walk_in_place_down))
+		//waitmovement(0)
+		//message("On 3!\n{PAUSE 30}1, {PAUSE 40}2, {PAUSE 40}3!")
+		//delay(15)
+		//applymovement(LOCALID_PIRATE2, Common_Movement_WalkInPlaceDown)
+		//waitmessage
+		//applymovement(LOCALID_PIRATE2, moves(lock_facing_direction
+		//									 walk_slow_up
+		//									 delay_16 * 3
+		//									 walk_faster_down))
+		//applymovement(LOCALID_PIRATE1, moves(lock_facing_direction
+		//									 walk_slow_up
+		//									 delay_16 * 3
+		//									 walk_faster_down))
+		//waitmovement(0)
+		//closemessage
+		//playse(SE_M_SWAGGER)
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+		//applymovement(12, moves(set_visible
+		//						jump_down * 2
+		//						delay_8
+		//						delay_16
+		//						set_invisible))
+		//delay(16)
+		//playse(SE_WALL_HIT)
+		//delay(16)
+		//playse(SE_WALL_HIT)
+		//waitmovement(0)
+		//setobjectxyperm(LOCALID_PIRATE1, 10, 34)
+		//setobjectxyperm(LOCALID_PIRATE2, 10, 34)
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(delay_16 * 2
+		//										 delay_8
+		//										 walk_down * 4))
+		//applymovement(LOCALID_BOATGUARD1, moves(walk_in_place_down
+		//										delay_16
+		//										delay_8
+		//										walk_down * 4))
+		//applymovement(LOCALID_BOATGUARD2, moves(walk_in_place_up
+		//										delay_16
+		//										delay_8
+		//										lock_facing_direction
+		//										walk_down * 4
+		//										unlock_facing_direction))
+		//waitmovement(0)
+		//playse(SE_EXIT)
+		//applymovement(LOCALID_JACK, moves(set_visible
+		//								  delay_16 * 2
+		//							      walk_down * 2
+		//								  walk_left * 2
+		//								  walk_down * 2
+		//								  walk_left))
+		//delay(64)
+		//applymovement(LOCALID_BOATGUARD2, Common_Movement_WalkInPlaceRight)
+		//waitmovement(LOCALID_JACK)
+		//message("Right on schedule.\n{PAUSE 12}Excellent.{PAUSE 24}")
+		//waitmessage
+		//applymovement(LOCALID_JACK, Common_Movement_WalkInPlaceDown)
+		//waitmovement(0)
+		//message(format("Take the haul to the cargo hold.{PAUSE 24}"))
+		//waitmessage
+		//applymovement(LOCALID_BOATGUARD1, Common_Movement_WalkInPlaceDown)
+		//applymovement(LOCALID_BOATGUARD2, Common_Movement_WalkInPlaceUp)
+		//message("Both: Aye-aye, captain!{PAUSE 30}")
+		//waitmessage
+		//closemessage
+		//applymovement(LOCALID_JACK, moves(walk_down * 7
+		//								  walk_left * 12
+		//								  walk_in_place_right))
+		//applymovement(OBJ_EVENT_ID_CAMERA,	moves(walk_down * 6
+		//										  walk_diag_northwest
+		//										  walk_left * 9))
+		//delay(10)
+		//applymovement(LOCALID_BOATGUARD1, moves(face_right
+		//										lock_facing_direction
+		//										walk_down
+		//										unlock_facing_direction
+		//										face_down
+		//										lock_facing_direction
+		//										walk_right
+		//										walk_down * 6
+		//										unlock_facing_direction
+		//										face_left
+		//										lock_facing_direction
+		//										walk_down
+		//										walk_left * 10
+		//										delay_16
+		//										delay_4
+		//										walk_in_place_left
+		//										walk_slow_up * 2
+		//										set_invisible))
+		//applymovement(LOCALID_BOATGUARD2, moves(face_left
+		//										lock_facing_direction
+		//										walk_right
+		//										unlock_facing_direction
+		//										face_up
+		//										lock_facing_direction
+		//										walk_down * 7
+		//										unlock_facing_direction
+		//										face_right
+		//										lock_facing_direction
+		//										walk_left * 11
+		//										delay_16
+		//										delay_4
+		//										walk_in_place_right
+		//										walk_slow_up * 2
+		//										set_invisible))
+		//waitmovement(0)
+		//playse(SE_EXIT)
+		//waitse
+		//message("Weigh the anchors!\n{PAUSE 90}Set sail for Savage Bay!")
+		//setobjectxy(LOCALID_PIRATE1, 18, 41)
+		//setobjectxy(LOCALID_PIRATE2, 18, 41)
+		//applymovement(LOCALID_PIRATE1, moves(walk_left * 8
+		//									 walk_up * 2
+		//									 set_invisible))
+		//delay(40)
+		//applymovement(LOCALID_PIRATE2, moves(walk_left * 8
+		//									 walk_up * 2
+		//									 set_invisible))
+		//waitmovement(LOCALID_PIRATE1)
+		//playse(SE_EXIT)
+		//waitmovement(LOCALID_PIRATE2)
+		//playse(SE_EXIT)
+		//waitse
+		//applymovement(LOCALID_JACK, Common_Movement_WalkInPlaceUp)
+		//waitmovement(0)
+		//message("We're going home, crew!{PAUSE 45}")
+		//waitmessage
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_up))
+		//applymovement(LOCALID_JACK, moves(face_up
+		//							      lock_facing_direction
+		//								  walk_diag_northeast
+		//								  walk_up
+		//								  set_invisible))
+		//waitmovement(0)
+		//fadenewbgm(MUS_DUMMY)
+		//playse(SE_EXIT)
+		//closemessage
+		//waitse
+		//delay(45)
+		//applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_left * 3))
+		//applymovement(1, moves(walk_slow_left * 12))
+		//waitmovement(OBJ_EVENT_ID_CAMERA)
+		//delay(24)
+		//message("{EMOJI_NOTE}{PAUSE 4}O{PAUSE 4}h{PAUSE 4}h{PAUSE 4}h{PAUSE 4} {PAUSE 4}P{PAUSE 4}a{PAUSE 4}w{PAUSE 4}n{PAUSE 4}i{PAUSE 4}a{PAUSE 4}r{PAUSE 4}d{PAUSE 4}\n"
+		//		"{FONT_SMALL}{PAUSE 4}A{PAUSE 4}n{PAUSE 4}d{PAUSE 4} {PAUSE 4}S{PAUSE 4}k{PAUSE 4}u{PAUSE 4}l{PAUSE 4}l{PAUSE 4}i{PAUSE 4}a{PAUSE 4}n{PAUSE 4}.{PAUSE 4}.{PAUSE 4}.{PAUSE 4}{FONT_NORMAL}{EMOJI_NOTE}{PAUSE 90}")
+		//waitmessage
+		//closemessage
+		//fadescreenspeed(FADE_TO_BLACK, 24)
+		//setvar(VAR_OLSTERN_CITY_STATE, 4)
+		//setflag(FLAG_HIDE_ORION_OLSTERN_CITY)
+		//setflag(FLAG_HIDE_BOAT_GUARDS_OLSTERN_CITY)
+		//setflag(FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_1)
+		//setflag(FLAG_HIDE_CUTSCENE_NPCS_OLSTERN_CITY_2)
+		//delay(120)
+		//warpnofade(MAP_DEWFORD_TOWN, 0)
+		//waitstate
+		//release
+		//end
+		//}
     ]
 }
 
-script OlsternCityOrion {
-	lock
-	applymovement(LOCALID_ORION, OlsternCityOrionWalkToPokecenter)
-	delay(112)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	playse(SE_PIN)
-	delay(16)
-	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-	waitmovement(LOCALID_ORION)
-	msgbox(format("Oh! What's up, {PLAYER}!\p"
-				  "You just got your ??? Badge, right?\pWell, I'm glad I caught you at a time like now!\p"
-				  "I've also got my ??? Badge!\nAnd I've been catching and training a lot of Pokemon!\p"
-				  "Let me show you, {PLAYER}!"))
-	switch (var(VAR_STARTER_MON)) {
-    	case 0:
-			trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_TORCHIC, OrionDefeat2)
-        case 1:
-			trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_TREECKO, OrionDefeat2)
-        case 2:
-			trainerbattle_no_intro(TRAINER_BRENDAN_RUSTBORO_MUDKIP, OrionDefeat2)
-    }
-	message(format("{PLAYER}, our next stop from here is West Centra.\p"
-		   "I've also been thinking about those Subzero goons.\p"
-		   "What do you think they've been up to since our encounter?\pAnd what do you think they could be up to now?\p"
-		   "Aight I'm done moping.\nI'll catch-"))
-	waitmessage
-	delay(10)
-	msgbox("???: Um, Excuse me!\nYou two!", MSGBOX_AUTOCLOSE)
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceDown)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
-	delay(16)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
-    applymovement(LOCALID_ORION, Common_Movement_ExclamationMark)
-	playse(SE_PIN)
-	applymovement(LOCALID_WEIRDO, WeirdManWalkToPlayer)
-	delay(80)
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	waitmovement(LOCALID_WEIRDO)
-	msgbox(format("You two must be Orion and {PLAYER}, yes?\pWould you two follow me, please?"))
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-	waitmovement(0)
-	msgbox(format("I'm sorry.\nWho are you and for what reason should we follow you?"))
-	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("I'm uh.{PAUSE 10}.{PAUSE 10}.{PAUSE 30} I uhm.{PAUSE 10}.{PAUSE 10}.{PAUSE 30}\nOh, yes!\p"
-				  "I have affiliation with Professor Watson!"))
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-	waitmovement(0)
-	msgbox(format("Bullshit!\nWhy were you just heistating?"))
-	applymovement(LOCALID_WEIRDO, Common_Movement_ExclamationMark)
-	playse(SE_PIN)
-	delay(48)
-	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("Jesus Christ! Why so agressive?!\p"
-				  "Look I'm really sorry if what I was trying to say didn't come through as quickly as you wanted it to.\p"
-				  "To be honest, I'm one of the Professor's newest aides, and I honestly don't know what I'm doing.\p"
-				  "But I know I'm here specifically to seek you two.\p"
-				  "So, on behalf of the Professor, whould you so kindly follow me, please?"))
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-	waitmovement(0)
-	msgbox(format("{PLAYER}, this could probably be important! We should follow this guy!"))
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceLeft)
-	applymovement(LOCALID_WEIRDO, Common_Movement_WalkInPlaceLeft)
-	waitmovement(0)
-	msgbox("Alright!\nFollow me!", MSGBOX_AUTOCLOSE)
-	applymovement(LOCALID_WEIRDO, OlsternCityWalkToShadyHouse0)
-	applymovement(LOCALID_ORION, OlsternCityWalkToShadyHouse1)
-	applymovement(OBJ_EVENT_ID_PLAYER, OlsternCityWalkToShadyHouse2)
-	delay(384)
-	opendoor(11, 7)
-	waitmovement(LOCALID_WEIRDO)
-	msgbox("After you.", MSGBOX_AUTOCLOSE)
-	delay(10)
-	applymovement(LOCALID_ORION, Common_Movement_WalkInPlaceRight)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	delay(60)
-	applymovement(LOCALID_ORION, OrionWalkIntoShadyHouse)
-	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalkIntoShadyHouse)
-	applymovement(LOCALID_WEIRDO, WeirdoWalkIntoShadyHouse)
-	delay(64)
-	special(SpawnCameraObject)
-	waitmovement(0)
-	closedoor(11, 7)
-	waitdooranim
-	delay(60)
-	setvar(VAR_OLSTERN_CITY_STATE, 3)
-	warpsilent(MAP_MAUVILLE_CITY_HOUSE2, 0)
-	waitstate
+
+text OrionDefeat2 {
+	"Aw, man.\nYou're pretty tough, {PLAYER}!"
+}
+
+// NPCs
+
+script OlsternTriathlete {
+	msgbox(format("I can run around this perimeter forever because the sea breeze here is so refreshing!"), MSGBOX_NPC)
+	end
+}
+script OlsternR4Roadblock {
+	msgbox(format("Reno Boardwalk is currently undergoing construction, so we can't allow anyone through the route.\p"
+		          "The good news is we're wrapping up construction now, so it won't take long for the route to reopen."), MSGBOX_NPC)
 	end
 }
 
-movement PlayerWalkIntoShadyHouse {
-	delay_16 * 3
-	walk_left
-	walk_up
-	set_invisible
+script OlsternMan {
+	if(var(VAR_OLSTERN_CITY_STATE) < OLSTERN_STATE_TAMMY_ENCOUNTER_END) {
+		if(!flag(FLAG_TEMP_1)) {
+			setflag(FLAG_TEMP_1)
+			msgbox(format("Huh? I never saw you walk into the Abandoned Factory…\p"
+					      "Were you with those two weird-lookin' dudes that just ran outta there?\p"
+					      "Anyway, If you're heading into the city, some crazy lady is giving a speech or something up ahead.\p"
+					      "I can't really tell what about, but not a lot of people seem to be interested in what she's gotta say."), MSGBOX_NPC)
+		} else {
+			msgbox(format("If you're heading into the city, some crazy lady is giving a speech or something up ahead.\p"
+					      "I can't really tell what about, but not a lot of people seem to be interested in what she's gotta say."), MSGBOX_NPC)
+		}
+	} else {
+		msgbox(format("Up ahead is the now abandoned Fuego Ironworks branch."), MSGBOX_NPC)
+	}
+	end
 }
 
-movement OrionWalkIntoShadyHouse {
-	walk_in_place_up
-	delay_16 * 2
-	walk_up
-	set_invisible
+script OlsternBoatGuard {
+	msgbox("Get lost, matey.\nThis 'ere vessel's for the adults!", MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	end
 }
 
-movement WeirdoWalkIntoShadyHouse {
-	delay_16 * 6
-	walk_right
-	walk_in_place_faster_down
-	walk_in_place_down
-	delay_16 * 2
-	delay_8
-	delay_4
-	delay_1
-	walk_in_place_up
-	walk_up
-	set_invisible
+script OlsternBeachDowsingMachine {
+	lock
+	faceplayer
+	if(!checkitem(ITEM_DOWSING_MACHINE)) {
+		msgbox("Psssst!\nDo you know what I'm doing?", MSGBOX_YESNO)
+		if(!var(VAR_RESULT)) {
+			msgbox(format("I'm using my Dowsing Machine to look for hidden items along the beach.\p"
+			              "I'm not having any luck, though. Maybe you will?"))
+			if(!giveitem(ITEM_DOWSING_MACHINE)) {
+				goto(Common_EventScript_ShowBagIsFull)
+			}
+			msgbox(format("If you wear those, you'll be able to detect hidden items on the ground.\p"
+			              "When you're directly facing an item, they'll light up red.\p"
+						  "You can't run or sneak while using them, though."), MSGBOX_NPC)
+		} else {
+			msgbox("That's right!\nIt's hard work!", MSGBOX_NPC)
+		}
+	} else {
+		msgbox(format("Slip the Dowsing Machine on, and you'll be able to detect hidden items on the ground.\p"
+					  "When you're directly facing an item, it'll light up red.\p"
+					  "You can't run or sneak while using the Dowsing Machine, though."), MSGBOX_NPC)
+	}
+	release
+	end
 }
 
-movement OlsternCityWalkToShadyHouse0 {
-	walk_left * 2
-	walk_up * 14
-	walk_left * 6
-	walk_up
-	walk_left * 2
-	walk_in_place_fast_right
+// Signs
+
+script OlsternCitySign {
+	call(EventScript_BufferTime)
+	msgbox("Olstern City, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}", MSGBOX_SIGN)
+	end
 }
 
-movement OlsternCityWalkToShadyHouse1 {
-	walk_left * 3
-	walk_up * 14
-	walk_left * 6
-	walk_up
-	walk_left
+script OlsternCityOldIronworksSign {
+	msgbox("Fuego Ironworks - ??? Branch\n"
+	       "-- NO LONGER IN OPERATION --", MSGBOX_SIGN)
 }
 
-movement OlsternCityWalkToShadyHouse2 {
-	walk_left * 4
-	walk_up * 14
-	walk_left * 6
-	walk_up
-	walk_in_place_left
+script OlsternCityGymSign {
+	msgbox("Olstern City Pokémon Gym\nLeader: Redbeard\l"
+		   "The ????????????!", MSGBOX_SIGN)
+	end
 }
 
-
-movement WeirdManWalkToPlayer {
-	walk_up * 6
-	walk_right * 2
+script OlsternBeachSign {
+	msgbox(format("Olstern Beach"), MSGBOX_SIGN)
+	end
 }
 
-text OrionDefeat2 {
-	format("Aw, man.\nYou're pretty tough, {PLAYER}!")
+// Triggers
+
+script OlsternTammyTrigger {
+	lock
+	setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_TAMMY_ENCOUNTER_START)
+	warpsilent(MAP_MAUVILLE_CITY, 37, 28)
+	waitstate
+	release
+	end
 }
 
-movement OlsternCityOrionWalkToPokecenter {
-	walk_down * 6
-	walk_in_place_right
-	emote_exclamation_mark
-	delay_16 * 3
-	walk_right * 3
+script OlsternR4RoadblockTrigger {
+	lock
+	switch(getplayery) {
+		case 30:
+			applymovement(LOCALID_OLSTERN_ROADBLOCK, moves(walk_in_place_fast_up))
+			waitmovement(0)
+			exclam(LOCALID_OLSTERN_ROADBLOCK)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+		case 32:
+		case 33:
+			applymovement(LOCALID_OLSTERN_ROADBLOCK, moves(walk_in_place_fast_down))
+			waitmovement(0)
+			exclam(LOCALID_OLSTERN_ROADBLOCK)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+	}
+	if(!checkplayergender) {
+		bufferstring(STR_VAR_1, "sir")
+	} else {
+		bufferstring(STR_VAR_1, "miss")
+	}
+	msgbox("Excuse me, {STR_VAR_1}! Reno Boardwalk is\n"
+	       "currently undergoing construction, so\l"
+		   "we can't allow anyone through the\lroute.\p"
+		   "The good news is we're wrapping up on\n"
+		   "construction now, so it won't take long\l"
+		   "for the route to reopen.", MSGBOX_NPC)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
+	waitmovement(0)
+	release
+	end
+}
+
+script OlsternFakeAideTrigger {
+	lock
+	addobject(LOCALID_OLSTERN_AIDE)
+	applymovement(LOCALID_OLSTERN_AIDE, moves(walk_Left * 4))
+	waitmovement(0)
+	switch(getplayery) {
+		case 30:
+			applymovement(LOCALID_OLSTERN_AIDE, moves(walk_left * 4
+			                                  walk_in_place_fast_up))
+			waitmovement(0)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
+		case 31:
+			applymovement(LOCALID_OLSTERN_AIDE, moves(walk_left * 3))
+			waitmovement(0)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+		case 32:
+			applymovement(LOCALID_OLSTERN_AIDE, moves(walk_left * 4
+			                                  walk_in_place_fast_down))
+			waitmovement(0)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
+		case 33:
+			applymovement(LOCALID_OLSTERN_AIDE, moves(walk_down
+											  walk_left * 4
+			                                  walk_in_place_fast_down))
+			waitmovement(0)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
+	}
+	waitmovement(0)
+	fadenewbgm(MUS_DUMMY)
+	message("T{PAUSE 8}O{PAUSE 8} {PAUSE 8}B{PAUSE 8}E{PAUSE 8} {PAUSE 8}C{PAUSE 8}O{PAUSE 8}N{PAUSE 8}T{PAUSE 8}I{PAUSE 8}N{PAUSE 8}U{PAUSE 8}E{PAUSE 8}D{PAUSE 360}")
+	fadescreenspeed(FADE_TO_BLACK, 8)
+	waitmessage
+	closemessage
+	special(DoSoftReset)
+	// TODO: Player and harley are kidnapped by pirates and thrown overboard mid-sail
+	//       where they shore up on a small beach in the jungle north of Savage Bay
+	//removeovject(LOCALID_OLSTERN_AIDE)
+	//setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_KIDNAPPED)
+	//warpsilent(MAP_SAVAGE_BAY, 31, 28)
+	waitstate
+	release
+	end
 }

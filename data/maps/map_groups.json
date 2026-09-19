@@ -89,40 +89,40 @@
     "Route131",
     "Route103",
     "Route104",
-    "OldaleTown",
+    "MauvilleCity",
     "Route105",
     "Route106",
-    "MauvilleCity",
     "RustboroCity",
-    "FortreeCity",
-    "LilycoveCity",
-    "MossdeepCity",
-    "SootopolisCity",
-    "EverGrandeCity",
-    "LittlerootTown",
-    "DewfordTown",
-    "LavaridgeTown",
-    "FallarborTown",
-    "VerdanturfTown",
-    "PacifidlogTown",
     "Route107",
+    "OldaleTown",
     "Route108",
     "Route109",
+    "DewfordTown",
     "Route110",
     "Route111",
+    "FortreeCity",
     "Route112",
+    "LilycoveCity",
+    "LavaridgeTown",
     "Route113",
     "Route114",
+    "FallarborTown",
     "Route115",
     "Route116",
     "Route117",
     "Route118",
+    "VerdanturfTown",
     "Route119",
     "Route120",
     "Route121",
     "Route122",
     "Route123",
     "Route124",
+    "MossdeepCity",
+    "SootopolisCity",
+    "EverGrandeCity",
+    "LittlerootTown",
+    "PacifidlogTown",
     "Route125",
     "Route126",
     "Route127",
@@ -136,7 +136,8 @@
     "Underwater_Route128",
     "Underwater_Route129",
     "Underwater_Route105",
-    "Underwater_Route125"
+    "Underwater_Route125",
+    "SavageBay"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -342,7 +343,8 @@
     "EverGrandeCity_PokemonLeague_2F"
   ],
   "gMapGroup_IndoorRoute104": [
-    "Route104_MrBrineysHouse"
+    "Route104_MrBrineysHouse",
+    "Route104_Prototype"
   ],
   "gMapGroup_IndoorRoute111": [
     "Route111_WinstrateFamilysHouse",
@@ -631,7 +633,6 @@
     "TrainerHill_Elevator"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
-    "Route104_Prototype",
     "Route104_PrototypePrettyPetalFlowerShop"
   ],
   "gMapGroup_IndoorRoute109": [

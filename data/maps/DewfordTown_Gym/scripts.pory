@@ -1,46 +1,43 @@
-const LOCALID_GUIDE = 2
-
 mapscripts DewfordTown_Gym_MapScripts {
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_IMPERIAL_GYM_STATE, 4 : ImperialGymHidePlayer
-		VAR_IMPERIAL_GYM_STATE, 5 : ImperialGymHidePlayer
-		VAR_IMPERIAL_GYM_STATE, 6 : ImperialGymHidePlayer
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_DEFEATED          : OlsternGymHidePlayer
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_CHALLENGE_STARTED : OlsternGymHidePlayer
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_CHALLENGE_COMPLETE: OlsternGymHidePlayer
 	]
 	MAP_SCRIPT_ON_TRANSITION {
-		if(!var(VAR_IMPERIAL_GYM_STATE)) {
-			setobjectxyperm(LOCALID_GUIDE, 4, 13)
+		if(!var(VAR_OLSTERN_GYM_STATE)) {
+			setobjectxyperm(LOCALID_OLSTERN_GYM_GUIDE, 4, 13)
 		}
 		end
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_IMPERIAL_GYM_STATE, 0 {
+		VAR_OLSTERN_GYM_STATE, 0 {
 			lock
-			exclam(LOCALID_GUIDE)
-			applymovement(LOCALID_GUIDE, moves(walk_down * 2))
+			exclam(LOCALID_OLSTERN_GYM_GUIDE)
+			applymovement(LOCALID_OLSTERN_GYM_GUIDE, moves(walk_down * 2))
 			waitmovement(0)
-			msgbox(format("Welcome young trainer, to the Imperial Island Gym!\p"
+			msgbox(format("Welcome young trainer, to the Olstern City Gym!\p"
 						  "Take this!"))
 			giveitem(ITEM_FRESH_WATER)
 			call_if_eq(VAR_RESULT, FALSE, Common_EventScript_BagIsFull)
 			msgbox(format("I doubt you'll need it here though, because you'll be navigating though a water-submerged Gym!\p"
-						  "Yep, that's right!\nBut before any of that, you'll need these!"))
-			playfanfare(MUS_OBTAIN_ITEM)
-			message(format("{PLAYER} received the Iron Boots!"))
-			waitfanfare
+						  "Yep, that's right!\nBut before any of that, you'll need these babies!"))
+			msgbox(format("{PLAYER} was handed a pair of Iron Boots!"))
+			playse(SE_SELECT)
 			msgbox(format("As I was just saying, majority of this gym is in fact underwater.\p"
 						  "Using those fancy boots I just gave you, you will navigate through the gym to find and open 5 treasure chests.\p"
 						  "But be careful! If you leave the area before finishing the challenge, any opened chests will close back and your progress will be lost.\p"
 						  "Once you're ready, slip those Boots on and walk straight into the pool behind me!"), MSGBOX_AUTOCLOSE)
-			applymovement(LOCALID_GUIDE, moves(walk_up * 2
+			applymovement(LOCALID_OLSTERN_GYM_GUIDE, moves(walk_up * 2
 											   walk_in_place_fast_down))
 			waitmovement(0)
-			setvar(VAR_IMPERIAL_GYM_STATE, 1)
+			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_CHALLENGE_STARTED)
 			release
 			end
 		}
-		VAR_IMPERIAL_GYM_STATE, 4 {
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_DEFEATED {
 			lock
-			getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_RESULT)
+			getplayerxy(VAR_TEMP_0, VAR_RESULT)
             switch(var(VAR_RESULT)) {
 				case 11:
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
@@ -50,22 +47,22 @@ mapscripts DewfordTown_Gym_MapScripts {
 													 jump_up))
 			}
 			waitmovement(0)
-			setvar(VAR_IMPERIAL_GYM_STATE, 3)
+			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_DEFEATED)
 			release
 			end
 		}
-		VAR_IMPERIAL_GYM_STATE, 5 {
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_CHALLENGE_STARTED {
 			lock
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
 													 jump_down))
 			waitmovement(0)
-			setvar(VAR_IMPERIAL_GYM_STATE, 1)
+			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_CHALLENGE_STARTED)
 			release
 			end
 		}
-		VAR_IMPERIAL_GYM_STATE, 6 {
+		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_CHALLENGE_COMPLETE {
 			lock
-			getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_RESULT)
+			getplayerxy(VAR_TEMP_0, VAR_RESULT)
             switch(var(VAR_RESULT)) {
 				case 11:
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
@@ -75,72 +72,62 @@ mapscripts DewfordTown_Gym_MapScripts {
 													 jump_up))
 			}
 			waitmovement(0)
-			setvar(VAR_IMPERIAL_GYM_STATE, 2)
+			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_CHALLENGE_COMPLETE)
 			release
 			end
 		}
 	]
 }
 
-script(local) ImperialGymHidePlayer{
-	hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN_GYM)
+script(local) OlsternGymHidePlayer{
+	hideobjectat(LOCALID_PLAYER, MAP_DEWFORD_TOWN_GYM)
 	end
 }
 
-script ImperialGymRedbeard {
-	trainerbattle_single(TRAINER_BRAWLY_1,
-	format("Arrrrgh… Another challenger approaches!\p"
-	       "Avast! On the high seas or on land, ye be no match for the great Redbeard!\p"
-	       "So give it up, matey!"), 
-	format("Yaaaargh! Ye've sunken me ship!\nA fine battle that be, matey!"),
-	ImperialGymRedbeard_Continue, NO_MUSIC)
-	if(!flag(FLAG_RECEIVED_TM_AQUA_CUTTER)) {
-		msgbox(format("Aye, {PLAYER}!\nYe've returned for me TM!"))
-		giveitem(ITEM_TM81)
-		if(var(VAR_RESULT)) {
-			setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
-			msgbox(format("I forged that TM with me own hook!\nHar har!\p"
-						  "Anyway, that there be the move Aqua Cutter, a sharp Water move with a high critical-hit ratio!\p"
-						  "Use it on a Pokémon with a divine cutlass! Har har har!"), MSGBOX_NPC)
+script OlsternGymRedbeard {
+	lockall
+	faceplayer
+	if(!defeated(TRAINER_BRAWLY_1)
+	|| !flag(FLAG_BADGE02_GET)
+	|| var(VAR_OLSTERN_GYM_STATE) != OLSTERN_GYM_STATE_DEFEATED) {
+		message(format("Arrrrgh… Another challenger approaches!\p"
+				       "Avast ye! On the high seas or on land, ye be no match for the great Redbeard! So give it up, matey! Ha ha ha!"))
+		waitmessage
+		playbgm(GYM_LEADER_ENCOUNTER_MUSIC, FALSE)
+		waitbuttonpress
+		trainerbattle_no_intro(TRAINER_BRAWLY_1, format("Yaaaargh! Ye've sunken me ship!\nA fine battle that be, matey!\p"
+														"{PAUSE_MUSIC}{PLAY_SE MUS_OBTAIN_BADGE}{PLAYER} received the ??? Badge from Redbeard!{WAIT_SE}{RESUME_MUSIC}"))
+		setflag(FLAG_DEFEATED_OSLTERN_GYM)
+		setflag(FLAG_BADGE02_GET)
+		setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_DEFEATED)
+		if(!checkplayergender) {
+			bufferstring(STR_VAR_1, "d")
 		} else {
-			call(Common_EventScript_BagIsFull)
+			bufferstring(STR_VAR_1, "ss")
 		}
-	} else {
-		msgbox(format(""), MSGBOX_NPC)
+		msgbox("Take this with ye, la{STR_VAR_1}!")
+		call(GiveTMAquaCutter)
+		setflag(FLAG_HIDE_MAP_NAME_POPUP)
+		setflag(FLAG_HIDE_OLSTERN_CITY_ROADBLOCK)
+		setvar(VAR_OLSTERN_R4_ROADBLOCK_CLEARED, TRUE)
+		setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_GYM_DEFEATED)
+	} elif(!flag(FLAG_RECEIVED_TM_AQUA_CUTTER)) {
+		msgbox(format("Aye, {PLAYER}!\nYe've returned for me TM!"))
+		call(GiveTMAquaCutter)
+		releaseall
+		end
 	}
+	msgbox(OlsternGymRedbeard_AfterBattle, MSGBOX_NPC)
+	releaseall
 	end
+}
+script(local) GiveTMAquaCutter {
+	setvar(VAR_0x8008, 2)
+	call(GymSetTrainersAndGiveTM)
 }
 
-script ImperialGymRedbeard_Continue {
-	setflag(FLAG_DEFEATED_IMPERIAL_GYM)
-	playfanfare(MUS_OBTAIN_BADGE)
-	message(format("{PLAYER} received the ??? Badge from Redbeard!"))
-	waitfanfare
-	setflag(FLAG_BADGE02_GET)
-	setvar(VAR_0x8008, 2)
-	call(Common_EventScript_SetGymTrainers)
-	checkplayergender
-	if(!var(VAR_RESULT)) {
-		bufferstring(STR_VAR_1, "lad")
-	} else {
-		bufferstring(STR_VAR_1, "lass")
-	}
-	msgbox("Take this with ye, {STR_VAR_1}!")
-	giveitem(ITEM_TM81) //Aqua cutter
-	if(var(VAR_RESULT)) {
-		setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
-		msgbox(format("I forged that TM with me own hook!\nHar har!\p"
-					  "Anyway, that there be the move Aqua Cutter, a sharp Water move with a high critical-hit ratio!\p"
-					  "Use it on a Pokémon with a divine cutlass! Har har har!"), MSGBOX_NPC)
-	} else {
-		call(Common_EventScript_BagIsFull)
-	}
-	setvar(VAR_IMPERIAL_GYM_STATE, 3)
-	setvar(VAR_KANE_STATE, 2)
-	setflag(FLAG_HIDE_IMPERIAL_ISLAND_HOUSE1_KANE) // DO NOT DELETE UNTIL STORY UP TO GYM 2 IS COMPLETE!
-	setflag(FLAG_HIDE_IMPERIAL_ISLAND_KANES_BOAT)  // ^
-	end
-}
+text OlsternGymRedbeard_AfterBattle {format("something something something\p"
+                                            "Now go!\nA high and mighty adventure awaits ye! Ha ha ha!")}
 
 script ImperialGymGuide {
 	if(!defeated(TRAINER_BRAWLY_1)) {
@@ -155,14 +142,8 @@ script ImperialGymGuide {
 	end
 }
 
-script ImperialGymStatue {
-	msgbox("Imperial Island Pokémon Gym\nLeader: Redbeard\p"
-		   "The ????????????!", MSGBOX_SIGN)
-	end
-}
-
 script ImperialGym_EnterPool {
-	goto_if_eq(VAR_IMPERIAL_GYM_STATE, 0, Common_EventScript_BlockProgression)
+	goto_if_eq(VAR_OLSTERN_GYM_STATE, 0, Common_EventScript_BlockProgression)
 	lock
 	delay(2)
 	playse(SE_FU_ZAKU)
@@ -178,14 +159,14 @@ script ImperialGym_EnterPool {
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left * 4))
 	}
 	waitse
-	hideobjectat(OBJ_EVENT_ID_PLAYER, MAP_DEWFORD_TOWN_GYM)
+	hideobjectat(LOCALID_PLAYER, MAP_DEWFORD_TOWN_GYM)
 	playse(SE_M_DIVE)
 	fadescreen(FADE_TO_BLACK)
 	waitse
-	getobjectcurrentxy(OBJ_EVENT_ID_PLAYER, VAR_TEMP_0, VAR_TEMP_1)
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	if(var(VAR_TEMP_1) <= 7) {
 		warpnofade(MAP_DEWFORD_TOWN_GYM, 4, 11)
-		setvar(VAR_IMPERIAL_GYM_STATE, 4)
+		setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_DEFEATED)
 	} elif(var(VAR_TEMP_0) > 13) {
 		warpnofade(MAP_IMPERIAL_ISLAND_GYM_B1F, 22, 3)
 	} else {
