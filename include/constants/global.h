@@ -110,12 +110,12 @@ enum Language
 #define PYRAMID_BAG_ITEMS_COUNT 10
 #define ROAMER_COUNT 1 // Number of maximum concurrent active roamers
 
-// Bag constants
-#define BAG_ITEMS_COUNT 30
-#define BAG_KEYITEMS_COUNT 30
-#define BAG_POKEBALLS_COUNT 16
-#define BAG_TMHM_COUNT 64
-#define BAG_BERRIES_COUNT 46
+// Bag constants. Adding slots cost 4 bytes per added slot
+#define BAG_ITEMS_COUNT 100      // Default 30 
+#define BAG_KEYITEMS_COUNT 30    // Default 30
+#define BAG_POKEBALLS_COUNT 27   // Default 16
+#define BAG_TMHM_COUNT 108       // Default 64
+#define BAG_BERRIES_COUNT 68     // Default 46
 
 // Number of facilities for Ranking Hall.
 // 7 facilities for single mode + tower double mode + tower multi mode.

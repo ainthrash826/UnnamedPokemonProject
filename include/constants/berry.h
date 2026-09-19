@@ -55,17 +55,17 @@ enum __attribute__((__packed__)) Flavor
 // Those with no initial berry are named "soil"
 #define BERRY_TREE_ROUTE_2_FIGY       1
 #define BERRY_TREE_ROUTE_2_LANSAT     2
-#define BERRY_TREE_ROUTE_104_SOIL_1   3
-#define BERRY_TREE_ROUTE_104_ORAN_1   4
-#define BERRY_TREE_ROUTE_103_CHERI_1  5
+#define BERRY_TREE_UNUSED_0x03        3 // Unused
+#define BERRY_TREE_UNUSED_0x04        4 // Unused
+#define BERRY_TREE_UNUSED_0x05        5 // Unused
 #define BERRY_TREE_ROUTE_103_LEPPA    6
 #define BERRY_TREE_ROUTE_103_CHERI_2  7
-#define BERRY_TREE_ROUTE_104_CHERI_1  8
-#define BERRY_TREE_ROUTE_104_SOIL_2   9
-#define BERRY_TREE_ROUTE_104_LEPPA    10
-#define BERRY_TREE_ROUTE_104_ORAN_2   11
-#define BERRY_TREE_ROUTE_104_SOIL_3   12
-#define BERRY_TREE_ROUTE_104_PECHA    13
+#define BERRY_TREE_UNUSED_0x08        8 // Unused
+#define BERRY_TREE_UNUSED_0x09        9 // Unused
+#define BERRY_TREE_UNUSED_0x0A        10 // Unused
+#define BERRY_TREE_UNUSED_0x0B        11 // Unused
+#define BERRY_TREE_UNUSED_0x0C        12 // Unused
+#define BERRY_TREE_UNUSED_0x0D        13 // Unused
 #define BERRY_TREE_ROUTE_123_QUALOT_1 14
 #define BERRY_TREE_ROUTE_123_POMEG_1  15
 #define BERRY_TREE_ROUTE_110_NANAB_1  16
@@ -109,7 +109,7 @@ enum __attribute__((__packed__)) Flavor
 #define BERRY_TREE_ROUTE_121_SOIL_2   54
 #define BERRY_TREE_ROUTE_115_BLUK_1   55
 #define BERRY_TREE_ROUTE_115_BLUK_2   56
-#define BERRY_TREE_UNUSED             57
+#define BERRY_TREE_UNUSED_0x39        57 // Unused
 #define BERRY_TREE_ROUTE_123_POMEG_3  58
 #define BERRY_TREE_ROUTE_123_POMEG_4  59
 #define BERRY_TREE_ROUTE_123_GREPA_1  60
@@ -127,8 +127,8 @@ enum __attribute__((__packed__)) Flavor
 #define BERRY_TREE_ROUTE_123_GREPA_4  72
 #define BERRY_TREE_ROUTE_123_QUALOT_2 73
 #define BERRY_TREE_ROUTE_123_QUALOT_3 74
-#define BERRY_TREE_ROUTE_104_SOIL_4   75
-#define BERRY_TREE_ROUTE_104_CHERI_2  76
+#define BERRY_TREE_UNUSED_0x48        75 // Unused
+#define BERRY_TREE_UNUSED_0x49        76 // Unused
 #define BERRY_TREE_ROUTE_114_PERSIM_2 77
 #define BERRY_TREE_ROUTE_114_PERSIM_3 78
 #define BERRY_TREE_ROUTE_123_QUALOT_4 79

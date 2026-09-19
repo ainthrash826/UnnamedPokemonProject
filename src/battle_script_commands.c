@@ -2278,9 +2278,7 @@ static void Cmd_getexp(void)
                     && !gBattleStruct->wildVictorySong)
                 {
                     BattleStopLowHpSound();
-#if N_MUTE_BATTLE_BGM == FALSE
                     PlayBGM(MUS_VICTORY_WILD);
-#endif
                     
                     gBattleStruct->wildVictorySong++;
                 }
@@ -8286,7 +8284,7 @@ static void Cmd_givecaughtmon(void)
         break;
     case GIVECAUGHTMON_ASK_ADD_TO_PARTY:
         HandleBattleWindow(YESNOBOX_X_Y, 0);
-        BattlePutTextOnWindow(gText_BattleYesNoChoice, B_WIN_YESNO);
+        BattlePutTextOnWindow(gText_BattleSendMonChoice, B_WIN_YESNO);
         gBattleCommunication[MULTIUSE_STATE] = GIVECAUGHTMON_HANDLE_INPUT;
         gBattleCommunication[CURSOR_POSITION] = 0;
         BattleCreateYesNoCursorAt(0);

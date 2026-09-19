@@ -399,7 +399,7 @@ static void HandleInputChooseAction(enum BattlerId battler)
                 #endif
                     PlaySE(SE_SELECT);
                     TryHideLastUsedBall();
-                    BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_RUN, 0);
+                    BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_RUN, 0);
                     PlayerBufferExecCompleted(battler);
                 #if N_FLEE_ON_B == FALSE
                 }

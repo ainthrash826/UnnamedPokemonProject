@@ -1845,7 +1845,11 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
             string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 4);
         else
             string = ConvertIntToDecimalStringN(string, GetRegionalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
-        *string = EOS;
+        *(string++) = CHAR_SLASH;
+            ConvertIntToDecimalStringN(string,
+                                       (IsNationalPokedexEnabled() ? GetNationalPokedexCount(FLAG_GET_SEEN) : GetRegionalPokedexCount(FLAG_GET_SEEN)),
+                                       STR_CONV_MODE_LEFT_ALIGN,
+                                       IsNationalPokedexEnabled() ? 4 : 3);
         break;
     case SAVE_MENU_PLAY_TIME:
         string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);

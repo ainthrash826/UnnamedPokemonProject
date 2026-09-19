@@ -1505,6 +1505,7 @@ static const u16 sLocationFlags[] =
     FLAG_VISITED_MOSSDEEP_CITY,
     FLAG_VISITED_SOOTOPOLIS_CITY,
     FLAG_VISITED_EVER_GRANDE_CITY,
+    FLAG_VISITED_SAVAGE_BAY,
     FLAG_LANDMARK_POKEMON_LEAGUE,
     FLAG_LANDMARK_BATTLE_FRONTIER,
     FLAG_WORLD_MAP_PALLET_TOWN,
@@ -3927,7 +3928,7 @@ static void DebugAction_CreateFollowerNPC(u8 taskId)
     Debug_DestroyMenu_Full(taskId);
     LockPlayerFieldControls();
     DestroyFollowerNPC();
-    SetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER, PARTNER_STEVEN);
+    SetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER, PARTNER_VWT_HARLEY_GRASS);
     CreateFollowerNPC(gfx, FNPC_ALL, Debug_Follower_NPC_Event_Script);
     UnlockPlayerFieldControls();
 }

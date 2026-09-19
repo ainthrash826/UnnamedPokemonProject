@@ -23,26 +23,27 @@
     {
       "id": "HEAL_LOCATION_PETALBURG_CITY",
       "map": "MAP_PETALBURG_CITY",
-      "x": 20,
-      "y": 17,
+      "x": 16,
+      "y": 20,
+      "repsawn_y": 16,
       "respawn_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
-      "respawn_npc": "LOCALID_PETALBURG_NURSE"
+      "respawn_npc": "LOCALID_ANIMORA_NURSE"
     },
     {
       "id": "HEAL_LOCATION_SLATEPORT_CITY",
       "map": "MAP_SLATEPORT_CITY",
-      "x": 19,
-      "y": 20,
+      "x": 30,
+      "y": 34,
       "respawn_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
-      "respawn_npc": "LOCALID_SLATEPORT_NURSE"
+      "respawn_npc": "LOCALID_CENTRA_SE_NURSE"
     },
     {
       "id": "HEAL_LOCATION_MAUVILLE_CITY",
       "map": "MAP_MAUVILLE_CITY",
-      "x": 22,
-      "y": 6,
+      "x": 51,
+      "y": 29,
       "respawn_map": "MAP_MAUVILLE_CITY_POKEMON_CENTER_1F",
-      "respawn_npc": "LOCALID_MAUVILLE_NURSE"
+      "respawn_npc": "LOCALID_OLSTERN_NURSE"
     },
     {
       "id": "HEAL_LOCATION_RUSTBORO_CITY",
@@ -95,8 +96,8 @@
     {
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE",
       "map": "MAP_LITTLEROOT_TOWN",
-      "x": 5,
-      "y": 9,
+      "x": 0,
+      "y": 0,
       "respawn_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F",
       "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 2,
@@ -105,8 +106,8 @@
     {
       "id": "HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE",
       "map": "MAP_LITTLEROOT_TOWN",
-      "x": 14,
-      "y": 9,
+      "x": 1,
+      "y": 0,
       "respawn_map": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F",
       "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
       "respawn_x": 8,
@@ -118,7 +119,7 @@
       "x": 6,
       "y": 17,
       "respawn_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
-      "respawn_npc": "LOCALID_OLDALE_NURSE"
+      "respawn_npc": "LOCALID_CENTRA_SW_NURSE"
     },
     {
       "id": "HEAL_LOCATION_DEWFORD_TOWN",
@@ -142,7 +143,7 @@
       "x": 14,
       "y": 8,
       "respawn_map": "MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F",
-      "respawn_npc": "LOCALID_FALLARBOR_NURSE"
+      "respawn_npc": "LOCALID_HARETHO_NURSE"
     },
     {
       "id": "HEAL_LOCATION_VERDANTURF_TOWN",
@@ -193,10 +194,10 @@
       "map": "MAP_PALLET_TOWN",
       "x": 6,
       "y": 8,
-      "respawn_x": 8,
-      "respawn_y": 5,
       "respawn_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
-      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM"
+      "respawn_npc": "LOCALID_PLAYERS_HOUSE_1F_MOM",
+      "respawn_x": 8,
+      "respawn_y": 5
     },
     {
       "id": "HEAL_LOCATION_VIRIDIAN_CITY",
@@ -349,6 +350,29 @@
       "y": 12,
       "respawn_map": "MAP_SIX_ISLAND_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_SIX_ISLAND_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_ROUTE131",
+      "map": "MAP_ROUTE131",
+      "x": 24,
+      "y": 34,
+      "respawn_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
+      "respawn_npc": "LOCALID_CENTRA_SW_NURSE"
+    },
+    {
+      "id": "HEAL_LOCATION_WOODRIDGE_TOWN",
+      "map": "MAP_WOODRIDGE_TOWN",
+      "x": 19,
+      "y": 20,
+      "respawn_map": "MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F",
+      "respawn_x": 1,
+      "respawn_y": 4
+    },
+    {
+      "id": "HEAL_LOCATION_SAVAGE_BAY",
+      "map": "MAP_SAVAGE_BAY",
+      "x": 17,
+      "y": 15
     }
   ]
 }

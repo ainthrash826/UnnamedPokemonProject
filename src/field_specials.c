@@ -1527,27 +1527,55 @@ void SetShoalItemFlag(u16 unused)
 
 void LoadWallyZigzagoon(void)
 {
-    u16 monData;
-    CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_PIKACHU, 7);
-    monData = 2;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_ABILITY_NUM, &monData);
-    monData = MOVE_QUICK_ATTACK;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
-    monData = MOVE_THUNDER_SHOCK;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);
-    monData = MOVE_GROWL;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &monData);
-    monData = MOVE_TAIL_WHIP;
-    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &monData);
+    u16 monData = VarGet(VAR_STARTER_MON);
+
+    switch (monData)
+    {
+    case 0: // Chose Fuecoco, Watson gets Froakie
+        CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_FROAKIE, 5);
+        monData = FALSE;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_ABILITY_NUM, &monData);
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &monData);
+        monData = MOVE_POUND;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
+        monData = MOVE_GROWL;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);
+        monData = MOVE_WATER_GUN;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &monData);
+        break;
+    case 1: // Chose Snivy, Watson gets Fuecoco
+    default:
+        CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_FUECOCO, 5);
+        monData = FALSE;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_ABILITY_NUM, &monData);
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &monData);
+        monData = MOVE_TACKLE;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
+        monData = MOVE_LEER;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);
+        monData = MOVE_EMBER;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &monData);
+        break;
+    case 2: // Chose Froakie, Watson gets Snivy
+        CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_SNIVY, 5);
+        monData = FALSE;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_ABILITY_NUM, &monData);
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &monData);
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &monData);
+        monData = MOVE_TACKLE;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
+        monData = MOVE_LEER;
+        SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);
+        break;
+    }
 }
 
 bool8 IsStarterInParty(void)
 {
     u8 i;
-    u8 partyCount = CalculatePlayerPartyCount();
-    for (i = 0; i < partyCount; i++)
+    for (i = 0; i < CalculatePlayerPartyCount(); i++)
     {
-        if (GetMonData(&gPlayerParty[B_TRAINER_PLAYER][i], MON_DATA_IS_STARTER, NULL) == TRUE)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_STARTER, NULL) == TRUE)
             return TRUE;
     }
     return FALSE;

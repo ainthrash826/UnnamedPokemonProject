@@ -51,7 +51,9 @@
     F(STEEL_WING) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    F(AQUA_CUTTER) \
+    F(TEMPER_FLARE)
 
 #define FOREACH_HM(F) \
     F(CUT) \

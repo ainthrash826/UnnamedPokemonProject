@@ -83553,6 +83553,7 @@
     "TMMoves": [
       "MOVE_TAKE_DOWN",
       "MOVE_AGILITY",
+      "MOVE_AQUA_CUTTER",
       "MOVE_PROTECT",
       "MOVE_ICE_FANG",
       "MOVE_WATER_PULSE",

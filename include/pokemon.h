@@ -275,7 +275,7 @@ struct BoxPokemon
     u16 checksum;
     u16 hpLost:14; // 16383 HP.
     u16 shinyModifier:1;
-    u16 isStarter:1;
+    u8 isStarter:1;
 
     union
     {

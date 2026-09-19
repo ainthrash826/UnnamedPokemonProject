@@ -104,7 +104,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 0;
     gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
-    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SET;
+    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
 }
@@ -139,7 +139,7 @@ static void WarpToTruck(void)
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
-        SetWarpDestination(MAP_GROUP(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F), MAP_NUM(MAP_WOODRIDGE_TOWN_PLAYERS_HOUSE2F), WARP_ID_NONE, 1, 4);
+        SetWarpDestination(MAP_GROUP(MAP_CENTRA_NE_POKEMON_ACADEMY3F), MAP_NUM(MAP_CENTRA_NE_POKEMON_ACADEMY3F), WARP_ID_NONE, 9, 26);
     WarpIntoMap();
 }
 
@@ -212,6 +212,8 @@ void NewGameInitData(void)
     ResetFanClub();
     ResetLotteryCorner();
     UpdateDailySeed();
+    VarSet(VAR_NEXT_WEATHER, Random() % TRUE);
+    RtcInitLocalTimeOffset(21, 0);
     WarpToTruck();
     if (IS_FRLG)
         RunScriptImmediately(EventScript_ResetAllMapFlagsFrlg);

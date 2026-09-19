@@ -152,6 +152,7 @@ struct InGameTrade {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     enum Species species;
     u8 ivs[NUM_STATS];
+    u16 moves[4];
     u8 abilityNum;
     u32 otId;
     u8 conditions[CONTEST_CATEGORIES_COUNT];
@@ -4590,6 +4591,14 @@ static void CreateInGameTradePokemonInternal(u8 whichPlayerMon, u8 whichInGameTr
     SetMonData(pokemon, MON_DATA_TOUGH, &inGameTrade->conditions[4]);
     SetMonData(pokemon, MON_DATA_SHEEN, &inGameTrade->sheen);
     SetMonData(pokemon, MON_DATA_MET_LOCATION, &metLocation);
+    if(whichInGameTrade == INGAME_TRADE_SEEDOT)
+    {
+        SetMonData(pokemon, MON_DATA_MOVE1, &inGameTrade->moves[0]);
+        SetMonData(pokemon, MON_DATA_MOVE2, &inGameTrade->moves[1]);
+        SetMonData(pokemon, MON_DATA_MOVE3, &inGameTrade->moves[2]);
+        SetMonData(pokemon, MON_DATA_MOVE4, &inGameTrade->moves[3]);
+
+    }
 
     mailNum = 0;
     if (inGameTrade->heldItem != ITEM_NONE)

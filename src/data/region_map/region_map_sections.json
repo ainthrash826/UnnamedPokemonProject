@@ -1,16 +1,16 @@
 {
-  "ids": [
+  "map_sections": [
     {
       "id": "MAPSEC_LITTLEROOT_TOWN",
       "name": "Woodridge Town",
-      "x": 22,
-      "y": 12,
+      "x": 20,
+      "y": 9,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_OLDALE_TOWN",
-      "name": "Imperial Island",
+      "name": "??? Town",
       "x": 15,
       "y": 12,
       "width": 1,
@@ -18,7 +18,7 @@
     },
     {
       "id": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "name": "Drudola Ranch",
       "x": 2,
       "y": 14,
       "width": 1,
@@ -26,7 +26,7 @@
     },
     {
       "id": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
+      "name": "Gestolia Ruins",
       "x": 5,
       "y": 3,
       "width": 1,
@@ -34,7 +34,7 @@
     },
     {
       "id": "MAPSEC_FALLARBOR_TOWN",
-      "name": "FALLARBOR TOWN",
+      "name": "Haretho Town",
       "x": 3,
       "y": 0,
       "width": 1,
@@ -42,7 +42,7 @@
     },
     {
       "id": "MAPSEC_VERDANTURF_TOWN",
-      "name": "VERDANTURF TOWN",
+      "name": "??? Town",
       "x": 4,
       "y": 6,
       "width": 1,
@@ -50,7 +50,7 @@
     },
     {
       "id": "MAPSEC_PACIFIDLOG_TOWN",
-      "name": "PACIFIDLOG TOWN",
+      "name": "Imperial Island",
       "x": 17,
       "y": 10,
       "width": 1,
@@ -59,38 +59,38 @@
     {
       "id": "MAPSEC_PETALBURG_CITY",
       "name": "Animora City",
-      "x": 19,
-      "y": 11,
+      "x": 17,
+      "y": 8,
       "width": 2,
       "height": 1
     },
     {
       "id": "MAPSEC_SLATEPORT_CITY",
       "name": "Centra City",
-      "x": 19,
-      "y": 8,
+      "x": 15,
+      "y": 7,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_MAUVILLE_CITY",
       "name": "Olstern City",
-      "x": 13,
-      "y": 8,
+      "x": 11,
+      "y": 9,
       "width": 1,
       "height": 2
     },
     {
       "id": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
-      "x": 0,
+      "name": "Wyrdech City",
+      "x": 9,
       "y": 5,
       "width": 1,
       "height": 2
     },
     {
       "id": "MAPSEC_FORTREE_CITY",
-      "name": "FORTREE CITY",
+      "name": "Mostill City",
       "x": 12,
       "y": 0,
       "width": 1,
@@ -98,7 +98,7 @@
     },
     {
       "id": "MAPSEC_LILYCOVE_CITY",
-      "name": "LILYCOVE CITY",
+      "name": "Myron City",
       "x": 18,
       "y": 3,
       "width": 2,
@@ -106,7 +106,7 @@
     },
     {
       "id": "MAPSEC_MOSSDEEP_CITY",
-      "name": "MOSSDEEP CITY",
+      "name": "Pokémon League",
       "x": 24,
       "y": 5,
       "width": 2,
@@ -115,110 +115,110 @@
     {
       "id": "MAPSEC_SOOTOPOLIS_CITY",
       "name": "SOOTOPOLIS CITY",
-      "x": 21,
-      "y": 7,
+      "x": 0,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_EVER_GRANDE_CITY",
       "name": "EVER GRANDE CITY",
-      "x": 27,
-      "y": 8,
+      "x": 0,
+      "y": 0,
       "width": 1,
-      "height": 2
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_101",
       "name": "Vast Woods Trail",
-      "x": 22,
-      "y": 13,
-      "width": 2,
+      "x": 21,
+      "y": 9,
+      "width": 3,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_102",
       "name": "Route 1",
-      "x": 20,
-      "y": 12,
+      "x": 18,
+      "y": 9,
       "width": 2,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_103",
       "name": "Route 2",
-      "x": 19,
-      "y": 9,
+      "x": 16,
+      "y": 7,
       "width": 1,
       "height": 2
     },
     {
       "id": "MAPSEC_ROUTE_104",
       "name": "Route 3",
-      "x": 17,
-      "y": 9,
+      "x": 13,
+      "y": 7,
       "width": 1,
-      "height": 2
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_105",
-      "name": "Route 4",
-      "x": 16,
-      "y": 11,
-      "width": 2,
-      "height": 2
+      "name": "Route 3",
+      "x": 12,
+      "y": 9,
+      "width": 1,
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_106",
-      "name": "Route 5",
-      "x": 14,
-      "y": 11,
-      "width": 1,
-      "height": 2
+      "name": "Route 4",
+      "x": 9,
+      "y": 9,
+      "width": 2,
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_107",
-      "name": "Route 6",
-      "x": 13,
-      "y": 10,
+      "name": "Route 4",
+      "x": 9,
+      "y": 7,
       "width": 1,
       "height": 2
     },
     {
       "id": "MAPSEC_ROUTE_108",
-      "name": "Route 7",
-      "x": 14,
-      "y": 8,
+      "name": "Route 5",
+      "x": 10,
+      "y": 5,
       "width": 2,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_109",
-      "name": "Route 8",
-      "x": 15,
+      "name": "Route 3",
+      "x": 11,
       "y": 7,
-      "width": 3,
+      "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_110",
-      "name": "Route 9",
+      "name": "Route 6",
       "x": 20,
       "y": 6,
-      "width": 2,
-      "height": 2
+      "width": 3,
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_111",
-      "name": "Route 10",
+      "name": "Route 7",
       "x": 21,
-      "y": 8,
+      "y": 5,
       "width": 2,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_112",
-      "name": "Route 11",
+      "name": "Route 8",
       "x": 23,
       "y": 5,
       "width": 2,
@@ -226,15 +226,15 @@
     },
     {
       "id": "MAPSEC_ROUTE_113",
-      "name": "Route 12",
+      "name": "Route 9",
       "x": 22,
       "y": 3,
       "width": 1,
-      "height": 3
+      "height": 5
     },
     {
       "id": "MAPSEC_ROUTE_114",
-      "name": "Route 13",
+      "name": "Route 10",
       "x": 20,
       "y": 3,
       "width": 2,
@@ -242,7 +242,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_115",
-      "name": "Route 14",
+      "name": "Route 10",
       "x": 19,
       "y": 4,
       "width": 2,
@@ -250,7 +250,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_116",
-      "name": "ROUTE 116",
+      "name": "Route 11",
       "x": 1,
       "y": 5,
       "width": 4,
@@ -258,7 +258,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_117",
-      "name": "ROUTE 117",
+      "name": "Route 12",
       "x": 5,
       "y": 6,
       "width": 3,
@@ -266,7 +266,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_118",
-      "name": "ROUTE 118",
+      "name": "Route 12",
       "x": 10,
       "y": 6,
       "width": 2,
@@ -274,7 +274,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_119",
-      "name": "ROUTE 119",
+      "name": "Route 13",
       "x": 11,
       "y": 0,
       "width": 1,
@@ -282,7 +282,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_120",
-      "name": "ROUTE 120",
+      "name": "Route 14",
       "x": 13,
       "y": 0,
       "width": 1,
@@ -290,7 +290,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_121",
-      "name": "ROUTE 121",
+      "name": "Route 15",
       "x": 14,
       "y": 3,
       "width": 4,
@@ -298,7 +298,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_122",
-      "name": "ROUTE 122",
+      "name": "Crossroad Park",
       "x": 16,
       "y": 4,
       "width": 1,
@@ -306,7 +306,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_123",
-      "name": "ROUTE 123",
+      "name": "Route 16",
       "x": 12,
       "y": 6,
       "width": 5,
@@ -314,7 +314,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_124",
-      "name": "ROUTE 124",
+      "name": "Gestolia Frontier",
       "x": 20,
       "y": 3,
       "width": 4,
@@ -322,81 +322,81 @@
     },
     {
       "id": "MAPSEC_ROUTE_125",
-      "name": "ROUTE 125",
+      "name": "Evermist Forest",
       "x": 24,
       "y": 3,
       "width": 2,
-      "height": 2
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_126",
       "name": "ROUTE 126",
-      "x": 18,
-      "y": 6,
+      "x": 0,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_127",
       "name": "ROUTE 127",
-      "x": 17,
-      "y": 6,
+      "x": 0,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_128",
       "name": "ROUTE 128",
-      "x": 17,
-      "y": 7,
+      "x": 0,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_129",
       "name": "ROUTE 129",
-      "x": 17,
-      "y": 8,
+      "x": 0,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_130",
       "name": "ROUTE 130",
-      "x": 21,
-      "y": 10,
-      "width": 3,
+      "x": 0,
+      "y": 0,
+      "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_131",
       "name": "Centra City",
-      "x": 18,
-      "y": 8,
+      "x": 14,
+      "y": 7,
       "width": 1,
       "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_132",
       "name": "Centra City",
-      "x": 18,
-      "y": 7,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "id": "MAPSEC_ROUTE_133",
-      "name": "ROUTE 133",
-      "x": 19,
+      "x": 14,
       "y": 6,
       "width": 1,
       "height": 1
     },
     {
+      "id": "MAPSEC_ROUTE_133",
+      "name": "Centra Inlet",
+      "x": 14,
+      "y": 8,
+      "width": 2,
+      "height": 3
+    },
+    {
       "id": "MAPSEC_ROUTE_134",
       "name": "Centra City",
-      "x": 19,
-      "y": 7,
+      "x": 15,
+      "y": 6,
       "width": 1,
       "height": 1
     },
@@ -442,11 +442,11 @@
     },
     {
       "id": "MAPSEC_GRANITE_CAVE",
-      "name": "GRANITE CAVE",
-      "x": 1,
-      "y": 13,
+      "name": "??? Cave",
+      "x": 12,
+      "y": 7,
       "width": 1,
-      "height": 1
+      "height": 2
     },
     {
       "id": "MAPSEC_MT_CHIMNEY",
@@ -482,10 +482,10 @@
     },
     {
       "id": "MAPSEC_RUSTURF_TUNNEL",
-      "name": "RUSTURF TUNNEL",
-      "x": 2,
-      "y": 5,
-      "width": 1,
+      "name": "Drumora Tunnel",
+      "x": 18,
+      "y": 7,
+      "width": 2,
       "height": 1
     },
     {
@@ -498,9 +498,9 @@
     },
     {
       "id": "MAPSEC_NEW_MAUVILLE",
-      "name": "NEW MAUVILLE",
-      "x": 8,
-      "y": 7,
+      "name": "Old Ironworks",
+      "x": 11,
+      "y": 8,
       "width": 1,
       "height": 1
     },

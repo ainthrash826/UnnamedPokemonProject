@@ -6,6 +6,9 @@
     "getpartysize": {
       "var_name": "VAR_RESULT"
     },
+    "giveitem": {
+      "var_name": "VAR_RESULT"
+    },
     "additem": {
       "var_name": "VAR_RESULT"
     },
@@ -82,6 +85,12 @@
       "var_name": "VAR_RESULT"
     },
     "removecoins": {
+      "var_name": "VAR_RESULT"
+    },
+    "getplayerx": {
+      "var_name": "VAR_RESULT"
+    },
+    "getplayery": {
       "var_name": "VAR_RESULT"
     },
     "dowildbattle": {

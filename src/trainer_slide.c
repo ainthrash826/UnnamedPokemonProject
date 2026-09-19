@@ -61,6 +61,17 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINER_PARTNER(PARTNER_
 {
     [DIFFICULTY_NORMAL] =
     {
+        [TRAINER_ROXANNE_1] =
+        {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Let's see if you can handle the winged might of a Gym Leader!\p"),
+            [TRAINER_SLIDE_SELF_LAST_SWITCHIN] = COMPOUND_STRING("Hmph. Not too bad!\p"),
+        },
+        [TRAINER_BRAWLY_1] =
+        {
+            [TRAINER_SLIDE_BEFORE_FIRST_TURN] = COMPOUND_STRING("Let's have a scurvy Gym battle, shall we matey?\p"),
+            [TRAINER_SLIDE_SELF_MON_UNAFFECTED] = COMPOUND_STRING("Tis be a fool's wish to use that move on me {B_OPPONENT_MON1_NAME}. Ha ha!\p"),
+            [TRAINER_SLIDE_SELF_LAST_SWITCHIN] = COMPOUND_STRING("Ha ha ha! A fine battle this be so far!\pAlas, playtime is over. Let's end this, {B_OPPONENT_MON1_NAME}!\p"),
+        },
     },
 };
 

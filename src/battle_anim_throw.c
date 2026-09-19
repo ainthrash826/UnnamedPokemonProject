@@ -1026,7 +1026,7 @@ static void SpriteCB_Ball_Bounce_Step(struct Sprite *sprite)
 
 static void SpriteCB_Ball_Wobble(struct Sprite *sprite)
 {
-    if (++sprite->sTimer == 31)
+    if (++sprite->sTimer == N_BALL_SPEED)
     {
         sprite->sState = 0;
         sprite->affineAnimPaused = TRUE;
@@ -1194,7 +1194,7 @@ static void SpriteCB_Ball_Wobble_Step(struct Sprite *sprite)
         break;
     case BALL_WAIT_NEXT_SHAKE:
     default:
-        if (++sprite->sTimer == 31)
+        if (++sprite->sTimer == N_BALL_SPEED)
         {
             sprite->sTimer = 0;
             RESET_STATE(sprite->sState);
@@ -1221,7 +1221,7 @@ static void SpriteCB_Ball_Wobble_Step(struct Sprite *sprite)
 
 static void SpriteCB_Ball_Release(struct Sprite *sprite)
 {
-    if (++sprite->sTimer == 31)
+    if (++sprite->sTimer == N_BALL_SPEED)
     {
         sprite->data[5] = 0;
         sprite->callback = SpriteCB_Ball_Release_Step;
@@ -1247,24 +1247,24 @@ static void SpriteCB_Ball_Capture_Step(struct Sprite *sprite)
     enum BattlerId *battler = &gBattleAnimTarget;
 
     sprite->sTimer++;
-    if (sprite->sTimer == 40)
+    if (sprite->sTimer == N_BALL_SPEED)
     {
         PlaySE(SE_RG_BALL_CLICK);
         BlendPalettes(0x10000 << sprite->oam.paletteNum, 6, RGB_BLACK);
         MakeCaptureStars(sprite);
     }
-    else if (sprite->sTimer == 60)
+    else if (sprite->sTimer == N_BALL_SPEED + 10)
     {
         BeginNormalPaletteFade(0x10000 << sprite->oam.paletteNum, 2, 6, 0, RGB_BLACK);
     }
-    else if (sprite->sTimer == 95)
+    else if (sprite->sTimer == N_BALL_SPEED + 20)
     {
         gDoingBattleAnim = FALSE;
         UpdateOamPriorityInAllHealthboxes(1, FALSE);
         m4aMPlayAllStop();
-        PlaySE(MUS_RG_CAUGHT_INTRO);
+        PlaySE(MUS_EVOLVED);
     }
-    else if (sprite->sTimer == 315)
+    else if (sprite->sTimer == N_BALL_SPEED * 16)
     {
         FreeOamMatrix(gSprites[gBattlerSpriteIds[*battler]].oam.matrixNum);
         DestroySprite(&gSprites[gBattlerSpriteIds[*battler]]);

@@ -16,14 +16,12 @@
 #define P_GEN_8_POKEMON                  TRUE // Generation 8 Pokémon (SwSh, BDSP, LA)
 #define P_GEN_9_POKEMON                  TRUE // Generation 9 Pokémon (SV)
 
-#define P_GEN_N_POKEMON                  TRUE // New Gen
-
 // Battle gimmick specific Forms.
-#define P_MEGA_EVOLUTIONS                FALSE
-#define P_PRIMAL_REVERSIONS              FALSE // Groudon and Kyogre only.
-#define P_ULTRA_BURST_FORMS              FALSE // Ultra Necrozma only.
-#define P_GIGANTAMAX_FORMS               FALSE
-#define P_TERA_FORMS                     FALSE
+#define P_MEGA_EVOLUTIONS                TRUE
+#define P_PRIMAL_REVERSIONS              TRUE // Groudon and Kyogre only.
+#define P_ULTRA_BURST_FORMS              TRUE // Ultra Necrozma only.
+#define P_GIGANTAMAX_FORMS               TRUE
+#define P_TERA_FORMS                     TRUE
 
 #define P_GEN_9_MEGA_EVOLUTIONS          P_MEGA_EVOLUTIONS // Mega Evolutions introduced in Z-A and its DLC
 
@@ -601,21 +599,5 @@
 #define P_FAMILY_IRON_CROWN              P_GEN_9_POKEMON
 #define P_FAMILY_TERAPAGOS               P_GEN_9_POKEMON
 #define P_FAMILY_PECHARUNT               P_GEN_9_POKEMON
-
-#define P_FAMILY_JUNGLIDE                P_GEN_N_POKEMON
-#define P_FAMILY_PARMI                   P_GEN_N_POKEMON
-#define P_FAMILY_RADPOLE                 P_GEN_N_POKEMON
-#define P_FAMILY_RACCAT                  P_GEN_N_POKEMON
-#define P_FAMILY_LUEL                    P_GEN_N_POKEMON
-#define P_FAMILY_BANDITOOK               P_GEN_N_POKEMON
-#define P_FAMILY_BABARK                  P_GEN_N_POKEMON
-#define P_FAMILY_STAGMITE                P_GEN_N_POKEMON
-#define P_FAMILY_HUFFLUFF                P_GEN_N_POKEMON
-#define P_FAMILY_POLLULANT               P_GEN_N_POKEMON
-#define P_FAMILY_MIPHISH                 P_GEN_N_POKEMON
-#define P_FAMILY_PURRBIRD                P_GEN_N_POKEMON
-#define P_FAMILY_BELLANCO                P_GEN_N_POKEMON
-#define P_FAMILY_SKULLIAN                P_GEN_N_POKEMON
-#define P_FAMILY_SINEASTER               P_GEN_N_POKEMON
 
 #endif // GUARD_CONFIG_SPECIES_ENABLED_H

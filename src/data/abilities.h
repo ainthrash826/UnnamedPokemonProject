@@ -223,7 +223,9 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_LEVITATE] =
     {
         .name = _("Levitate"),
-        .description = COMPOUND_STRING("Not hit by Ground attacks."),
+        //.description = COMPOUND_STRING("Gives full immunity to\nall Ground-type moves."),
+        .description = COMPOUND_STRING("The Pokémon floats, giving\nit full Ground immunity."),
+        .shortDesc = COMPOUND_STRING("Not hit by Ground attacks."),
         .aiRating = 7,
         .breakable = TRUE,
     },
@@ -574,7 +576,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_ROCK_HEAD] =
     {
         .name = _("Rock Head"),
-        .description = COMPOUND_STRING("Prevents recoil damage."),
+        .description = COMPOUND_STRING("Protects the Pokémon from\nrecoil damage."),
+        .shortDesc = COMPOUND_STRING("Prevents recoil damage."),
         .aiRating = 5,
     },
 
@@ -707,7 +710,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SIMPLE] =
     {
         .name = _("Simple"),
-        .description = COMPOUND_STRING("Doubles stat changes."),
+        .description = COMPOUND_STRING("Doubles the effects of the\nPokémon's stat changes"),
+        .shortDesc = COMPOUND_STRING("Doubles stat changes."),
         .aiRating = 8,
         .breakable = TRUE,
     },
@@ -751,7 +755,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SKILL_LINK] =
     {
         .name = _("Skill Link"),
-        .description = COMPOUND_STRING("Maxes multistrike hits."),
+        .description = COMPOUND_STRING("Multistrike moves always\nhit maximum times."),
+        .shortDesc = COMPOUND_STRING("Maxes multistrike hits."),
         .aiRating = 7,
     },
 

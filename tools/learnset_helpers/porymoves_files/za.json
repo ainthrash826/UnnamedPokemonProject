@@ -26384,6 +26384,7 @@
     ],
     "TMMoves": [
       "MOVE_AERIAL_ACE",
+      "MOVE_AQUA_CUTTER",
       "MOVE_BRICK_BREAK",
       "MOVE_CLOSE_COMBAT",
       "MOVE_FACADE",
@@ -26463,6 +26464,7 @@
     ],
     "TMMoves": [
       "MOVE_AERIAL_ACE",
+      "MOVE_AQUA_CUTTER",
       "MOVE_BRICK_BREAK",
       "MOVE_CLOSE_COMBAT",
       "MOVE_DOUBLE_HIT",
@@ -26551,6 +26553,7 @@
     ],
     "TMMoves": [
       "MOVE_AERIAL_ACE",
+      "MOVE_AQUA_CUTTER",
       "MOVE_BRICK_BREAK",
       "MOVE_CLOSE_COMBAT",
       "MOVE_DOUBLE_HIT",

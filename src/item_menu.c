@@ -1706,7 +1706,7 @@ static void OpenContextMenu(u8 taskId)
                 break;
             case POCKET_KEY_ITEMS:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
-                if (ItemId_GetFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_CannotUse)
+                if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_CannotUse)
                 {
                     gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
                     memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_Cancel, sizeof(sContextMenuItems_Cancel));
@@ -2456,8 +2456,21 @@ static void RestoreBagAfterWallyTutorial(void)
 void DoWallyTutorialBagMenu(void)
 {
     PrepareBagForWallyTutorial();
+    AddBagItem(ITEM_HYPER_POTION, 10);
+    AddBagItem(ITEM_SUPER_POTION, 15);
     AddBagItem(ITEM_POTION, 30);
-    AddBagItem(ITEM_POKE_BALL, 50);
+    AddBagItem(ITEM_FULL_HEAL, 20);
+    AddBagItem(ITEM_REVIVE, 20);
+    AddBagItem(ITEM_MAX_REPEL, 57);
+    AddBagItem(ITEM_ABILITY_CAPSULE, 6);
+    AddBagItem(ITEM_PEWTER_CRUNCHIES, 1);
+    AddBagItem(ITEM_POKE_BALL, 100);
+    AddBagItem(ITEM_GREAT_BALL, 20);
+    AddBagItem(ITEM_ULTRA_BALL, 50);
+    AddBagItem(ITEM_QUICK_BALL, 50);
+    AddBagItem(ITEM_NEST_BALL, 2);
+    AddBagItem(ITEM_REPEAT_BALL, 1);
+    AddBagItem(ITEM_LUXURY_BALL, 4);
     GoToBagMenu(ITEMMENULOCATION_WALLY, POCKET_ITEMS, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
@@ -2480,7 +2493,7 @@ static void Task_WallyTutorialBagMenu(u8 taskId)
     switch (tTimer)
     {
     case WALLY_BAG_DELAY:
-        PlaySE(SE_SELECT);
+        PlaySE(SE_RG_BAG_POCKET);
         SwitchBagPocket(taskId, MENU_CURSOR_DELTA_RIGHT, FALSE);
         tTimer++;
         break;

@@ -5080,7 +5080,6 @@ bool32 IsSpeciesInHoennDex(enum Species species)
 
 u16 GetBattleBGM(void)
 {
-#if N_MUTE_BATTLE_BGM == FALSE
     if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
     {
         switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
@@ -5151,8 +5150,6 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONTIER_BRAIN;
-        case TRAINER_CLASS_GYM_TRAINER:
-            //TODO return MUS_VS_GYM_TRAINER;
         default:
             if (GetCurrentRegion() == REGION_KANTO)
                 return MUS_RG_VS_TRAINER;
@@ -5167,9 +5164,6 @@ u16 GetBattleBGM(void)
         else
             return MUS_VS_WILD;
     }
-#else
-    return MUS_NONE;
-#endif
 }
 
 void PlayBattleBGM(void)
@@ -6944,6 +6938,12 @@ void CreateMonFromTemplate(struct Pokemon *mon, const struct PokemonTemplate *mo
     if (monTemplate->doNotUseDefaultShinyness && monTemplate->isShiny != SHINY_MODE_RANDOM)
     {
         bool32 isShiny = ResolveShinyness(monTemplate->isShiny);
+        if(FlagGet(FLAG_GIVEMON_SHINY)
+           && Random32() % SHINY_ODDS > (SHINY_ODDS / 8))
+        {
+            gSpecialVar_0x8000 = TRUE;
+            isShiny = TRUE;
+        }
         SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
     }
 

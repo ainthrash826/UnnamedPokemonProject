@@ -2472,13 +2472,13 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0
 
-#define FLAG_DEFEATED_RUSTBORO_GYM                                  0
-#define FLAG_DEFEATED_DEWFORD_GYM                                   0
-#define FLAG_DEFEATED_MAUVILLE_GYM                                  0
-#define FLAG_DEFEATED_LAVARIDGE_GYM                                 0
-#define FLAG_DEFEATED_PETALBURG_GYM                                 0
-#define FLAG_DEFEATED_FORTREE_GYM                                   0
-#define FLAG_DEFEATED_MOSSDEEP_GYM                                  0
+#define FLAG_DEFEATED_CENTRA_SE_GYM                                  0
+#define FLAG_DEFEATED_OLSTERN_GYM                                   0
+#define FLAG_DEFEATED_DRUDOLA_GYM                                  0
+#define FLAG_DEFEATED_CENTRA_NW_GYM                                 0
+#define FLAG_DEFEATED_MOSTILL_GYM                                 0
+#define FLAG_DEFEATED_MYRON_GYM                                   0
+#define FLAG_DEFEATED_HARETHO_GYM                                  0
 #define FLAG_DEFEATED_SOOTOPOLIS_GYM                                0
 #define FLAG_DEFEATED_METEOR_FALLS_STEVEN                           0
 
@@ -2498,19 +2498,19 @@
 #define FLAG_UNLOCKED_TRENDY_SAYINGS                 0
 
 // Towns and Cities
-#define FLAG_VISITED_LITTLEROOT_TOWN                0
+#define FLAG_VISITED_WOODRIDGE_TOWN                0
 #define FLAG_VISITED_OLDALE_TOWN                    0
 #define FLAG_VISITED_DEWFORD_TOWN                   0
 #define FLAG_VISITED_LAVARIDGE_TOWN                 0
 #define FLAG_VISITED_FALLARBOR_TOWN                 0
 #define FLAG_VISITED_VERDANTURF_TOWN                0
 #define FLAG_VISITED_PACIFIDLOG_TOWN                0
-#define FLAG_VISITED_PETALBURG_CITY                 0
-#define FLAG_VISITED_SLATEPORT_CITY                 0
-#define FLAG_VISITED_MAUVILLE_CITY                  0
+#define FLAG_VISITED_ANIMORA_CITY                 0
+#define FLAG_VISITED_CENTRA_CITY                 0
+#define FLAG_VISITED_OLSTERN_CITY                  0
 #define FLAG_VISITED_RUSTBORO_CITY                  0
-#define FLAG_VISITED_FORTREE_CITY                   0
-#define FLAG_VISITED_LILYCOVE_CITY                  0
+#define FLAG_VISITED_MOSTTILL_CITY                   0
+#define FLAG_VISITED_MYRON_CITY                  0
 #define FLAG_VISITED_MOSSDEEP_CITY                  0
 #define FLAG_VISITED_SOOTOPOLIS_CITY                0
 #define FLAG_VISITED_EVER_GRANDE_CITY               0

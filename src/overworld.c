@@ -51,6 +51,7 @@
 #include "palette.h"
 #include "play_time.h"
 #include "random.h"
+#include "region_map.h"
 #include "roamer.h"
 #include "rotating_gate.h"
 #include "rtc.h"
@@ -872,6 +873,10 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
 
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
+    u8 sum1[32];
+    u8 sum2[32];
+
+
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
 
     // Dont transition map music between BF Outside West/East
@@ -899,6 +904,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
+    VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
     InitMap();
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout, TRUE); // skip copying to Faded, gamma shift will take care of it
@@ -914,8 +920,11 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 
     if (OW_HIDE_REPEAT_MAP_POPUP)
     {
-        if (gMapHeader.regionMapSectionId != sLastMapSectionId)
-            ShowMapNamePopup();
+        GetMapName(sum1, gMapHeader.regionMapSectionId, 0);
+        GetMapName(sum2, sLastMapSectionId, 0);
+        if ((gMapHeader.regionMapSectionId != sLastMapSectionId) //   Differrent Map Section
+            && sum1[0] != sum2[0])                               // + Different Map Name
+            ShowMapNamePopup();                                  // = Show popup
     }
     else
     {
@@ -969,6 +978,7 @@ static void LoadMapFromWarp(bool32 a1)
     SetDefaultFlashLevel();
     Overworld_ClearSavedMusic();
     RunOnTransitionMapScript();
+    VarSet(VAR_DEXNAV_SPECIES, 0);
     UpdateLocationHistoryForRoamer();
     MoveAllRoamersToOtherLocationSets();
     gChainFishingDexNavStreak = 0;

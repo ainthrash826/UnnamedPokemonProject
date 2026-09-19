@@ -47,6 +47,7 @@
 #include "tv.h"
 #include "overworld.h"
 #include "vs_seeker.h"
+#include "wild_encounter.h"
 #include "wild_encounter_ow.h"
 #include "window.h"
 #include "constants/battle_frontier.h"
@@ -80,7 +81,6 @@ static void TryUpdateGymLeaderRematchFromTrainer(void);
 static void CB2_GiveStarter(void);
 static void CB2_StartFirstBattle(void);
 static void CB2_EndFirstBattle(void);
-static bool8 BattleHasNoWhiteout(void);
 static void SaveChangesToPlayerParty(void);
 static void HandleBattleVariantEndParty(void);
 static void CB2_EndTrainerBattle(void);
@@ -510,7 +510,10 @@ static void DoBattlePyramidTrainerHillBattle(void)
 // Initiates battle where Wally catches Ralts
 void StartWallyTutorialBattle(void)
 {
-    CreateMaleMon(&gParties[B_TRAINER_OPPONENT_A][0], SPECIES_FLETCHLING, 5);
+    u16 mon = GetLocalWildMon(FALSE);
+
+    VarSet(VAR_WATSON_CAUGHT_MON, mon);
+    CreateMaleMon(&gParties[B_TRAINER_OPPONENT_A][0], mon, (Random() % 3) + 2);
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_CATCH_TUTORIAL;
@@ -913,13 +916,11 @@ enum BattleTransition GetTrainerBattleTransition(void)
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
 
-    if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
-        || trainerClass == TRAINER_CLASS_MAGMA_LEADER
+    if (trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
         return B_TRANSITION_MAGMA;
 
-    if (trainerClass == TRAINER_CLASS_TEAM_AQUA
-        || trainerClass == TRAINER_CLASS_AQUA_LEADER
+    if (trainerClass == TRAINER_CLASS_AQUA_LEADER
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
 
@@ -1007,11 +1008,12 @@ static void CB2_GiveStarter(void)
 
     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
     starterMon = GetStarterPokemon(gSpecialVar_Result);
-    ZeroPlayerPartyMons(); // debating keeping this but keeping it for the time being
-    ScriptGiveMon(starterMon, 1, ITEM_NONE);                                                  // Dummy mon
-    CreateMon(&gPlayerParty[0], starterMon, 5, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0); // Actual starter & to prevent shiny-locking
+    ZeroPlayerPartyMons();
+    ScriptGiveMon(starterMon, 5, ITEM_NONE);
     starterMon = TRUE;
-    SetMonData(&gPlayerParty[0], MON_DATA_IS_STARTER, &starterMon);
+    SetMonData(gParties[B_TRAINER_PLAYER], MON_DATA_IS_STARTER, &starterMon);
+
+    FlagSet(FLAG_SYS_POKEMON_GET);
     ResetTasks();
     //PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
@@ -1033,14 +1035,6 @@ static void CB2_StartFirstBattle(void)
         ClearPoisonStepCounter();
         TryUpdateGymLeaderRematchFromWild();
     }
-}
-
-static bool8 BattleHasNoWhiteout()
-{
-    if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
-        return TRUE;
-    else
-        return FALSE;
 }
 
 static void CB2_EndFirstBattle(void)

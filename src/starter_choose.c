@@ -25,6 +25,9 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
+#define STARTER_SLOT_FIRE 0
+#define STARTER_SLOT_GRASS 1
+#define STARTER_SLOT_WATER 2
 #define STARTER_MON_COUNT   3
 
 // Position of the sprite of the selected starter Pokémon
@@ -111,14 +114,10 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
-#define GRASS_STARTER (IS_FRLG ? SPECIES_BULBASAUR  : SPECIES_TREECKO)
-#define FIRE_STARTER  (IS_FRLG ? SPECIES_CHARMANDER : SPECIES_TORCHIC)
-#define WATER_STARTER (IS_FRLG ? SPECIES_SQUIRTLE   : SPECIES_MUDKIP )
-
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    GRASS_STARTER,
     FIRE_STARTER,
+    GRASS_STARTER,
     WATER_STARTER,
 };
 
@@ -505,24 +504,28 @@ static void Task_HandleStarterChooseInput(u8 taskId)
             gTasks[taskId].tPkmnSpriteId = spriteId;
             gTasks[taskId].func = Task_WaitForStarterSprite;
         }
-        else if (JOY_NEW(DPAD_LEFT) && selection > 0)
+        else if (JOY_NEW(DPAD_LEFT))
         {
-            gTasks[taskId].tStarterSelection--;
+            if (selection == 0)
+            {
+                gTasks[taskId].tStarterSelection = STARTER_MON_COUNT - 1;
+            }
+            else
+            {
+                gTasks[taskId].tStarterSelection--;
+            }
             gTasks[taskId].func = Task_MoveStarterChooseCursor;
         }
-        else if (JOY_NEW(DPAD_RIGHT) && selection < STARTER_MON_COUNT - 1)
+        else if (JOY_NEW(DPAD_RIGHT))
         {
-            gTasks[taskId].tStarterSelection++;
-            gTasks[taskId].func = Task_MoveStarterChooseCursor;
-        }
-        else if (JOY_NEW(DPAD_LEFT) && selection == 0)
-        {
-            gTasks[taskId].tStarterSelection = 2;
-            gTasks[taskId].func = Task_MoveStarterChooseCursor;
-        }
-        else if (JOY_NEW(DPAD_RIGHT) && selection == STARTER_MON_COUNT - 1)
-        {
-            gTasks[taskId].tStarterSelection = 0;
+            if (selection == STARTER_MON_COUNT - 1)
+            {
+                gTasks[taskId].tStarterSelection = 0;
+            }
+            else
+            {
+                gTasks[taskId].tStarterSelection++;
+            }
             gTasks[taskId].func = Task_MoveStarterChooseCursor;
         }
     }

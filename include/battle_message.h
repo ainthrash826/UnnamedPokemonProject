@@ -284,6 +284,7 @@ extern const u8 gText_MoveInterfaceDynamicColors[];
 extern const u8 gText_WhichMoveToForget4[];
 extern const u8 gText_BattleYesNoChoice[];
 extern const u8 gText_BattleCatchOrNot[];
+extern const u8 gText_BattleSendMonChoice[];
 extern const u8 gText_BattleSwitchWhich[];
 extern const u8 gText_BattleSwitchWhich2[];
 extern const u8 gText_BattleSwitchWhich3[];
