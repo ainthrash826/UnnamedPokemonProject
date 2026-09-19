@@ -11208,7 +11208,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Lum Berry"),
         .pluralName = ITEM_PLURAL_NAME("Lum Berries"),
-        .price = (N_NEW_BERRY_PRICES == TRUE) ? 100 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .price = (N_NEW_BERRY_PRICES == TRUE) ? 200 : (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
         .holdEffect = HOLD_EFFECT_CURE_STATUS,
         .description = COMPOUND_STRING(
             "A held item that\n"
@@ -13062,7 +13062,7 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM52] =
+    [ITEM_TM_TEMPER_FLARE] =
     {
         .name = ITEM_NAME("TM52"),
         .price = 3000,
@@ -13209,9 +13209,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("TM65"),
         .price = 3000,
-        .description = COMPOUND_STRING(
-            "Power doubles if\n"
-            "last move failed."),
+        .description = COMPOUND_STRING("?????"), // Todo
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -13387,10 +13385,7 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("TM81"),
         .price = 3000,
-        .description = COMPOUND_STRING(
-            "Pressurized water\n"
-            "cut with a high\n"
-            "critical-hit ratio."),
+        .description = COMPOUND_STRING("?????"), // Todo
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -14429,9 +14424,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Letter"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A letter to be\n"
-            "delivered to\n"
-            "someone on Route 4."),
+            "A letter addressed\n"
+            "to someone in\n"
+            "Olstern City."),
         .importance = 2,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -15007,7 +15002,7 @@ const struct ItemInfo gItemsInfo[] =
             "A dropped material\n"
             "Gimmighoul hoard\n"
             "and treasure."),
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .sortType = ITEM_TYPE_EVOLUTION_ITEM,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
