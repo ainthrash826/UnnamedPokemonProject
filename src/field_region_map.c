@@ -76,9 +76,9 @@ static const struct WindowTemplate sFieldRegionMapWindowTemplates[] =
 {
     [WIN_MAPSEC_NAME] = {
         .bg = 0,
-        .tilemapLeft = 17,
+        .tilemapLeft = 20,
         .tilemapTop = 17,
-        .width = 12,
+        .width = 10,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 1
@@ -86,7 +86,7 @@ static const struct WindowTemplate sFieldRegionMapWindowTemplates[] =
     [WIN_TITLE] = {
         .bg = 0,
         .tilemapLeft = 22,
-        .tilemapTop = 1,
+        .tilemapTop = 13,
         .width = 7,
         .height = 2,
         .paletteNum = 15,
@@ -218,7 +218,7 @@ static void PrintRegionMapSecName(void)
     if (sFieldRegionMapHandler->regionMap.mapSecType != MAPSECTYPE_NONE)
     {
         FillWindowPixelBuffer(WIN_MAPSEC_NAME, PIXEL_FILL(1));
-        AddTextPrinterParameterized(WIN_MAPSEC_NAME, FONT_NORMAL, sFieldRegionMapHandler->regionMap.mapSecName, 0, 1, 0, NULL);
+        AddTextPrinterParameterized(WIN_MAPSEC_NAME, FONT_SMALL_NARROW, sFieldRegionMapHandler->regionMap.mapSecName, 0, 1, 0, NULL);
         ScheduleBgCopyTilemapToVram(WIN_MAPSEC_NAME);
     }
     else
