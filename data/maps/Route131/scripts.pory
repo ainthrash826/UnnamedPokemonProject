@@ -44,12 +44,12 @@ script CentraCitySignBuffer_SW {
 script CentraSWClassmateTrigger {
 	goto_if_not_defeated(TRAINER_ROXANNE_1, Common_EventScript_BlockProgression)
 	lock
-	showobjectat(LOCALID_CENTRA_SW_AIDE, MAP_ROUTE131)
 	getplayery
 	addvar(VAR_RESULT, 6)
 	setobjectxy(LOCALID_CENTRA_SW_AIDE, 8, VAR_RESULT)
+	addobject(LOCALID_CENTRA_SW_AIDE)
 	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_up * 6
-									            walk_Left))
+									            walk_left))
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	waitmovement(0)
@@ -61,14 +61,12 @@ script CentraSWClassmateTrigger {
 	waitfanfare
 	setflag(FLAG_SYS_DEXNAV_GET)
 	setflag(FLAG_DEXNAV_DETECTOR_MODE)
-	msgbox(format("Use that to complete your Pokédex quicker!\p"
-				  "The second thing I wanted to give you is this."))
+	msgbox(format("The second thing I wanted to give you is this."))
 	giveitem(ITEM_LETTER)
 	msgbox(format("That Letter is from the Professor to a good friend of his in Olstern City, named Kane.\p"
-	              "Some people refer to him as “Ol' Man Kane”, I believe.\p"
+	              "Some people refer to him as “Ol' Kane”, I believe.\p"
 	              "Anyway, the Professor asked me to ask you to deliver it for him in hopes that you don't mind.\p"
 				  "With that being said, both the Professor and I wish you the best of luck on your Pokémon journey, {PLAYER}!"), MSGBOX_AUTOCLOSE)
-	giveitem(ITEM_DOWSING_MACHINE)
 	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_right
 									  walk_down * 10))
 	waitmovement(0)

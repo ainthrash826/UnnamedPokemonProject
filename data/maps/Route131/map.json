@@ -3,7 +3,6 @@
   "name": "Route131",
   "layout": "LAYOUT_ROUTE131",
   "music": "MUS_SLATEPORT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_131",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -31,7 +30,7 @@
     },
     {
       "map": "MAP_ROUTE103",
-      "offset": 0,
+      "offset": -6,
       "direction": "left"
     },
     {
@@ -44,7 +43,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
       "x": 0,
-      "y": 0,
+      "y": 9,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN",
       "movement_range_x": 5,
@@ -57,7 +56,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
       "x": 1,
-      "y": 0,
+      "y": 9,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
       "movement_range_x": 0,
@@ -70,7 +69,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 1,
-      "y": 3,
+      "y": 12,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
       "movement_range_x": 6,
@@ -83,7 +82,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 0,
-      "y": 1,
+      "y": 10,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_DOWN_RIGHT_UP",
       "movement_range_x": 3,
@@ -96,7 +95,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 1,
-      "y": 1,
+      "y": 10,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -109,7 +108,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_TUBER_M_SWIMMING",
       "x": 0,
-      "y": 2,
+      "y": 11,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -122,7 +121,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M",
       "x": 1,
-      "y": 2,
+      "y": 11,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
       "movement_range_x": 1,
@@ -135,7 +134,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_F",
       "x": 0,
-      "y": 3,
+      "y": 12,
       "elevation": 1,
       "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
       "movement_range_x": 1,
@@ -149,9 +148,9 @@
       "local_id": "LOCALID_CENTRA_SW_AIDE",
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
       "x": 4,
-      "y": 7,
+      "y": 2,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -187,7 +186,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 6,
+      "x": 5,
       "y": -1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -291,8 +290,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 6,
-      "y": 4,
+      "x": 5,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -435,7 +434,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
       "x": 6,
-      "y": 21,
+      "y": 10,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -695,7 +694,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
       "x": 54,
-      "y": 37,
+      "y": 36,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -879,7 +878,7 @@
     {
       "x": 24,
       "y": 33,
-      "elevation": 0,
+      "elevation": 3,
       "dest_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
     }
@@ -887,8 +886,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 6,
-      "y": 6,
+      "x": 5,
+      "y": 1,
       "elevation": 0,
       "var": "VAR_CENTRA_SW_STATE",
       "var_value": "0",
@@ -896,8 +895,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 7,
+      "x": 5,
+      "y": 2,
       "elevation": 0,
       "var": "VAR_CENTRA_SW_STATE",
       "var_value": "0",
@@ -905,8 +904,8 @@
     },
     {
       "type": "trigger",
-      "x": 6,
-      "y": 8,
+      "x": 5,
+      "y": 3,
       "elevation": 0,
       "var": "VAR_CENTRA_SW_STATE",
       "var_value": "0",
@@ -924,11 +923,12 @@
     },
     {
       "type": "sign",
-      "x": 7,
-      "y": 9,
+      "x": 6,
+      "y": 4,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CentraCitySign_R3Gate"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -11,6 +11,7 @@
 #include "pokedex.h"
 #include "pokenav.h"
 #include "pokemon.h"
+#include "random.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "sprite.h"
@@ -527,6 +528,14 @@ static void Task_HandleStarterChooseInput(u8 taskId)
                 gTasks[taskId].tStarterSelection++;
             }
             gTasks[taskId].func = Task_MoveStarterChooseCursor;
+        }
+        else if (JOY_NEW(R_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            gTasks[taskId].tStarterSelection = Random() % STARTER_MON_COUNT;
+            gSpecialVar_Result = gTasks[taskId].tStarterSelection;
+            ResetAllPicSprites();
+            SetMainCallback2(gMain.savedCallback);
         }
     }
 }

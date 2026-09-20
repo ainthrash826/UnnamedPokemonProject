@@ -3,7 +3,6 @@
   "name": "Route132",
   "layout": "LAYOUT_ROUTE132",
   "music": "MUS_SLATEPORT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_132",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -28,6 +27,11 @@
       "map": "MAP_SLATEPORT_CITY",
       "offset": 60,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE103",
+      "offset": 54,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -220,5 +224,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CentraCitySignBuffer_NW"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

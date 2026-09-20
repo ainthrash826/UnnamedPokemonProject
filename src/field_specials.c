@@ -958,7 +958,7 @@ u8 GetPlayerTrainerIdOnesDigit(void)
     return (u16)((gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0]) % 10;
 }
 
-void InitNewgameCLock(void)
+void InitNewgameClock(void)
 {
     //RtcInitLocalTimeOffset(((GetPlayerTrainerIdOnesDigit() * 3) - 4), 0);
     RtcInitLocalTimeOffset((Random() % HOURS_PER_DAY), 0);

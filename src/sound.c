@@ -10,6 +10,7 @@
 #include "constants/songs.h"
 #include "task.h"
 #include "test_runner.h"
+#include "event_data.h"
 
 struct Fanfare
 {
@@ -561,7 +562,12 @@ void PlayBGM(u16 songNum)
 void PlaySE(u16 songNum)
 {
     if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_OFF)
-        m4aSongNumStart(songNum);
+    {
+        if (N_MUTE_SE_SELECT && songNum == SE_SELECT)
+        songNum = 0;
+
+    }
+    m4aSongNumStart(songNum);
 }
 
 void PlaySE12WithPanning(u16 songNum, s8 pan)
