@@ -466,11 +466,6 @@ void ScrCmd_createmon(struct ScriptContext *ctx)
     monTemplate.ignoreTotalEvCheck = flags >> 26;
 
     gSpecialVar_Result = ScriptGiveMonParameterized(side, slot, &monTemplate);
-    if (FlagGet(FLAG_GIVEMON_SHINY))
-    {
-        ScriptMenu_ShowPokemonPic(monTemplate.species, 10, 4);
-        FlagClear(FLAG_GIVEMON_SHINY);
-    }
 }
 
 #undef PARSE_FLAG

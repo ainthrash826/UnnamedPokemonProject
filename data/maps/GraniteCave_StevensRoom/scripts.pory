@@ -78,9 +78,7 @@ script OldIronworksSubzeroEncounter {
 	msgbox(format(""))
 	trainerbattle_no_intro(TRAINER_GRUNT_SEAFLOOR_CAVERN_1, format(""))
 	removeobject(LOCALID_GRUNT1)
-	msgbox(format("Look here li'l homie, I know we just met, but I can tell you're smart.\p"
-					"If you really were smart though, why are you interfering with the gift that Subzero has to offer to the world?\p"
-					"Here's a suggestion. Keep out of Subzero's business.\lAnd that starts now!"))
+	msgbox(format(""))
 	trainerbattle_no_intro(TRAINER_GRUNT_SEAFLOOR_CAVERN_2,
 						format("Yo, you're pretty good for an alleged rookie."))
 	msgbox(format("Smart and stubborn.\nJeez."), MSGBOX_AUTOCLOSE)
@@ -167,7 +165,7 @@ script OldIronworksSubzeroEncounter {
 	//msgbox(format("Last warning, Oak. Whatever you and Harley are planning, you'll end it if you know what's best for the both of you.\p"
 	//				"Subzero's visions for the future are what's best for it. If the two of you don't see it now, you'll definitely see it then."), MSGBOX_AUTOCLOSE)
 	//finditem(ITEM_ROTOMS_POKEBALL)
-	call(OlsternRotomMain)
+	call(OldIronworksRotomMain)
 	closemessage
 	fadedefaultbgm
 	delay(20)
@@ -188,59 +186,53 @@ script(local) ReceiveRotom {
 	waitmessage
 	waitfanfare
 	bufferspeciesname(STR_VAR_1, SPECIES_ROTOM)
+	msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
 }
 
-script OlsternRotomMain {
+script OldIronworksRotomMain {
 	playmoncry(SPECIES_ROTOM, CRY_MODE_DOUBLES)
 	waitmoncry
 	delay(8)
 	msgbox(format("It's the Rotom Subzero left behind…\n"
 	              "It's even got its Poké Ball, too.\p"
-	              "It seems it wants to tag along with you.\n"
+	              "It seems it wants to tag along with you.\p"
 				  "Take the Rotom?"), MSGBOX_YESNO)
 	if(var(VAR_RESULT)) {
 		setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ROTOM)
-		setflag(FLAG_GIVEMON_SHINY)
 		switch (givemon(SPECIES_ROTOM, 15)) {
 			case MON_GIVEN_TO_PARTY:
 				call(ReceiveRotom)
-				msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
 				if(var(VAR_RESULT)) {
 					call(Common_EventScript_GetGiftMonPartySlot)
 					call(Common_EventScript_NameReceivedPartyMon)
 				}
-				hidemonpic
 				playse(SE_BALL_OPEN)
 				applymovement(LOCALID_ROTOM, moves(enter_pokeball))
 				waitse
+				removeobject(LOCALID_ROTOM)
 				msgbox("{STR_VAR_2} was added to your party.")
 			case MON_GIVEN_TO_PC:
 				call(ReceiveRotom)
-				msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
 				if(var(VAR_RESULT)) {
 					call(Common_EventScript_NameReceivedBoxMon)
 				}
-				hidemonpic
 				playse(SE_BALL_OPEN)
 				applymovement(LOCALID_ROTOM, moves(enter_pokeball))
 				waitse
+				removeobject(LOCALID_ROTOM)
 				msgbox("{STR_VAR_2} was sent to your Boxes.")
 			case MON_CANT_GIVE:
-				hidemonpic
 				msgbox(format("You have no more room for Pokémon! The Pokémon Boxes are full and can't accept any more!"), MSGBOX_SIGN)
 		}
 	} else {
 		msgbox(format("{PLAYER} let the Rotom be."), MSGBOX_NPC)
-	}
-	if(flag(FLAG_RECEIVED_ROTOM_OLD_IRONWORKS)) {
-		removeobject(LOCALID_ROTOM)
 	}
 }
 
 script OldIronworksRotom {
 	lock
 	faceplayer
-	call(OlsternRotomMain)
+	call(OldIronworksRotomMain)
 	release
 	end
 }

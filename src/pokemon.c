@@ -6938,12 +6938,6 @@ void CreateMonFromTemplate(struct Pokemon *mon, const struct PokemonTemplate *mo
     if (monTemplate->doNotUseDefaultShinyness && monTemplate->isShiny != SHINY_MODE_RANDOM)
     {
         bool32 isShiny = ResolveShinyness(monTemplate->isShiny);
-        if(FlagGet(FLAG_GIVEMON_SHINY)
-           && Random32() % SHINY_ODDS > (SHINY_ODDS / 8))
-        {
-            gSpecialVar_0x8000 = TRUE;
-            isShiny = TRUE;
-        }
         SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
     }
 
