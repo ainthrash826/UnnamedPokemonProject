@@ -164,6 +164,12 @@ script CoalesceCaveB1FDylan {
 	end
 }
 
+script CoalesceCaveB1FIan {
+	trainerbattle_single(TRAINER_RICHARD, format("Wahah! Big reveal!\pHow'd you like my ninja skills?"), format(""))
+	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
 // Triggers
 
 script CoalesceCaveTrigger {

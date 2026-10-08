@@ -142,7 +142,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Cubchoo
-Level: 16
+Level: 17
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
 Name: Elijah
@@ -154,10 +154,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Snorunt
-Level: 16
+Level: 17
 
 Bergmite
-Level: 17
+Level: 18
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_2 ===
 Name: GRUNT
@@ -2982,17 +2982,22 @@ Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RICHARD ===
-Name: RICHARD
-Class: Swimmer M
-Pic: Swimmer M
+Name: Ian
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Swimmer
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Pelipper
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Rolycoly
+Level: 16
+
+Koffing
+Level: 16
+
+Croagunk
+Level: 16
 
 === TRAINER_HERMAN ===
 Name: HERMAN
