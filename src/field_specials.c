@@ -208,6 +208,11 @@ void ResetCyclingRoadChallengeData(void)
     sBikeCyclingTimer = 0;
 }
 
+void DespawnOWEs(void)
+{
+    DespawnAllOverworldWildEncounters(OWE_GENERATED, 0);
+}
+
 void Special_BeginCyclingRoadChallenge(void)
 {
     gBikeCyclingChallenge = TRUE;

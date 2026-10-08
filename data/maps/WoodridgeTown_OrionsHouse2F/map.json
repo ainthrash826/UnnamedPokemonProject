@@ -2,11 +2,11 @@
   "id": "MAP_WOODRIDGE_TOWN_ORIONS_HOUSE2F",
   "name": "WoodridgeTown_OrionsHouse2F",
   "layout": "LAYOUT_WOODRIDGE_TOWN_ORIONS_HOUSE2F",
-  "music": "MUS_RUSTBORO",
+  "music": "MUS_ABANDONED_SHIP",
   "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_NEW_MAUVILLE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": false,
   "allow_escaping": false,
@@ -14,7 +14,21 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TM_BALL",
+      "x": 12,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_HOT_PRESS",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_GRANITE_CAVE_B2F_RARE_CANDY"
+    }
+  ],
   "warp_events": [
     {
       "x": 21,

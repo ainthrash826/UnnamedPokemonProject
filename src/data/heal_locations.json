@@ -32,8 +32,8 @@
     {
       "id": "HEAL_LOCATION_SLATEPORT_CITY",
       "map": "MAP_SLATEPORT_CITY",
-      "x": 30,
-      "y": 34,
+      "x": 41,
+      "y": 45,
       "respawn_map": "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F",
       "respawn_npc": "LOCALID_CENTRA_SE_NURSE"
     },

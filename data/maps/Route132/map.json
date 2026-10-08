@@ -38,7 +38,7 @@
     {
       "local_id": "LOCALID_CENTRA_NW_POWER_PLANT_GATE_BLOCK",
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 18,
+      "x": 17,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -143,7 +143,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 17,
-      "y": 26,
+      "y": 37,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -157,7 +157,7 @@
   "warp_events": [
     {
       "x": 14,
-      "y": 27,
+      "y": 38,
       "elevation": 0,
       "dest_map": "MAP_LAVARIDGE_TOWN_GYM_1F",
       "dest_warp_id": "0"
@@ -187,7 +187,7 @@
     {
       "type": "sign",
       "x": 17,
-      "y": 27,
+      "y": 38,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CentraNWGymSign"
@@ -195,7 +195,7 @@
     {
       "type": "sign",
       "x": 10,
-      "y": 27,
+      "y": 38,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CentraNWGymSign"

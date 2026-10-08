@@ -41,7 +41,7 @@ script OldIronworksSubzeroEncounter {
 	applymovement(LOCALID_ADMIN, moves(walk_in_place_fast_right))
 	applymovement(LOCALID_GRUNT1, moves(walk_in_place_fast_left))
 	waitmovement(0)
-	msgbox(format("???: Let the other Grunts in ??? Cave know we're regrouping on Route 5.\pWe're done here."))
+	msgbox(format("???: Let the other Grunts in Coalesce Cave know we're regrouping on {COLOR GREEN}Route 5{COLOR DARK_GRAY}.\pWe're done here."))
 	applymovement(LOCALID_GRUNT1, moves(walk_in_place_fast_left))
 	waitmovement(0)
 	msgbox(format("Grunt: Copy!"), MSGBOX_AUTOCLOSE)

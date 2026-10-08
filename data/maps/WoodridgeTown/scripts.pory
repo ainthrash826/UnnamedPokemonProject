@@ -15,6 +15,8 @@ mapscripts WoodridgeTown_MapScripts {
 			setmetatile(5, 4, 0x1DF, TRUE)
 			setmetatile(6, 4, 0x1DE, TRUE)
 			setmetatile(7, 4, 0x1DF, TRUE)
+			setmetatile(8, 4, 0x1DE, TRUE)
+			setmetatile(9, 4, 0x1DF, TRUE)
 			
 			setmetatile(4, 5, 0x1D6, TRUE)
 			setmetatile(5, 5, 0x1D7, TRUE)
@@ -25,8 +27,8 @@ mapscripts WoodridgeTown_MapScripts {
 			
 			setmetatile(4, 6, 0x1DE, TRUE)
 			setmetatile(5, 6, 0x1DF, TRUE)
-			setmetatile(6, 6, 0x1DE, TRUE)
-			setmetatile(7, 6, 0x1DF, TRUE)
+			setmetatile(6, 6, 0x1E6, TRUE)
+			setmetatile(7, 6, 0x1E7, TRUE)
 			setmetatile(8, 6, 0x1E6, TRUE)
 			setmetatile(9, 6, 0x1E7, TRUE)
 

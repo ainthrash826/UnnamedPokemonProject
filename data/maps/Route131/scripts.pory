@@ -44,12 +44,17 @@ script CentraCitySignBuffer_SW {
 script CentraSWClassmateTrigger {
 	goto_if_not_defeated(TRAINER_ROXANNE_1, Common_EventScript_BlockProgression)
 	lock
-	getplayery
-	addvar(VAR_RESULT, 6)
-	setobjectxy(LOCALID_CENTRA_SW_AIDE, 8, VAR_RESULT)
+	switch(getplayery) {
+		case 1:
+			setobjectxyperm(LOCALID_CENTRA_SW_AIDE, 8, 7)
+		case 2:
+			setobjectxyperm(LOCALID_CENTRA_SW_AIDE, 8, 8)
+		case 3:
+			setobjectxyperm(LOCALID_CENTRA_SW_AIDE, 8, 9)
+	}
 	addobject(LOCALID_CENTRA_SW_AIDE)
 	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_up * 6
-									            walk_left))
+									            walk_left * 2))
 	waitmovement(0)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	waitmovement(0)
@@ -63,11 +68,11 @@ script CentraSWClassmateTrigger {
 	setflag(FLAG_DEXNAV_DETECTOR_MODE)
 	msgbox(format("The second thing I wanted to give you is this."))
 	giveitem(ITEM_LETTER)
-	msgbox(format("That Letter is from the Professor to a good friend of his in Olstern City, named Kane.\p"
+	msgbox(format("That Letter is from the Professor to a good friend of his in {COLOR GREEN}Olstern City{COLOR DARK_GRAY}, named {COLOR BLUE}Kane{COLOR DARK_GRAY}.\p"
 	              "Some people refer to him as “Ol' Kane”, I believe.\p"
 	              "Anyway, the Professor asked me to ask you to deliver it for him in hopes that you don't mind.\p"
 				  "With that being said, both the Professor and I wish you the best of luck on your Pokémon journey, {PLAYER}!"), MSGBOX_AUTOCLOSE)
-	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_right
+	applymovement(LOCALID_CENTRA_SW_AIDE, moves(walk_right * 2
 									  walk_down * 10))
 	waitmovement(0)
 	removeobject(LOCALID_CENTRA_SW_AIDE)
@@ -87,11 +92,6 @@ Route131_EventScript_Herman::
 	msgbox Route131_Text_HermanPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route131_EventScript_Susie::
-	trainerbattle_single TRAINER_SUSIE, Route131_Text_SusieIntro, Route131_Text_SusieDefeat
-	msgbox Route131_Text_SusiePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route131_EventScript_Kara::
 	trainerbattle_single TRAINER_KARA, Route131_Text_KaraIntro, Route131_Text_KaraDefeat
 	msgbox Route131_Text_KaraPostBattle, MSGBOX_AUTOCLOSE
@@ -106,15 +106,4 @@ Route131_EventScript_Ian::
 	trainerbattle_double TRAINER_RELI_AND_IAN, Route131_Text_IanIntro, Route131_Text_IanDefeat, Route131_Text_IanNotEnoughMons
 	msgbox Route131_Text_IanPostBattle, MSGBOX_AUTOCLOSE
 	end
-
-Route131_EventScript_Talia::
-	trainerbattle_single TRAINER_TALIA, Route131_Text_TaliaIntro, Route131_Text_TaliaDefeat
-	msgbox Route131_Text_TaliaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-Route131_EventScript_Kevin::
-	trainerbattle_single TRAINER_KEVIN, Route131_Text_KevinIntro, Route131_Text_KevinDefeat
-	msgbox Route131_Text_KevinPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 `

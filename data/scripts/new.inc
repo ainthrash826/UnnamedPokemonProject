@@ -1115,143 +1115,143 @@ StaticMonItemDropChance_10:
 
 
 GymSetTrainersAndGiveTM::
-# 552 "data/scripts/new.pory"
-	switch VAR_0x8008
 # 553 "data/scripts/new.pory"
-	case 1, GymSetTrainersAndGiveTM_3
-# 560 "data/scripts/new.pory"
-	case 2, GymSetTrainersAndGiveTM_4
-# 572 "data/scripts/new.pory"
+	switch VAR_0x8008
+# 554 "data/scripts/new.pory"
+	case 1, GymSetTrainersAndGiveTM_2
+# 567 "data/scripts/new.pory"
+	case 2, GymSetTrainersAndGiveTM_3
 	giveitem ITEM_NUGGET
-GymSetTrainersAndGiveTM_1:
-# 574 "data/scripts/new.pory"
+# 0 "data/scripts/new.pory"
 	compare VAR_RESULT, 0
-	goto_if_ne GymSetTrainersAndGiveTM_6
-# 589 "data/scripts/new.pory"
+	goto_if_ne GymSetTrainersAndGiveTM_11
+# 586 "data/scripts/new.pory"
+	call Common_EventScript_BagIsFull
+	return
+
+GymSetTrainersAndGiveTM_2:
+# 555 "data/scripts/new.pory"
+	settrainerflag TRAINER_JOSH
+# 556 "data/scripts/new.pory"
+	settrainerflag TRAINER_TOMMY
+# 557 "data/scripts/new.pory"
+	settrainerflag TRAINER_MARC
+	giveitem ITEM_TM_AERIAL_ACE
+# 0 "data/scripts/new.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne GymSetTrainersAndGiveTM_5
+# 566 "data/scripts/new.pory"
 	call Common_EventScript_BagIsFull
 	return
 
 GymSetTrainersAndGiveTM_3:
-# 554 "data/scripts/new.pory"
-	settrainerflag TRAINER_JOSH
-# 555 "data/scripts/new.pory"
-	settrainerflag TRAINER_TOMMY
-# 556 "data/scripts/new.pory"
-	settrainerflag TRAINER_MARC
-# 558 "data/scripts/new.pory"
-	giveitem ITEM_TM_AERIAL_ACE
-	goto GymSetTrainersAndGiveTM_1
-
-GymSetTrainersAndGiveTM_4:
-# 561 "data/scripts/new.pory"
+# 568 "data/scripts/new.pory"
 	settrainerflag TRAINER_TAKAO
-# 562 "data/scripts/new.pory"
-	settrainerflag TRAINER_JOCELYN
-# 563 "data/scripts/new.pory"
-	settrainerflag TRAINER_LAURA
-# 564 "data/scripts/new.pory"
-	settrainerflag TRAINER_BRENDEN
-# 565 "data/scripts/new.pory"
-	settrainerflag TRAINER_CRISTIAN
-# 566 "data/scripts/new.pory"
-	settrainerflag TRAINER_LILITH
-# 567 "data/scripts/new.pory"
-	settrainerflag TRAINER_DARIAN
 # 569 "data/scripts/new.pory"
+	settrainerflag TRAINER_JOCELYN
+# 570 "data/scripts/new.pory"
+	settrainerflag TRAINER_LAURA
+# 571 "data/scripts/new.pory"
+	settrainerflag TRAINER_BRENDEN
+# 572 "data/scripts/new.pory"
+	settrainerflag TRAINER_CRISTIAN
+# 573 "data/scripts/new.pory"
+	settrainerflag TRAINER_LILITH
+# 574 "data/scripts/new.pory"
+	settrainerflag TRAINER_DARIAN
 	giveitem ITEM_TM_AQUA_CUTTER
-	goto GymSetTrainersAndGiveTM_1
-
-GymSetTrainersAndGiveTM_6:
-# 575 "data/scripts/new.pory"
-	switch VAR_0x8008
-# 576 "data/scripts/new.pory"
-	case 1, GymSetTrainersAndGiveTM_10
+# 0 "data/scripts/new.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne GymSetTrainersAndGiveTM_8
 # 581 "data/scripts/new.pory"
-	case 2, GymSetTrainersAndGiveTM_11
-# 587 "data/scripts/new.pory"
-	msgbox GymSetTrainersAndGiveTM_Text_2
+	call Common_EventScript_BagIsFull
 	return
 
-GymSetTrainersAndGiveTM_10:
-# 577 "data/scripts/new.pory"
+GymSetTrainersAndGiveTM_5:
+# 560 "data/scripts/new.pory"
 	setflag FLAG_RECEIVED_TM_AERIAL_ACE
-# 578 "data/scripts/new.pory"
+# 561 "data/scripts/new.pory"
 	msgbox GymSetTrainersAndGiveTM_Text_0
 	return
 
-GymSetTrainersAndGiveTM_11:
-# 582 "data/scripts/new.pory"
+GymSetTrainersAndGiveTM_8:
+# 577 "data/scripts/new.pory"
 	setflag FLAG_RECEIVED_TM_AQUA_CUTTER
-# 583 "data/scripts/new.pory"
+# 578 "data/scripts/new.pory"
 	msgbox GymSetTrainersAndGiveTM_Text_1
+	return
+
+GymSetTrainersAndGiveTM_11:
+# 585 "data/scripts/new.pory"
+	msgbox GymSetTrainersAndGiveTM_Text_2
 	return
 
 
 EventScript_ViewMap::
-# 593 "data/scripts/new.pory"
+# 591 "data/scripts/new.pory"
 	lockall
-# 594 "data/scripts/new.pory"
+# 592 "data/scripts/new.pory"
 	fadescreen FADE_TO_BLACK
-# 595 "data/scripts/new.pory"
+# 593 "data/scripts/new.pory"
 	special FieldShowRegionMap
-# 596 "data/scripts/new.pory"
+# 594 "data/scripts/new.pory"
 	releaseall
 	end
 
 
 Common_EventScript_MartClerk::
-# 601 "data/scripts/new.pory"
+# 599 "data/scripts/new.pory"
 	lock
-# 602 "data/scripts/new.pory"
+# 600 "data/scripts/new.pory"
 	faceplayer
-# 603 "data/scripts/new.pory"
+# 601 "data/scripts/new.pory"
 	call BufferClerkTextByTime
-# 604 "data/scripts/new.pory"
+# 602 "data/scripts/new.pory"
 	waitmessage
-# 605 "data/scripts/new.pory"
+# 603 "data/scripts/new.pory"
 	goto_if_unset FLAG_SYS_POKEDEX_GET, Common_EventScript_MartClerk_2
-# 608 "data/scripts/new.pory"
+# 606 "data/scripts/new.pory"
 	pokemart
 Common_EventScript_MartClerk_1:
-# 610 "data/scripts/new.pory"
+# 608 "data/scripts/new.pory"
 	msgbox gText_PleaseComeAgain, MSGBOX_AUTOCLOSE
 	end
 
 Common_EventScript_MartClerk_2:
-# 606 "data/scripts/new.pory"
+# 604 "data/scripts/new.pory"
 	pokemart PokemartNoDex
 	goto Common_EventScript_MartClerk_1
 
 
 	.align 2
-# 614 "data/scripts/new.pory"
+# 612 "data/scripts/new.pory"
 PokemartNoDex:
-# 615 "data/scripts/new.pory"
+# 613 "data/scripts/new.pory"
 	.2byte ITEM_POTION
 	.2byte ITEM_NONE
 
 StaticMonNpc::
-# 621 "data/scripts/new.pory"
+# 619 "data/scripts/new.pory"
 	lock
-# 622 "data/scripts/new.pory"
+# 620 "data/scripts/new.pory"
 	faceplayer
-	random 4
+	random 3
 # 0 "data/scripts/new.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq StaticMonNpc_2
-# 626 "data/scripts/new.pory"
+# 624 "data/scripts/new.pory"
 	playmoncry VAR_TEMP_A, CRY_MODE_NORMAL
 StaticMonNpc_1:
-# 628 "data/scripts/new.pory"
+# 626 "data/scripts/new.pory"
 	waitmoncry
-# 629 "data/scripts/new.pory"
+# 627 "data/scripts/new.pory"
 	delay 8
-# 630 "data/scripts/new.pory"
+# 628 "data/scripts/new.pory"
 	release
 	end
 
 StaticMonNpc_2:
-# 624 "data/scripts/new.pory"
+# 622 "data/scripts/new.pory"
 	playmoncry VAR_TEMP_A, CRY_MODE_DOUBLES
 	goto StaticMonNpc_1
 
@@ -1428,18 +1428,20 @@ StaticMonItemDropChance_Text_0:
 	.string "The wild Pokémon dropped something!$"
 
 GymSetTrainersAndGiveTM_Text_0:
-# 578 "data/scripts/new.pory"
+# 561 "data/scripts/new.pory"
 	.string "This is a Techincal Machine, or “TM” for\n"
-	.string "short. They can be used to teach your\l"
-	.string "Pokémon neat moves, and can be used\l"
-	.string "any number of times!\p"
+	.string "short.\p"
+	.string "They can be used to teach your Pokémon\n"
+	.string "neat moves, and can be used any number\l"
+	.string "of times!\p"
 	.string "The TM I gave you contains the move\n"
-	.string "Aerial Ace. It's a pretty swift\l"
-	.string "Flying-type move that never misses!\p"
+	.string "Aerial Ace.\p"
+	.string "It's a pretty swift Flying-type move\n"
+	.string "that never misses!\p"
 	.string "Well, most of the time, usually.$"
 
 GymSetTrainersAndGiveTM_Text_1:
-# 583 "data/scripts/new.pory"
+# 578 "data/scripts/new.pory"
 	.string "I forged that TM with me own hook!\n"
 	.string "Ha ha!\p"
 	.string "That there be the move Aqua Cutter, a\n"
@@ -1449,6 +1451,6 @@ GymSetTrainersAndGiveTM_Text_1:
 	.string "cutlass! Ha ha ha!$"
 
 GymSetTrainersAndGiveTM_Text_2:
-# 587 "data/scripts/new.pory"
+# 585 "data/scripts/new.pory"
 	.string "My TM wasn't assigned, so I gave you\n"
 	.string "that instead. Sorry!$"

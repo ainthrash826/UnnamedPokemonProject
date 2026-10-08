@@ -4271,20 +4271,6 @@ Route131_Text_HermanPostBattle:
 	.string "I'm a born swimmer!\n"
 	.string "That's what I am.$"
 
-Route131_Text_SusieIntro:
-	.string "Hi, sweetie, wait!\n"
-	.string "We should battle, you and I!$"
-
-Route131_Text_SusieDefeat:
-	.string "You're tough in spite of the way\n"
-	.string "you look!$"
-
-Route131_Text_SusiePostBattle:
-	.string "Did you see a guy over there who whines\n"
-	.string "that he's bored of the sea?\p"
-	.string "That's all talk.\n"
-	.string "He's hopelessly in love with the sea!$"
-
 Route131_Text_KaraIntro:
 	.string "Why do men love bathing suits so much?\p"
 	.string "They all ogle me!$"
@@ -4330,34 +4316,6 @@ Route131_Text_IanPostBattle:
 Route131_Text_IanNotEnoughMons:
 	.string "IAN: If you have two POKéMON,\n"
 	.string "we'll take you on!$"
-
-Route131_Text_TaliaIntro:
-	.string "If you can beat me, I'll give you some\n"
-	.string "great information!$"
-
-Route131_Text_TaliaDefeat:
-	.string "Oh?\n"
-	.string "Did I lose?$"
-
-Route131_Text_TaliaPostBattle:
-	.string "There is an odd place nearby.\n"
-	.string "There's a huge tower there.\l"
-	.string "Why don't you go take a look?$"
-
-Route131_Text_KevinIntro:
-	.string "The people of PACIFIDLOG are\n"
-	.string "a peaceful bunch.\p"
-	.string "They never get angry.\n"
-	.string "That goes for me, too.$"
-
-Route131_Text_KevinDefeat:
-	.string "Oops!$"
-
-Route131_Text_KevinPostBattle:
-	.string "Tch! …Oh, wait.\n"
-	.string "I'm not angry. Honestly!\p"
-	.string "But, boy, you're strong!\n"
-	.string "Hahaha!$"
 
 Route132_Text_GilbertIntro:
 	.string "I used to catch colds all the time as\n"

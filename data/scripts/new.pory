@@ -547,6 +547,7 @@ const LEADER_ALPH = 5
 const LEADER_DULCE = 6
 const LEADER_MARYANNE = 7
 const LEADER_BOTOW = 8
+const LEADER_VALDANA = 9
 
 script GymSetTrainersAndGiveTM {
     switch(var(TARGET_LEADER)) {
@@ -555,8 +556,14 @@ script GymSetTrainersAndGiveTM {
             settrainerflag(TRAINER_TOMMY)
             settrainerflag(TRAINER_MARC)
 
-            giveitem(ITEM_TM_AERIAL_ACE)
-
+            if(giveitem(ITEM_TM_AERIAL_ACE)) {
+                setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
+                msgbox(format("This is a Techincal Machine, or “TM” for short.\p"
+                              "They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
+                              "The TM I gave you contains the move Aerial Ace.\p"
+                              "It's a pretty swift Flying-type move that never misses!\p"
+                              "Well, most of the time, usually."))
+            } else {call(Common_EventScript_BagIsFull)}
         case LEADER_REDBEARD:
             settrainerflag(TRAINER_TAKAO)
             settrainerflag(TRAINER_JOCELYN)
@@ -566,27 +573,18 @@ script GymSetTrainersAndGiveTM {
             settrainerflag(TRAINER_LILITH)
             settrainerflag(TRAINER_DARIAN)
 
-            giveitem(ITEM_TM_AQUA_CUTTER)
-
-        default: // Failsafe
-            giveitem(ITEM_NUGGET)
-    }
-    if(var(VAR_RESULT)) {
-        switch(var(TARGET_LEADER)) {
-            case LEADER_ARIA:
-                setflag(FLAG_RECEIVED_TM_AERIAL_ACE)
-                msgbox(format("This is a Techincal Machine, or “TM” for short. They can be used to teach your Pokémon neat moves, and can be used any number of times!\p"
-                              "The TM I gave you contains the move Aerial Ace. It's a pretty swift Flying-type move that never misses!\p"
-                              "Well, most of the time, usually."))
-            case LEADER_REDBEARD:
+            if(giveitem(ITEM_TM_AQUA_CUTTER)) {
                 setflag(FLAG_RECEIVED_TM_AQUA_CUTTER)
                 msgbox(format("I forged that TM with me own hook!\nHa ha!\p"
                               "That there be the move Aqua Cutter, a sharp Water-type move with a high critical-hit ratio!\p"
                               "Use it on a Pokémon with a divine cutlass! Ha ha ha!"))
-            default: // Failsafe
+            } else {call(Common_EventScript_BagIsFull)}
+
+        default: // Failsafe
+            if(giveitem(ITEM_NUGGET)) {
                 msgbox(format("My TM wasn't assigned, so I gave you that instead. Sorry!"))
-        }
-    } else {call(Common_EventScript_BagIsFull)}
+            } else {call(Common_EventScript_BagIsFull)}
+    }
 }
 
 script EventScript_ViewMap {
@@ -620,7 +618,7 @@ const TARGET_NPC_MON = VAR_TEMP_A
 script StaticMonNpc {
     lock
 	faceplayer
-    if(!random(4)) {
+    if(!random(3)) {
 		playmoncry(TARGET_NPC_MON, CRY_MODE_DOUBLES)
     } else {
 	    playmoncry(TARGET_NPC_MON, CRY_MODE_NORMAL)

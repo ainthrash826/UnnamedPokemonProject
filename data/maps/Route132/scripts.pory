@@ -12,7 +12,7 @@ script CentraCitySignBuffer_NW {
 
 script CentraCitySign_PowerPlantGate {
 	call(EventScript_BufferTime)
-	msgbox("Centra City - Power Plant Gate\n{STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\l"
+	msgbox("Centra City - Power Plant Gate, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
 	       "The Heart of the ??? Region\p"
 	       "This city is separated into four\n"
 	       "sections. You are currently located in\l"
@@ -42,6 +42,7 @@ script CentraNW_PowerPlantGateBlockTrigger {
 	applymovement(LOCALID_CENTRA_NW_POWER_PLANT_GATE_BLOCK, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	msgbox(format("Sorry, I can only allow authorized personnel beyond this point at this time."), MSGBOX_NPC)
+	applymovement(LOCALID_CENTRA_NW_POWER_PLANT_GATE_BLOCK, moves(face_right))
 	applymovement(LOCALID_PLAYER, moves(walk_right))
 	waitmovement(0)
 	release

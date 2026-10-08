@@ -1882,7 +1882,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 7,
@@ -1892,7 +1892,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_ARON"
+                "species": "SPECIES_DRILBUR"
               },
               {
                 "min_level": 7,
@@ -1902,7 +1902,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 7,
@@ -1951,7 +1951,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 7,
@@ -1961,7 +1961,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_ARON"
+                "species": "SPECIES_DRILBUR"
               },
               {
                 "min_level": 7,
@@ -1971,7 +1971,7 @@
               {
                 "min_level": 7,
                 "max_level": 10,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 7,
@@ -2350,7 +2350,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_DRILBUR"
               },
               {
                 "min_level": 8,
@@ -2360,7 +2360,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_ARON"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 8,
@@ -2370,7 +2370,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_NACLI"
+                "species": "SPECIES_ROLYCOLY"
               },
               {
                 "min_level": 8,

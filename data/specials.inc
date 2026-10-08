@@ -269,6 +269,8 @@ gSpecials::
 	def_special GetBattleTowerSinglesStreak
 	def_special ReducePlayerPartyToSelectedMons
 	def_special BedroomPC, waitstate=1
+	def_special ToggleBgm
+	def_special DespawnOWEs
 	def_special PlayerPC, waitstate=1
 	def_special FieldShowRegionMap, waitstate=1
 	def_special GetInGameTradeSpeciesInfo

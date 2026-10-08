@@ -12,7 +12,7 @@ script Route3EastSign1 {
 
 script Route3EastSign2 {
 	call(EventScript_BufferTime)
-	msgbox("Route 3 - ??? Cave, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\p"
+	msgbox("Route 3 - Coalesce Cave, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
 	       "Centra City {RIGHT_ARROW}", MSGBOX_SIGN)
 	end
 }
@@ -25,7 +25,7 @@ script Route3Boy {
 }
 
 script Route3Man {
-	msgbox(format("The ??? Cave is up ahead.\nGood thing it isn't dark enough that you'd need Flash to navigate through it.\p"
+	msgbox(format("Coalesce Cave is up ahead. Good thing it isn't dark enough that you'd need Flash to navigate through it.\p"
 	              "Imagine how inconvenient that would've been!"), MSGBOX_NPC)
 	end
 }
@@ -133,12 +133,6 @@ script Route3Pete {
 	end
 }
 
-script Route3Dylan {
-	trainerbattle_single(TRAINER_MIGUEL_1, format("You fell right into my web! Prepare to be eaten!"), format("We couldn't sling it!"))
-	msgbox(format("I'm actually down here practicing entry hazards with my Dewpider."), MSGBOX_NPC)
-	end
-}
-
 script Route3CoupleM {
 	trainerbattle_double(TRAINER_MARCOS, format("I'm on a date with my girlfriend!"),
 	                                     format(""),
@@ -161,6 +155,7 @@ script Route3CoupleF {
 
 script Route3HarleyTrigger {
 	lock
+	special(DespawnOWEs)
 	message(format("???: {PLAYER}!"))
 	waitmessage
 	delay(8)
@@ -201,7 +196,7 @@ script Route3HarleyTrigger {
 	playse(SE_USE_ITEM)
 	waitse
 	special(HealPlayerParty)
-	msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: I'm going to wait a while before heading into ??? Cave.\p"
+	msgbox(format("{COLOR RED}Harley{COLOR DARK_GRAY}: I'm going to wait a while before heading into {COLOR GREEN}Coalesce Cave{COLOR DARK_GRAY}.\p"
 	              "I'll catch you around, {PLAYER}!"), MSGBOX_AUTOCLOSE)
 	applymovement(LOCALID_R3_HARLEY, moves(walk_right * 10))
 	waitmovement(0)

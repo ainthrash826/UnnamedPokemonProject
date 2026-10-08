@@ -8,6 +8,6 @@ script Route3SouthSign1 {
 
 script Route3SouthSign2 {
 	call(EventScript_BufferTime)
-	msgbox("Route 3 - ??? Cave, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
+	msgbox("Route 3 - Coalesce Cave, {STR_VAR_1}:{STR_VAR_2}{STR_VAR_3}\n"
 		   "{DOWN_ARROW} Olstern City", MSGBOX_SIGN)
 }

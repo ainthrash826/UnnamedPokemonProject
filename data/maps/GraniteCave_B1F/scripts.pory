@@ -1,110 +1,196 @@
-const LOCALID_DETONATOR = 2
 const FLAG_TALKED_TO_DETONATOR = FLAG_TEMP_1
 
 mapscripts GraniteCave_B1F_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if(!var(VAR_UMN_CAVE_STATE)) {
-			setobjectxyperm(LOCALID_DETONATOR, 50, 53)
+		if(!var(VAR_COALESCE_CAVE_STATE)) {
+			setobjectxyperm(LOCALID_COALESCE_CAVE_GRANT, 7, 45)
+		}
+		if(var(VAR_COALESCE_CAVE_STATE) < COALESCE_CAVE_STATE_CAVE_IN_CLEARED) {
+			setobjectxyperm(LOCALID_COALESCE_CAVE_DETONATOR, 25, 62)
+			setobjectmovementtype(LOCALID_COALESCE_CAVE_DETONATOR, MOVEMENT_TYPE_FACE_DOWN)
 		}
 	}
 	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_UMN_CAVE_STATE, UMN_CAVE_STATE_CAVE_IN_CLEARED {
-			//setmetatile(X, Y, 0x201, FALSE)
-			setmetatile(43, 50, 0x201, FALSE)
-			setmetatile(44, 50, 0x201, FALSE)
-			setmetatile(45, 50, 0x201, FALSE)
-			setmetatile(46, 50, 0x201, FALSE)
-			setmetatile(47, 50, 0x201, FALSE)
-			setmetatile(42, 51, 0x201, FALSE)
-			setmetatile(43, 51, 0x201, FALSE)
-			setmetatile(44, 51, 0x201, FALSE)
-			setmetatile(45, 51, 0x201, FALSE)
-			setmetatile(46, 51, 0x201, FALSE)
-			setmetatile(47, 51, 0x201, FALSE)
-			setmetatile(48, 51, 0x201, FALSE)
-			setmetatile(43, 52, 0x201, FALSE)
-			setmetatile(44, 52, 0x201, FALSE)
-			setmetatile(45, 52, 0x201, FALSE)
-			setmetatile(46, 52, 0x201, FALSE)
-			setmetatile(47, 52, 0x201, FALSE)
-			setmetatile(48, 52, 0x201, FALSE)
-			setmetatile(43, 53, 0x201, FALSE)
-			setmetatile(44, 53, 0x201, FALSE)
-			setmetatile(45, 53, 0x201, FALSE)
-			setmetatile(46, 53, 0x201, FALSE)
-			setmetatile(47, 53, 0x201, FALSE)
-			setmetatile(48, 53, 0x201, FALSE)
-			setmetatile(49, 53, 0x201, FALSE)
-			setmetatile(44, 54, 0x201, FALSE)
-			setmetatile(45, 54, 0x201, FALSE)
-			setmetatile(46, 54, 0x201, FALSE)
-			setmetatile(47, 54, 0x201, FALSE)
-			setmetatile(48, 54, 0x201, FALSE)
-			setmetatile(45, 55, 0x201, FALSE)
-			setmetatile(46, 55, 0x201, FALSE)
-			setmetatile(47, 55, 0x201, FALSE)
-			setmetatile(48, 55, 0x201, FALSE)
-			setmetatile(44, 56, 0x201, FALSE)
-			setmetatile(45, 56, 0x201, FALSE)
-			setmetatile(46, 56, 0x201, FALSE)
-			setmetatile(47, 56, 0x201, FALSE)
-		}
+		VAR_COALESCE_CAVE_STATE, COALESCE_CAVE_STATE_CAVE_IN_CLEARED: ClearCaveIn
 	]
+}
+
+script(local) ClearCaveIn {
+	//setmetatile(X, Y, 0x201, FALSE)
+	setmetatile(24, 63, 0x201, FALSE)
+	setmetatile(25, 63, 0x201, FALSE)
+	setmetatile(26, 63, 0x201, FALSE)
+	setmetatile(27, 63, 0x201, FALSE)
+	setmetatile(17, 64, 0x201, FALSE)
+	setmetatile(18, 64, 0x201, FALSE)
+	setmetatile(24, 64, 0x201, FALSE)
+	setmetatile(25, 64, 0x201, FALSE)
+	setmetatile(26, 64, 0x201, FALSE)
+	setmetatile(27, 64, 0x201, FALSE)
+	setmetatile(17, 65, 0x201, FALSE)
+	setmetatile(18, 65, 0x201, FALSE)
+	setmetatile(24, 65, 0x201, FALSE)
+	setmetatile(25, 65, 0x201, FALSE)
+	setmetatile(26, 65, 0x201, FALSE)
+	setmetatile(27, 65, 0x201, FALSE)
+	setmetatile(28, 65, 0x201, FALSE)
+	setmetatile(17, 66, 0x201, FALSE)
+	setmetatile(18, 66, 0x201, FALSE)
+	setmetatile(25, 66, 0x201, FALSE)
+	setmetatile(26, 66, 0x201, FALSE)
+	setmetatile(27, 66, 0x201, FALSE)
+	setmetatile(28, 66, 0x201, FALSE)
+	setmetatile(29, 66, 0x201, FALSE)
+	setmetatile(17, 67, 0x201, FALSE)
+	setmetatile(18, 67, 0x201, FALSE)
+	setmetatile(25, 67, 0x201, FALSE)
+	setmetatile(26, 67, 0x201, FALSE)
+	setmetatile(27, 67, 0x201, FALSE)
+	setmetatile(28, 67, 0x201, FALSE)
+	setmetatile(17, 68, 0x201, FALSE)
+	setmetatile(25, 68, 0x201, FALSE)
+	setmetatile(26, 68, 0x201, FALSE)
+	setmetatile(27, 68, 0x201, FALSE)
+	setmetatile(28, 68, 0x201, FALSE)
+	setmetatile(17, 69, 0x201, FALSE)
 }
 
 // NPCs
 
-script GraniteCave_B1F_EventScript_Hiker {
-	if(var(VAR_UMN_CAVE_STATE) < UMN_CAVE_STATE_CAVE_IN_CLEARED) {
-		if(!flag(FLAG_TALKED_TO_DETONATOR)) {
-			msgbox(format("Zzz zzz…\nZzz zzz…\p"
-						  "Whuh?\nOh, hey there.\p"
-						  "This part of the cave leads to the southern portion of Route 3. Unfortunately, it's been blocked off by a cave-in, so you'll have to find some way around it.\p"
-						  "Jeez, what time is it? My crew was supposed to be here hours ago with the dynamite to blast this thing!\p"
-						  "Come to think of it, I did see a group of weird-lookin' people with some equipment some time ago…\p"
-						  "Hey, you. If you happen to to run into some weird-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
-			setflag(FLAG_TALKED_TO_DETONATOR)
-		} else {
-			msgbox(format("This part of the cave leads to the southern portion of Route 3. Unfortunately, it's been blocked off by a cave-in, so you'll have to find some way around it.\p"
-						  "Jeez, what time is it? My crew was supposed to be here hours ago with the dynamite to blast this thing!\p"
-						  "Come to think of it, I did see a group of weird-lookin' people with some equipment some time ago…\p"
-						  "If you happen to to run into some weird-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
-		}
-	} else {
-		if(!flag(FLAG_TALKED_TO_DETONATOR)) {
-			msgbox(format("Hahah! Hey there kid!\nYou totally missed it! Me n' my crew just blasted the cave-in here!\p"
-						  "It was as if a bunch of fireworks were going off inside a dust devil.\p"
-						  "It was so awesome! Hahaha!"), MSGBOX_NPC)
-			setflag(FLAG_TALKED_TO_DETONATOR)
-		} else {
-			msgbox(format("The cave-in's been cleared. Now you can use this way to get to Olstern City."), MSGBOX_NPC)
-		}
+script CoalesceCaveB1FDetonator {
+	switch(var(VAR_COALESCE_CAVE_STATE)) {
+		case 0:
+			if(!flag(FLAG_TALKED_TO_DETONATOR)) {
+				setflag(FLAG_TALKED_TO_DETONATOR)
+				msgbox(format("Zzz zzz zzz…\nZzz zzz zzz…\p"
+							  "…{PAUSE 60} Whuh?\nOh, hey there.\p"
+							  "This part of the cave leads to the southern portion of Route 3.\lUnfortunately, it's been blocked off by a cave-in, so you'll have to find some way around it.\p"
+							  "Jeez, what time is it? My crew was supposed to be here ages ago with the dynamite to blast this thing!\p"
+							  "Come to think of it, I did see a group of odd-lookin' people with some equipment some time ago…\p"
+							  "Hey, you. If you happen to to run into some odd-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
+			} else {
+				msgbox(format("This part of the cave leads to the southern portion of Route 3.\lUnfortunately, it's been blocked off by a cave-in, so you'll have to find a way around it for the time being.\p"
+						      "Speaking of, what time is it? My crew was supposed to be here ages ago with the dynamite to blast this thing!\p"
+						      "Come to think of it, I did see a group of odd-lookin' people with some equipment some time ago…\p"
+						      "If you happen to to run into some odd-lookin' people, ask them if they have any spare dynamite on them."), MSGBOX_NPC)
+			}
+		case COALESCE_CAVE_STATE_SUBZERO_TRIGGERED:
+			if(!flag(FLAG_TALKED_TO_DETONATOR)) {
+				setflag(FLAG_TALKED_TO_DETONATOR)
+				msgbox(format("Hahah, yeah! We finally got some dynamite!\p"
+		                      "Soon we'll be able to clear this tedious cave-in.\p"
+						      "You don't want to be here when that happens, though. I don't want to be responsible for paying your medical bills! Hahaha!"), MSGBOX_NPC)
+			} else {
+				msgbox(format("We got some dynamite, so we can finally start preparing to blast this tedious cave-in!\p"
+						      "You don't want to be here when that happens, though. I don't want to be responsible for paying your medical bills! Hahaha!"), MSGBOX_NPC)
+			}
+		case COALESCE_CAVE_STATE_CAVE_IN_CLEARED:
+			msgbox(format("Hahaha! Hey there kid!\p"
+		                  "You totally missed it! Me n' my crew just blasted the cave-in here!\p"
+					      "It was as if a bunch of fireworks were going off inside a dust devil.\p"
+					      "It was so awesome! Hahaha!"), MSGBOX_NPC)
 	}
 	end
 }
 
+script CoalesceCaveB1FGrant {
+	lock
+	faceplayer
+	if(defeated(TRAINER_GABRIELLE_1)) {
+		msgbox(format(""), MSGBOX_NPC)
+	} elif(!flag(FLAG_TALKED_TO_GRANT_COALESCE_CAVE)) {
+		setflag(FLAG_TALKED_TO_GRANT_COALESCE_CAVE)
+		msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Can I be honest with you, {PLAYER}?\p"
+				  "Working for Subzero is stressful. The work-to-pay ratio is abysmal.\p"
+				  "For the Grunts, at least. I heard that the Commanders and Admins get paid fine while doing jack!\p"
+				  "But, what can I really do about it? They'll shame anyone who speaks out-of-line.\p"
+				  "Plus, I wouldn't really have a whole lot better to do if I just left.\p"
+				  "Speaking of, both you and {COLOR RED}Harley{COLOR DARK_GRAY} are wanted by the rest of Subzero.\p"
+				  "The boss is aware that {COLOR RED}Harley{COLOR DARK_GRAY} went AWOL, and assumes she teamed up with you to put an end to their apparenty world-ending goals.\p"
+				  "I wouldn't be too stressed about it, though. Subzero's not really about publicity, so if something serious did end up happening to you or her it'll just look really bad on their part.\p"
+				  "Anyway, thanks for hearing me rant, {PLAYER}. Here, I want you to have this."))
+		if(!giveitem(ITEM_LUCKY_EGG)) {
+			call(Common_EventScript_BagIsFull)
+		}
+		msgbox(format("Take it as an apology for the seemingly random battle we had on {COLOR GREEN}Vast Woods Trail{COLOR DARK_GRAY}.\p"
+						"Also, are you free?\nIf so, would you like to have a proper battle with me before we're ready to depart?"), MSGBOX_YESNO)
+		call(StartGrantBattle)
+	} else {
+		msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Hey, {PLAYER}.\nYou up for that battle?"), MSGBOX_YESNO)
+		call(StartGrantBattle)
+	}
+	release
+	end
+}
+script(local) StartGrantBattle {
+	if(var(VAR_RESULT)) {
+		msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: Alright. But don't think I'm gonna be as easy to defeat as I was when we first met!"))
+		trainerbattle_no_intro(TRAINER_GABRIELLE_1, format("Wow. You're really tough, {PLAYER}."))
+		msgbox(format(""), MSGBOX_NPC)
+	} else {
+		msgbox(format("{COLOR BLUE}Grant{COLOR DARK_GRAY}: No worries! I'll be here if you change your mind."), MSGBOX_NPC)
+	}
+}
+
 // Trainers
 
-script UnmCaveB1FHenry {
+script CoalesceCaveB1FHenry {
 	trainerbattle_single(TRAINER_HENRY,
-	                     format("Welcome to ??? Cave.\nTry not to get lost!"),
+	                     format("Welcome to Coalesce Cave.\nTry not to get lost!"),
 						 format("Actually, getting lost here is easier said than done…"))
-	msgbox(format("I hitchhiked here all the way from ??? Town.\lBoy, what a journey's it's been!"), MSGBOX_NPC)
+	msgbox(format("I hiked here all the way from {COLOR GREEN}??? Town{COLOR DARK_GRAY}. Boy, what a journey's it's been!"), MSGBOX_NPC)
 	end
 }
 
-script UnmCaveB1F_SubzeroGrunt1 {
-	trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_1,
-	                     format(""),
+script CoalesceCaveB1FSusie {
+	trainerbattle_single(TRAINER_SUSIE,
+	                     format("Are you headed to {COLOR GREEN}??? Town{COLOR DARK_GRAY}?\nme too!"),
 						 format(""))
 	msgbox(format(""), MSGBOX_NPC)
 	end
 }
 
-script UnmCaveB1F_SubzeroGrunt2 {
-	trainerbattle_single(TRAINER_GRUNT_AQUA_HIDEOUT_2,
-	                     format(""),
-						 format(""))
+script CoalesceCaveB1FKevin {
+	trainerbattle_single(TRAINER_KEVIN,
+	                     format("Fear not the darkness of the cavern!"),
+						 format("What a wrap-up…"))
 	msgbox(format(""), MSGBOX_NPC)
+	end
+}
+
+script CoalesceCaveB1FDylan {
+	trainerbattle_single(TRAINER_MIGUEL_1, format("Me and my bugs got lost in this cave, so we're using this huge boulder for shelter."), format("We couldn't sling it!"))
+	msgbox(format("I'm not really worried. This is a great place to practice entry hazards with my Dewpider!"), MSGBOX_NPC)
+	end
+}
+
+// Triggers
+
+script CoalesceCaveTrigger {
+	lock
+	special(DespawnOWEs)
+	applymovement(LOCALID_COALESCE_CAVE_GRANT, moves(walk_slow_right * 5
+												walk_slow_down
+												walk_slow_right * 2
+												walk_slow_up
+												walk_in_place_fast_right))
+	waitmovement(0)
+	exclam(LOCALID_COALESCE_CAVE_GRANT)
+	msgbox(format("Oh hey, It's you. Remember me?\nIt's {COLOR BLUE}Grant{COLOR DARK_GRAY}. We met on {COLOR GREEN}Vast Woods Trail{COLOR DARK_GRAY}.\p"
+				  "Anyway, I gotta deliver this dynamite to the detonator further in the cave so that he can clear the cave-in.\p"
+				  "See you around, {PLAYER}."), MSGBOX_AUTOCLOSE)
+	applymovement(LOCALID_PLAYER, moves(face_left
+										lock_facing_direction
+										walk_right * 2
+										unlock_facing_direction
+										delay_16 * 4
+										walk_in_place_fast_down))
+	applymovement(LOCALID_COALESCE_CAVE_GRANT, moves(walk_slow_right * 2
+												walk_slow_down * 7))
+	waitmovement(0)
+	setobjectxy(LOCALID_COALESCE_CAVE_GRANT, 24, 62)
+	setobjectxyperm(LOCALID_COALESCE_CAVE_GRANT, 24, 62)
+	setvar(VAR_COALESCE_CAVE_STATE, COALESCE_CAVE_STATE_SUBZERO_TRIGGERED)
+	release
 	end
 }

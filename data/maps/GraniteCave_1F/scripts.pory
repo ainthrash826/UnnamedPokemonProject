@@ -1,1 +1,8 @@
 mapscripts GraniteCave_1F_MapScripts {}
+
+script CoalesceCave1F_Camper {
+    msgbox(format("Hey there! See that big hole in the ground up here?\p"
+                  "And do you see that giant boulder directly above the hole?\p"
+                  "To my understanding, you won't be able to make it through here unless you're somehow able to push that boulder into the hole."), MSGBOX_NPC)
+    end
+}

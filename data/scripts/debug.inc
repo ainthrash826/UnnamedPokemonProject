@@ -64,17 +64,17 @@ Debug_CheatStart::
 
 Debug_EventScript_Script_1::
 # 38 "data/scripts/debug.pory"
-	lockall
-# 39 "data/scripts/debug.pory"
-	special FieldShowRegionMap
-# 40 "data/scripts/debug.pory"
-	releaseall
+	special ToggleBgm
 	end
 
 
 Debug_EventScript_Script_2::
+# 43 "data/scripts/debug.pory"
+	lockall
+# 44 "data/scripts/debug.pory"
+	special FieldShowRegionMap
 # 45 "data/scripts/debug.pory"
-	release
+	releaseall
 	end
 
 

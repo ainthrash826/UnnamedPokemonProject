@@ -106,7 +106,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Spheal
-Level: 15
+Level: 16
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
 Name: Marcus
@@ -118,7 +118,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Sneasel
-Level: 15
+Level: 16
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
 Name: Chelsea
@@ -185,7 +185,7 @@ Adamant Nature
 - Rapid Spin
 
 Frigibax (M) @ Sitrus Berry
-Level: 18
+Level: 19
 Adamant Nature
 - Leer
 - Dragon Tail
@@ -208,37 +208,34 @@ Snorunt (F)
 Level: 17
 
 === TRAINER_GABRIELLE_1 ===
-Name: GABRIELLE
-Class: Pkmn Breeder
-Pic: Pokemon Breeder F
-Gender: Female
-Music: Female
+Name: Grant
+Class: PkMn Trainer 2
+Pic: Magma Grunt M
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Trainer Plus
 
-Skitty
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gligar
+Level: 15
+-Ice Fang
+-Knock Off
+-Quick Attack
+-Poison Sting
 
-Poochyena
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Shinx
+Level: 16
+-Ice Fang
+-Spark
+-Bite
+-Leer
 
-Zigzagoon
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Lotad
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seedot
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Taillow
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Snorunt
+Level: 17
+-Ice Fang
+-Ice Shard
+-Headbutt
+-Double Team
 
 === TRAINER_GRUNT_PETALBURG_WOODS ===
 Name: GRUNT
@@ -3058,17 +3055,19 @@ Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KEVIN ===
-Name: KEVIN
-Class: Swimmer M
-Pic: Swimmer M
+Name: Kevin
+Class: Guitarist
+Pic: Guitarist
 Gender: Male
-Music: Swimmer
+Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Spheal
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Toxel
+Level: 15
+
+Whismur
+Level: 16
 
 === TRAINER_JACK ===
 Name: JACK
@@ -5540,17 +5539,17 @@ Double Battle: No
 AI: Basic Trainer
 
 Dewpider
-Level: 14
+Level: 15
 - Sticky Web
 - Bug Bite
 - Bubble Beam
 - Bite
 
 Spinarak
-Level: 14
+Level: 15
 
 Joltik
-Level: 15
+Level: 16
 
 === TRAINER_COLTON ===
 Name: COLTON
@@ -6019,7 +6018,7 @@ Starly
 Level: 9
 
 === TRAINER_TOMMY ===
-Name: Emily
+Name: Sasha
 Class: Gym Trainer
 Pic: Picnicker
 Gender: Female
@@ -8358,17 +8357,22 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SUSIE ===
-Name: SUSIE
-Class: Swimmer F
-Pic: Swimmer F
+Name: Susie
+Class: Picnicker
+Pic: Picnicker
 Gender: Female
-Music: Swimmer
+Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Luvdisc
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefairy
+Level: 16
+
+Beautifly
+Level: 15
+
+Flittle
+Level: 16
 
 === TRAINER_KARA ===
 Name: KARA
@@ -9698,7 +9702,6 @@ Ability: Chlorophyll
 -Sleep Powder
 -Vine Whip
 -Wrap
--Leer
 
 Mime Jr (F)
 Level: 14
@@ -9708,7 +9711,7 @@ Ability: Soundproof
 -Encore
 -Baton Pass
 
-Fuecoco (F) @ Oran Berry
+Fuecoco (F) @ Sitrus Berry
 Level: 15
 -Incinerate
 -Bite
@@ -12494,10 +12497,13 @@ Music: Hiker
 Double Battle: No
 AI: Basic Trainer
 
-Nacli
+Drilbur
 Level: 15
 
-Onix
+Timburr
+Level: 15
+
+Rolycoly
 Level: 15
 
 === TRAINER_ROGER ===

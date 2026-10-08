@@ -1,110 +1,12 @@
-const LOCALID_TEACHER = 1
-const LOCALID_ARIA = 2
-const LOCALID_KEDLE = 15
-
 mapscripts RustboroCity_PokemonSchool_MapScripts {
-	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_CENTRA_CITY_STATE, 0 {
-			lock
-			special(SpawnCameraObject)
-			delay(30)
-			applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 9))
-			delay(80)
-			setvar(VAR_TEMP_0, 3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			delay(3)
-			call(TurnStudentsAndIncrement)
-			waitmovement(OBJ_EVENT_ID_CAMERA)
-			applymovement(LOCALID_TEACHER, Common_Movement_WalkInPlaceDown)
-			waitmovement(0)
-			setobjectxy(OBJ_EVENT_ID_PLAYER, 8, 12)
-			msgbox(format("Ah, there's our 2nd guest!"), MSGBOX_AUTOCLOSE)
-			delay(16)
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
-			applymovement(LOCALID_TEACHER, moves(walk_left
-												 walk_down * 3
-												 walk_right
-												 walk_in_place_fast_down))
-			delay(20)
-			applymovement(3, Common_Movement_WalkInPlaceUp)
-			applymovement(4, Common_Movement_WalkInPlaceUp)
-			applymovement(5, Common_Movement_WalkInPlaceUp)
-			applymovement(6, Common_Movement_WalkInPlaceUp)
-			applymovement(7, Common_Movement_WalkInPlaceUp)
-			applymovement(8, Common_Movement_WalkInPlaceUp)
-			applymovement(9, Common_Movement_WalkInPlaceUp)
-			applymovement(10, Common_Movement_WalkInPlaceUp)
-			applymovement(11, Common_Movement_WalkInPlaceUp)
-			applymovement(12, Common_Movement_WalkInPlaceUp)
-			applymovement(13, Common_Movement_WalkInPlaceUp)
-			applymovement(14, Common_Movement_WalkInPlaceUp)
-			waitmovement(LOCALID_TEACHER)
-			msgbox(format("{PLAYER}, correct?{PAUSE 40}\nProf. Watson told me you were arriving shortly.\p"
-						  "Do me a favor and stand next to the young lady behind me."), MSGBOX_AUTOCLOSE)
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2
-													 walk_in_place_fast_down))
-			applymovement(LOCALID_TEACHER, moves(walk_left
-												 walk_up * 3
-												 walk_right
-												 walk_in_place_fast_down))
-			waitmovement(0)
-			//TODO
-			pausefakertc
-			fadenewbgm(MUS_NONE)
-			fadescreen(FADE_TO_BLACK)
-			delay(75)
-			message("A few hours earlier…{PAUSE 45}\nSomewhere in the Vast Woods…{PAUSE 45}")
-			waitmessage
-			delay(20)
-			warpnofade(MAP_CENTRA_NE_POKEMON_ACADEMY1F, 9, 8)
-			waitstate
-			release
-			end
-		}
-	]
-}
-
-script(local) TurnStudentsAndIncrement {
-	applymovement(VAR_TEMP_0, moves(walk_in_place_down))
-	addvar(VAR_TEMP_0, 1)
-}
-
-script SelectRandomClassmate {
-	random(12)
-	addvar(VAR_RESULT, 3)
-	goto_if_gt(VAR_RESULT, 12, SelectRandomClassmate)
-	compare_var_to_var(VAR_RESULT, VAR_TEMP_3)
-	goto_if_eq(SelectRandomClassmate)
-	copyvar(VAR_TEMP_3, VAR_RESULT)
-	delay(40)
-	return
-}
-
-script BlockPlayerFromLeaving {
-	lock
-	msgbox(format("Teacher: Excuse me, {PLAYER}!\nWhere do you think you're going?\pClass already started.\nNow please have a seat!"), MSGBOX_AUTOCLOSE)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
-	waitmovement(0)
-	release
-	end
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_TEMP_A, FALSE {
+            lock
+            msgbox("UNDER CONSTRUCTION!", MSGBOX_AUTOCLOSE)
+            warp(MAP_SLATEPORT_CITY, 3)
+            waitstate
+            release
+            end
+        }
+    ]
 }
