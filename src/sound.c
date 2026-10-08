@@ -265,6 +265,8 @@ void FadeInNewBGM(u16 songNum, u8 speed)
 {
     if (gDisableMusic)
         songNum = 0;
+    if (gSaveBlock2Ptr->optionsMuteBgm == TRUE)
+        songNum = 0;
     if (songNum == MUS_NONE)
         songNum = 0;
     m4aSongNumStart(songNum);
@@ -554,9 +556,20 @@ void PlayBGM(u16 songNum)
 {
     if (gDisableMusic)
         songNum = 0;
+    if (gSaveBlock2Ptr->optionsMuteBgm == TRUE)
+        songNum = 0;
     if (songNum == MUS_NONE)
         songNum = 0;
     m4aSongNumStart(songNum);
+}
+
+void ToggleBgm(void)
+{
+    if (gSaveBlock2Ptr->optionsMuteBgm == FALSE)
+        gSaveBlock2Ptr->optionsMuteBgm = TRUE;
+    else
+        gSaveBlock2Ptr->optionsMuteBgm = FALSE;
+    FadeInNewBGM(sCurrentMapMusic, 0);
 }
 
 void PlaySE(u16 songNum)
