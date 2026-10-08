@@ -567,7 +567,8 @@ OlsternBeachSign_Text_0:
 
 OlsternCityFredsFishingSupplySign_Text_0:
 # 519 "data/maps/MauvilleCity/scripts.pory"
-	.string "Fred's Fishing Supply$"
+	.string "Fred's Fishing Supply\n"
+	.string "“For All Your Fishing Needs!”$"
 
 OlsternR4RoadblockTrigger_Text_0:
 # 550 "data/maps/MauvilleCity/scripts.pory"
