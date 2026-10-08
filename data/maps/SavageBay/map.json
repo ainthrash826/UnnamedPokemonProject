@@ -3,6 +3,7 @@
   "name": "SavageBay",
   "layout": "LAYOUT_SAVAGE_BAY",
   "music": "MUS_DEWFORD",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_OLDALE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,7 +13,13 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_ROUTE129",
+      "offset": 0,
+      "direction": "up"
+    }
+  ],
   "object_events": [],
   "warp_events": [
     {

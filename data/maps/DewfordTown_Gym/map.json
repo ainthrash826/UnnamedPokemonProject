@@ -3,7 +3,6 @@
   "name": "DewfordTown_Gym",
   "layout": "LAYOUT_DEWFORD_TOWN_GYM",
   "music": "MUS_GYM",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MAUVILLE_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -63,8 +62,26 @@
   "coord_events": [
     {
       "type": "trigger",
+      "x": 22,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
       "x": 23,
-      "y": 14,
+      "y": 13,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
@@ -72,25 +89,7 @@
     },
     {
       "type": "trigger",
-      "x": 22,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 24,
-      "y": 14,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 22,
+      "x": 26,
       "y": 15,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -99,8 +98,44 @@
     },
     {
       "type": "trigger",
-      "x": 24,
-      "y": 15,
+      "x": 26,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 8,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
@@ -117,79 +152,7 @@
     },
     {
       "type": "trigger",
-      "x": 2,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 5,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
       "x": 6,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_TEMP_4",
-      "var_value": "0",
-      "script": "ImperialGym_EnterPool"
-    },
-    {
-      "type": "trigger",
-      "x": 7,
       "y": 11,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -198,7 +161,43 @@
     },
     {
       "type": "trigger",
-      "x": 6,
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
       "y": 11,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -234,8 +233,8 @@
     },
     {
       "type": "trigger",
-      "x": 25,
-      "y": 14,
+      "x": 24,
+      "y": 13,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
@@ -378,7 +377,25 @@
     },
     {
       "type": "trigger",
-      "x": 21,
+      "x": 20,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
       "y": 14,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -387,7 +404,16 @@
     },
     {
       "type": "trigger",
-      "x": 21,
+      "x": 25,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
       "y": 15,
       "elevation": 0,
       "var": "VAR_TEMP_4",
@@ -405,13 +431,41 @@
     },
     {
       "type": "trigger",
-      "x": 25,
+      "x": 22,
       "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "ImperialGym_EnterPool"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 14,
       "elevation": 0,
       "var": "VAR_TEMP_4",
       "var_value": "0",
       "script": "ImperialGym_EnterPool"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
