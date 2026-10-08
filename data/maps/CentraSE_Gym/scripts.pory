@@ -55,13 +55,10 @@ script CentraSEGymAria {
 	if(!defeated(TRAINER_ROXANNE_1)
 	|| !flag(FLAG_BADGE01_GET)
 	|| var(VAR_CENTRA_SE_GYM_STATE) != CENTRA_SE_GYM_STATE_DEFEATED) {
-		message(format("I'm Aria, the Southeast Centra City Gym Leader!\p"
+		msgbox(format("{COLOR RED}Aria{COLOR DARK_GRAY}: I'm Aria, the Southeast Centra City Gym Leader!\p"
 					   "This is a PLACEHOLDER text line! I don't really have anything to say.\p"
-					   "But, as a Gym Leader I'll totally beat you with my Flying-type Pokémon!\lC'mon!"))
-		waitmessage
-		playbgm(GYM_LEADER_ENCOUNTER_MUSIC, FALSE)
-		waitbuttonpress
-		trainerbattle_no_intro(TRAINER_ROXANNE_1, format("Yeah…\p"
+					   "But, as a Gym Leader I'll totally defeat you with my Flying-type Pokémon!\lC'mon!{PLAY_BGM MUS_RG_ENCOUNTER_GYM_LEADER}{PAUSE 30}"))
+		trainerbattle_no_intro(TRAINER_ROXANNE_1, format("An excellent battle that was!\nTake this, as proof of my defeat.\p"
 		                                                 "{PAUSE_MUSIC}{PLAY_SE MUS_OBTAIN_BADGE}{PLAYER} received the ??? Badge from Aria!{WAIT_SE}{RESUME_MUSIC}"))
 		setvar(VAR_CENTRA_SE_GYM_STATE, CENTRA_SE_GYM_STATE_DEFEATED)
 		setflag(FLAG_BADGE01_GET)
@@ -73,7 +70,10 @@ script CentraSEGymAria {
 		releaseall
 		end
 	}
-	msgbox(format("Aria After-battle"), MSGBOX_NPC)
+	msgbox(format("{COLOR RED}Aria{COLOR DARK_GRAY}: Now that you've received your first Gym Badge, you should be looking to collect your second at the {COLOR GREEN}Olstern City{COLOR DARK_GRAY} Gym.\p"
+	              "To get there though, you'll first have to travel through {COLOR GREEN}Coalesce Cave{COLOR DARK_GRAY}.\p"
+				  "I recommend stocking up on Super Potions and Repels at a Pokémon Center before heading into that cave.\p"
+				  "Good luck, {PLAYER}!\nI believe in you!"), MSGBOX_NPC)
 	releaseall
 	end
 }

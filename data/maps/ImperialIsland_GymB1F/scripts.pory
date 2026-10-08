@@ -85,7 +85,7 @@ script ImperialGymWarp {
             case OLSTERN_GYM_STATE_DEFEATED:
                 setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_DEFEATED)
         }
-        warpnofade(MAP_DEWFORD_TOWN_GYM, 23, 14)
+        warpnofade(MAP_DEWFORD_TOWN_GYM, 23, 13)
     }
 	waitstate
     release
@@ -261,7 +261,7 @@ script BufferChestCountMsgbox {
     playse(SE_TRUCK_DOOR)
 }
 
-const TREASURE_CHANCE = 99 // Defualt 35
+const TREASURE_CHANCE = 35 // Defualt 35
 
 script RandomTreasureChance {
     //random(100)

@@ -29,7 +29,7 @@ mapscripts DewfordTown_Gym_MapScripts {
 						  "But be careful! If you leave the area before finishing the challenge, any opened chests will close back and your progress will be lost.\p"
 						  "Once you're ready, slip those Boots on and walk straight into the pool behind me!"), MSGBOX_AUTOCLOSE)
 			applymovement(LOCALID_OLSTERN_GYM_GUIDE, moves(walk_up * 2
-											   walk_in_place_fast_down))
+											               walk_in_place_fast_down))
 			waitmovement(0)
 			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_CHALLENGE_STARTED)
 			release
@@ -37,14 +37,13 @@ mapscripts DewfordTown_Gym_MapScripts {
 		}
 		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_DEFEATED {
 			lock
-			getplayerxy(VAR_TEMP_0, VAR_RESULT)
-            switch(var(VAR_RESULT)) {
-				case 11:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
-													 jump_down))
-				case 14:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
-													 jump_up))
+            if(getplayery == 13) {
+				applymovement(LOCALID_PLAYER, moves(face_up
+				                                    set_visible
+													jump_up))
+			} else {
+				applymovement(LOCALID_PLAYER, moves(set_visible
+													jump_down))
 			}
 			waitmovement(0)
 			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_DEFEATED)
@@ -62,14 +61,13 @@ mapscripts DewfordTown_Gym_MapScripts {
 		}
 		VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_EMERGE_CHALLENGE_COMPLETE {
 			lock
-			getplayerxy(VAR_TEMP_0, VAR_RESULT)
-            switch(var(VAR_RESULT)) {
-				case 11:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
-													 jump_down))
-				case 14:
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(set_visible
-													 jump_up))
+			if(getplayery == 13) {
+				applymovement(LOCALID_PLAYER, moves(face_up
+				                                    set_visible
+													jump_up))
+			} else {
+				applymovement(LOCALID_PLAYER, moves(set_visible
+													jump_down))
 			}
 			waitmovement(0)
 			setvar(VAR_OLSTERN_GYM_STATE, OLSTERN_GYM_STATE_CHALLENGE_COMPLETE)
@@ -90,11 +88,9 @@ script OlsternGymRedbeard {
 	if(!defeated(TRAINER_BRAWLY_1)
 	|| !flag(FLAG_BADGE02_GET)
 	|| var(VAR_OLSTERN_GYM_STATE) != OLSTERN_GYM_STATE_DEFEATED) {
-		message(format("Arrrrgh… Another challenger approaches!\p"
-				       "Avast ye! On the high seas or on land, ye be no match for the great Redbeard! So give it up, matey! Ha ha ha!"))
-		waitmessage
-		playbgm(GYM_LEADER_ENCOUNTER_MUSIC, FALSE)
-		waitbuttonpress
+		msgbox(format("{COLOR BLUE}Redbeard{COLOR DARK_GRAY}: Arrrrgh… Another challenger approaches!\p"
+				       "Avast ye! On the high seas or on land, ye be no match for the great Redbeard!\p"
+					   "So give it up, matey!{PLAY_BGM MUS_RG_ENCOUNTER_GYM_LEADER}\nHa ha ha!{PAUSE 30}"))
 		trainerbattle_no_intro(TRAINER_BRAWLY_1, format("Yaaaargh! Ye've sunken me ship!\nA fine battle that be, matey!\p"
 														"{PAUSE_MUSIC}{PLAY_SE MUS_OBTAIN_BADGE}{PLAYER} received the ??? Badge from Redbeard!{WAIT_SE}{RESUME_MUSIC}"))
 		setflag(FLAG_DEFEATED_OSLTERN_GYM)
@@ -117,7 +113,8 @@ script OlsternGymRedbeard {
 		releaseall
 		end
 	}
-	msgbox(OlsternGymRedbeard_AfterBattle, MSGBOX_NPC)
+	msgbox(format("{COLOR BLUE}Redbeard{COLOR DARK_GRAY}: something something something\p"
+                  "Now go!\nA high and mighty adventure awaits ye! Ha ha ha!"), MSGBOX_NPC)
 	releaseall
 	end
 }
@@ -125,9 +122,6 @@ script(local) GiveTMAquaCutter {
 	setvar(VAR_0x8008, 2)
 	call(GymSetTrainersAndGiveTM)
 }
-
-text OlsternGymRedbeard_AfterBattle {format("something something something\p"
-                                            "Now go!\nA high and mighty adventure awaits ye! Ha ha ha!")}
 
 script ImperialGymGuide {
 	if(!defeated(TRAINER_BRAWLY_1)) {

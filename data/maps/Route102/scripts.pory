@@ -33,7 +33,7 @@ script Route2LittleBoy {
 // Trainers
 
 script Route2Jimmy {
-	trainerbattle_single(TRAINER_CALVIN_1, "You plus me equals a battle!\nLet's go!", "Dang it.")
+	trainerbattle_single(TRAINER_CALVIN_1, format("Pokémon battles are tough, but Zigzagoon and I can tough it out!"), "Dang it.")
 	msgbox(format("I love Pokémon battles, but I always lose…"), MSGBOX_NPC)
 	end
 }
@@ -58,8 +58,8 @@ script Route2Fred {
 }
 
 script Route2Allen {
-	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokémon stole a random kid's Pokémon's Oran Berry!"), "Drat!")
-	msgbox(format("There was a kid that walked past here a couple minutes ago.\pHe was pretty strong!\nHave you met him yet?"), MSGBOX_NPC)
+	trainerbattle_single(TRAINER_ALLEN, format("Ha! My Pokémon stole a random kid's Pokémon's Oran Berry!"), "So much for stealing…")
+	msgbox(format(""), MSGBOX_NPC)
 	end
 }
 

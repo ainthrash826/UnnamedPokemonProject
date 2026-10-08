@@ -24,25 +24,25 @@ mapscripts MauvilleCity_MapScripts {
 			lock
 			playbgm(MUS_NONE, FALSE)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
-			delay(10)
+			delay(6)
 			playse(SE_M_EXPLOSION)
 			waitse
 			exclam(OBJ_EVENT_ID_PLAYER)
-			msgbox(format("It sounded like that loud explosion came from inside the ??? Cave!"), MSGBOX_AUTOCLOSE)
+			msgbox(format("It sounded like that loud explosion came from inside Coalesce Cave!"), MSGBOX_AUTOCLOSE)
 			fadedefaultbgm
-			setvar(VAR_UMN_CAVE_STATE, UMN_CAVE_STATE_CAVE_IN_CLEARED)
+			setvar(VAR_COALESCE_CAVE_STATE, COALESCE_CAVE_STATE_CAVE_IN_CLEARED)
 			setvar(VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_EXPLOSION_HEARD)
 			clearflag(FLAG_HIDE_MAP_NAME_POPUP)
 			release
@@ -515,6 +515,11 @@ script OlsternBeachSign {
 	end
 }
 
+script OlsternCityFredsFishingSupplySign {
+	msgbox(format("Fred's Fishing Supply\n“For All Your Fishing Needs!”"), MSGBOX_SIGN)
+	end
+}
+
 // Triggers
 
 script OlsternTammyTrigger {
@@ -587,10 +592,11 @@ script OlsternFakeAideTrigger {
 	}
 	waitmovement(0)
 	fadenewbgm(MUS_DUMMY)
-	message("T{PAUSE 8}O{PAUSE 8} {PAUSE 8}B{PAUSE 8}E{PAUSE 8} {PAUSE 8}C{PAUSE 8}O{PAUSE 8}N{PAUSE 8}T{PAUSE 8}I{PAUSE 8}N{PAUSE 8}U{PAUSE 8}E{PAUSE 8}D{PAUSE 360}")
-	fadescreenspeed(FADE_TO_BLACK, 8)
+	fadescreenspeed(FADE_TO_WHITE, 3)
+	message("{CLEAR_TO 60}T{PAUSE 8}O{PAUSE 8} {PAUSE 8}B{PAUSE 8}E{PAUSE 8} {PAUSE 8}C{PAUSE 8}O{PAUSE 8}N{PAUSE 8}T{PAUSE 8}I{PAUSE 8}N{PAUSE 8}U{PAUSE 8}E{PAUSE 8}D{PAUSE 160}")
 	waitmessage
 	closemessage
+	delay(30)
 	special(DoSoftReset)
 	// TODO: Player and harley are kidnapped by pirates and thrown overboard mid-sail
 	//       where they shore up on a small beach in the jungle north of Savage Bay

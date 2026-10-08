@@ -52,31 +52,31 @@ MauvilleCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1:
 # 26 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 27 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 28 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 29 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 30 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 31 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 32 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 33 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 34 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 35 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 36 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 37 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 38 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 39 "data/maps/MauvilleCity/scripts.pory"
-	delay 10
+	delay 6
 # 40 "data/maps/MauvilleCity/scripts.pory"
 	playse SE_M_EXPLOSION
 # 41 "data/maps/MauvilleCity/scripts.pory"
@@ -88,7 +88,7 @@ MauvilleCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1:
 # 44 "data/maps/MauvilleCity/scripts.pory"
 	fadedefaultbgm
 # 45 "data/maps/MauvilleCity/scripts.pory"
-	setvar VAR_UMN_CAVE_STATE, UMN_CAVE_STATE_CAVE_IN_CLEARED
+	setvar VAR_COALESCE_CAVE_STATE, COALESCE_CAVE_STATE_CAVE_IN_CLEARED
 # 46 "data/maps/MauvilleCity/scripts.pory"
 	setvar VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_EXPLOSION_HEARD
 # 47 "data/maps/MauvilleCity/scripts.pory"
@@ -212,252 +212,260 @@ OlsternBeachSign::
 	end
 
 
+OlsternCityFredsFishingSupplySign::
+# 519 "data/maps/MauvilleCity/scripts.pory"
+	msgbox OlsternCityFredsFishingSupplySign_Text_0, MSGBOX_SIGN
+	end
+
+
 OlsternTammyTrigger::
-# 521 "data/maps/MauvilleCity/scripts.pory"
+# 526 "data/maps/MauvilleCity/scripts.pory"
 	lock
-# 522 "data/maps/MauvilleCity/scripts.pory"
+# 527 "data/maps/MauvilleCity/scripts.pory"
 	setvar VAR_OLSTERN_CITY_STATE, OLSTERN_STATE_TAMMY_ENCOUNTER_START
-# 523 "data/maps/MauvilleCity/scripts.pory"
+# 528 "data/maps/MauvilleCity/scripts.pory"
 	warpsilent MAP_MAUVILLE_CITY, 37, 28
-# 524 "data/maps/MauvilleCity/scripts.pory"
+# 529 "data/maps/MauvilleCity/scripts.pory"
 	waitstate
-# 525 "data/maps/MauvilleCity/scripts.pory"
+# 530 "data/maps/MauvilleCity/scripts.pory"
 	release
 	end
 
 
 OlsternR4RoadblockTrigger::
-# 530 "data/maps/MauvilleCity/scripts.pory"
+# 535 "data/maps/MauvilleCity/scripts.pory"
 	lock
-# 531 "data/maps/MauvilleCity/scripts.pory"
+# 536 "data/maps/MauvilleCity/scripts.pory"
 	getplayery
 # 0 "data/maps/MauvilleCity/scripts.pory"
 	switch VAR_RESULT
-# 532 "data/maps/MauvilleCity/scripts.pory"
-	case 30, OlsternR4RoadblockTrigger_3
 # 537 "data/maps/MauvilleCity/scripts.pory"
+	case 30, OlsternR4RoadblockTrigger_3
+# 542 "data/maps/MauvilleCity/scripts.pory"
 	case 32, OlsternR4RoadblockTrigger_4
-# 538 "data/maps/MauvilleCity/scripts.pory"
+# 543 "data/maps/MauvilleCity/scripts.pory"
 	case 33, OlsternR4RoadblockTrigger_4
 OlsternR4RoadblockTrigger_1:
 	checkplayergender
 # 0 "data/maps/MauvilleCity/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq OlsternR4RoadblockTrigger_6
-# 547 "data/maps/MauvilleCity/scripts.pory"
+# 552 "data/maps/MauvilleCity/scripts.pory"
 	bufferstring STR_VAR_1, OlsternR4RoadblockTrigger_Text_1
 OlsternR4RoadblockTrigger_5:
-# 549 "data/maps/MauvilleCity/scripts.pory"
+# 554 "data/maps/MauvilleCity/scripts.pory"
 	msgbox OlsternR4RoadblockTrigger_Text_2, MSGBOX_NPC
-# 555 "data/maps/MauvilleCity/scripts.pory"
+# 560 "data/maps/MauvilleCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OlsternR4RoadblockTrigger_Movement_2
-# 556 "data/maps/MauvilleCity/scripts.pory"
+# 561 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 557 "data/maps/MauvilleCity/scripts.pory"
+# 562 "data/maps/MauvilleCity/scripts.pory"
 	release
 	end
 
 OlsternR4RoadblockTrigger_3:
-# 533 "data/maps/MauvilleCity/scripts.pory"
+# 538 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_ROADBLOCK, OlsternR4RoadblockTrigger_Movement_0
-# 534 "data/maps/MauvilleCity/scripts.pory"
+# 539 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 535 "data/maps/MauvilleCity/scripts.pory"
+# 540 "data/maps/MauvilleCity/scripts.pory"
 	exclam LOCALID_OLSTERN_ROADBLOCK
-# 536 "data/maps/MauvilleCity/scripts.pory"
+# 541 "data/maps/MauvilleCity/scripts.pory"
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	goto OlsternR4RoadblockTrigger_1
 
 OlsternR4RoadblockTrigger_4:
-# 539 "data/maps/MauvilleCity/scripts.pory"
+# 544 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_ROADBLOCK, OlsternR4RoadblockTrigger_Movement_1
-# 540 "data/maps/MauvilleCity/scripts.pory"
+# 545 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 541 "data/maps/MauvilleCity/scripts.pory"
+# 546 "data/maps/MauvilleCity/scripts.pory"
 	exclam LOCALID_OLSTERN_ROADBLOCK
-# 542 "data/maps/MauvilleCity/scripts.pory"
+# 547 "data/maps/MauvilleCity/scripts.pory"
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	goto OlsternR4RoadblockTrigger_1
 
 OlsternR4RoadblockTrigger_6:
-# 545 "data/maps/MauvilleCity/scripts.pory"
+# 550 "data/maps/MauvilleCity/scripts.pory"
 	bufferstring STR_VAR_1, OlsternR4RoadblockTrigger_Text_0
 	goto OlsternR4RoadblockTrigger_5
 
 
 OlsternFakeAideTrigger::
-# 562 "data/maps/MauvilleCity/scripts.pory"
+# 567 "data/maps/MauvilleCity/scripts.pory"
 	lock
-# 563 "data/maps/MauvilleCity/scripts.pory"
+# 568 "data/maps/MauvilleCity/scripts.pory"
 	addobject LOCALID_OLSTERN_AIDE
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_AIDE, OlsternFakeAideTrigger_Movement_0
-# 565 "data/maps/MauvilleCity/scripts.pory"
+# 570 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 566 "data/maps/MauvilleCity/scripts.pory"
+# 571 "data/maps/MauvilleCity/scripts.pory"
 	getplayery
 # 0 "data/maps/MauvilleCity/scripts.pory"
 	switch VAR_RESULT
-# 567 "data/maps/MauvilleCity/scripts.pory"
-	case 30, OlsternFakeAideTrigger_3
 # 572 "data/maps/MauvilleCity/scripts.pory"
+	case 30, OlsternFakeAideTrigger_3
+# 577 "data/maps/MauvilleCity/scripts.pory"
 	case 31, OlsternFakeAideTrigger_4
-# 576 "data/maps/MauvilleCity/scripts.pory"
-	case 32, OlsternFakeAideTrigger_5
 # 581 "data/maps/MauvilleCity/scripts.pory"
+	case 32, OlsternFakeAideTrigger_5
+# 586 "data/maps/MauvilleCity/scripts.pory"
 	case 33, OlsternFakeAideTrigger_6
 OlsternFakeAideTrigger_1:
-# 588 "data/maps/MauvilleCity/scripts.pory"
-	waitmovement 0
-# 589 "data/maps/MauvilleCity/scripts.pory"
-	fadenewbgm MUS_DUMMY
-# 590 "data/maps/MauvilleCity/scripts.pory"
-	message OlsternFakeAideTrigger_Text_0
-# 591 "data/maps/MauvilleCity/scripts.pory"
-	fadescreenspeed FADE_TO_BLACK, 8
-# 592 "data/maps/MauvilleCity/scripts.pory"
-	waitmessage
 # 593 "data/maps/MauvilleCity/scripts.pory"
-	closemessage
+	waitmovement 0
 # 594 "data/maps/MauvilleCity/scripts.pory"
-	special DoSoftReset
+	fadenewbgm MUS_DUMMY
+# 595 "data/maps/MauvilleCity/scripts.pory"
+	fadescreenspeed FADE_TO_WHITE, 3
+# 596 "data/maps/MauvilleCity/scripts.pory"
+	message OlsternFakeAideTrigger_Text_0
+# 597 "data/maps/MauvilleCity/scripts.pory"
+	waitmessage
+# 598 "data/maps/MauvilleCity/scripts.pory"
+	closemessage
+# 599 "data/maps/MauvilleCity/scripts.pory"
+	delay 30
 # 600 "data/maps/MauvilleCity/scripts.pory"
+	special DoSoftReset
+# 606 "data/maps/MauvilleCity/scripts.pory"
 	waitstate
-# 601 "data/maps/MauvilleCity/scripts.pory"
+# 607 "data/maps/MauvilleCity/scripts.pory"
 	release
 	end
 
 OlsternFakeAideTrigger_3:
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_AIDE, OlsternFakeAideTrigger_Movement_1
-# 570 "data/maps/MauvilleCity/scripts.pory"
+# 575 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 571 "data/maps/MauvilleCity/scripts.pory"
+# 576 "data/maps/MauvilleCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OlsternR4RoadblockTrigger_Movement_1
 	goto OlsternFakeAideTrigger_1
 
 OlsternFakeAideTrigger_4:
-# 573 "data/maps/MauvilleCity/scripts.pory"
+# 578 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_AIDE, OlsternFakeAideTrigger_Movement_2
-# 574 "data/maps/MauvilleCity/scripts.pory"
+# 579 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 575 "data/maps/MauvilleCity/scripts.pory"
+# 580 "data/maps/MauvilleCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OlsternFakeAideTrigger_Movement_3
 	goto OlsternFakeAideTrigger_1
 
 OlsternFakeAideTrigger_5:
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_AIDE, OlsternFakeAideTrigger_Movement_4
-# 579 "data/maps/MauvilleCity/scripts.pory"
+# 584 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 580 "data/maps/MauvilleCity/scripts.pory"
+# 585 "data/maps/MauvilleCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OlsternR4RoadblockTrigger_Movement_0
 	goto OlsternFakeAideTrigger_1
 
 OlsternFakeAideTrigger_6:
-# 582 "data/maps/MauvilleCity/scripts.pory"
+# 587 "data/maps/MauvilleCity/scripts.pory"
 	applymovement LOCALID_OLSTERN_AIDE, OlsternFakeAideTrigger_Movement_5
-# 585 "data/maps/MauvilleCity/scripts.pory"
+# 590 "data/maps/MauvilleCity/scripts.pory"
 	waitmovement 0
-# 586 "data/maps/MauvilleCity/scripts.pory"
+# 591 "data/maps/MauvilleCity/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, OlsternR4RoadblockTrigger_Movement_0
 	goto OlsternFakeAideTrigger_1
 
 
-# 533 "data/maps/MauvilleCity/scripts.pory"
+# 538 "data/maps/MauvilleCity/scripts.pory"
 OlsternR4RoadblockTrigger_Movement_0:
-# 533 "data/maps/MauvilleCity/scripts.pory"
+# 538 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_up
 	step_end
 
-# 539 "data/maps/MauvilleCity/scripts.pory"
+# 544 "data/maps/MauvilleCity/scripts.pory"
 OlsternR4RoadblockTrigger_Movement_1:
-# 539 "data/maps/MauvilleCity/scripts.pory"
+# 544 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_down
 	step_end
 
-# 555 "data/maps/MauvilleCity/scripts.pory"
+# 560 "data/maps/MauvilleCity/scripts.pory"
 OlsternR4RoadblockTrigger_Movement_2:
-# 555 "data/maps/MauvilleCity/scripts.pory"
+# 560 "data/maps/MauvilleCity/scripts.pory"
 	walk_right
 	step_end
 
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_0:
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 	walk_Left
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 	walk_Left
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 	walk_Left
-# 564 "data/maps/MauvilleCity/scripts.pory"
+# 569 "data/maps/MauvilleCity/scripts.pory"
 	walk_Left
 	step_end
 
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_1:
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 568 "data/maps/MauvilleCity/scripts.pory"
+# 573 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 569 "data/maps/MauvilleCity/scripts.pory"
+# 574 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_up
 	step_end
 
-# 573 "data/maps/MauvilleCity/scripts.pory"
+# 578 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_2:
-# 573 "data/maps/MauvilleCity/scripts.pory"
+# 578 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 573 "data/maps/MauvilleCity/scripts.pory"
+# 578 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 573 "data/maps/MauvilleCity/scripts.pory"
+# 578 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
 	step_end
 
-# 575 "data/maps/MauvilleCity/scripts.pory"
+# 580 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_3:
-# 575 "data/maps/MauvilleCity/scripts.pory"
+# 580 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_right
 	step_end
 
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_4:
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 577 "data/maps/MauvilleCity/scripts.pory"
+# 582 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 578 "data/maps/MauvilleCity/scripts.pory"
+# 583 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_down
 	step_end
 
-# 582 "data/maps/MauvilleCity/scripts.pory"
+# 587 "data/maps/MauvilleCity/scripts.pory"
 OlsternFakeAideTrigger_Movement_5:
-# 582 "data/maps/MauvilleCity/scripts.pory"
+# 587 "data/maps/MauvilleCity/scripts.pory"
 	walk_down
-# 583 "data/maps/MauvilleCity/scripts.pory"
+# 588 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 583 "data/maps/MauvilleCity/scripts.pory"
+# 588 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 583 "data/maps/MauvilleCity/scripts.pory"
+# 588 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 583 "data/maps/MauvilleCity/scripts.pory"
+# 588 "data/maps/MauvilleCity/scripts.pory"
 	walk_left
-# 584 "data/maps/MauvilleCity/scripts.pory"
+# 589 "data/maps/MauvilleCity/scripts.pory"
 	walk_in_place_fast_down
 	step_end
 
 MauvilleCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE_1_Text_0:
 # 43 "data/maps/MauvilleCity/scripts.pory"
 	.string "It sounded like that loud explosion\n"
-	.string "came from inside the ??? Cave!$"
+	.string "came from inside Coalesce Cave!$"
 
 OlsternTriathlete_Text_0:
 # 435 "data/maps/MauvilleCity/scripts.pory"
@@ -557,16 +565,20 @@ OlsternBeachSign_Text_0:
 # 514 "data/maps/MauvilleCity/scripts.pory"
 	.string "Olstern Beach$"
 
+OlsternCityFredsFishingSupplySign_Text_0:
+# 519 "data/maps/MauvilleCity/scripts.pory"
+	.string "Fred's Fishing Supply$"
+
 OlsternR4RoadblockTrigger_Text_0:
-# 545 "data/maps/MauvilleCity/scripts.pory"
+# 550 "data/maps/MauvilleCity/scripts.pory"
 	.string "sir$"
 
 OlsternR4RoadblockTrigger_Text_1:
-# 547 "data/maps/MauvilleCity/scripts.pory"
+# 552 "data/maps/MauvilleCity/scripts.pory"
 	.string "miss$"
 
 OlsternR4RoadblockTrigger_Text_2:
-# 549 "data/maps/MauvilleCity/scripts.pory"
+# 554 "data/maps/MauvilleCity/scripts.pory"
 	.string "Excuse me, {STR_VAR_1}! Reno Boardwalk is\n"
 	.string "currently undergoing construction, so\l"
 	.string "we can't allow anyone through the\lroute.\p"
@@ -575,8 +587,8 @@ OlsternR4RoadblockTrigger_Text_2:
 	.string "for the route to reopen.$"
 
 OlsternFakeAideTrigger_Text_0:
-# 590 "data/maps/MauvilleCity/scripts.pory"
-	.string "T{PAUSE 8}O{PAUSE 8} {PAUSE 8}B{PAUSE 8}E{PAUSE 8} {PAUSE 8}C{PAUSE 8}O{PAUSE 8}N{PAUSE 8}T{PAUSE 8}I{PAUSE 8}N{PAUSE 8}U{PAUSE 8}E{PAUSE 8}D{PAUSE 360}$"
+# 596 "data/maps/MauvilleCity/scripts.pory"
+	.string "{CLEAR_TO 60}T{PAUSE 8}O{PAUSE 8} {PAUSE 8}B{PAUSE 8}E{PAUSE 8} {PAUSE 8}C{PAUSE 8}O{PAUSE 8}N{PAUSE 8}T{PAUSE 8}I{PAUSE 8}N{PAUSE 8}U{PAUSE 8}E{PAUSE 8}D{PAUSE 160}$"
 
 OrionDefeat2::
 # 428 "data/maps/MauvilleCity/scripts.pory"
