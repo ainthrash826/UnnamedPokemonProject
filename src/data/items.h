@@ -13051,18 +13051,21 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_AQUA_CUTTER] =
+    [ITEM_TM_HOT_PRESS] =
     {
         .name = ITEM_NAME("TM51"),
         .price = 3000,
-        .description = COMPOUND_STRING("?????"), // Todo
+        .description = COMPOUND_STRING(
+            "Rapid heating and\n"
+            "a hard press may\n"
+            "burn the foe."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_TEMPER_FLARE] =
+    [ITEM_TM_AQUA_CUTTER] =
     {
         .name = ITEM_NAME("TM52"),
         .price = 3000,
@@ -13073,7 +13076,7 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM53] =
+    [ITEM_TM_TEMPER_FLARE] =
     {
         .name = ITEM_NAME("TM53"),
         .price = 3000,

@@ -103,8 +103,27 @@ enum __attribute__((packed)) Stat
 #define DEFAULT_STAT_STAGE 6
 #define MAX_STAT_STAGE    12
 
-// Shiny odds
-#define SHINY_ODDS 8192 // Actual probability is SHINY_ODDS/65536. Default is 8 (1/4096), currently set to 1/8
+// Shiny odds. Actual probability is SHINY_ODDS/65536
+#define SHINY_ODDS_0  (1 << 0)
+#define SHINY_ODDS_1  (1 << 1)
+#define SHINY_ODDS_2  (1 << 2)
+#define SHINY_ODDS_3  (1 << 3) // Default
+#define SHINY_ODDS_4  (1 << 4)
+#define SHINY_ODDS_5  (1 << 5)
+#define SHINY_ODDS_6  (1 << 6)
+#define SHINY_ODDS_7  (1 << 7)
+#define SHINY_ODDS_8  (1 << 8)
+#define SHINY_ODDS_9  (1 << 9)
+#define SHINY_ODDS_10 (1 << 10)
+#define SHINY_ODDS_11 (1 << 11)
+#define SHINY_ODDS_12 (1 << 12)
+#define SHINY_ODDS_13 (1 << 13)
+#define SHINY_ODDS_14 (1 << 14)
+#define SHINY_ODDS_15 (1 << 15)
+#define SHINY_ODDS_16 (1 << 16) // Always Shiny
+
+#define NUM_SHINY_ODDS_OPTIONS 17
+#define SHINY_ODDS SHINY_ODDS_12
 
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0

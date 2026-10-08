@@ -52,6 +52,7 @@
     F(SKILL_SWAP) \
     F(SNATCH) \
     F(OVERHEAT) \
+    F(HOT_PRESS) \
     F(AQUA_CUTTER) \
     F(TEMPER_FLARE)
 
