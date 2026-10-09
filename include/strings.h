@@ -90,6 +90,7 @@ extern const u8 gText_Cushion[];
 extern const u8 gText_Decorate[];
 extern const u8 gText_PutAway[];
 extern const u8 gText_Toss2[];
+extern const u8 gText_Niluea[];
 extern const u8 gText_Hoenn[];
 extern const u8 gText_Kanto[];
 extern const u8 gText_Ferry[];
@@ -2294,6 +2295,8 @@ extern const u8 gText_OakThisIsListOfPokemon[];
 
 extern const u8 gText_Boy[];
 extern const u8 gText_Girl[];
+extern const u8 gText_Nephew[];
+extern const u8 gText_Niece[];
 
 
 #endif // GUARD_STRINGS_H

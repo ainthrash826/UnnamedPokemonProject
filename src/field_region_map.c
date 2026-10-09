@@ -235,7 +235,7 @@ static void PrintTitleWindowText(void)
     if (IS_FRLG)
         region = gText_Kanto;
     else
-        region = gText_Hoenn;
+        region = gText_Niluea;
     u32 hoennOffset = GetStringCenterAlignXOffset(FONT_NORMAL, region, 0x38);
     u32 flyOffset = GetStringCenterAlignXOffset(FONT_NORMAL, FlyPromptText, 0x38);
 

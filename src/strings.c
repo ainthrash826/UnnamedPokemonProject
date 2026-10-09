@@ -906,7 +906,8 @@ const u8 gText_DexNational[] = _("NATIONAL");
 const u8 gText_PokedexDiploma[] = _("PLAYER: {CLEAR 16}{COLOR RED}{SHADOW LIGHT_RED}{PLAYER}{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}\n\nThis document certifies\nthat you have successfully\ncompleted your\n{STR_VAR_1} POKéDEX.\n\n{CLEAR_TO 66}{COLOR RED}{SHADOW LIGHT_RED}GAME FREAK");
 const u8 gJPText_GameFreak[] = _("{COLOR RED}{SHADOW LIGHT_RED}ゲ-ムフリ-ク"); // Unused
 const u8 gText_DiplomaEmpty[] = _("{COLOR RED}{SHADOW LIGHT_RED}"); // Unused
-const u8 gText_Hoenn[] = _("HOENN");
+const u8 gText_Niluea[] = _("Niluea");
+const u8 gText_Hoenn[] = _("HOENN"); // Unused
 const u8 gText_Kanto[] = _("KANTO");
 const u8 gText_XWillBeSentToY[] = _("{STR_VAR_2} will be\nsent to {STR_VAR_1}.");
 const u8 gText_ByeByeVar1[] = _("Bye-bye, {STR_VAR_2}!");
@@ -1112,6 +1113,9 @@ const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't de
 const u8 gText_Rename[] = _("RENAME");
 const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
 
+const u8 gText_Nephew[] = _("nephew");
+const u8 gText_Niece[] = _("niece");
+
 //// side quest data
 //generic strings
 const u8 gText_QuestAnnounce[] = _("The quest '{STR_VAR_1}'\nis now {STR_VAR_2}.");
@@ -1311,6 +1315,7 @@ const u8 gText_SubQuest2_Desc17[] = _("Description Sub 17");
 const u8 gText_SubQuest2_Desc18[] = _("Description Sub 18");
 const u8 gText_SubQuest2_Desc19[] = _("Description Sub 19");
 const u8 gText_SubQuest2_Desc20[] = _("Description Sub 20");
+
 ALIGNED(4) const u8 gText_Ghost[] = _("GHOST");
 const u8 gText_Boulderbadge[] = _("BOULDERBADGE");
 const u8 gText_Cascadebadge[] = _("CASCADEBADGE");

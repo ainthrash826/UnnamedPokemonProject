@@ -1,9 +1,10 @@
 gText_Birch_Welcome::
 	.string "Hi! Sorry to keep you waiting!\p"
-	.string "Welcome to the world of POKéMON!\p"
-	.string "My name is BIRCH.\p"
-	.string "But everyone calls me the POKéMON\n"
-	.string "PROFESSOR.\p"
+	.string "Welcome to the Niluea region!\n"
+	.string "Pronounced “nill-way-uh”.\p"
+	.string "My name is Watson.\n"
+	.string "But everyone calls me the Pokémon\l"
+	.string "Professor.\p"
 	.string "$"
 
 gText_Birch_Pokemon::
@@ -44,9 +45,9 @@ gText_Birch_SoItsPlayer::
 
 gText_Birch_YourePlayer::
 	.string "Ah, okay!\p"
-	.string "You're {PLAYER}{KUN} who's moving to my\n"
-	.string "hometown of LITTLEROOT.\l"
-	.string "I get it now!\p"
+	.string "You're {PLAYER}, my {STR_VAR_1}, who's moving\n"
+	.string "all the way from Kanto to {COLOR GREEN}Woodridge\l"
+	.string "Town{COLOR DARK_GRAY} in Niluea. I get it now!\p"
 	.string "$"
 
 gText_Birch_AreYouReady::
