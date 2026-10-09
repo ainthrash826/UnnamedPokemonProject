@@ -13213,7 +13213,7 @@
 #line 4872
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 4869
-            .lvl = 19,
+            .lvl = 20,
 #line 4871
             .ball = BALL_LUXURY,
 #line 4870
@@ -13266,7 +13266,7 @@
 #line 4889
             .ability = ABILITY_SHARPNESS,
 #line 4888
-            .lvl = 21,
+            .lvl = 22,
 #line 4892
             .ball = BALL_DIVE,
 #line 4890
