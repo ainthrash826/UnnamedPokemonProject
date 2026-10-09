@@ -107,7 +107,7 @@ enum __attribute__((packed)) Stat
 #define SHINY_ODDS_0  (1 << 0)
 #define SHINY_ODDS_1  (1 << 1)
 #define SHINY_ODDS_2  (1 << 2)
-#define SHINY_ODDS_3  (1 << 3) // Default
+#define SHINY_ODDS_3  (1 << 3)
 #define SHINY_ODDS_4  (1 << 4)
 #define SHINY_ODDS_5  (1 << 5)
 #define SHINY_ODDS_6  (1 << 6)
@@ -123,7 +123,8 @@ enum __attribute__((packed)) Stat
 #define SHINY_ODDS_16 (1 << 16) // Always Shiny
 
 #define NUM_SHINY_ODDS_OPTIONS 17
-#define SHINY_ODDS SHINY_ODDS_12
+#define SHINY_ODDS_DEFAULT (GEN_LATEST >= GEN_6 ? SHINY_ODDS_4 : SHINY_ODDS_3)
+#define SHINY_ODDS SHINY_ODDS_DEFAULT
 
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0

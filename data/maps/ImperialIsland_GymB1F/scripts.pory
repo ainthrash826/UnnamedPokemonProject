@@ -389,7 +389,7 @@ script ImperialGymLance {
 }
 
 script ImperialGymIrvin {
-	trainerbattle_single(TRAINER_DARIAN, format("I just downed three bottles o' (burp) rum. Show me yer worse!"), format("Y'er (burp) off the hook, mate."))
+	trainerbattle_single(TRAINER_DARIAN, format("I just downed three bottles o' (burp) rum. Show me yer worst!"), format("Y'er (burp) off the hook, mate."))
 	msgbox(format(""), MSGBOX_NPC)
 	end
 }

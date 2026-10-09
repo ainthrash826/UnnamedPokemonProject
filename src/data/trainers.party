@@ -217,7 +217,7 @@ Double Battle: No
 AI: Trainer Plus
 
 Gligar
-Level: 15
+Level: 16
 -Ice Fang
 -Knock Off
 -Quick Attack
@@ -3195,7 +3195,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Krabby
-Level: 16
+Level: 17
 -Protect
 -Mud Shot
 -Harden
@@ -7871,11 +7871,11 @@ Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Inkay
-Level: 17
+Croagunk
+Level: 18
 
 Inkay
-Level: 16
+Level: 18
 
 === TRAINER_LAURA ===
 Name: Laura
@@ -7887,7 +7887,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Horsea
-Level: 16
+Level: 17
 
 Sandygast
 Level: 18
@@ -10661,11 +10661,11 @@ AI: Check Bad Move
 Shellos-East
 Level: 17
 
-Pincurchin
-Level: 16
+Wingull
+Level: 18
 
-Carvanha
-Level: 17
+Arrokuda
+Level: 18
 
 === TRAINER_LILITH ===
 Name: Lillith
@@ -10677,10 +10677,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Pyukumuku
-Level: 17
+Level: 18
 
 Carvanha
-Level: 17
+Level: 18
 
 === TRAINER_CRISTIAN ===
 Name: Lance
@@ -10692,7 +10692,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Clauncher
-Level: 17
+Level: 18
 
 Carvanha
 Level: 18
@@ -13055,7 +13055,7 @@ Double Battle: No
 AI: Basic Trainer
 
 Arrokuda
-Level: 17
+Level: 18
 
 Munchlax
 Level: 18

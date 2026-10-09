@@ -425,7 +425,7 @@
 #line 221
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 220
-            .lvl = 15,
+            .lvl = 16,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -8624,7 +8624,7 @@
 #line 3199
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 3198
-            .lvl = 16,
+            .lvl = 17,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21488,12 +21488,12 @@
         {
             {
 #line 7874
-            .species = SPECIES_INKAY,
+            .species = SPECIES_CROAGUNK,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 7876
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7875
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21505,7 +21505,7 @@
 #line 7879
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7878
-            .lvl = 16,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -21541,7 +21541,7 @@
 #line 7891
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 7890
-            .lvl = 16,
+            .lvl = 17,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -29332,24 +29332,24 @@
             },
             {
 #line 10664
-            .species = SPECIES_PINCURCHIN,
+            .species = SPECIES_WINGULL,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10666
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10665
-            .lvl = 16,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
 #line 10667
-            .species = SPECIES_CARVANHA,
+            .species = SPECIES_ARROKUDA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 10669
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10668
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -29385,7 +29385,7 @@
 #line 10681
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10680
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -29397,7 +29397,7 @@
 #line 10684
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10683
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -29433,7 +29433,7 @@
 #line 10696
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 10695
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -35974,7 +35974,7 @@
 #line 13059
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13058
-            .lvl = 17,
+            .lvl = 18,
             .ball = POKEBALL_COUNT,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
