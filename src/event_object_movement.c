@@ -39,6 +39,7 @@
 #include "task.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
+#include "layouts.h"
 #include "util.h"
 #include "wild_encounter.h"
 #include "wild_encounter_ow.h"
@@ -2351,6 +2352,7 @@ void UpdateFollowingPokemon(void)
     // 2. Map is indoors and gfx is larger than 32x32
     // 3. flag is set
     // 4. a follower NPC is present
+    // 5. the player is in the Olstern gym water section
     if (OW_POKEMON_OBJECT_EVENTS == FALSE
      || OW_FOLLOWERS_ENABLED == FALSE
      || FlagGet(B_FLAG_FOLLOWERS_DISABLED)
@@ -2359,6 +2361,7 @@ void UpdateFollowingPokemon(void)
      || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, shiny, female)->oam->size > ST_OAM_SIZE_2)
      || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
      || PlayerHasFollowerNPC()
+     || (gMapHeader.mapLayoutId == LAYOUT_IMPERIAL_ISLAND_GYM_B1F)
      )
     {
         RemoveFollowingPokemon();
